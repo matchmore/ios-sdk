@@ -26,8 +26,8 @@ This is a Sclaps SDK pod allowing to connect and use the Sclaps context-aware pu
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'rk' => 'rafal.kowalski@mac.com' }
-  # s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Scalps.git', :tag => s.version.to_s }
-  s.source           = { :git => '/Users/rk/Developer/Scala/scalps-client-ios.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@bitbucket.org:scalps/scalps-client-ios-sdk.git', :tag => s.version.to_s }
+  # s.source           = { :git => 'git@bitbucket.org:scalps/scalps-client-ios-sdk.git', :tag => "develop" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
