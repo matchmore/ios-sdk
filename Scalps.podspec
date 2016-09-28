@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Scalps'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Scalps.'
+  s.summary          = 'Scalps SDK is a framework enabling iOS application to use the Scalps cloud pub/sub service.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,20 +18,22 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+This is a Sclaps SDK pod allowing to connect and use the Sclaps context-aware pub/sub cloud service.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Scalps'
+  # s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Scalps'
+  s.homepage         = 'http://scalps.unil.ch'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'rk' => 'rafal.kowalski@mac.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Scalps.git', :tag => s.version.to_s }
+  # s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Scalps.git', :tag => s.version.to_s }
+  s.source           = { :git => '/Users/rk/Developer/Scala/scalps-client-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'Scalps/Classes/**/*'
-  
+  s.source_files = 'Scalps/Classes/**/*.swift'
+
   # s.resource_bundles = {
   #   'Scalps' => ['Scalps/Assets/*.png']
   # }
