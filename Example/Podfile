@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'Scalps_Example' do
-  pod 'Scalps', :path => '../'
+  pod 'ScalpsSDK', :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => '0.0.1'
 
   target 'Scalps_Tests' do
     inherit! :search_paths
