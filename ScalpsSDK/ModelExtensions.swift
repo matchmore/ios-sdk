@@ -33,7 +33,7 @@ extension Device {
     // Device(deviceId: UUID().uuidString, name: "Scalps Test Device 1",
     // platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
 
-    convenience init(name: String, platform: String, deviceToken: String) {
+    public convenience init(name: String, platform: String, deviceToken: String) {
         self.init()
         self.deviceId = UUID().uuidString
         self.name = name
