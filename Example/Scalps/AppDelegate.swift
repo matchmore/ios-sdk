@@ -7,16 +7,24 @@
 //
 
 import UIKit
-// import ScalpsSDK
+import ScalpsSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let apiKey = "f92183ca-c610-11e6-b704-e77af2b49f4f"
+        let scalps = ScalpsManager(apiKey: apiKey)
+        let userName = "Swift Exmple User 1"
+
+        scalps.createUser(userName) {
+            (_ user) in
+            print("Created user \(user)")
+        }
+        
         return true
     }
 

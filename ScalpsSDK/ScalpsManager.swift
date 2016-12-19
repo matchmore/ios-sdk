@@ -6,7 +6,7 @@ import Foundation
 import CoreLocation
 import Scalps
 
-class ScalpsManager: ScalpsSDK {
+open class ScalpsManager: ScalpsSDK {
     let defaultHeaders = [
         // FIXME: pass both keys on ScalpsManager creation
         "dev-key": "7eef938a-c09d-11e6-bc43-b390d71c98d2",
@@ -33,11 +33,11 @@ class ScalpsManager: ScalpsSDK {
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
 
-    convenience init(apiKey: String) {
+    public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
     }
 
-    init(apiKey: String, clLocationManager: CLLocationManager) {
+    public init(apiKey: String, clLocationManager: CLLocationManager) {
         self.apiKey = apiKey
         self.locationManager = LocationManager(clLocationManager)
         headers = defaultHeaders.merged(with: ["api-key": apiKey])
@@ -45,7 +45,7 @@ class ScalpsManager: ScalpsSDK {
         ScalpsAPI.customHeaders = headers
     }
 
-    internal func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
+    public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
         let userCompletion = completion
         // FIXME: add a version accepting the user name
         let userTemplate = User(name: userName)
@@ -58,7 +58,7 @@ class ScalpsManager: ScalpsSDK {
         })
     }
 
-    func createDevice(_ device: Device, for user: User, completion: @escaping (_ device: Device?) -> Void) {
+    public func createDevice(_ device: Device, for user: User, completion: @escaping (_ device: Device?) -> Void) {
         let userCompletion = completion
         let _ = Scalps.UserAPI.createDevice(userId: user.userId!, device: device, completion: {
             (device, error) -> Void in
@@ -69,7 +69,7 @@ class ScalpsManager: ScalpsSDK {
         })
     }
 
-    func createPublication(_ publication: Publication, for user: User, on device: Device,
+    public func createPublication(_ publication: Publication, for user: User, on device: Device,
                            completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
         let publicationTemplate = publication
@@ -85,7 +85,7 @@ class ScalpsManager: ScalpsSDK {
         }
     }
 
-    func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
+    public func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
                             completion: @escaping (_ subscription: Subscription?) -> Void) {
         let userCompletion = completion
         let subscriptionTemplate = subscription
@@ -101,7 +101,7 @@ class ScalpsManager: ScalpsSDK {
         }
     }
 
-    func updateLocation(_ location: DeviceLocation, for user: User, on device: Device,
+    public func updateLocation(_ location: DeviceLocation, for user: User, on device: Device,
                         completion: @escaping (_ location: DeviceLocation?) -> Void) {
         let userCompletion = completion
 
@@ -116,11 +116,11 @@ class ScalpsManager: ScalpsSDK {
         }
     }
 
-    func startUpdatingLocation() {
+    public func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
     }
 
-    func stopUpdatingLocation() {
+    public func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
     }
 }

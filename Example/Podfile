@@ -1,7 +1,8 @@
 use_frameworks!
 
 target 'ScalpsExample' do
-  pod 'ScalpsSDK', :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => '0.0.1'
+  # pod 'ScalpsSDK', :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => '0.0.1'
+  pod 'ScalpsSDK', :path => '../'
   pod 'Scalps', :git => 'https://scalps@bitbucket.org/scalps/ios-api.git', :tag => '0.0.1'
 
   target 'ScalpsExampleTests' do
