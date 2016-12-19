@@ -1,12 +1,13 @@
 use_frameworks!
 
-target 'Scalps_Example' do
+target 'ScalpsExample' do
   pod 'ScalpsSDK', :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => '0.0.1'
+  pod 'Scalps', :git => 'https://scalps@bitbucket.org/scalps/ios-api.git', :tag => '0.0.1'
 
-  target 'Scalps_Tests' do
+  target 'ScalpsExampleTests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 0.8'
-    pod 'Nimble', '~> 3.0'
+    pod 'Quick' #, '~> 0.8'
+    pod 'Nimble' #, '~> 3.0'
   end
 end
