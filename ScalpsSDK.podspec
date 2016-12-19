@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.summary = 'Scalps iOS SDK in Swift'
   s.source = { :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => s.version }
   s.license = 'Apache License, Version 2.0'
-  s.source_files = 'Scalps/Scalps/**/*.swift'
+  s.source_files = 'ScalpsSDK/**/*.swift'
   s.dependency 'Scalps'
 end
