@@ -12,12 +12,12 @@ import ScalpsSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    // Scalps API key
+    let apiKey = "f92183ca-c610-11e6-b704-e77af2b49f4f"
     
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let apiKey = "f92183ca-c610-11e6-b704-e77af2b49f4f"
+    func createDevice() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let userName = "Swift Exmple User 1"
         
@@ -39,6 +39,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
+    }
+    
+    func createPublication() {
+        let scalps = ScalpsManager(apiKey: apiKey)
+        let deviceTemplate = Device(name: "Scalps Test Device 3",
+                                    platform: "iOS 9.3",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663")
+        let userName = "Swift Example User 1"
+        
+        scalps.createUser(userName) {
+            (_ user) in
+            if let u = user {
+                print("Created user: id = \(u.userId), name = \(u.name)")
+                scalps.createDevice(deviceTemplate, for: u) {
+                    (_ device) in
+                    if let d = device {
+                        print("Created devide: id = \(d.deviceId), name = \(d.name)")
+                        let location = DeviceLocation(deviceId: d.deviceId!,
+                                                      altitude: 0,
+                                                      latitude: 37.785833999999994,
+                                                      longitude: -122.406417)
+                        let payload = Payload(dictionary: ["mood": "happy"])
+                        let publicationTemplate = Publication(topic: "scalps-ios-test",
+                                                              range: 100.0,
+                                                              duration: 0,
+                                                              location: location,
+                                                              payload: payload)
+                        
+                        scalps.createPublication(publicationTemplate, for: u, on: d) {
+                            (_ publication) in
+                            if let p = publication {
+                                print("Created publication: id = \(p.publicationId), topic = \(p.topic)")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Override point for customization after application launch.
+        
+        // createDevice()
+        createPublication()
         
         return true
     }
@@ -67,4 +115,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 }
-

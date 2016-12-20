@@ -44,7 +44,7 @@ extension Device {
 
 extension DeviceLocation {
 
-    convenience init(deviceId: String, altitude: Double, latitude: Double, longitude: Double) {
+    public convenience init(deviceId: String, altitude: Double, latitude: Double, longitude: Double) {
         self.init()
         self.deviceId = deviceId
         // XXX: use now for the timestamp
@@ -60,7 +60,7 @@ extension DeviceLocation {
 
 extension Publication {
 
-    convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, payload: Payload) {
+    public convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, payload: Payload) {
         self.init()
         // XXX: use now for the timestamp
         self.timestamp = now()
@@ -78,7 +78,7 @@ extension Publication {
 
 extension Subscription {
 
-    convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, selector: String) {
+    public convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, selector: String) {
 
         self.init()
         // XXX: use now for the timestamp
