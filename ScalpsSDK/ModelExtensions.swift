@@ -25,7 +25,26 @@ extension User {
     public convenience init(name: String) {
         self.init()
         self.name = name
-    }    
+    }
+
+    // XXX: The  problem is  we cannot  have a  stored property  in an
+    // extension  so where  should we  store the  created device?   It
+    // could help if we somehow always get the ScalpsManager reference
+    // to store the values...
+    /*
+    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) {
+        let f = completion
+        let _ = Scalps.UserAPI.createDevice(userId: self.userId!, device: device, completion: {
+            (device, error) -> Void in
+
+            if let d = device {
+                self.devices.append(d)
+            }
+
+            f(device)
+        })
+    }
+    */
 }
 
 extension Device {

@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 scalps.createDevice(deviceTemplate, for: u) {
                     (_ device) in
                     if let d = device {
-                        print("Created devide: id = \(d.deviceId), name = \(d.name)")
+                        print("Created device: id = \(d.deviceId), name = \(d.name)")
                         let location = DeviceLocation(deviceId: d.deviceId!,
                                                       altitude: 0,
                                                       latitude: 37.785833999999994,
@@ -85,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         
+        // Make some Scalps calls
         // createDevice()
         createPublication()
         

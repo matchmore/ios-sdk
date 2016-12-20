@@ -28,7 +28,9 @@ open class ScalpsManager: ScalpsSDK {
     // FIXME: add the world id when it's there
     // var world: World
     var users: [User] = []
+    var user: User?
     var devices: [Device] = []
+    var device: Device?
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
@@ -52,18 +54,20 @@ open class ScalpsManager: ScalpsSDK {
         let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
             (user, error) -> Void in
             if let u = user {
-              self.users.append(u)
+                self.users.append(u)
+                self.user = self.users[0]
             }
             userCompletion(user)
         })
     }
 
-    public func createDevice(_ device: Device, for user: User, completion: @escaping (_ device: Device?) -> Void) {
+    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) {
         let userCompletion = completion
-        let _ = Scalps.UserAPI.createDevice(userId: user.userId!, device: device, completion: {
+        let _ = Scalps.UserAPI.createDevice(userId: user!.userId!, device: device, completion: {
             (device, error) -> Void in
             if let d = device {
                 self.devices.append(d)
+                self.device = self.devices[0]
             }
             userCompletion(device)
         })
