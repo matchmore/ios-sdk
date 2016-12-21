@@ -1,3 +1,7 @@
+:PROPERTIES:
+#+OPTIONS: toc:nil
+:END:
+
 * Scalps iOS SDK
 
 ** COMMENT
