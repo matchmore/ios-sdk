@@ -19,10 +19,10 @@ the Example directory first.
 ** Installation
 
    Scalps is available through [[http://cocoapods.org][CocoaPods]] it, simply add the following
-line to your Podfile:
+   line to your Podfile:
 
 #+BEGIN_SRC ruby
-  pod "ScalpsSDK",
+  pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.1'
 #+END_SRC
 
 ** Author
