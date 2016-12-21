@@ -49,19 +49,23 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 2") {
             (_ user) in
             // if let u = user {
-                // scalps.createDevice(deviceTemplate, for: u) {
-                scalps.createDevice(deviceTemplate) {
-                    (_ device) in
-                    XCTAssertNotNil(device, "Whoops, no device")
-                    deviceExpectation.fulfill()
-                }
+            // scalps.createDevice(deviceTemplate, for: u) {
+            // do {
+            // try
+            scalps.createDevice(deviceTemplate) {
+                (_ device) in
+                XCTAssertNotNil(device, "Whoops, no device")
+                deviceExpectation.fulfill()
+            }
+            // }
+            // } catch ScalpsManagerError.userNotIntialized {
+            //     print("User hasn't been initialized yet")
             // }
         }
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    /*
     func test3CreatePublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceTemplate = Device(name: "Scalps Test Device 3",
@@ -73,7 +77,8 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 3") {
             (_ user) in
             if let u = user {
-                scalps.createDevice(deviceTemplate, for: u) {
+                // scalps.createDevice(deviceTemplate, for: u) {
+                scalps.createDevice(deviceTemplate) {
                     (_ device) in
                     if let d = device {
                         let location = DeviceLocation(deviceId: d.deviceId!,
@@ -111,7 +116,8 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 4") {
             (_ user) in
             if let u = user {
-                scalps.createDevice(deviceTemplate, for: u) {
+                // scalps.createDevice(deviceTemplate, for: u) {
+                scalps.createDevice(deviceTemplate) {
                     (_ device) in
                     if let d = device {
                         let location = DeviceLocation(deviceId: d.deviceId!,
@@ -126,7 +132,7 @@ class ScalpsSDKTests: XCTestCase {
                                                                 selector: selector)
 
                         scalps.createSubscription(subscriptionTemplate, for: u, on: d) {
-                         (_ subscription) in
+                            (_ subscription) in
                             XCTAssertNotNil(subscription)
                             subscriptionExpectation.fulfill()
                         }
@@ -148,7 +154,8 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 6") {
             (_ user) in
             if let u = user {
-                scalps.createDevice(deviceTemplate, for: u) {
+                // scalps.createDevice(deviceTemplate, for: u) {
+                scalps.createDevice(deviceTemplate) {
                     (_ device) in
                     if let d = device {
                         let newLocation = DeviceLocation(deviceId: d.deviceId!,
@@ -168,6 +175,8 @@ class ScalpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
+    // XXX: still not found a way to allow location updates from tests
+    // http://stackoverflow.com/questions/40033185/how-to-access-calendar-camera-etc-from-tests
     func test6ContinouslyUpdatingLocation() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceTemplate = Device(name: "Scalps Test Device 5",
@@ -179,21 +188,22 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 5") {
             (_ user) in
             if let u = user {
-                scalps.createDevice(deviceTemplate, for: u) {
+                // scalps.createDevice(deviceTemplate, for: u) {
+                scalps.createDevice(deviceTemplate) {
                     (_ device) in
                     if let d = device {
                         scalps.startUpdatingLocation()
                         /*
-                        let newLocation = DeviceLocation(deviceId: d.deviceId!,
-                                                         altitude: 0,
-                                                         latitude: 37.785833999999994,
-                                                         longitude: -122.406417)
-                        scalps.updateLocation(newLocation, for: u, on: d) {
-                            (_ location) in
-                            XCTAssertNotNil(location)
-                            locationExpectation.fulfill()
-                        }
-                        */
+                         let newLocation = DeviceLocation(deviceId: d.deviceId!,
+                         altitude: 0,
+                         latitude: 37.785833999999994,
+                         longitude: -122.406417)
+                         scalps.updateLocation(newLocation, for: u, on: d) {
+                         (_ location) in
+                         XCTAssertNotNil(location)
+                         locationExpectation.fulfill()
+                         }
+                         */
                     }
                 }
             }
@@ -202,6 +212,4 @@ class ScalpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
         scalps.stopUpdatingLocation()
     }
- 
- */
 }
