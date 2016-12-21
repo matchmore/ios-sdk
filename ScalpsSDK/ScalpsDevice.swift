@@ -1,5 +1,5 @@
 //
-//  ScalpsUser.swift
+//  ScalpsDevice.swift
 //  Scalps
 //
 //  Created by Rafal Kowalski on 21/12/2016
@@ -9,16 +9,16 @@
 import Foundation
 import Scalps
 
-open class ScalpsUser {
+open class ScalpsDevice {
     public let manager: ScalpsManager
-    public let user: User
+    public let device: Device
 
-    public init(manager: ScalpsManager, user: User) {
+    public init(manager: ScalpsManager, device: Device) {
         self.manager = manager
-        self.user = user
+        self.device = device
     }
 
     public func id() -> String {
-        return user.userId!
+        return device.deviceId!
     }
 }

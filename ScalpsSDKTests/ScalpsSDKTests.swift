@@ -48,18 +48,20 @@ class ScalpsSDKTests: XCTestCase {
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
         scalps.createUser("Swift User 2") {
             (_ user) in
-            if let u = user {
-                scalps.createDevice(deviceTemplate, for: u) {
+            // if let u = user {
+                // scalps.createDevice(deviceTemplate, for: u) {
+                scalps.createDevice(deviceTemplate) {
                     (_ device) in
                     XCTAssertNotNil(device, "Whoops, no device")
                     deviceExpectation.fulfill()
                 }
-            }
+            // }
         }
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
+    /*
     func test3CreatePublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceTemplate = Device(name: "Scalps Test Device 3",
@@ -200,4 +202,6 @@ class ScalpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
         scalps.stopUpdatingLocation()
     }
+ 
+ */
 }

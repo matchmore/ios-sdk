@@ -16,6 +16,7 @@
 		504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* ScalpsUser.swift */; };
 		504EFC271E01D0A700EF8ECF /* ScalpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */; };
 		5092AC3D1D93CB0C00EF8ECF /* ScalpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */; };
+		50B7115E1E0AED3500EF8ECF /* ScalpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */; };
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
 		50F1BA0B1E01C50100EF8ECF /* ScalpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */; };
 		855D12BB3E696B79A23574B9 /* Pods_ScalpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_ScalpsSDKTests.framework */; };
@@ -47,6 +48,7 @@
 		504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsSDKTests.swift; sourceTree = "<group>"; };
 		5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScalpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5092AC3C1D93CB0C00EF8ECF /* ScalpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScalpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsDevice.swift; sourceTree = "<group>"; };
 		54C26E9B4B7CE15ED81AEDAD /* Pods_ScalpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScalpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74A39AC04A89DA7A96BCBDF7 /* Pods-ScalpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDK/Pods-ScalpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		9795B8D8DF3ECA38966120F0 /* Pods-ScalpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDK/Pods-ScalpsSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		502C85881E01BB3F00EF8ECF /* ScalpsSDK */ = {
 			isa = PBXGroup;
 			children = (
+				50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */,
 				504485F31E0AD62300EF8ECF /* ScalpsUser.swift */,
 				503487681E01CAF300EF8ECF /* ScalpsSDK.h */,
 				503487691E01CAF300EF8ECF /* ScalpsSDK.swift */,
@@ -338,6 +341,7 @@
 			files = (
 				504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */,
 				5034876B1E01CAF300EF8ECF /* ScalpsSDK.swift in Sources */,
+				50B7115E1E0AED3500EF8ECF /* ScalpsDevice.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* ScalpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
