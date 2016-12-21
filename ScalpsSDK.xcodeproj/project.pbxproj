@@ -13,6 +13,7 @@
 		502C85951E01BB3F00EF8ECF /* ScalpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* ScalpsManager.swift */; };
 		502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858F1E01BB3F00EF8ECF /* Utils.swift */; };
 		5034876B1E01CAF300EF8ECF /* ScalpsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503487691E01CAF300EF8ECF /* ScalpsSDK.swift */; };
+		504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* ScalpsUser.swift */; };
 		504EFC271E01D0A700EF8ECF /* ScalpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */; };
 		5092AC3D1D93CB0C00EF8ECF /* ScalpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */; };
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
@@ -42,6 +43,7 @@
 		502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsAPITests.swift; sourceTree = "<group>"; };
 		503487681E01CAF300EF8ECF /* ScalpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalpsSDK.h; sourceTree = "<group>"; };
 		503487691E01CAF300EF8ECF /* ScalpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsSDK.swift; sourceTree = "<group>"; };
+		504485F31E0AD62300EF8ECF /* ScalpsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsUser.swift; sourceTree = "<group>"; };
 		504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsSDKTests.swift; sourceTree = "<group>"; };
 		5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScalpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5092AC3C1D93CB0C00EF8ECF /* ScalpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScalpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 		502C85881E01BB3F00EF8ECF /* ScalpsSDK */ = {
 			isa = PBXGroup;
 			children = (
+				504485F31E0AD62300EF8ECF /* ScalpsUser.swift */,
 				503487681E01CAF300EF8ECF /* ScalpsSDK.h */,
 				503487691E01CAF300EF8ECF /* ScalpsSDK.swift */,
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */,
 				5034876B1E01CAF300EF8ECF /* ScalpsSDK.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* ScalpsManager.swift in Sources */,
