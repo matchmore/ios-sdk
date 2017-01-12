@@ -6,6 +6,11 @@ import Foundation
 import CoreLocation
 import Scalps
 
+enum ScalpsManagerError: Error {
+    case userNotIntialized
+    case deviceNotInitialized
+}
+
 open class ScalpsManager: ScalpsSDK {
     let defaultHeaders = [
         // FIXME: pass both keys on ScalpsManager creation
@@ -28,9 +33,9 @@ open class ScalpsManager: ScalpsSDK {
     // FIXME: add the world id when it's there
     // var world: World
     var users: [User] = []
-    var user: User?
+    var scalpsUser: ScalpsUser?
     var devices: [Device] = []
-    var device: Device?
+    var scalpsDevice: ScalpsDevice?
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
@@ -55,68 +60,74 @@ open class ScalpsManager: ScalpsSDK {
             (user, error) -> Void in
             if let u = user {
                 self.users.append(u)
-                self.user = self.users[0]
+                self.scalpsUser = ScalpsUser(manager: self, user: self.users[0])
             }
             userCompletion(user)
         })
     }
 
-    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) {
+    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) { // throws {
         let userCompletion = completion
-        let _ = Scalps.UserAPI.createDevice(userId: user!.userId!, device: device, completion: {
-            (device, error) -> Void in
-            if let d = device {
-                self.devices.append(d)
-                self.device = self.devices[0]
-            }
-            userCompletion(device)
-        })
+        if let u = scalpsUser {
+            let _ = Scalps.UserAPI.createDevice(userId: u.id(), device: device, completion: {
+                (device, error) -> Void in
+                if let d = device {
+                    self.devices.append(d)
+                    self.scalpsDevice = ScalpsDevice(manager: self, user: u.user, device: self.devices[0])
+                }
+                userCompletion(device)
+            })} else {
+            // XXX: error handling using exceptions?
+            print("Scalps user hasn't been initialized yet!")
+            // throw ScalpsManagerError.userNotIntialized
+        }
     }
 
     public func createPublication(_ publication: Publication, for user: User, on device: Device,
-                           completion: @escaping (_ publication: Publication?) -> Void) {
+                                  completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
         let publicationTemplate = publication
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-                                                          publication: publicationTemplate) {
+                                                   publication: publicationTemplate) {
             (publication, error) -> Void in
 
             if let p = publication {
                 self.publications.append(p)
             }
+
             userCompletion(publication)
         }
     }
 
     public func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
-                            completion: @escaping (_ subscription: Subscription?) -> Void) {
+                                   completion: @escaping (_ subscription: Subscription?) -> Void) {
         let userCompletion = completion
         let subscriptionTemplate = subscription
 
         let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
-                                                           subscription: subscriptionTemplate) {
-            (subscription, error) -> Void in
+                                                    subscription: subscriptionTemplate) {
+                                                        (subscription, error) -> Void in
 
-            if let p = subscription {
-                self.subscriptions.append(p)
-            }
-            userCompletion(subscription)
+                                                        if let p = subscription {
+                                                            self.subscriptions.append(p)
+                                                        }
+                                                        userCompletion(subscription)
         }
     }
 
     public func updateLocation(_ location: DeviceLocation, for user: User, on device: Device,
-                        completion: @escaping (_ location: DeviceLocation?) -> Void) {
+                               completion: @escaping (_ location: DeviceLocation?) -> Void) {
         let userCompletion = completion
 
         let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
-                                                       location: location) {
-            (location, error) -> Void in
+                                                location: location) {
+                                                    (location, error) -> Void in
 
-            if let l = location {
-                self.locations.append(l)
-            }
-            userCompletion(location)
+                                                    if let l = location {
+                                                        self.locations.append(l)
+                                                    }
+                                                    userCompletion(location)
         }
     }
 
