@@ -14,8 +14,7 @@ enum ScalpsManagerError: Error {
 open class ScalpsManager: ScalpsSDK {
     let defaultHeaders = [
         // FIXME: pass both keys on ScalpsManager creation
-        "dev-key": "7eef938a-c09d-11e6-bc43-b390d71c98d2",
-        "app-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
+        "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
         "Content-Type": "application/json; charset=UTF-8",
         "Accept": "application/json",
         "user-agent": "\(UIDevice().systemName) \(UIDevice().systemVersion)",
@@ -24,7 +23,7 @@ open class ScalpsManager: ScalpsSDK {
     let headers: [String: String]
 
     // XXX: this has to come from a configuration
-    // let scalpsEndpoint = "http://localhost:9000"
+    let scalpsEndpoint = "http://localhost:9000"
 
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
@@ -48,15 +47,16 @@ open class ScalpsManager: ScalpsSDK {
         self.apiKey = apiKey
         self.locationManager = LocationManager(clLocationManager)
         headers = defaultHeaders.merged(with: ["api-key": apiKey])
-        // ScalpsAPI.basePath = scalpsEndpoint
+        ScalpsAPI.basePath = scalpsEndpoint
         ScalpsAPI.customHeaders = headers
     }
 
     public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
         let userCompletion = completion
-        // FIXME: add a version accepting the user name
-        let userTemplate = User(name: userName)
-        let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
+        // XXX: Old version using unbacked user ;-)
+        // let userTemplate = User(name: userName)
+        // let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
+        let _ = Scalps.UsersAPI.createUser(name: userName, completion: {
             (user, error) -> Void in
             if let u = user {
                 self.users.append(u)

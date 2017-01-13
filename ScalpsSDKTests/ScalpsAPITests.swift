@@ -14,8 +14,7 @@ import Alamofire
 class ScalpsAPITests: XCTestCase {
     let headers = [
         "user-agent": "iOS 9.3.0",
-        "dev-key": "7eef938a-c09d-11e6-bc43-b390d71c98d2",
-        "app-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
+        "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
         "Content-Type": "application/json; charset=UTF-8",
         "Accept": "application/json"
     ]
@@ -24,7 +23,7 @@ class ScalpsAPITests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // ScalpsAPI.basePath = "http://localhost:9000"
+        ScalpsAPI.basePath = "http://localhost:9000"
         ScalpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -38,9 +37,14 @@ class ScalpsAPITests: XCTestCase {
         var createdUser: User?
         let expectation = self.expectation(description: "CreateUser")
 
-        let userTemplate = User()
-        userTemplate.name = "Scalps User 1"
-        let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
+        // let userTemplate = User()
+        // userTemplate.name = "Scalps User 1"
+        // XXX: Old version using unbacked user ;-)
+        // let userTemplate = User(name: userName)
+        // let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
+
+        let userName = "Scalps User 1"
+        let _ = Scalps.UsersAPI.createUser(name: userName, completion: {
             (user, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")

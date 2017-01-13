@@ -17,7 +17,6 @@
 		504EFC271E01D0A700EF8ECF /* ScalpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */; };
 		5092AC3D1D93CB0C00EF8ECF /* ScalpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */; };
 		50B7115E1E0AED3500EF8ECF /* ScalpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */; };
-		50B7115F1E0AFD0D00EF8ECF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 502C85981E01BB5F00EF8ECF /* Info.plist */; };
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
 		50F1BA0B1E01C50100EF8ECF /* ScalpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */; };
 		855D12BB3E696B79A23574B9 /* Pods_ScalpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_ScalpsSDKTests.framework */; };
@@ -252,7 +251,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B7115F1E0AFD0D00EF8ECF /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
