@@ -51,6 +51,7 @@ open class ScalpsManager: ScalpsSDK {
         ScalpsAPI.customHeaders = headers
     }
 
+    // func canThrowErrors() throws -> String
     public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
         let userCompletion = completion
         // XXX: Old version using unbacked user ;-)
