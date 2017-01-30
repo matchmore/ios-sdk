@@ -13,6 +13,7 @@ import Scalps
 
 
 class ScalpsSDKTests: XCTestCase {
+    /*
     let apiKey = "74a239bc-c37e-11e6-b772-5b027714674d"
 
     override func setUp() {
@@ -212,4 +213,5 @@ class ScalpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
         scalps.stopUpdatingLocation()
     }
+ */
 }

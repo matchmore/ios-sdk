@@ -70,14 +70,16 @@ open class ScalpsManager: ScalpsSDK {
     public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) { // throws {
         let userCompletion = completion
         if let u = scalpsUser {
-            let _ = Scalps.UserAPI.createDevice(userId: u.id(), device: device, completion: {
+            // let _ = Scalps.UserAPI.createDevice(userId: u.id(), device: device, completion: {
+            let _ = Scalps.UserAPI.createDevice(userId: u.id(), name: device.name!, platform: device.platform!, deviceToken: device.deviceToken!, latitude: 0.0, longitude: 0.0, altitude: 0.0) {
                 (device, error) -> Void in
                 if let d = device {
                     self.devices.append(d)
                     self.scalpsDevice = ScalpsDevice(manager: self, user: u.user, device: self.devices[0])
                 }
                 userCompletion(device)
-            })} else {
+            }
+        } else {
             // XXX: error handling using exceptions?
             print("Scalps user hasn't been initialized yet!")
             // throw ScalpsManagerError.userNotIntialized
@@ -87,10 +89,13 @@ open class ScalpsManager: ScalpsSDK {
     public func createPublication(_ publication: Publication, for user: User, on device: Device,
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
-        let publicationTemplate = publication
+        // let publicationTemplate = publication
 
-        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-                                                   publication: publicationTemplate) {
+        // let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
+        //                                           publication: publicationTemplate) {
+        // FIXME: provide serialized properties json string
+        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!, topic: publication.topic!, range: publication.range!, duration: publication.duration!,
+            properties: "{ \"key`\": \"value1\" }") {
             (publication, error) -> Void in
 
             if let p = publication {
@@ -104,16 +109,16 @@ open class ScalpsManager: ScalpsSDK {
     public func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
                                    completion: @escaping (_ subscription: Subscription?) -> Void) {
         let userCompletion = completion
-        let subscriptionTemplate = subscription
+        // let subscriptionTemplate = subscription
 
-        let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
-                                                    subscription: subscriptionTemplate) {
-                                                        (subscription, error) -> Void in
+        // let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, subscription: subscriptionTemplate) {
+        let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, topic: subscription.topic!, selector: subscription.selector!, range: subscription.range!, duration: subscription.duration!) {
+            (subscription, error) -> Void in
 
-                                                        if let p = subscription {
-                                                            self.subscriptions.append(p)
-                                                        }
-                                                        userCompletion(subscription)
+            if let p = subscription {
+                self.subscriptions.append(p)
+            }
+            userCompletion(subscription)
         }
     }
 
@@ -121,8 +126,8 @@ open class ScalpsManager: ScalpsSDK {
                                completion: @escaping (_ location: DeviceLocation?) -> Void) {
         let userCompletion = completion
 
-        let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
-                                                location: location) {
+        // let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, location: location) {
+        let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, latitude: (location.location?.latitude!)!, longitude: (location.location?.longitude!)!, altitude: (location.location?.altitude!)!, horizontalAccuracy: location.location?.horizontalAccuracy!, verticalAccuracy: location.location?.verticalAccuracy!) {
                                                     (location, error) -> Void in
 
                                                     if let l = location {
