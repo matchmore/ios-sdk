@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import Scalps
-// import ScalpsSDK
 import Alamofire
 
 class ScalpsAPITests: XCTestCase {
@@ -64,8 +63,8 @@ class ScalpsAPITests: XCTestCase {
 
         let _ = Scalps.UserAPI.createDevice(userId: user.userId!, name: "Scalps iPhone 7", platform: "iOS 9.3",
                                             deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
-                                            latitude: 37.7858, longitude: 122.4064, altitude: 200.0,
-                                            horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                                            latitude: 37.7858, longitude: 122.4064, altitude: 200.0) {
+        //                                             horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
             (device, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
@@ -86,7 +85,7 @@ class ScalpsAPITests: XCTestCase {
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!, topic: "scalps-test", range: 100, duration: 0, properties: "") {
             (publication, error) -> Void in
-            
+
             XCTAssertNil(error, "Whoops, error \(error)")
             createdPublication = publication
             pubExpectation.fulfill()
@@ -102,7 +101,7 @@ class ScalpsAPITests: XCTestCase {
 
         let pubExpectation = expectation(description: "CreateSub")
         // let selector = "'mood' = 'happy'"
- 
+
         let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, topic: "scalps-test", selector: "", range: 100, duration: 0) {
                                                             (subscription, error) -> Void in
 
@@ -122,7 +121,7 @@ class ScalpsAPITests: XCTestCase {
 
         let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, latitude: 37.7858, longitude: -122.4064, altitude: 20,horizontalAccuracy: 5, verticalAccuracy: 5) {
             (location, error) -> Void in
-            
+
             XCTAssertNil(error, "Whoops, error \(error)")
             createdLocation = location
             locExpectation.fulfill()
@@ -132,7 +131,7 @@ class ScalpsAPITests: XCTestCase {
 
         return createdLocation
     }
-    
+
     func test1Alamofire() {
         let expectation = self.expectation(description: "Alamofire")
 
@@ -149,7 +148,7 @@ class ScalpsAPITests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    
+
     func test2CreateUser() {
         let user = createUser()
         XCTAssertNotNil(user)
