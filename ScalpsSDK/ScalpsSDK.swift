@@ -38,4 +38,7 @@ protocol ScalpsSDK {
     // query stats
 
     // register match handlers
+
+    // XXX: prototype
+    // func onMatch(completion: @escaping (_ match: Match?)
 }

@@ -23,25 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         scalps.createUser(userName) {
             (_ user) in
-            let deviceTemplate = Device(name: "Scalps Test Device 1",
-                                        platform: "iOS 9.3",
-                                        deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
-            scalps.createUser(userName) {
-                (_ user) in
-                if let u = user {
-                    print("Created user: id = \(u.userId), name = \(u.name)")
-                    scalps.createDevice(deviceTemplate) {
-                        (_ device) in
-                        if let d = device {
-                            print("Created devide: id = \(d.deviceId), name = \(d.name)")
-                        }
+            if let u = user {
+                print("Created user: id = \(u.userId), name = \(u.name)")
+
+                scalps.createDevice(name: "Scalps Test Device 1", platform: "iOS 10.2",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                    (_ device) in
+                    if let d = device {
+                        print("Created devide: id = \(d.deviceId), name = \(d.name)")
                     }
                 }
             }
         }
-
     }
 
+/*
     func createPublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceTemplate = Device(name: "Scalps Test Device 3",
@@ -102,15 +100,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         scalps.stopUpdatingLocation()
     }
+    */
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
 
         // Make some Scalps calls
-        // createDevice()
-        createPublication()
-        continouslyUpdatingLocation()
+        createDevice()
+        // createPublication()
+        // continouslyUpdatingLocation()
 
         return true
     }
