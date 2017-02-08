@@ -87,14 +87,14 @@ open class ScalpsManager: ScalpsSDK {
         }
     }
     */
-    public func createDevice(_ userId: String, name: String, platform: String,
+    public func createDevice(name: String, platform: String,
                              deviceToken: String,
                              latitude: Double, longitude: Double, altitude: Double,
                              horizontalAccuracy: Double, verticalAccuracy: Double,
                              completion: @escaping (_ device: Device?) -> Void) {
         let userCompletion = completion
         if let u = scalpsUser {
-            let _ = Scalps.UserAPI.createDevice(userId: userId, name: name, platform: platform,
+            let _ = Scalps.UserAPI.createDevice(userId: u.user.userId!, name: name, platform: platform,
                                                 deviceToken: deviceToken, latitude: latitude, longitude: longitude,
                                                 altitude: altitude, horizontalAccuracy: horizontalAccuracy,
                                                 verticalAccuracy: verticalAccuracy) {
@@ -103,7 +103,6 @@ open class ScalpsManager: ScalpsSDK {
                     self.devices.append(d)
                     self.scalpsDevice = ScalpsDevice(manager: self, user: u.user, device: self.devices[0])
                 }
-
                 userCompletion(device)
             }
         } else {

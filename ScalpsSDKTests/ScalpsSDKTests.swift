@@ -47,7 +47,7 @@ class ScalpsSDKTests: XCTestCase {
         scalps.createUser("Swift User 2") {
             (_ user) in
             if let u = user {
-            scalps.createDevice(u.userId!, name: "iPhone 7", platform: "iOS 10.2",
+            scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
                                 deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                 latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                 horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {

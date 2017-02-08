@@ -16,8 +16,14 @@ protocol ScalpsSDK {
     // func createDevice(_ device: Device, for user: User, completion: @escaping (_ device: Device?) -> Void)
     // XXX: assume one user and one device in the ScalpsManager
     // func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) // throws
+/*
     func createDevice(_ userId: String, name: String, platform: String,
                       deviceToken: String,
+                      latitude: Double, longitude: Double, altitude: Double,
+                      horizontalAccuracy: Double, verticalAccuracy: Double,
+                      completion: @escaping (_ device: Device?) -> Void)
+                      */
+    func createDevice(name: String, platform: String, deviceToken: String,
                       latitude: Double, longitude: Double, altitude: Double,
                       horizontalAccuracy: Double, verticalAccuracy: Double,
                       completion: @escaping (_ device: Device?) -> Void)
