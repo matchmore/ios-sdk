@@ -69,7 +69,7 @@ class ScalpsSDKTests: XCTestCase {
             (_ user) in
             if let u = user {
                 scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
@@ -88,48 +88,40 @@ class ScalpsSDKTests: XCTestCase {
                 }
             }
         }
+
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
+    func test4CreateSubscription() {
+        let scalps = ScalpsManager(apiKey: apiKey)
+        let subscriptionExpectation = expectation(description: "CreateSub")
+
+        scalps.createUser("Swift User 4") {
+            (_ user) in
+            if let u = user {
+                scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb664",
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                    (_ device) in
+                    if let d = device {
+                        scalps.createSubscription(topic: "scalps-ios-test",
+                                                  selector: "'mood' = 'happy'",
+                                                  range: 100.0,
+                                                  duration: 0) {
+                            (_ subscription) in
+                            XCTAssertNotNil(subscription)
+                            subscriptionExpectation.fulfill()
+                        }
+                    }
+                }
+            }
+        }
+
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
     /*
-     func test4CreateSubscription() {
-     let scalps = ScalpsManager(apiKey: apiKey)
-     let deviceTemplate = Device(name: "Scalps Test Device 4",
-     platform: "iOS 9.3",
-     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb664")
-
-     let subscriptionExpectation = expectation(description: "CreateSub")
-
-     scalps.createUser("Swift User 4") {
-     (_ user) in
-     if let u = user {
-     // scalps.createDevice(deviceTemplate, for: u) {
-     scalps.createDevice(deviceTemplate) {
-     (_ device) in
-     if let d = device {
-     let location = DeviceLocation(deviceId: d.deviceId!,
-     altitude: 0,
-     latitude: 37.785833999999994,
-     longitude: -122.406417)
-     let selector = "'mood' = 'happy'"
-     let subscriptionTemplate = Subscription(topic: "scalps-ios-test",
-     range: 100.0,
-     duration: 0,
-     location: location,
-     selector: selector)
-
-     scalps.createSubscription(subscriptionTemplate, for: u, on: d) {
-     (_ subscription) in
-     XCTAssertNotNil(subscription)
-     subscriptionExpectation.fulfill()
-     }
-     }
-     }
-     }
-     }
-     waitForExpectations(timeout: 5.0, handler: nil)
-     }
-
      func test5UpdateLocation() {
      let scalps = ScalpsManager(apiKey: apiKey)
      let deviceTemplate = Device(name: "Scalps Test Device 6",

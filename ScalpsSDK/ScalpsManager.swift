@@ -110,26 +110,32 @@ open class ScalpsManager: ScalpsSDK {
                 userCompletion(publication)
             }
         } else {
-                // XXX: error handling using exceptions?
-                print("Scalps user and/or device hasn't been initialized yet!")
-                // throw ScalpsManagerError.userNotIntialized
-            }
-    
+            // XXX: error handling using exceptions?
+            print("Scalps user and/or device hasn't been initialized yet!")
+            // throw ScalpsManagerError.userNotIntialized
+        }
     }
 
-    public func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
+    public func createSubscription(topic: String, selector: String, range: Double, duration: Double,
                                    completion: @escaping (_ subscription: Subscription?) -> Void) {
         let userCompletion = completion
-        // let subscriptionTemplate = subscription
 
-        // let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, subscription: subscriptionTemplate) {
-        let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, topic: subscription.topic!, selector: subscription.selector!, range: subscription.range!, duration: subscription.duration!) {
-            (subscription, error) -> Void in
+        if let u = scalpsUser, let d = scalpsDevice {
+            let _ = Scalps.DeviceAPI.createSubscription(userId: u.user.userId!, deviceId: d.device.deviceId!,
+                                                        topic: topic, selector: selector, range: range,
+                                                        duration: duration) {
+                (subscription, error) -> Void in
 
-            if let p = subscription {
-                self.subscriptions.append(p)
+                if let p = subscription {
+                    self.subscriptions.append(p)
+                }
+
+                userCompletion(subscription)
             }
-            userCompletion(subscription)
+        } else {
+            // XXX: error handling using exceptions?
+            print("Scalps user and/or device hasn't been initialized yet!")
+            // throw ScalpsManagerError.userNotIntialized
         }
     }
 
@@ -137,15 +143,26 @@ open class ScalpsManager: ScalpsSDK {
                                completion: @escaping (_ location: DeviceLocation?) -> Void) {
         let userCompletion = completion
 
-        // let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, location: location) {
-        let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, latitude: (location.location?.latitude!)!, longitude: (location.location?.longitude!)!, altitude: (location.location?.altitude!)!, horizontalAccuracy: location.location?.horizontalAccuracy!, verticalAccuracy: location.location?.verticalAccuracy!) {
-            (location, error) -> Void in
+        if let u = scalpsUser, let d = scalpsDevice {
+            let _ = Scalps.DeviceAPI.createLocation(userId: u.user.userId!, deviceId: d.device.deviceId!,
+                                                    latitude: (location.location?.latitude!)!,
+                                                    longitude: (location.location?.longitude!)!,
+                                                    altitude: (location.location?.altitude!)!,
+                                                    horizontalAccuracy: location.location?.horizontalAccuracy!,
+                                                    verticalAccuracy: location.location?.verticalAccuracy!) {
+                (location, error) -> Void in
 
-            if let l = location {
-                self.locations.append(l)
+                if let l = location {
+                    self.locations.append(l)
+                }
+                userCompletion(location)
             }
-            userCompletion(location)
+        } else {
+            // XXX: error handling using exceptions?
+            print("Scalps user and/or device hasn't been initialized yet!")
+            // throw ScalpsManagerError.userNotIntialized
         }
+
     }
 
     public func startUpdatingLocation() {
