@@ -77,7 +77,8 @@ class ScalpsAPITests: XCTestCase {
         // let dictionary = ["mood": "happy"]
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-                                                   topic: "scalps-test", range: 100, duration: 0, properties: "") {
+                                                   topic: "scalps-test", range: 100, duration: -1,
+                                                   properties: "{\"role\": \"developer\"}") {
             (publication, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")

@@ -51,44 +51,19 @@ open class ScalpsManager: ScalpsSDK {
         ScalpsAPI.customHeaders = headers
     }
 
-    // func canThrowErrors() throws -> String
     public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
         let userCompletion = completion
-        // XXX: Old version using unbacked user ;-)
-        // let userTemplate = User(name: userName)
-        // let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
-        let _ = Scalps.UsersAPI.createUser(name: userName, completion: {
+        let _ = Scalps.UsersAPI.createUser(name: userName) {
             (user, error) -> Void in
             if let u = user {
                 self.users.append(u)
                 self.scalpsUser = ScalpsUser(manager: self, user: self.users[0])
             }
             userCompletion(user)
-        })
-    }
-
-    /*
-    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) { // throws {
-        let userCompletion = completion
-        if let u = scalpsUser {
-            // let _ = Scalps.UserAPI.createDevice(userId: u.id(), device: device, completion: {
-            let _ = Scalps.UserAPI.createDevice(userId: u.id(), name: device.name!, platform: device.platform!, deviceToken: device.deviceToken!, latitude: 0.0, longitude: 0.0, altitude: 0.0) {
-                (device, error) -> Void in
-                if let d = device {
-                    self.devices.append(d)
-                    self.scalpsDevice = ScalpsDevice(manager: self, user: u.user, device: self.devices[0])
-                }
-                userCompletion(device)
-            }
-        } else {
-            // XXX: error handling using exceptions?
-            print("Scalps user hasn't been initialized yet!")
-            // throw ScalpsManagerError.userNotIntialized
         }
     }
-    */
-    public func createDevice(name: String, platform: String,
-                             deviceToken: String,
+
+    public func createDevice(name: String, platform: String, deviceToken: String,
                              latitude: Double, longitude: Double, altitude: Double,
                              horizontalAccuracy: Double, verticalAccuracy: Double,
                              completion: @escaping (_ device: Device?) -> Void) {
