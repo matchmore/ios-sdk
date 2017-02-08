@@ -13,11 +13,11 @@ enum ScalpsManagerError: Error {
 
 open class ScalpsManager: ScalpsSDK {
     let defaultHeaders = [
-        // FIXME: pass both keys on ScalpsManager creation
-        "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
-        "Content-Type": "application/json; charset=UTF-8",
-        "Accept": "application/json",
-        "user-agent": "\(UIDevice().systemName) \(UIDevice().systemVersion)",
+      // FIXME: pass both keys on ScalpsManager creation
+      "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
+      "Content-Type": "application/json; charset=UTF-8",
+      "Accept": "application/json",
+      "user-agent": "\(UIDevice().systemName) \(UIDevice().systemVersion)",
     ]
 
     let headers: [String: String]
@@ -87,29 +87,6 @@ open class ScalpsManager: ScalpsSDK {
         }
     }
 
-/*
-    public func createPublication(_ publication: Publication, for user: User, on device: Device,
-                                  completion: @escaping (_ publication: Publication?) -> Void) {
-        let userCompletion = completion
-        // let publicationTemplate = publication
-
-        // let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-        //                                           publication: publicationTemplate) {
-        // FIXME: provide serialized properties json string
-        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-               topic: publication.topic!, range: publication.range!, duration: publication.duration!,
-            properties: "{ \"key`\": \"value1\" }") {
-            (publication, error) -> Void in
-
-            if let p = publication {
-                self.publications.append(p)
-            }
-
-            userCompletion(publication)
-        }
-    }
-    */
-
 
     public func createPublication(topic: String, range: Double, duration: Double, properties: String,
                                   completion: @escaping (_ publication: Publication?) -> Void) {
@@ -120,16 +97,24 @@ open class ScalpsManager: ScalpsSDK {
         // let properties = Properties(dictionary: ["role": "developer"])
         // let propertiesString = "{\"role\": \"developer\"}"
 
-        let _ = Scalps.DeviceAPI.createPublication(userId: scalpsUser!.user.userId!, deviceId: scalpsDevice!.device.deviceId!,
-                                                   topic: topic, range: range, duration: duration, properties: properties) {
-            (publication, error) -> Void in
+        if let u = scalpsUser, let d = scalpsDevice {
+            let _ = Scalps.DeviceAPI.createPublication(userId: u.user.userId!, deviceId: d.device.deviceId!,
+                                                       topic: topic, range: range, duration: duration,
+                                                       properties: properties) {
+                (publication, error) -> Void in
 
-            if let p = publication {
-                self.publications.append(p)
+                if let p = publication {
+                    self.publications.append(p)
+                }
+
+                userCompletion(publication)
             }
-
-            userCompletion(publication)
-        }
+        } else {
+                // XXX: error handling using exceptions?
+                print("Scalps user and/or device hasn't been initialized yet!")
+                // throw ScalpsManagerError.userNotIntialized
+            }
+    
     }
 
     public func createSubscription(_ subscription: Subscription, for user: User, on device: Device,
@@ -154,12 +139,12 @@ open class ScalpsManager: ScalpsSDK {
 
         // let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, location: location) {
         let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, latitude: (location.location?.latitude!)!, longitude: (location.location?.longitude!)!, altitude: (location.location?.altitude!)!, horizontalAccuracy: location.location?.horizontalAccuracy!, verticalAccuracy: location.location?.verticalAccuracy!) {
-                                                    (location, error) -> Void in
+            (location, error) -> Void in
 
-                                                    if let l = location {
-                                                        self.locations.append(l)
-                                                    }
-                                                    userCompletion(location)
+            if let l = location {
+                self.locations.append(l)
+            }
+            userCompletion(location)
         }
     }
 
