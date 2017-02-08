@@ -60,7 +60,7 @@ class ScalpsSDKTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-/*
+
     func test3CreatePublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let publicationExpectation = expectation(description: "CreatePub")
@@ -74,14 +74,12 @@ class ScalpsSDKTests: XCTestCase {
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
-                        let proprties = Properties(dictionary: ["mood": "happy"])
-                        let publicationTemplate = Publication(topic: "scalps-ios-test",
-                                                              range: 100.0,
-                                                              duration: 0,
-                                                              location: location,
-                                                              properties: properties)
+                        // FIXME: provide serialization to json string
+                        // let proprties = Properties(dictionary: ["mood": "happy"])
+                        let propertiesString = "{\"mood\": \"happy\"}"
 
-                        scalps.createPublication(publicationTemplate, for: u, on: d) {
+                        scalps.createPublication(topic: "scalps-ios-test", range: 100.0,
+                                                 duration: 0, properties: propertiesString) {
                             (_ publication) in
                             XCTAssertNotNil(publication)
                             publicationExpectation.fulfill()
@@ -92,7 +90,7 @@ class ScalpsSDKTests: XCTestCase {
         }
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-*/
+
     /*
      func test4CreateSubscription() {
      let scalps = ScalpsManager(apiKey: apiKey)

@@ -74,11 +74,14 @@ class ScalpsAPITests: XCTestCase {
         var createdPublication: Publication?
 
         let pubExpectation = expectation(description: "CreatePub")
-        // let dictionary = ["mood": "happy"]
+
+        // XXX: Add dictionary to json serialization here
+        let properties = Properties(dictionary: ["role": "developer"])
+        let propertiesString = "{\"role\": \"developer\"}"
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
                                                    topic: "scalps-test", range: 100, duration: -1,
-                                                   properties: "{\"role\": \"developer\"}") {
+                                                   properties: propertiesString) {
             (publication, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")

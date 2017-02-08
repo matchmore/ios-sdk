@@ -87,6 +87,7 @@ open class ScalpsManager: ScalpsSDK {
         }
     }
 
+/*
     public func createPublication(_ publication: Publication, for user: User, on device: Device,
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
@@ -95,8 +96,32 @@ open class ScalpsManager: ScalpsSDK {
         // let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
         //                                           publication: publicationTemplate) {
         // FIXME: provide serialized properties json string
-        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!, topic: publication.topic!, range: publication.range!, duration: publication.duration!,
+        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
+               topic: publication.topic!, range: publication.range!, duration: publication.duration!,
             properties: "{ \"key`\": \"value1\" }") {
+            (publication, error) -> Void in
+
+            if let p = publication {
+                self.publications.append(p)
+            }
+
+            userCompletion(publication)
+        }
+    }
+    */
+
+
+    public func createPublication(topic: String, range: Double, duration: Double, properties: String,
+                                  completion: @escaping (_ publication: Publication?) -> Void) {
+        let userCompletion = completion
+
+        // FIXME: provide serialized properties json string
+        // XXX: Add dictionary to json serialization here
+        // let properties = Properties(dictionary: ["role": "developer"])
+        // let propertiesString = "{\"role\": \"developer\"}"
+
+        let _ = Scalps.DeviceAPI.createPublication(userId: scalpsUser!.user.userId!, deviceId: scalpsDevice!.device.deviceId!,
+                                                   topic: topic, range: range, duration: duration, properties: properties) {
             (publication, error) -> Void in
 
             if let p = publication {

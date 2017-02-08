@@ -28,9 +28,11 @@ open class ScalpsDevice {
         let userCompletion = completion
         let publicationTemplate = publication
 
+        /*
         let _ = manager.createPublication(publicationTemplate, for: user, on: device) {
             (_ publication) in
             userCompletion(publication)
         }
+         */
     }
 }
