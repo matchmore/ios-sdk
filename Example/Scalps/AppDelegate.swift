@@ -32,46 +32,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
-                        print("Created devide: id = \(d.deviceId), name = \(d.name)")
+                        print("Created device: id = \(d.deviceId), name = \(d.name)")
                     }
                 }
             }
         }
     }
 
-/*
     func createPublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
-        let deviceTemplate = Device(name: "Scalps Test Device 3",
-                                    platform: "iOS 9.3",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663")
-        let userName = "Swift Example User 1"
+        let userName = "Swift Example User 3"
 
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
-                scalps.createDevice(deviceTemplate) {
+
+                scalps.createDevice(name: "Scalps Test Device 3", platform: "iOS 10.2",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
                         print("Created device: id = \(d.deviceId), name = \(d.name)")
-                        let location = DeviceLocation(deviceId: d.deviceId!,
-                                                      altitude: 0,
-                                                      latitude: 37.785833999999994,
-                                                      longitude: -122.406417)
-                        let payload = Payload(dictionary: ["mood": "happy"])
-                        let publicationTemplate = Publication(topic: "scalps-ios-test",
-                                                              range: 100.0,
-                                                              duration: 0,
-                                                              location: location,
-                                                              payload: payload)
+                        let propertiesString = "{\"mood\": \"happy\"}"
 
-                        scalps.createPublication(publicationTemplate, for: u, on: d) {
+                        scalps.createPublication(topic: "scalps-ios-test",
+                                                 range: 100.0, duration: 0,
+                                                 properties: propertiesString) {
                             (_ publication) in
                             if let p = publication {
                                 print("Created publication: id = \(p.publicationId), topic = \(p.topic)")
                             }
                         }
+
                     }
                 }
             }
@@ -81,17 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func continouslyUpdatingLocation() {
         let scalps = ScalpsManager(apiKey: apiKey)
-        let deviceTemplate = Device(name: "Scalps Test Device 5",
-                                    platform: "iOS 9.3",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665")
-        let userName = "Swift Example User 1"
+        let userName = "Swift Example User 5"
 
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
-                scalps.createDevice(deviceTemplate) {
+                print("Created user: id = \(u.userId), name = \(u.name)")
+
+                scalps.createDevice(name: "Scalps Test Device 5", platform: "iOS 10.2",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
+                        print("Created device: id = \(d.deviceId), name = \(d.name)")
                         scalps.startUpdatingLocation()
                     }
                 }
@@ -100,7 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         scalps.stopUpdatingLocation()
     }
-    */
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -108,8 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Make some Scalps calls
         createDevice()
-        // createPublication()
-        // continouslyUpdatingLocation()
+        createPublication()
+        continouslyUpdatingLocation()
 
         return true
     }
