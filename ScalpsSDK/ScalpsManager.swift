@@ -139,22 +139,21 @@ open class ScalpsManager: ScalpsSDK {
         }
     }
 
-    public func updateLocation(_ location: DeviceLocation, for user: User, on device: Device,
+    public func updateLocation(latitude: Double, longitude: Double, altitude: Double,
+                               horizontalAccuracy: Double, verticalAccuracy: Double,
                                completion: @escaping (_ location: DeviceLocation?) -> Void) {
         let userCompletion = completion
 
         if let u = scalpsUser, let d = scalpsDevice {
             let _ = Scalps.DeviceAPI.createLocation(userId: u.user.userId!, deviceId: d.device.deviceId!,
-                                                    latitude: (location.location?.latitude!)!,
-                                                    longitude: (location.location?.longitude!)!,
-                                                    altitude: (location.location?.altitude!)!,
-                                                    horizontalAccuracy: location.location?.horizontalAccuracy!,
-                                                    verticalAccuracy: location.location?.verticalAccuracy!) {
+                                                    latitude: latitude, longitude: longitude, altitude: altitude,
+                                                    horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy) {
                 (location, error) -> Void in
 
                 if let l = location {
                     self.locations.append(l)
                 }
+
                 userCompletion(location)
             }
         } else {

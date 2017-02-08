@@ -27,15 +27,15 @@ protocol ScalpsSDK {
                                    completion: @escaping (_ subscription: Subscription?) -> Void)
 
     // update device location
-    func updateLocation(_ location:DeviceLocation, for user: User, on device: Device,
+    func updateLocation(latitude: Double, longitude: Double, altitude: Double,
+                        horizontalAccuracy: Double, verticalAccuracy: Double,
                         completion: @escaping (_ location: DeviceLocation?) -> Void)
 
-    
     // cancel (unpublish and unsubscribe)
 
     // delete Scalps entities
 
     // query stats
 
-    // register match handlers  
+    // register match handlers
 }

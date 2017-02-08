@@ -118,7 +118,9 @@ class ScalpsAPITests: XCTestCase {
         let locExpectation = expectation(description: "CreateLoc")
         var createdLocation: DeviceLocation?
 
-        let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!, latitude: 37.7858, longitude: -122.4064, altitude: 20,horizontalAccuracy: 5, verticalAccuracy: 5) {
+        let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
+                                                latitude: 37.7858, longitude: -122.4064, altitude: 20,
+                                                horizontalAccuracy: 5, verticalAccuracy: 5) {
             (location, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")

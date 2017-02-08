@@ -121,39 +121,39 @@ class ScalpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
+
+    func test5UpdateLocation() {
+        let scalps = ScalpsManager(apiKey: apiKey)
+        let locationExpectation = expectation(description: "UpdateLocation")
+
+        scalps.createUser("Swift User 5") {
+            (_ user) in
+            if let u = user {
+                scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                    (_ device) in
+                    if let d = device {
+                        let newLocation = DeviceLocation(deviceId: d.deviceId!,
+                                                         altitude: 0,
+                                                         latitude: 37.785833999999994,
+                                                         longitude: -122.406417)
+                        scalps.updateLocation(latitude: 38.00, longitude: -123, altitude: 100,
+                                              horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                            (_ location) in
+                            XCTAssertNotNil(location)
+                            locationExpectation.fulfill()
+                        }
+                    }
+                }
+            }
+        }
+
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
     /*
-     func test5UpdateLocation() {
-     let scalps = ScalpsManager(apiKey: apiKey)
-     let deviceTemplate = Device(name: "Scalps Test Device 6",
-     platform: "iOS 9.3",
-     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb666")
-
-     let locationExpectation = expectation(description: "UpdateLocation")
-
-     scalps.createUser("Swift User 6") {
-     (_ user) in
-     if let u = user {
-     // scalps.createDevice(deviceTemplate, for: u) {
-     scalps.createDevice(deviceTemplate) {
-     (_ device) in
-     if let d = device {
-     let newLocation = DeviceLocation(deviceId: d.deviceId!,
-     altitude: 0,
-     latitude: 37.785833999999994,
-     longitude: -122.406417)
-     scalps.updateLocation(newLocation, for: u, on: d) {
-     (_ location) in
-     XCTAssertNotNil(location)
-     locationExpectation.fulfill()
-     }
-     }
-     }
-     }
-     }
-
-     waitForExpectations(timeout: 5.0, handler: nil)
-     }
-
      // XXX: still not found a way to allow location updates from tests
      // http://stackoverflow.com/questions/40033185/how-to-access-calendar-camera-etc-from-tests
      func test6ContinouslyUpdatingLocation() {
