@@ -36,14 +36,7 @@ class ScalpsAPITests: XCTestCase {
         var createdUser: User?
         let expectation = self.expectation(description: "CreateUser")
 
-        // let userTemplate = User()
-        // userTemplate.name = "Scalps User 1"
-        // XXX: Old version using unbacked user ;-)
-        // let userTemplate = User(name: userName)
-        // let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
-
-        let userName = "Scalps User 1"
-        let _ = Scalps.UsersAPI.createUser(name: userName, completion: {
+        let _ = Scalps.UsersAPI.createUser(name: "Scalps User 1", completion: {
             (user, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
@@ -63,8 +56,8 @@ class ScalpsAPITests: XCTestCase {
 
         let _ = Scalps.UserAPI.createDevice(userId: user.userId!, name: "Scalps iPhone 7", platform: "iOS 9.3",
                                             deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
-                                            latitude: 37.7858, longitude: 122.4064, altitude: 200.0) {
-        //                                             horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                                            latitude: 37.7858, longitude: 122.4064, altitude: 200.0,
+                                            horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
             (device, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
@@ -83,7 +76,8 @@ class ScalpsAPITests: XCTestCase {
         let pubExpectation = expectation(description: "CreatePub")
         // let dictionary = ["mood": "happy"]
 
-        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!, topic: "scalps-test", range: 100, duration: 0, properties: "") {
+        let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
+                                                   topic: "scalps-test", range: 100, duration: 0, properties: "") {
             (publication, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
@@ -102,7 +96,8 @@ class ScalpsAPITests: XCTestCase {
         let pubExpectation = expectation(description: "CreateSub")
         // let selector = "'mood' = 'happy'"
 
-        let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!, topic: "scalps-test", selector: "", range: 100, duration: 0) {
+        let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
+                                                    topic: "scalps-test", selector: "", range: 100, duration: 0) {
                                                             (subscription, error) -> Void in
 
                                                             XCTAssertNil(error, "Whoops, error \(error)")

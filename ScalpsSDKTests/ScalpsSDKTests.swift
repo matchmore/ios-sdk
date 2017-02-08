@@ -13,7 +13,6 @@ import Scalps
 
 
 class ScalpsSDKTests: XCTestCase {
-    /*
     let apiKey = "74a239bc-c37e-11e6-b772-5b027714674d"
 
     override func setUp() {
@@ -44,29 +43,25 @@ class ScalpsSDKTests: XCTestCase {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceExpectation = expectation(description: "CreateDevice")
 
-        let deviceTemplate = Device(name: "Scalps Test Device 1",
-                                    platform: "iOS 9.3",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
+
         scalps.createUser("Swift User 2") {
             (_ user) in
-            // if let u = user {
-            // scalps.createDevice(deviceTemplate, for: u) {
-            // do {
-            // try
-            scalps.createDevice(deviceTemplate) {
+            if let u = user {
+            scalps.createDevice(u.userId!, name: "iPhone 7", platform: "iOS 10.2",
+                                deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
+                                latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                 (_ device) in
                 XCTAssertNotNil(device, "Whoops, no device")
                 deviceExpectation.fulfill()
             }
-            // }
-            // } catch ScalpsManagerError.userNotIntialized {
-            //     print("User hasn't been initialized yet")
-            // }
+            }
         }
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
 
+    /*
     func test3CreatePublication() {
         let scalps = ScalpsManager(apiKey: apiKey)
         let deviceTemplate = Device(name: "Scalps Test Device 3",
