@@ -94,7 +94,7 @@ open class ScalpsManager: ScalpsSDK {
 
         // FIXME: provide serialized properties json string
         // XXX: Add dictionary to json serialization here
-        // let properties = Properties(dictionary: ["role": "developer"])
+        let properties = Properties(["role": "developer"])
         // let propertiesString = "{\"role\": \"developer\"}"
 
         if let u = scalpsUser, let d = scalpsDevice {

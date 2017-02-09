@@ -67,13 +67,13 @@ class ScalpsSDKTests: XCTestCase {
 
         scalps.createUser("Swift User 3") {
             (_ user) in
-            if let u = user {
+            if user != nil {
                 scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
-                    if let d = device {
+                    if device != nil {
                         // FIXME: provide serialization to json string
                         // let proprties = Properties(dictionary: ["mood": "happy"])
                         let propertiesString = "{\"mood\": \"happy\"}"
@@ -98,13 +98,13 @@ class ScalpsSDKTests: XCTestCase {
 
         scalps.createUser("Swift User 4") {
             (_ user) in
-            if let u = user {
+            if user != nil {
                 scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb664",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
-                    if let d = device {
+                    if device != nil {
                         scalps.createSubscription(topic: "scalps-ios-test",
                                                   selector: "'mood' = 'happy'",
                                                   range: 100.0,
@@ -128,14 +128,14 @@ class ScalpsSDKTests: XCTestCase {
 
         scalps.createUser("Swift User 5") {
             (_ user) in
-            if let u = user {
+            if user != nil {
                 scalps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
-                        let newLocation = DeviceLocation(deviceId: d.deviceId!,
+                        _ = DeviceLocation(deviceId: d.deviceId!,
                                                          altitude: 0,
                                                          latitude: 37.785833999999994,
                                                          longitude: -122.406417)
