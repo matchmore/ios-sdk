@@ -77,7 +77,7 @@ class ScalpsAPITests: XCTestCase {
 
         // XXX: Add dictionary to json serialization here
         // let properties = Properties(["role": "developer"])
-        let properties = Properties()
+        let properties = Properties(dictionaryLiteral: ("role", "developer"))
         // let propertiesString = "{\"role\": \"developer\"}"
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
