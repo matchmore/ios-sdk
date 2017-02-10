@@ -31,28 +31,29 @@ class PropertiesTest: XCTestCase {
     func test2PropertiesInit() {
         let dictionary = ["mood": "happy"]
 
-        let properties = Properties(dictionary)
+        var properties = Properties()
+        properties["mood"] = "happy"
 
         XCTAssertNotNil(properties)
-        XCTAssertEqual(properties.dictionary, dictionary)
+        XCTAssertEqual(properties, dictionary)
     }
 
     func test3PropertiesEncodeToJSON() {
         let dictionary = ["mood": "happy"]
-        let properties = Properties(dictionary)
+        let properties = Properties(dictionaryLiteral: ("mood", "happy"))
 
         XCTAssertNotNil(properties)
-        XCTAssertEqual(properties.dictionary, dictionary)
+        XCTAssertEqual(properties, dictionary)
 
         print("json: \(properties.encodeToJSON())")
     }
     
     func test4PropertiesEncodeToJSON() {
         let dictionary = ["mood": "happy", "energy": "high"]
-        let properties = Properties(dictionary)
+        let properties = Properties(dictionaryLiteral: ("mood", "happy"), ("energy", "high"))
         
         XCTAssertNotNil(properties)
-        XCTAssertEqual(properties.dictionary, dictionary)
+        XCTAssertEqual(properties, dictionary)
         
         print("json: \(properties.encodeToJSON())")
         print("valid: \(JSONSerialization.isValidJSONObject(properties.encodeToJSON()))")
@@ -63,5 +64,4 @@ class PropertiesTest: XCTestCase {
             print("error")
         }
     }
-
 }
