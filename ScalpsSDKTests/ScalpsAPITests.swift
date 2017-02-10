@@ -98,16 +98,17 @@ class ScalpsAPITests: XCTestCase {
     func createSubscription(_ user: User, device: Device) -> Subscription? {
         var createdSubscription: Subscription?
 
-        let pubExpectation = expectation(description: "CreateSub")
-        // let selector = "'mood' = 'happy'"
+        let subExpectation = expectation(description: "CreateSub")
+        let selector = "'mood' = 'happy'"
 
         let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
-                                                    topic: "scalps-test", selector: "", range: 100, duration: 0) {
-                                                            (subscription, error) -> Void in
+                                                    topic: "scalps-test", selector: selector, range: 100.0,
+                                                    duration: 0.0) {
+            (subscription, error) -> Void in
 
-                                                            XCTAssertNil(error, "Whoops, error \(error)")
-                                                            createdSubscription = subscription
-                                                            pubExpectation.fulfill()
+                                                        XCTAssertNil(error, "Whoops, error \(error)")
+                                                        createdSubscription = subscription
+                                                        subExpectation.fulfill()
         }
 
         waitForExpectations(timeout: 5.0, handler: nil)
@@ -120,8 +121,8 @@ class ScalpsAPITests: XCTestCase {
         var createdLocation: DeviceLocation?
 
         let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
-                                                latitude: 37.7858, longitude: -122.4064, altitude: 20,
-                                                horizontalAccuracy: 5, verticalAccuracy: 5) {
+                                                latitude: 37.7858, longitude: -122.4064, altitude: 20.0,
+                                                horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
             (location, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
