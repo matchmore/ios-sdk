@@ -42,5 +42,5 @@ protocol ScalpsSDK {
     // register match handlers
 
     // XXX: prototype
-    func onMatch(completion: @escaping (_ match: Match?) -> Void)
+    // func onMatch(completion: @escaping (_ match: Match?) -> Void)
 }
