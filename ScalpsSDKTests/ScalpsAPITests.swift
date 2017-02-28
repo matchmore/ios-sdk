@@ -135,6 +135,23 @@ class ScalpsAPITests: XCTestCase {
         return createdLocation
     }
 
+    func getMatches(_ user: User, device: Device) -> [Match]? {
+        let matchExpectation = expectation(description: "GetMatches")
+        var gotMatches: [Match]?
+
+        let _ = Scalps.DeviceAPI.getMatches(userId: user.userId!, deviceId: device.deviceId!) {
+            (matches, error) -> Void in
+
+            XCTAssertNil(error, "Whoops, error \(error)")
+            gotMatches = matches
+            matchExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5.0, handler: nil)
+
+        return gotMatches
+    }
+
     func test1Alamofire() {
         let expectation = self.expectation(description: "Alamofire")
 
@@ -187,6 +204,15 @@ class ScalpsAPITests: XCTestCase {
             if let device = createDevice(user) {
                 let location = createLocation(user, device: device)
                 XCTAssertNotNil(location)
+            }
+        }
+    }
+
+    func test7GetMatches() {
+        if let user = createUser() {
+            if let device = createDevice(user) {
+                let matches = getMatches(user, device: device)
+                XCTAssertNotNil(matches)
             }
         }
     }

@@ -37,8 +37,10 @@ protocol ScalpsSDK {
 
     // query stats
 
+    func getAllMatches(completion: @escaping (_ matches: Matches) -> Void)
+
     // register match handlers
 
     // XXX: prototype
-    // func onMatch(completion: @escaping (_ match: Match?)
+    func onMatch(completion: @escaping (_ match: Match?) -> Void)
 }

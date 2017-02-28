@@ -38,6 +38,7 @@ open class ScalpsManager: ScalpsSDK {
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
+    var onMatchClosure: ((_ match: Match?) -> Void) = { (_ match: Match?) in print("Got a match: \(match)") }
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
@@ -163,6 +164,38 @@ open class ScalpsManager: ScalpsSDK {
             // throw ScalpsManagerError.userNotIntialized
         }
 
+    }
+
+    public func getAllMatches(completion: @escaping (_ matches: Matches) -> Void) {
+        let userCompletion = completion
+
+        if let u = scalpsUser, let d = scalpsDevice {
+            let _ = Scalps.DeviceAPI.getMatches(userId: u.user.userId!, deviceId: d.device.deviceId!) {
+                (matches, error) -> Void in
+
+                if let ms = matches {
+                    // self.matches.append(ms)
+                    userCompletion(ms)
+                }
+            }
+        } else {
+            // XXX: error handling using exceptions?
+            print("Scalps user and/or device hasn't been initialized yet!")
+            // throw ScalpsManagerError.userNotIntialized
+        }
+
+    }
+
+    public func onMatch(completion: @escaping (_ match: Match?) -> Void) {
+        onMatchClosure = completion
+    }
+
+    public func startMonitoringMatches() {
+        
+    }
+
+    public func stopMonitoringMatches() {
+        
     }
 
     public func startUpdatingLocation() {
