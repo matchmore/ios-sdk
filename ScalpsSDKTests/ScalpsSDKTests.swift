@@ -75,11 +75,11 @@ class ScalpsSDKTests: XCTestCase {
                     (_ device) in
                     if device != nil {
                         // FIXME: provide serialization to json string
-                        // let proprties = Properties(dictionary: ["mood": "happy"])
-                        let propertiesString = "{\"mood\": \"happy\"}"
+                        let properties = ["mood": "happy"]
+                        // let propertiesString = "{\"mood\": \"happy\"}"
 
                         scalps.createPublication(topic: "scalps-ios-test", range: 100.0,
-                                                 duration: 0, properties: propertiesString) {
+                                                 duration: 0, properties: properties) {
                             (_ publication) in
                             XCTAssertNotNil(publication)
                             publicationExpectation.fulfill()

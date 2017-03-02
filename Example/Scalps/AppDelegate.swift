@@ -43,14 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createPublication() {
         if device != nil {
-            let properties = ["mood": "happy"]
+            // XXX: the property syntax is tricky at the moment: mood is a variable and 'happy' is a string value
+            let properties = ["mood": "'happy'"]
 
             self.scalps.createPublication(topic: "scalps-ios-test",
                                           range: 100.0, duration: 60,
                                           properties: properties) {
                 (_ publication) in
                 if let p = publication {
-                    print("Created publication: id = \(p.publicationId), topic = \(p.topic)")
+                    print("Created publication: id = \(p.publicationId), topic = \(p.topic), properties = \(p.properties)")
                 }
             }
         }
@@ -64,15 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                            selector: selector, range: 100.0, duration: 60) {
                 (_ subscription) in
                 if let s = subscription {
-                    print("Created subscription: id = \(s.subscriptionId), topic = \(s.topic)")
+                    print("Created subscription: id = \(s.subscriptionId), topic = \(s.topic), selector = \(s.selector)")
                 }
             }
         }
     }
 
     func continouslyUpdatingLocation() {
-        if let d = device {
-            print("Created device: id = \(d.deviceId), name = \(d.name)")
+        if device != nil {
             self.scalps.startUpdatingLocation()
         }
     }
