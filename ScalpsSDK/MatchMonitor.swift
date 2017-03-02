@@ -13,19 +13,19 @@ import Foundation
 class MatchMonitor {
     let scalpsManager: ScalpsManager
     var timer: Timer = Timer()
-    var onMatch: ((_ match: Match?) -> Void)
+    var onMatchClosure: ((_ match: Match?) -> Void)
 
     convenience init(scalpsManager: ScalpsManager) {
-        self.init(scalpsManager: scalpsManager, onMatch: { (_ match: Match?) in print("Got a match: \(match)") })
+        self.init(scalpsManager: scalpsManager, onMatch: { (_ match: Match?) in NSLog("Got a match: \(match)") })
     }
 
     init(scalpsManager: ScalpsManager, onMatch: @escaping ((_ match: Match?) -> Void)) {
         self.scalpsManager = scalpsManager
-        self.onMatch = onMatch
+        self.onMatchClosure = onMatch
     }
 
     public func onMatch(completion: @escaping (_ match: Match?) -> Void) {
-        onMatch = completion
+        onMatchClosure = completion
     }
 
     public func startMonitoringMatches() {
@@ -45,9 +45,10 @@ class MatchMonitor {
         scalpsManager.getAllMatches {
             (_ matches: Matches) in
 
-            print("got matches: \(matches)")
+            NSLog("got matches: \(matches)")
             for m in matches {
-                print("deliver this match: \(m)")
+                NSLog("deliver this match: \(m)")
+                self.onMatchClosure(m)
             }
         }
     }

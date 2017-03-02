@@ -93,22 +93,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         scalps.stopUpdatingLocation()
     }
-    
+
     func monitorMatches() {
         scalps.startMonitoringMatches()
+    }
+
+    func monitorMatchesWithCompletion(completion: @escaping (_ match: Match?) -> Void) {
+        scalps.onMatch(completion: completion)
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
- 
+
         // Make some Scalps calls
         createDevice()
         createPublication()
         createSubscription()
         continouslyUpdatingLocation()
-        monitorMatches()
-        
+        // monitorMatches()
+        monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
+
         return true
     }
 

@@ -40,7 +40,7 @@ open class ScalpsManager: ScalpsSDK {
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
-    var onMatchClosure: ((_ match: Match?) -> Void) = { (_ match: Match?) in print("Got a match: \(match)") }
+    // var onMatchClosure: ((_ match: Match?) -> Void) = { (_ match: Match?) in print("Got a match: \(match)") }
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
@@ -188,6 +188,12 @@ open class ScalpsManager: ScalpsSDK {
             // throw ScalpsManagerError.userNotIntialized
         }
 
+    }
+
+    public func onMatch(completion: @escaping (_ match: Match?) -> Void) {
+        if let mm = matchMonitor {
+            mm.onMatch(completion: completion)
+        }
     }
 
     public func startMonitoringMatches() {
