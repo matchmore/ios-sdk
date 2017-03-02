@@ -16,82 +16,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // let apiKey = "ea0df90a-db0a-11e5-bd35-3bd106df139b"
     let scalps = ScalpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b")
     let userName = "Scalps Example User"
+    let deviceName = "Example User's iPhone 8"
     var device: Device?
     var window: UIWindow?
 
-    func createDevice() {
+    func createDevice(completion: @escaping () -> Void) {
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
 
-                self.scalps.createDevice(name: "Scalps Test Device 1", platform: "iOS 10.2",
+                self.scalps.createDevice(name: self.deviceName, platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
-                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                    latitude: 37.7858, longitude: -122.4064, altitude: 0.0,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
                         print("Created device: id = \(d.deviceId), name = \(d.name)")
                         self.device = d
+                        completion()
                     }
                 }
             }
         }
     }
 
-    // FIXME: use the user and device already created!
     func createPublication() {
-        scalps.createUser(userName) {
-            (_ user) in
-            if let u = user {
-                print("Created user: id = \(u.userId), name = \(u.name)")
+        if let d = device {
+            print("Created device: id = \(d.deviceId), name = \(d.name)")
+            let properties = ["mood": "happy"]
 
-                self.scalps.createDevice(name: "Scalps Test Device 3", platform: "iOS 10.2",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
-                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
-                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-                    (_ device) in
-                    if let d = device {
-                        print("Created device: id = \(d.deviceId), name = \(d.name)")
-                        let propertiesString = "{\"mood\": \"happy\"}"
-
-                        self.scalps.createPublication(topic: "scalps-ios-test",
-                                                 range: 100.0, duration: 0,
-                                                 properties: propertiesString) {
-                            (_ publication) in
-                            if let p = publication {
-                                print("Created publication: id = \(p.publicationId), topic = \(p.topic)")
-                            }
-                        }
-
-                    }
+            self.scalps.createPublication(topic: "scalps-ios-test",
+                                          range: 100.0, duration: 60,
+                                          properties: properties) {
+                (_ publication) in
+                if let p = publication {
+                    print("Created publication: id = \(p.publicationId), topic = \(p.topic)")
                 }
             }
         }
     }
 
-    func createSubscription() {}
+    func createSubscription() {
+        if let d = device {
+            print("Created device: id = \(d.deviceId), name = \(d.name)")
+            let selector = "mood = 'happy'"
+
+            self.scalps.createSubscription(topic: "scalps-ios-test",
+                                           selector: selector, range: 100.0, duration: 60) {
+                (_ subscription) in
+                if let s = subscription {
+                    print("Created subscription: id = \(s.subscriptionId), topic = \(s.topic)")
+                }
+            }
+        }
+    }
 
     func continouslyUpdatingLocation() {
-        scalps.createUser(userName) {
-            (_ user) in
-            if let u = user {
-                print("Created user: id = \(u.userId), name = \(u.name)")
-
-                self.scalps.createDevice(name: "Scalps Test Device 5", platform: "iOS 10.2",
-                                    deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
-                                    latitude: 37.7858, longitude: -122.4064, altitude: 100,
-                                    horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-                    (_ device) in
-                    if let d = device {
-                        print("Created device: id = \(d.deviceId), name = \(d.name)")
-                        self.scalps.startUpdatingLocation()
-                    }
-                }
-            }
+        if let d = device {
+            print("Created device: id = \(d.deviceId), name = \(d.name)")
+            self.scalps.startUpdatingLocation()
         }
-
-        scalps.stopUpdatingLocation()
     }
 
     func monitorMatches() {
@@ -103,16 +88,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         // Override point for customization after application launch.
 
-        // Make some Scalps calls
-        createDevice()
-        createPublication()
-        createSubscription()
-        continouslyUpdatingLocation()
-        // monitorMatches()
-        monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
+        // Make some Scalps calls
+        createDevice() {
+            self.createPublication()
+            self.createSubscription()
+            self.continouslyUpdatingLocation()
+            self.monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
+        }
 
         return true
     }

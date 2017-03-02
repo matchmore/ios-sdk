@@ -20,7 +20,7 @@ protocol ScalpsSDK {
                       horizontalAccuracy: Double, verticalAccuracy: Double,
                       completion: @escaping (_ device: Device?) -> Void)
 
-    func createPublication(topic: String, range: Double, duration: Double, properties: String,
+    func createPublication(topic: String, range: Double, duration: Double, properties: Properties,
                            completion: @escaping (_ publication: Publication?) -> Void)
 
     func createSubscription(topic: String, selector: String, range: Double, duration: Double,

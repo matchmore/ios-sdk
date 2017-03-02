@@ -93,14 +93,14 @@ open class ScalpsManager: ScalpsSDK {
     }
 
 
-    public func createPublication(topic: String, range: Double, duration: Double, properties: String,
+    public func createPublication(topic: String, range: Double, duration: Double, properties: [String: String],
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
 
         // FIXME: provide serialized properties json string
         // XXX: Add dictionary to json serialization here
-        // let properties = Properties(dictionary: ["role": "developer"])
-        let properties = Properties(dictionaryLiteral: ("role", "developer"))
+        // let properties =
+        // let properties = Properties(dictionaryLiteral: ("role", "developer"))
         // let propertiesString = "{\"role\": \"developer\"}"
 
         if let u = scalpsUser, let d = scalpsDevice {
