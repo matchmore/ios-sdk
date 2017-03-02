@@ -42,8 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func createPublication() {
-        if let d = device {
-            print("Created device: id = \(d.deviceId), name = \(d.name)")
+        if device != nil {
             let properties = ["mood": "happy"]
 
             self.scalps.createPublication(topic: "scalps-ios-test",
@@ -58,8 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func createSubscription() {
-        if let d = device {
-            print("Created device: id = \(d.deviceId), name = \(d.name)")
+        if device != nil {
             let selector = "mood = 'happy'"
 
             self.scalps.createSubscription(topic: "scalps-ios-test",

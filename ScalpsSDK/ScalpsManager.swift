@@ -40,7 +40,6 @@ open class ScalpsManager: ScalpsSDK {
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
-    // var onMatchClosure: ((_ match: Match?) -> Void) = { (_ match: Match?) in print("Got a match: \(match)") }
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
@@ -96,12 +95,6 @@ open class ScalpsManager: ScalpsSDK {
     public func createPublication(topic: String, range: Double, duration: Double, properties: [String: String],
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
-
-        // FIXME: provide serialized properties json string
-        // XXX: Add dictionary to json serialization here
-        // let properties =
-        // let properties = Properties(dictionaryLiteral: ("role", "developer"))
-        // let propertiesString = "{\"role\": \"developer\"}"
 
         if let u = scalpsUser, let d = scalpsDevice {
             let _ = Scalps.DeviceAPI.createPublication(userId: u.user.userId!, deviceId: d.device.deviceId!,
