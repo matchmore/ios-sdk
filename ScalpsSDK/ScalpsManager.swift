@@ -183,7 +183,7 @@ open class ScalpsManager: ScalpsSDK {
 
     }
 
-    public func onMatch(completion: @escaping (_ match: Match?) -> Void) {
+    public func onMatch(completion: @escaping (_ match: Match) -> Void) {
         if let mm = matchMonitor {
             mm.onMatch(completion: completion)
         }

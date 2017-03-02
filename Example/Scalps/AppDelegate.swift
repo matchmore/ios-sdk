@@ -93,7 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.createPublication()
             self.createSubscription()
             self.continouslyUpdatingLocation()
-            self.monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
+            self.monitorMatches()
+            // self.monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
         }
 
         return true
