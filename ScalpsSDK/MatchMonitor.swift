@@ -16,7 +16,9 @@ class MatchMonitor {
     var onMatchClosure: ((_ match: Match?) -> Void)
 
     convenience init(scalpsManager: ScalpsManager) {
-        self.init(scalpsManager: scalpsManager, onMatch: { (_ match: Match?) in NSLog("Got a match: \(match)") })
+        self.init(scalpsManager: scalpsManager, onMatch: {
+            (_ match: Match?) in NSLog("Got a match: \(match!)")
+        })
     }
 
     init(scalpsManager: ScalpsManager, onMatch: @escaping ((_ match: Match?) -> Void)) {
@@ -42,10 +44,11 @@ class MatchMonitor {
     }
 
     @objc func checkMatches() {
+        NSLog("checking matches")
         scalpsManager.getAllMatches {
             (_ matches: Matches) in
-
             NSLog("got matches: \(matches)")
+
             for m in matches {
                 NSLog("deliver this match: \(m)")
                 self.onMatchClosure(m)

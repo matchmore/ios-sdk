@@ -114,6 +114,12 @@ extension Subscription {
     }
 }
 
+extension Match: CustomStringConvertible {
+    public var description: String {
+        return "(\(matchId), \(timestamp))"
+    }
+}
+
 /*
 extension Payload: JSONEncodable {
     public var dictionary = [String:String]()
