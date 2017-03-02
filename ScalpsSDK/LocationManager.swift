@@ -10,17 +10,19 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
+    var scalpsManager: ScalpsManager
     var seenError = false
     var locationFixAchieved = false
 
     let clLocationManager: CLLocationManager
 
-    override convenience init() {
-        self.init(CLLocationManager())
+    convenience init(scalpsManager: ScalpsManager) {
+        self.init(scalpsManager: scalpsManager, locationManager: CLLocationManager())
     }
 
-    init(_ clLocationManager: CLLocationManager) {
-        self.clLocationManager = clLocationManager
+    init(scalpsManager: ScalpsManager, locationManager: CLLocationManager) {
+        self.scalpsManager = scalpsManager
+        self.clLocationManager = locationManager
         super.init()
 
         self.clLocationManager.delegate = self
@@ -38,7 +40,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-            print("\(coord.coordinate.latitude), \(coord.coordinate.longitude)")
+            scalpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+                                         altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
+                                         verticalAccuracy: coord.verticalAccuracy) {
+                (_ location) in
+                NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
+            }
         }
     }
 

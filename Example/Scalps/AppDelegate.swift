@@ -13,42 +13,40 @@ import ScalpsSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // Scalps API key
-    let apiKey = "f92183ca-c610-11e6-b704-e77af2b49f4f"
-
+    // let apiKey = "ea0df90a-db0a-11e5-bd35-3bd106df139b"
+    let scalps = ScalpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b")
+    let userName = "Scalps Example User"
+    var device: Device?
     var window: UIWindow?
 
     func createDevice() {
-        let scalps = ScalpsManager(apiKey: apiKey)
-        let userName = "Swift Exmple User 1"
-
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
 
-                scalps.createDevice(name: "Scalps Test Device 1", platform: "iOS 10.2",
+                self.scalps.createDevice(name: "Scalps Test Device 1", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
                         print("Created device: id = \(d.deviceId), name = \(d.name)")
+                        self.device = d
                     }
                 }
             }
         }
     }
 
+    // FIXME: use the user and device already created!
     func createPublication() {
-        let scalps = ScalpsManager(apiKey: apiKey)
-        let userName = "Swift Example User 3"
-
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
 
-                scalps.createDevice(name: "Scalps Test Device 3", platform: "iOS 10.2",
+                self.scalps.createDevice(name: "Scalps Test Device 3", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
@@ -57,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("Created device: id = \(d.deviceId), name = \(d.name)")
                         let propertiesString = "{\"mood\": \"happy\"}"
 
-                        scalps.createPublication(topic: "scalps-ios-test",
+                        self.scalps.createPublication(topic: "scalps-ios-test",
                                                  range: 100.0, duration: 0,
                                                  properties: propertiesString) {
                             (_ publication) in
@@ -72,24 +70,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func createSubscription() {}
 
     func continouslyUpdatingLocation() {
-        let scalps = ScalpsManager(apiKey: apiKey)
-        let userName = "Swift Example User 5"
-
         scalps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
 
-                scalps.createDevice(name: "Scalps Test Device 5", platform: "iOS 10.2",
+                self.scalps.createDevice(name: "Scalps Test Device 5", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
                         print("Created device: id = \(d.deviceId), name = \(d.name)")
-                        scalps.startUpdatingLocation()
+                        self.scalps.startUpdatingLocation()
                     }
                 }
             }
@@ -97,16 +93,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         scalps.stopUpdatingLocation()
     }
+    
+    func monitorMatches() {
+        scalps.startMonitoringMatches()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
-
+ 
         // Make some Scalps calls
         createDevice()
         createPublication()
+        createSubscription()
         continouslyUpdatingLocation()
-
+        monitorMatches()
+        
         return true
     }
 

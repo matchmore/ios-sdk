@@ -12,7 +12,7 @@ enum ScalpsManagerError: Error {
 }
 
 open class ScalpsManager: ScalpsSDK {
- 
+
     let defaultHeaders = [
       // FIXME: pass both keys on ScalpsManager creation
       "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
@@ -28,8 +28,8 @@ open class ScalpsManager: ScalpsSDK {
 
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
-    let locationManager: LocationManager
-    var matchMonitor: MatchMonitor?
+    var locationManager: LocationManager? = nil
+    var matchMonitor: MatchMonitor? = nil
 
     // FIXME: add the world id when it's there
     // var world: World
@@ -48,10 +48,10 @@ open class ScalpsManager: ScalpsSDK {
 
     public init(apiKey: String, clLocationManager: CLLocationManager) {
         self.apiKey = apiKey
-        self.locationManager = LocationManager(clLocationManager)
         self.headers = defaultHeaders.merged(with: ["api-key": apiKey])
+        self.locationManager = LocationManager(scalpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(scalpsManager: self)
-        
+
         ScalpsAPI.basePath = scalpsEndpoint
         ScalpsAPI.customHeaders = headers
     }
@@ -203,10 +203,10 @@ open class ScalpsManager: ScalpsSDK {
     }
 
     public func startUpdatingLocation() {
-        locationManager.startUpdatingLocation()
+        locationManager?.startUpdatingLocation()
     }
 
     public func stopUpdatingLocation() {
-        locationManager.stopUpdatingLocation()
+        locationManager?.stopUpdatingLocation()
     }
 }
