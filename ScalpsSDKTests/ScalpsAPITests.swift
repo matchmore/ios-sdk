@@ -75,10 +75,8 @@ class ScalpsAPITests: XCTestCase {
 
         let pubExpectation = expectation(description: "CreatePub")
 
-        // XXX: Add dictionary to json serialization here
-        // let properties = Properties(["role": "developer"])
-        let properties = Properties(dictionaryLiteral: ("role", "developer"))
-        // let propertiesString = "{\"role\": \"developer\"}"
+        // let properties = Properties(dictionaryLiteral: ("role", "'developer'"))
+        let properties = ["role": "'developer'"]
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
                                                    topic: "scalps-test", range: 100.0, duration: 0.0,
@@ -99,7 +97,7 @@ class ScalpsAPITests: XCTestCase {
         var createdSubscription: Subscription?
 
         let subExpectation = expectation(description: "CreateSub")
-        let selector = "'mood' = 'happy'"
+        let selector = "role = 'developer'"
 
         let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
                                                     topic: "scalps-test", selector: selector, range: 100.0,

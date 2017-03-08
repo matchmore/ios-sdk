@@ -75,7 +75,7 @@ class ScalpsSDKTests: XCTestCase {
                     (_ device) in
                     if device != nil {
                         // FIXME: provide serialization to json string
-                        let properties = ["mood": "happy"]
+                        let properties = ["mood": "'happy'"]
                         // let propertiesString = "{\"mood\": \"happy\"}"
 
                         scalps.createPublication(topic: "scalps-ios-test", range: 100.0,
@@ -106,7 +106,7 @@ class ScalpsSDKTests: XCTestCase {
                     (_ device) in
                     if device != nil {
                         scalps.createSubscription(topic: "scalps-ios-test",
-                                                  selector: "'mood' = 'happy'",
+                                                  selector: "mood = 'happy'",
                                                   range: 100.0,
                                                   duration: 0) {
                             (_ subscription) in
