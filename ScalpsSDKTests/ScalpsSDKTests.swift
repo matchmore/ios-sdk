@@ -13,7 +13,7 @@ import Scalps
 
 
 class ScalpsSDKTests: XCTestCase {
-    let apiKey = "74a239bc-c37e-11e6-b772-5b027714674d"
+    let apiKey = "ea0df90a-db0a-11e5-bd35-3bd106df139b"
     // var scalps: ScalpsSDK
 
     override func setUp() {

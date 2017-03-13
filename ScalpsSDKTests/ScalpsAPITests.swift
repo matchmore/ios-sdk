@@ -13,7 +13,7 @@ import Alamofire
 class ScalpsAPITests: XCTestCase {
     let headers = [
         "user-agent": "iOS 9.3.0",
-        "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
+        "api-key": "ea0df90a-db0a-11e5-bd35-3bd106df139b",
         "Content-Type": "application/json; charset=UTF-8",
         "Accept": "application/json, text/plain"
     ]
@@ -22,7 +22,8 @@ class ScalpsAPITests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        ScalpsAPI.basePath = "http://localhost:9000"
+        // ScalpsAPI.basePath = "http://localhost:9000"
+        ScalpsAPI.basePath = "http://api.adjago.io/v02"
         ScalpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -153,7 +154,7 @@ class ScalpsAPITests: XCTestCase {
     func test1Alamofire() {
         let expectation = self.expectation(description: "Alamofire")
 
-        Alamofire.request("http://localhost:9000/ping", headers: headers)
+        Alamofire.request(ScalpsAPI.basePath.appending("/ping"), headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { response in
                 print("Success: \(response.result.isSuccess)")
