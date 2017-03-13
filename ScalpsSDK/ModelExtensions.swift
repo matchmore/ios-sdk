@@ -67,30 +67,31 @@ extension DeviceLocation {
         self.init()
         self.deviceId = deviceId
         // XXX: use now for the timestamp
-        self.timestamp = now()
-        self.altitude = altitude
-        self.latitude = latitude
-        self.longitude = longitude
+        let location = Location()
+        location.altitude = altitude
+        location.latitude = latitude
+        location.longitude = longitude
         // XXX: use some defaults
-        self.horizontalAccuracy = 5
-        self.verticalAccuracy = 5
+        location.horizontalAccuracy = 5
+        location.verticalAccuracy = 5
+        self.location = location
     }
 }
 
 extension Publication {
 
-    public convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, payload: Payload) {
+    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, location: DeviceLocation, properties: Properties) {
         self.init()
         // XXX: use now for the timestamp
         self.timestamp = now()
         self.publicationId = UUID().uuidString
         // XXX: use the deviceId of the DeviceLocation provided
-        self.deviceId = location.deviceId!
+        self.deviceId = deviceId
         self.topic = topic
         self.range = range
         self.duration = duration
-        self.location = location
-        self.payload = payload
+        self.location = location.location
+        self.properties = properties
         self.op = "create"
     }
 }
@@ -107,9 +108,15 @@ extension Subscription {
         self.topic = topic
         self.range = range
         self.duration = duration
-        self.location = location
+        self.location = location.location
         self.selector = selector
         self.op = "create"
+    }
+}
+
+extension Match: CustomStringConvertible {
+    public var description: String {
+        return "(\(matchId!), \(timestamp!))"
     }
 }
 

@@ -8,16 +8,14 @@
 
 import XCTest
 @testable import Scalps
-import ScalpsSDK
 import Alamofire
 
 class ScalpsAPITests: XCTestCase {
     let headers = [
         "user-agent": "iOS 9.3.0",
-        "dev-key": "7eef938a-c09d-11e6-bc43-b390d71c98d2",
-        "app-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
+        "api-key": "ea0df90a-db0a-11e5-bd35-3bd106df139b",
         "Content-Type": "application/json; charset=UTF-8",
-        "Accept": "application/json"
+        "Accept": "application/json, text/plain"
     ]
 
     let now = { Int64(Date().timeIntervalSince1970 * 1000) }
@@ -25,6 +23,7 @@ class ScalpsAPITests: XCTestCase {
     override func setUp() {
         super.setUp()
         // ScalpsAPI.basePath = "http://localhost:9000"
+        // ScalpsAPI.basePath = "http://api.adjago.io/v02"
         ScalpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -38,9 +37,7 @@ class ScalpsAPITests: XCTestCase {
         var createdUser: User?
         let expectation = self.expectation(description: "CreateUser")
 
-        let userTemplate = User()
-        userTemplate.name = "Scalps User 1"
-        let _ = Scalps.UsersAPI.createUser(user: userTemplate, completion: {
+        let _ = Scalps.UsersAPI.createUser(name: "Scalps User 1", completion: {
             (user, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
@@ -56,21 +53,18 @@ class ScalpsAPITests: XCTestCase {
     func createDevice(_ user: User) -> Device? {
         let deviceExpectation = expectation(description: "CreateDevice")
 
-        let deviceTemplate = Device()
-        deviceTemplate.deviceId = UUID().uuidString
-        deviceTemplate.name = "Scalps iPhone 7"
-        deviceTemplate.platform = "iOS 9.3"
-        deviceTemplate.deviceToken = "870470ea-7a8e-11e6-b49b-5358f3beb662"
-
         var createdDevice: Device?
 
-        let _ = Scalps.UserAPI.createDevice(userId: user.userId!, device: deviceTemplate, completion: {
+        let _ = Scalps.UserAPI.createDevice(userId: user.userId!, name: "Scalps iPhone 7", platform: "iOS 9.3",
+                                            deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
+                                            latitude: 37.7858, longitude: 122.4064, altitude: 200.0,
+                                            horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
             (device, error) -> Void in
 
             XCTAssertNil(error, "Whoops, error \(error)")
             createdDevice = device
             deviceExpectation.fulfill()
-        })
+        }
 
         waitForExpectations(timeout: 5.0, handler: nil)
 
@@ -81,38 +75,19 @@ class ScalpsAPITests: XCTestCase {
         var createdPublication: Publication?
 
         let pubExpectation = expectation(description: "CreatePub")
-        let publicationTemplate = Publication()
-        publicationTemplate.timestamp = now()
-        publicationTemplate.deviceId = device.deviceId!
-        publicationTemplate.publicationId = UUID().uuidString
-        publicationTemplate.topic = "scalps-test"
-        publicationTemplate.range = 100
-        publicationTemplate.duration = 0
 
-        let location = DeviceLocation()
-        location.timestamp = now()
-        location.deviceId = device.deviceId
-        location.altitude = 0
-        location.latitude = 37.785833999999994
-        location.longitude = -122.406417
-        location.horizontalAccuracy = 5
-        location.verticalAccuracy = -1
-
-        publicationTemplate.location = location
-
-        let dictionary = ["mood": "happy"]
-        let payload = Payload(dictionary: dictionary)
-        publicationTemplate.payload = payload
-        publicationTemplate.op = "create"
+        // let properties = Properties(dictionaryLiteral: ("role", "'developer'"))
+        let properties = ["role": "'developer'"]
 
         let _ = Scalps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-                                                          publication: publicationTemplate, completion: {
-                                                            (publication, error) -> Void in
+                                                   topic: "scalps-test", range: 100.0, duration: 0.0,
+                                                   properties: properties) {
+            (publication, error) -> Void in
 
-                                                            XCTAssertNil(error, "Whoops, error \(error)")
-                                                            createdPublication = publication
-                                                            pubExpectation.fulfill()
-        })
+            XCTAssertNil(error, "Whoops, error \(error)")
+            createdPublication = publication
+            pubExpectation.fulfill()
+        }
 
         waitForExpectations(timeout: 5.0, handler: nil)
 
@@ -122,37 +97,18 @@ class ScalpsAPITests: XCTestCase {
     func createSubscription(_ user: User, device: Device) -> Subscription? {
         var createdSubscription: Subscription?
 
-        let pubExpectation = expectation(description: "CreateSub")
-        let subscriptionTemplate = Subscription()
-        subscriptionTemplate.timestamp = now()
-        subscriptionTemplate.deviceId = device.deviceId!
-        subscriptionTemplate.subscriptionId = UUID().uuidString
-        subscriptionTemplate.topic = "scalps-test"
-        subscriptionTemplate.range = 100
-        subscriptionTemplate.duration = 0
-
-        let location = DeviceLocation()
-        location.timestamp = now()
-        location.deviceId = device.deviceId
-        location.altitude = 0
-        location.latitude = 37.785833999999994
-        location.longitude = -122.406417
-        location.horizontalAccuracy = 5
-        location.verticalAccuracy = -1
-
-        subscriptionTemplate.location = location
-
-        subscriptionTemplate.selector = "'mood' = 'happy'"
-        subscriptionTemplate.op = "create"
+        let subExpectation = expectation(description: "CreateSub")
+        let selector = "role = 'developer'"
 
         let _ = Scalps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
-                                                          subscription: subscriptionTemplate, completion: {
-                                                            (subscription, error) -> Void in
+                                                    topic: "scalps-test", selector: selector, range: 100.0,
+                                                    duration: 0.0) {
+            (subscription, error) -> Void in
 
-                                                            XCTAssertNil(error, "Whoops, error \(error)")
-                                                            createdSubscription = subscription
-                                                            pubExpectation.fulfill()
-        })
+                                                        XCTAssertNil(error, "Whoops, error \(error)")
+                                                        createdSubscription = subscription
+                                                        subExpectation.fulfill()
+        }
 
         waitForExpectations(timeout: 5.0, handler: nil)
 
@@ -163,35 +119,42 @@ class ScalpsAPITests: XCTestCase {
         let locExpectation = expectation(description: "CreateLoc")
         var createdLocation: DeviceLocation?
 
-        let locationTemplate = DeviceLocation()
-        locationTemplate.timestamp = now()
-        locationTemplate.deviceId = device.deviceId
-        locationTemplate.altitude = 0
-        locationTemplate.latitude = 37.785833999999994
-        locationTemplate.longitude = -122.406417
-        locationTemplate.horizontalAccuracy = 5
-        locationTemplate.verticalAccuracy = -1
-
         let _ = Scalps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
-                                                       location: locationTemplate, completion: {
-                                                            (location, error) -> Void in
+                                                latitude: 37.7858, longitude: -122.4064, altitude: 20.0,
+                                                horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+            (location, error) -> Void in
 
-                                                            XCTAssertNil(error, "Whoops, error \(error)")
-                                                            createdLocation = location
-                                                            locExpectation.fulfill()
-        })
+            XCTAssertNil(error, "Whoops, error \(error)")
+            createdLocation = location
+            locExpectation.fulfill()
+        }
 
         waitForExpectations(timeout: 5.0, handler: nil)
 
         return createdLocation
     }
 
-    /*
+    func getMatches(_ user: User, device: Device) -> [Match]? {
+        let matchExpectation = expectation(description: "GetMatches")
+        var gotMatches: [Match]?
+
+        let _ = Scalps.DeviceAPI.getMatches(userId: user.userId!, deviceId: device.deviceId!) {
+            (matches, error) -> Void in
+
+            XCTAssertNil(error, "Whoops, error \(error)")
+            gotMatches = matches
+            matchExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5.0, handler: nil)
+
+        return gotMatches
+    }
+
     func test1Alamofire() {
         let expectation = self.expectation(description: "Alamofire")
 
-        Alamofire.request("http://localhost:9000/ping", headers: headers)
-            // Alamofire.request(.GET, "http://localhost:9000/ping", headers: headers)
+        Alamofire.request(ScalpsAPI.basePath.appending("/ping"), headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { response in
                 print("Success: \(response.result.isSuccess)")
@@ -203,8 +166,8 @@ class ScalpsAPITests: XCTestCase {
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-    */
-    
+
+
     func test2CreateUser() {
         let user = createUser()
         XCTAssertNotNil(user)
@@ -240,6 +203,15 @@ class ScalpsAPITests: XCTestCase {
             if let device = createDevice(user) {
                 let location = createLocation(user, device: device)
                 XCTAssertNotNil(location)
+            }
+        }
+    }
+
+    func test7GetMatches() {
+        if let user = createUser() {
+            if let device = createDevice(user) {
+                let matches = getMatches(user, device: device)
+                XCTAssertNotNil(matches)
             }
         }
     }

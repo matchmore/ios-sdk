@@ -25,12 +25,15 @@ open class ScalpsDevice {
     }
 
     public func createPublication(_ publication: Publication, completion: @escaping (_ publication: Publication?) -> Void) {
+        /*
         let userCompletion = completion
         let publicationTemplate = publication
+
 
         let _ = manager.createPublication(publicationTemplate, for: user, on: device) {
             (_ publication) in
             userCompletion(publication)
         }
+         */
     }
 }

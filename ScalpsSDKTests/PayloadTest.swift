@@ -11,7 +11,7 @@ import XCTest
 @testable import Scalps
 
 class PayloadTest: XCTestCase {
-
+/*
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -46,4 +46,5 @@ class PayloadTest: XCTestCase {
 
         print("json: \(payload.encodeToJSON())")
     }
+ */
 }
