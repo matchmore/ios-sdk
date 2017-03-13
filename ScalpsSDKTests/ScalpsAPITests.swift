@@ -23,7 +23,7 @@ class ScalpsAPITests: XCTestCase {
     override func setUp() {
         super.setUp()
         // ScalpsAPI.basePath = "http://localhost:9000"
-        ScalpsAPI.basePath = "http://api.adjago.io/v02"
+        // ScalpsAPI.basePath = "http://api.adjago.io/v02"
         ScalpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
