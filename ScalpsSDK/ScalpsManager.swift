@@ -191,14 +191,31 @@ open class ScalpsManager: ScalpsSDK {
 
 
 
-    func getUser(_ userId: String, completion: @escaping (_ user: User?) -> Void) {}
-    func getUser(completion: @escaping (_ user: User?) -> Void)  {}
-    func getDevice(_ deviceId: String, completion: @escaping (_ device: Device?) -> Void) {}
-    func getDevice(completion: @escaping (_ device: Device?) -> Void)  {}
-    func getPublication(_ publicationId: String, completion: @escaping (_ publication: Publication?) -> Void) {}
+    func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void) {
+        let userCompletion = completion
+
+//        if let u = scalpsUser {
+//            let _ = Scalps.UserAPI.getUser(userId: u.user.userId!) {
+//                (user, error) -> Void in
+//
+//                if let u = user {
+//                    userCompletion(u)
+//                }
+//            }
+//        } else {
+//            // XXX: error handling using exceptions?
+//            print("Scalps user doesn't exist!")
+//            // throw ScalpsManagerError.userNotIntialized
+//        }
+    }
+
+    func getUser(completion: @escaping (_ user: User) -> Void)  {}
+    func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {}
+    func getDevice(completion: @escaping (_ device: Device) -> Void)  {}
+    func getPublication(_ publicationId: String, completion: @escaping (_ publication: Publication) -> Void) {}
     func getAllPublicationsForDevice(_ deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {}
-    func getAllPublications(completion: @escaping (_ publication: Publication?) -> Void) {}
-    func getSubscription(_ subscriptionId: String, completion: @escaping (_ subscription: Subscription?) -> Void) {}
+    func getAllPublications(completion: @escaping (_ publications: [Publication]) -> Void) {}
+    func getSubscription(_ subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void) {}
     func getAllSubscriptionsForDevice(_ deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {}
     func getAllSubscriptions(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {}
 
