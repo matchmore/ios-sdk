@@ -18,7 +18,7 @@ the Example directory first.
 Scalps is available through [CocoaPods](http://cocoapods.org) it, simply add the following
 line to your Podfile:
 
-    pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.1'
+    pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.2'
 
 
 ## Author

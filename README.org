@@ -28,7 +28,7 @@ the Example directory first.
    line to your Podfile:
 
 #+BEGIN_SRC ruby
-  pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.1'
+  pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.2'
 #+END_SRC
 
 ** Author
