@@ -81,8 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         scalps.startMonitoringMatches()
     }
 
-    func monitorMatchesWithCompletion(completion: @escaping (_ match: Match?) -> Void) {
+    func monitorMatchesWithCompletion(completion: @escaping (_ match: Match) -> Void) {
         scalps.onMatch(completion: completion)
+        scalps.startMonitoringMatches()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -93,8 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.createPublication()
             self.createSubscription()
             self.continouslyUpdatingLocation()
-            self.monitorMatches()
-            // self.monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
+            // without passing a closure the match monitor will just log the match to the console
+            // self.monitorMatches()
+            // Pass a closure to handle the match accordingly (it will repeatedly call for all matches for now)
+            self.monitorMatchesWithCompletion { (_ match) in NSLog("match completion called with \(match)") }
         }
 
         return true

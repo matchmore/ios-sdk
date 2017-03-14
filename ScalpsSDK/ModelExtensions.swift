@@ -1,3 +1,4 @@
+
 //
 //  ModelExtensions.swift
 //  Scalps
@@ -114,9 +115,20 @@ extension Subscription {
     }
 }
 
-extension Match: CustomStringConvertible {
+extension Match: CustomStringConvertible, Hashable {
+
+    // XXX: take the hashValue based on the hashValue of matchId
+    public var hashValue: Int {
+        return matchId!.hashValue
+    }
+    
+    // XXX: Define the match equality based on the matchId only
+    public static func ==(lhs: Match, rhs: Match) -> Bool {
+        return lhs.matchId! == rhs.matchId!
+    }
+
     public var description: String {
-        return "(\(matchId!), \(timestamp!))"
+        return "Match: (\(matchId!), \(timestamp!))"
     }
 }
 
