@@ -12,8 +12,7 @@ import ScalpsSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    // Scalps API key
-    // let apiKey = "ea0df90a-db0a-11e5-bd35-3bd106df139b"
+    // Scalps API key (please don't change for now)
     let scalps = ScalpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b")
     let userName = "Scalps Example User"
     let deviceName = "Example User's iPhone 8"

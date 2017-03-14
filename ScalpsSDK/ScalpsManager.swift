@@ -23,8 +23,8 @@ open class ScalpsManager: ScalpsSDK {
 
     let headers: [String: String]
 
-    // XXX: this has to come from a configuration
-    let scalpsEndpoint = "http://localhost:9000"
+    // XXX: this is for local testing only
+    // let scalpsEndpoint = "http://localhost:9000"
 
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
@@ -51,7 +51,8 @@ open class ScalpsManager: ScalpsSDK {
         self.locationManager = LocationManager(scalpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(scalpsManager: self)
 
-        ScalpsAPI.basePath = scalpsEndpoint
+        // XXX: this is a local testing only setting
+        // ScalpsAPI.basePath = scalpsEndpoint
         ScalpsAPI.customHeaders = headers
     }
 
