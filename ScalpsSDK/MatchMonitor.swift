@@ -13,6 +13,7 @@ import Foundation
 class MatchMonitor {
     let scalpsManager: ScalpsManager
     var timer: Timer = Timer()
+    var deliveredMatches = Set<Match>()
     var onMatchClosure: ((_ match: Match) -> Void)
 
     convenience init(scalpsManager: ScalpsManager) {
@@ -47,11 +48,14 @@ class MatchMonitor {
         NSLog("checking matches")
         scalpsManager.getAllMatches {
             (_ matches: Matches) in
-            NSLog("got matches: \(matches)")
+            NSLog("got all matches from the cloud: \(matches)")
 
             for m in matches {
-                NSLog("deliver this match: \(m)")
-                self.onMatchClosure(m)
+                if !self.deliveredMatches.contains(m) {
+                    NSLog("deliver this match: \(m)")
+                    self.onMatchClosure(m)
+                    self.deliveredMatches.insert(m)
+                }
             }
         }
     }
