@@ -1,14 +1,14 @@
 
 //
 //  ModelExtensions.swift
-//  Scalps
+//  Alps
 //
 //  Created by Rafal Kowalski on 04/10/2016
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation
-import Scalps
+import Alps
 
 extension Dictionary {
     mutating func merge(with dictionary: Dictionary) {
@@ -30,12 +30,12 @@ extension User {
 
     // XXX: The  problem is  we cannot  have a  stored property  in an
     // extension  so where  should we  store the  created device?   It
-    // could help if we somehow always get the ScalpsManager reference
+    // could help if we somehow always get the AlpsManager reference
     // to store the values...
     /*
     public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) {
         let f = completion
-        let _ = Scalps.UserAPI.createDevice(userId: self.userId!, device: device, completion: {
+        let _ = Alps.UserAPI.createDevice(userId: self.userId!, device: device, completion: {
             (device, error) -> Void in
 
             if let d = device {
@@ -50,7 +50,7 @@ extension User {
 
 extension Device {
 
-    // Device(deviceId: UUID().uuidString, name: "Scalps Test Device 1",
+    // Device(deviceId: UUID().uuidString, name: "Alps Test Device 1",
     // platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
 
     public convenience init(name: String, platform: String, deviceToken: String) {
@@ -121,7 +121,7 @@ extension Match: CustomStringConvertible, Hashable {
     public var hashValue: Int {
         return matchId!.hashValue
     }
-    
+
     // XXX: Define the match equality based on the matchId only
     public static func ==(lhs: Match, rhs: Match) -> Bool {
         return lhs.matchId! == rhs.matchId!

@@ -1,12 +1,12 @@
 use_frameworks!
 
-target 'ScalpsExample' do
-  # pod 'ScalpsSDK', :path => '../'
-  # pod 'Scalps', :path => '../../api'
-  pod 'ScalpsSDK', :git => 'https://scalps@bitbucket.org/scalps/ios-sdk.git', :tag => '0.0.2'
-  pod 'Scalps', :git => 'https://scalps@bitbucket.org/scalps/ios-api.git', :tag => '0.0.2'
+target 'AlpsExample' do
+  # pod 'AlpsSDK', :path => '../'
+  # pod 'Alps', :path => '../../api'
+  pod 'AlpsSDK', :git => 'https://alps@bitbucket.org/alps/ios-sdk.git', :tag => '0.0.2'
+  pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.2'
 
-  target 'ScalpsExampleTests' do
+  target 'AlpsExampleTests' do
     inherit! :search_paths
 
     pod 'Quick' #, '~> 0.8'

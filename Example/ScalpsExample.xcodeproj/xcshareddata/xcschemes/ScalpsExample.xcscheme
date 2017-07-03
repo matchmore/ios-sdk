@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "ScalpsExample.app"
-               BlueprintName = "ScalpsExample"
-               ReferencedContainer = "container:ScalpsExample.xcodeproj">
+               BuildableName = "AlpsExample.app"
+               BlueprintName = "AlpsExample"
+               ReferencedContainer = "container:AlpsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "ScalpsExampleTests.xctest"
-               BlueprintName = "ScalpsExampleTests"
-               ReferencedContainer = "container:ScalpsExample.xcodeproj">
+               BuildableName = "AlpsExampleTests.xctest"
+               BlueprintName = "AlpsExampleTests"
+               ReferencedContainer = "container:AlpsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "ScalpsExampleTests.xctest"
-               BlueprintName = "ScalpsExampleTests"
-               ReferencedContainer = "container:ScalpsExample.xcodeproj">
+               BuildableName = "AlpsExampleTests.xctest"
+               BlueprintName = "AlpsExampleTests"
+               ReferencedContainer = "container:AlpsExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ScalpsExample.app"
-            BlueprintName = "ScalpsExample"
-            ReferencedContainer = "container:ScalpsExample.xcodeproj">
+            BuildableName = "AlpsExample.app"
+            BlueprintName = "AlpsExample"
+            ReferencedContainer = "container:AlpsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ScalpsExample.app"
-            BlueprintName = "ScalpsExample"
-            ReferencedContainer = "container:ScalpsExample.xcodeproj">
+            BuildableName = "AlpsExample.app"
+            BlueprintName = "AlpsExample"
+            ReferencedContainer = "container:AlpsExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -103,9 +103,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ScalpsExample.app"
-            BlueprintName = "ScalpsExample"
-            ReferencedContainer = "container:ScalpsExample.xcodeproj">
+            BuildableName = "AlpsExample.app"
+            BlueprintName = "AlpsExample"
+            ReferencedContainer = "container:AlpsExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

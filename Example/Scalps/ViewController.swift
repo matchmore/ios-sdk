@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Scalps
+//  Alps
 //
 //  Created by rk on 09/27/2016.
 //  Copyright (c) 2016 rk. All rights reserved.
@@ -21,4 +21,3 @@ class ViewController: UIViewController {
     }
 
 }
-

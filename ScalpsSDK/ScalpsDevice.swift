@@ -1,20 +1,20 @@
 //
-//  ScalpsDevice.swift
-//  Scalps
+//  AlpsDevice.swift
+//  Alps
 //
 //  Created by Rafal Kowalski on 21/12/2016
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation
-import Scalps
+import Alps
 
-open class ScalpsDevice {
-    public let manager: ScalpsManager
+open class AlpsDevice {
+    public let manager: AlpsManager
     public let user: User
     public let device: Device
 
-    public init(manager: ScalpsManager, user: User, device: Device) {
+    public init(manager: AlpsManager, user: User, device: Device) {
         self.manager = manager
         self.user = user
         self.device = device

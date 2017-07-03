@@ -1,14 +1,14 @@
 //
 //  PayloadTest.swift
-//  ScalpsAPI
+//  AlpsAPI
 //
 //  Created by Rafal Kowalski on 15/09/16.
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import XCTest
 
-@testable import Scalps
+@testable import Alps
 
 class PayloadTest: XCTestCase {
 /*

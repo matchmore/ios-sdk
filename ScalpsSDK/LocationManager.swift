@@ -1,27 +1,27 @@
 //
 //  LocationManager.swift
-//  Scalps
+//  Alps
 //
 //  Created by Rafal Kowalski on 28.09.16.
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
-    var scalpsManager: ScalpsManager
+    var alpsManager: AlpsManager
     var seenError = false
     var locationFixAchieved = false
 
     let clLocationManager: CLLocationManager
 
-    convenience init(scalpsManager: ScalpsManager) {
-        self.init(scalpsManager: scalpsManager, locationManager: CLLocationManager())
+    convenience init(alpsManager: AlpsManager) {
+        self.init(alpsManager: alpsManager, locationManager: CLLocationManager())
     }
 
-    init(scalpsManager: ScalpsManager, locationManager: CLLocationManager) {
-        self.scalpsManager = scalpsManager
+    init(alpsManager: AlpsManager, locationManager: CLLocationManager) {
+        self.alpsManager = alpsManager
         self.clLocationManager = locationManager
         super.init()
 
@@ -40,7 +40,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-            scalpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+            alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                                          altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                                          verticalAccuracy: coord.verticalAccuracy) {
                 (_ location) in

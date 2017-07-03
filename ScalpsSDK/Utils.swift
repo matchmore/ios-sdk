@@ -1,9 +1,9 @@
 //
 //  Utils.swift
-//  Scalps
+//  Alps
 //
 //  Created by Rafal Kowalski on 04/10/2016
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation

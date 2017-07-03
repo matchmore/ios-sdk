@@ -1,19 +1,19 @@
 //
-//  ScalpsUser.swift
-//  Scalps
+//  AlpsUser.swift
+//  Alps
 //
 //  Created by Rafal Kowalski on 21/12/2016
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation
-import Scalps
+import Alps
 
-open class ScalpsUser {
-    public let manager: ScalpsManager
+open class AlpsUser {
+    public let manager: AlpsManager
     public let user: User
 
-    public init(manager: ScalpsManager, user: User) {
+    public init(manager: AlpsManager, user: User) {
         self.manager = manager
         self.user = user
     }

@@ -4,15 +4,15 @@
 
 * COMMENT This is the master file for README.md!
 
-* Scalps iOS SDK
+* Alps iOS SDK
 
 ** COMMENT
 
  [![CI
- Status](http://img.shields.io/travis/rk/Scalps.svg?style=flat)](https://travis-ci.org/rk/Scalps)
- [![Version](https://img.shields.io/cocoapods/v/Scalps.svg?style=flat)](http://cocoapods.org/pods/Scalps)
- [![License](https://img.shields.io/cocoapods/l/Scalps.svg?style=flat)](http://cocoapods.org/pods/Scalps)
- [![Platform](https://img.shields.io/cocoapods/p/Scalps.svg?style=flat)](http://cocoapods.org/pods/Scalps)
+ Status](http://img.shields.io/travis/rk/Alps.svg?style=flat)](https://travis-ci.org/rk/Alps)
+ [![Version](https://img.shields.io/cocoapods/v/Alps.svg?style=flat)](http://cocoapods.org/pods/Alps)
+ [![License](https://img.shields.io/cocoapods/l/Alps.svg?style=flat)](http://cocoapods.org/pods/Alps)
+ [![Platform](https://img.shields.io/cocoapods/p/Alps.svg?style=flat)](http://cocoapods.org/pods/Alps)
 
 
 ** Example
@@ -24,11 +24,11 @@ the Example directory first.
 
 ** Installation
 
-   Scalps is available through [[http://cocoapods.org][CocoaPods]] it, simply add the following
+   Alps is available through [[http://cocoapods.org][CocoaPods]] it, simply add the following
    line to your Podfile:
 
 #+BEGIN_SRC ruby
-  pod "ScalpsSDK", :git => 'https://bitbucket.org/scalps/ios-sdk.git, :tag => 'v0.0.2'
+  pod "AlpsSDK", :git => 'https://bitbucket.org/alps/ios-sdk.git, :tag => 'v0.0.2'
 #+END_SRC
 
 ** Author
@@ -37,4 +37,4 @@ rk, rafal.kowalski@mac.com
 
 ** License
 
-Scalps is available under the MIT license. See the LICENSE file for more info.
+Alps is available under the MIT license. See the LICENSE file for more info.

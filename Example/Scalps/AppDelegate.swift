@@ -1,31 +1,31 @@
 //
 //  AppDelegate.swift
-//  Scalps
+//  Alps
 //
 //  Created by rk on 09/27/2016.
 //  Copyright (c) 2016 rk. All rights reserved.
 //
 
 import UIKit
-import Scalps
-import ScalpsSDK
+import Alps
+import AlpsSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    // Scalps API key (please don't change for now)
-    let scalps = ScalpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b")
-    let userName = "Scalps Example User"
+    // Alps API key (please don't change for now)
+    let alps = AlpsManager(apiKey: "ea0df90a-db0a-11e5-bd35-3bd106df139b")
+    let userName = "Alps Example User"
     let deviceName = "Example User's iPhone 8"
     var device: Device?
     var window: UIWindow?
 
     func createDevice(completion: @escaping () -> Void) {
-        scalps.createUser(userName) {
+        alps.createUser(userName) {
             (_ user) in
             if let u = user {
                 print("Created user: id = \(u.userId), name = \(u.name)")
 
-                self.scalps.createDevice(name: self.deviceName, platform: "iOS 10.2",
+                self.alps.createDevice(name: self.deviceName, platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 0.0,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // XXX: the property syntax is tricky at the moment: mood is a variable and 'happy' is a string value
             let properties = ["mood": "'happy'"]
 
-            self.scalps.createPublication(topic: "scalps-ios-test",
+            self.alps.createPublication(topic: "alps-ios-test",
                                           range: 100.0, duration: 60,
                                           properties: properties) {
                 (_ publication) in
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if device != nil {
             let selector = "mood = 'happy'"
 
-            self.scalps.createSubscription(topic: "scalps-ios-test",
+            self.alps.createSubscription(topic: "alps-ios-test",
                                            selector: selector, range: 100.0, duration: 60) {
                 (_ subscription) in
                 if let s = subscription {
@@ -72,23 +72,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func continouslyUpdatingLocation() {
         if device != nil {
-            self.scalps.startUpdatingLocation()
+            self.alps.startUpdatingLocation()
         }
     }
 
     func monitorMatches() {
-        scalps.startMonitoringMatches()
+        alps.startMonitoringMatches()
     }
 
     func monitorMatchesWithCompletion(completion: @escaping (_ match: Match) -> Void) {
-        scalps.onMatch(completion: completion)
-        scalps.startMonitoringMatches()
+        alps.onMatch(completion: completion)
+        alps.startMonitoringMatches()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        // Make some Scalps calls
+        // Make some Alps calls
         createDevice() {
             self.createPublication()
             self.createSubscription()

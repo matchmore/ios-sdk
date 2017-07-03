@@ -1,29 +1,29 @@
 //
 //  MatchMonitor.swift
-//  Scalps
+//  Alps
 //
 //  Created by Rafal Kowalski on 28/02/2017
-//  Copyright © 2017 Scalps. All rights reserved.
+//  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Scalps
+import Alps
 
 import Foundation
 
 class MatchMonitor {
-    let scalpsManager: ScalpsManager
+    let alpsManager: AlpsManager
     var timer: Timer = Timer()
     var deliveredMatches = Set<Match>()
     var onMatchClosure: ((_ match: Match) -> Void)
 
-    convenience init(scalpsManager: ScalpsManager) {
-        self.init(scalpsManager: scalpsManager, onMatch: {
+    convenience init(alpsManager: AlpsManager) {
+        self.init(alpsManager: alpsManager, onMatch: {
             (_ match: Match) in NSLog("Got a match: \(match)")
         })
     }
 
-    init(scalpsManager: ScalpsManager, onMatch: @escaping ((_ match: Match) -> Void)) {
-        self.scalpsManager = scalpsManager
+    init(alpsManager: AlpsManager, onMatch: @escaping ((_ match: Match) -> Void)) {
+        self.alpsManager = alpsManager
         self.onMatchClosure = onMatch
     }
 
@@ -46,7 +46,7 @@ class MatchMonitor {
 
     @objc func checkMatches() {
         NSLog("checking matches")
-        scalpsManager.getAllMatches {
+        alpsManager.getAllMatches {
             (_ matches: Matches) in
             NSLog("got all matches from the cloud: \(matches)")
 

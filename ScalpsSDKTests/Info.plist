@@ -24,7 +24,7 @@
                 <true/>
         </dict>
         <key>NSLocationAlwaysUsageDescription</key>
-        <string>Need location updates to inform the Scalps backend
+        <string>Need location updates to inform the Alps backend
         about the current device location in order to perform match
         analysis.</string>
 </dict>

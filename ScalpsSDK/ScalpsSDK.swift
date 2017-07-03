@@ -1,20 +1,20 @@
 //
-//  Scalps.swift
-//  ScalpsSDK
+//  Alps.swift
+//  AlpsSDK
 //
 //  Created by Rafal Kowalski on 03/10/2016
-//  Copyright © 2016 Scalps. All rights reserved.
+//  Copyright © 2016 Alps. All rights reserved.
 //
 
 import Foundation
-import Scalps
+import Alps
 
-protocol ScalpsSDK {
+protocol AlpsSDK {
 
-    // create Scalps entities
+    // create Alps entities
     func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)
 
-    // XXX: assume one user and one device in the ScalpsManager for now
+    // XXX: assume one user and one device in the AlpsManager for now
     func createDevice(name: String, platform: String, deviceToken: String,
                       latitude: Double, longitude: Double, altitude: Double,
                       horizontalAccuracy: Double, verticalAccuracy: Double,
@@ -45,7 +45,7 @@ protocol ScalpsSDK {
 
     // cancel (unpublish and unsubscribe)
 
-    // delete Scalps entities
+    // delete Alps entities
 
     // query stats
 

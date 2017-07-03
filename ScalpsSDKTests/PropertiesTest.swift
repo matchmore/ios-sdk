@@ -1,14 +1,14 @@
 //
 //  PropertiesTest.swift
-//  ScalpsAPI
+//  AlpsAPI
 //
 //  Created by Rafal Kowalski on 09/03/17.
-//  Copyright © 2017 Scalps. All rights reserved.
+//  Copyright © 2017 Alps. All rights reserved.
 //
 
 import XCTest
 
-@testable import Scalps
+@testable import Alps
 
 class PropertiesTest: XCTestCase {
 
@@ -47,14 +47,14 @@ class PropertiesTest: XCTestCase {
 
         print("json: \(properties.encodeToJSON())")
     }
-    
+
     func test4PropertiesEncodeToJSON() {
         let dictionary = ["mood": "happy", "energy": "high"]
         let properties = Properties(dictionaryLiteral: ("mood", "happy"), ("energy", "high"))
-        
+
         XCTAssertNotNil(properties)
         XCTAssertEqual(properties, dictionary)
-        
+
         print("json: \(properties.encodeToJSON())")
         print("valid: \(JSONSerialization.isValidJSONObject(properties.encodeToJSON()))")
         do {
