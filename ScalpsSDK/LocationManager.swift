@@ -16,6 +16,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
     let clLocationManager: CLLocationManager
 
+    var onLocationUpdateClosure: ((_ location: CLLocation) -> Void)?
+
+    public func onLocationUpdate(completion: @escaping (_ location: CLLocation) -> Void) {
+        onLocationUpdateClosure = completion
+    }
+
     convenience init(alpsManager: AlpsManager) {
         self.init(alpsManager: alpsManager, locationManager: CLLocationManager())
     }
@@ -40,11 +46,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-            alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
-                                         altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
-                                         verticalAccuracy: coord.verticalAccuracy) {
-                (_ location) in
-                NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
+            self.onLocationUpdateClosure!(locations.last!)
+            do {
+                try alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+                                             altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
+                                             verticalAccuracy: coord.verticalAccuracy) {
+                    (_ location) in
+                    NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
+                }
+            } catch {
+                // Allow to update location even when there is no device / user created
             }
         }
     }

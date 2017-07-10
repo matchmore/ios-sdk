@@ -2,13 +2,13 @@
 platform :ios, '9.0'
 use_frameworks!
 
-target 'AlpsSDK' do
+target 'ScalpsSDK' do
   # pod 'Alps', :path => '../api/'
   pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.2'
   pod 'Alamofire'
 end
 
-target 'AlpsSDKTests' do
+target 'ScalpsSDKTests' do
   # pod 'Alps', :path => '../api/'
   pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.2'
   pod 'Alamofire'

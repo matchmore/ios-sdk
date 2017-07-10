@@ -36,12 +36,12 @@ protocol AlpsSDK {
     func getUser(completion: @escaping (_ user: User) -> Void)
     func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void)
     func getDevice(completion: @escaping (_ device: Device) -> Void)
-    func getPublication(_ publicationId: String, completion: @escaping (_ publication: Publication) -> Void)
-    func getAllPublicationsForDevice(_ deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void)
-    func getAllPublications(completion: @escaping (_ publication: [Publication]) -> Void)
-    func getSubscription(_ subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void)
-    func getAllSubscriptionsForDevice(_ deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void)
-    func getAllSubscriptions(completion: @escaping (_ subscriptions: [Subscription]) -> Void)
+    func getPublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void)
+    func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void)
+    func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void)
+    func getSubscription(_ userId:String, deviceId:String, subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void)
+    func deleteSubscription(_ userId:String, deviceId:String, subscriptionId: String, completion: @escaping () -> Void)
+    func getAllSubscriptionsForDevice(_ userId:String, deviceId:String, completion: @escaping (_ subscriptions: [Subscription]) -> Void)
 
     // cancel (unpublish and unsubscribe)
 
