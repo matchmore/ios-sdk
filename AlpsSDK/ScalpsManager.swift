@@ -24,7 +24,7 @@ open class AlpsManager: AlpsSDK {
     let headers: [String: String]
 
     // XXX: this has to come from a configuration
-    let scalpsEndpoint = "https://api.adjago.io/v02"
+    let alpsEndpoint = "https://api.adjago.io/v02"
 
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
@@ -51,7 +51,7 @@ open class AlpsManager: AlpsSDK {
         self.locationManager = LocationManager(alpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(alpsManager: self)
 
-        AlpsAPI.basePath = scalpsEndpoint
+        AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
     }
 
@@ -162,7 +162,7 @@ open class AlpsManager: AlpsSDK {
             // throw AlpsManagerError.userNotIntialized
         }
     }
-    
+
     public func updateLocation(userId:String, deviceId: String, latitude: Double, longitude: Double, altitude: Double,
                                horizontalAccuracy: Double, verticalAccuracy: Double,
                                completion: @escaping (_ location: DeviceLocation?) -> Void) {
@@ -297,7 +297,7 @@ open class AlpsManager: AlpsSDK {
               }
         }
     }
-    
+
     func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void) {
         let _ = Alps.PublicationAPI.deletePublication(userId: userId, deviceId: deviceId, publicationId: publicationId) {
             (error) -> Void in
@@ -362,7 +362,7 @@ open class AlpsManager: AlpsSDK {
             }
         }
     }
-    
+
     func getAllSubscriptionsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
         let _ = Alps.SubscriptionAPI.getSubscriptions(userId: userId, deviceId: deviceId) {
             (subscriptions, error) -> Void in
@@ -373,7 +373,7 @@ open class AlpsManager: AlpsSDK {
             }
         }
     }
-    
+
     public func onLocationUpdate(completion: @escaping ((_ location: CLLocation) -> Void)) {
         if let lm = locationManager {
             lm.onLocationUpdate(completion: completion)
