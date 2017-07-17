@@ -4,12 +4,12 @@ use_frameworks!
 
 target 'AlpsSDK' do
   pod 'Alps', :path => '../ios-api/'
-  # pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.2'
+  # pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.3'
   pod 'Alamofire'
 end
 
 target 'AlpsSDKTests' do
   pod 'Alps', :path => '../ios-api/'
-  # pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.2'
+  # pod 'Alps', :git => 'https://alps@bitbucket.org/alps/ios-api.git', :tag => '0.0.3'
   pod 'Alamofire'
 end
