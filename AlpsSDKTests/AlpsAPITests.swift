@@ -23,7 +23,7 @@ class AlpsAPITests: XCTestCase {
     override func setUp() {
         super.setUp()
         // AlpsAPI.basePath = "http://localhost:9000"
-        // AlpsAPI.basePath = "http://api.matchmore.io/v02"
+        // AlpsAPI.basePath = "http://api.matchmore.io/v03"
         AlpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

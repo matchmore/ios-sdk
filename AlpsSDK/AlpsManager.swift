@@ -24,7 +24,7 @@ open class AlpsManager: AlpsSDK {
     let headers: [String: String]
 
     // XXX: this has to come from a configuration
-    let alpsEndpoint = "https://api.matchmore.io/v02"
+    let alpsEndpoint = "https://api.matchmore.io/v03"
 
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
