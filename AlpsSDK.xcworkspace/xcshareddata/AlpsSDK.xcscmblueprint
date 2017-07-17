@@ -9,8 +9,8 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4C055080-39FC-475B-B896-C6C977211887",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "385AED1204281BFC5C4696062D0866464EB49562" : "ios-api\/",
-    "2A7CC117A0328588DBC06BB0A67A77A6C90443FD" : "ios-sdk\/"
+    "385AED1204281BFC5C4696062D0866464EB49562" : "api\/",
+    "2A7CC117A0328588DBC06BB0A67A77A6C90443FD" : "sdk\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "AlpsSDK",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
