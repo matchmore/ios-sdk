@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14C26E7339F791723C872A2C /* Pods_ScalpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C26E9B4B7CE15ED81AEDAD /* Pods_ScalpsSDK.framework */; };
+		14C26E7339F791723C872A2C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */; };
 		502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* LocationManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
-		502C85951E01BB3F00EF8ECF /* ScalpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* ScalpsManager.swift */; };
+		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
 		502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858F1E01BB3F00EF8ECF /* Utils.swift */; };
-		5034876B1E01CAF300EF8ECF /* ScalpsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503487691E01CAF300EF8ECF /* ScalpsSDK.swift */; };
-		504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* ScalpsUser.swift */; };
-		504EFC271E01D0A700EF8ECF /* ScalpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */; };
-		5092AC3D1D93CB0C00EF8ECF /* ScalpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */; };
-		50B7115E1E0AED3500EF8ECF /* ScalpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */; };
+		5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503487691E01CAF300EF8ECF /* AlpsSDK.swift */; };
+		504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* AlpsUser.swift */; };
+		504EFC271E01D0A700EF8ECF /* AlpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */; };
+		5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; };
+		50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */; };
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		50E333F61E4CDEF600EF8ECF /* PropertiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */; };
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
-		50F1BA0B1E01C50100EF8ECF /* ScalpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */; };
-		855D12BB3E696B79A23574B9 /* Pods_ScalpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_ScalpsSDKTests.framework */; };
+		50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */; };
+		855D12BB3E696B79A23574B9 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,34 +30,34 @@
 			containerPortal = 5092AC2A1D93CB0C00EF8ECF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5092AC321D93CB0C00EF8ECF;
-			remoteInfo = Scalps;
+			remoteInfo = Alps;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E1A19F705F82C064D0F13D2 /* Pods_ScalpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScalpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		502C85891E01BB3F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		502C858A1E01BB3F00EF8ECF /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
-		502C858E1E01BB3F00EF8ECF /* ScalpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsManager.swift; sourceTree = "<group>"; };
+		502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManager.swift; sourceTree = "<group>"; };
 		502C858F1E01BB3F00EF8ECF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		502C85981E01BB5F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		502C85991E01BB5F00EF8ECF /* PayloadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadTest.swift; sourceTree = "<group>"; };
-		502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsAPITests.swift; sourceTree = "<group>"; };
-		503487681E01CAF300EF8ECF /* ScalpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalpsSDK.h; sourceTree = "<group>"; };
-		503487691E01CAF300EF8ECF /* ScalpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsSDK.swift; sourceTree = "<group>"; };
-		504485F31E0AD62300EF8ECF /* ScalpsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsUser.swift; sourceTree = "<group>"; };
-		504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsSDKTests.swift; sourceTree = "<group>"; };
-		5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScalpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5092AC3C1D93CB0C00EF8ECF /* ScalpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScalpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalpsDevice.swift; sourceTree = "<group>"; };
+		502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsAPITests.swift; sourceTree = "<group>"; };
+		503487681E01CAF300EF8ECF /* AlpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlpsSDK.h; sourceTree = "<group>"; };
+		503487691E01CAF300EF8ECF /* AlpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDK.swift; sourceTree = "<group>"; };
+		504485F31E0AD62300EF8ECF /* AlpsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsUser.swift; sourceTree = "<group>"; };
+		504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDKTests.swift; sourceTree = "<group>"; };
+		5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsDevice.swift; sourceTree = "<group>"; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTest.swift; sourceTree = "<group>"; };
-		54C26E9B4B7CE15ED81AEDAD /* Pods_ScalpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScalpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74A39AC04A89DA7A96BCBDF7 /* Pods-ScalpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDK/Pods-ScalpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		9795B8D8DF3ECA38966120F0 /* Pods-ScalpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDK/Pods-ScalpsSDK.release.xcconfig"; sourceTree = "<group>"; };
-		9D74AA6C042E9D345A91177A /* Pods-ScalpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDKTests/Pods-ScalpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		F05555C4F74B3069025FCE0E /* Pods-ScalpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScalpsSDKTests/Pods-ScalpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
+		9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14C26E7339F791723C872A2C /* Pods_ScalpsSDK.framework in Frameworks */,
+				14C26E7339F791723C872A2C /* Pods_AlpsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,48 +73,48 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5092AC3D1D93CB0C00EF8ECF /* ScalpsSDK.framework in Frameworks */,
-				855D12BB3E696B79A23574B9 /* Pods_ScalpsSDKTests.framework in Frameworks */,
+				5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */,
+				855D12BB3E696B79A23574B9 /* Pods_AlpsSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		502C85881E01BB3F00EF8ECF /* ScalpsSDK */ = {
+		502C85881E01BB3F00EF8ECF /* AlpsSDK */ = {
 			isa = PBXGroup;
 			children = (
 				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
-				50B7115D1E0AED3500EF8ECF /* ScalpsDevice.swift */,
-				504485F31E0AD62300EF8ECF /* ScalpsUser.swift */,
-				503487681E01CAF300EF8ECF /* ScalpsSDK.h */,
-				503487691E01CAF300EF8ECF /* ScalpsSDK.swift */,
+				50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */,
+				504485F31E0AD62300EF8ECF /* AlpsUser.swift */,
+				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
+				503487691E01CAF300EF8ECF /* AlpsSDK.swift */,
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
 				502C858A1E01BB3F00EF8ECF /* LocationManager.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
-				502C858E1E01BB3F00EF8ECF /* ScalpsManager.swift */,
+				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				502C858F1E01BB3F00EF8ECF /* Utils.swift */,
 			);
-			path = ScalpsSDK;
+			path = AlpsSDK;
 			sourceTree = "<group>";
 		};
-		502C85971E01BB5F00EF8ECF /* ScalpsSDKTests */ = {
+		502C85971E01BB5F00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXGroup;
 			children = (
 				50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */,
-				504EFC261E01D0A700EF8ECF /* ScalpsSDKTests.swift */,
+				504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
 				502C85991E01BB5F00EF8ECF /* PayloadTest.swift */,
-				502C859A1E01BB5F00EF8ECF /* ScalpsAPITests.swift */,
+				502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */,
 			);
-			path = ScalpsSDKTests;
+			path = AlpsSDKTests;
 			sourceTree = "<group>";
 		};
 		5092AC291D93CB0C00EF8ECF = {
 			isa = PBXGroup;
 			children = (
-				502C85881E01BB3F00EF8ECF /* ScalpsSDK */,
-				502C85971E01BB5F00EF8ECF /* ScalpsSDKTests */,
+				502C85881E01BB3F00EF8ECF /* AlpsSDK */,
+				502C85971E01BB5F00EF8ECF /* AlpsSDKTests */,
 				5092AC341D93CB0C00EF8ECF /* Products */,
 				B9E6607062928A8E60F3F241 /* Pods */,
 				5613821143A5BC848DB9649D /* Frameworks */,
@@ -124,8 +124,8 @@
 		5092AC341D93CB0C00EF8ECF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */,
-				5092AC3C1D93CB0C00EF8ECF /* ScalpsSDKTests.xctest */,
+				5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */,
+				5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,8 +133,8 @@
 		5613821143A5BC848DB9649D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54C26E9B4B7CE15ED81AEDAD /* Pods_ScalpsSDK.framework */,
-				1E1A19F705F82C064D0F13D2 /* Pods_ScalpsSDKTests.framework */,
+				54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */,
+				1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,10 +142,10 @@
 		B9E6607062928A8E60F3F241 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				74A39AC04A89DA7A96BCBDF7 /* Pods-ScalpsSDK.debug.xcconfig */,
-				9795B8D8DF3ECA38966120F0 /* Pods-ScalpsSDK.release.xcconfig */,
-				F05555C4F74B3069025FCE0E /* Pods-ScalpsSDKTests.debug.xcconfig */,
-				9D74AA6C042E9D345A91177A /* Pods-ScalpsSDKTests.release.xcconfig */,
+				74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */,
+				9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */,
+				F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */,
+				9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -163,9 +163,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5092AC321D93CB0C00EF8ECF /* ScalpsSDK */ = {
+		5092AC321D93CB0C00EF8ECF /* AlpsSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "ScalpsSDK" */;
+			buildConfigurationList = 5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDK" */;
 			buildPhases = (
 				3053F18375185E356E7B47B2 /* [CP] Check Pods Manifest.lock */,
 				5092AC2E1D93CB0C00EF8ECF /* Sources */,
@@ -178,14 +178,14 @@
 			);
 			dependencies = (
 			);
-			name = ScalpsSDK;
-			productName = Scalps;
-			productReference = 5092AC331D93CB0C00EF8ECF /* ScalpsSDK.framework */;
+			name = AlpsSDK;
+			productName = Alps;
+			productReference = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5092AC3B1D93CB0C00EF8ECF /* ScalpsSDKTests */ = {
+		5092AC3B1D93CB0C00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "ScalpsSDKTests" */;
+			buildConfigurationList = 5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDKTests" */;
 			buildPhases = (
 				E7C2C68A553A0F481B82BDF6 /* [CP] Check Pods Manifest.lock */,
 				5092AC381D93CB0C00EF8ECF /* Sources */,
@@ -199,9 +199,9 @@
 			dependencies = (
 				5092AC3F1D93CB0C00EF8ECF /* PBXTargetDependency */,
 			);
-			name = ScalpsSDKTests;
-			productName = ScalpsTests;
-			productReference = 5092AC3C1D93CB0C00EF8ECF /* ScalpsSDKTests.xctest */;
+			name = AlpsSDKTests;
+			productName = AlpsTests;
+			productReference = 5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +212,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = Scalps;
+				ORGANIZATIONNAME = Alps;
 				TargetAttributes = {
 					5092AC321D93CB0C00EF8ECF = {
 						CreatedOnToolsVersion = 8.0;
@@ -227,7 +227,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5092AC2D1D93CB0C00EF8ECF /* Build configuration list for PBXProject "ScalpsSDK" */;
+			buildConfigurationList = 5092AC2D1D93CB0C00EF8ECF /* Build configuration list for PBXProject "AlpsSDK" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -239,8 +239,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5092AC321D93CB0C00EF8ECF /* ScalpsSDK */,
-				5092AC3B1D93CB0C00EF8ECF /* ScalpsSDKTests */,
+				5092AC321D93CB0C00EF8ECF /* AlpsSDK */,
+				5092AC3B1D93CB0C00EF8ECF /* AlpsSDKTests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,7 +275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		64783D3008E1E9E1129DAF6C /* [CP] Copy Pods Resources */ = {
@@ -290,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScalpsSDKTests/Pods-ScalpsSDKTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A04E3FED69C3D67EA7337CC8 /* [CP] Embed Pods Frameworks */ = {
@@ -305,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScalpsSDKTests/Pods-ScalpsSDKTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD3076F4E03E22E1053A9F11 /* [CP] Copy Pods Resources */ = {
@@ -320,7 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScalpsSDK/Pods-ScalpsSDK-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E7C2C68A553A0F481B82BDF6 /* [CP] Check Pods Manifest.lock */ = {
@@ -335,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -345,12 +345,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504485F41E0AD62300EF8ECF /* ScalpsUser.swift in Sources */,
-				5034876B1E01CAF300EF8ECF /* ScalpsSDK.swift in Sources */,
+				504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */,
+				5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
-				50B7115E1E0AED3500EF8ECF /* ScalpsDevice.swift in Sources */,
+				50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */,
-				502C85951E01BB3F00EF8ECF /* ScalpsManager.swift in Sources */,
+				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */,
 			);
@@ -361,8 +361,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E333F61E4CDEF600EF8ECF /* PropertiesTest.swift in Sources */,
-				50F1BA0B1E01C50100EF8ECF /* ScalpsAPITests.swift in Sources */,
-				504EFC271E01D0A700EF8ECF /* ScalpsSDKTests.swift in Sources */,
+				50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */,
+				504EFC271E01D0A700EF8ECF /* AlpsSDKTests.swift in Sources */,
 				50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +372,7 @@
 /* Begin PBXTargetDependency section */
 		5092AC3F1D93CB0C00EF8ECF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5092AC321D93CB0C00EF8ECF /* ScalpsSDK */;
+			target = 5092AC321D93CB0C00EF8ECF /* AlpsSDK */;
 			targetProxy = 5092AC3E1D93CB0C00EF8ECF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -483,7 +483,7 @@
 		};
 		5092AC481D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74A39AC04A89DA7A96BCBDF7 /* Pods-ScalpsSDK.debug.xcconfig */;
+			baseConfigurationReference = 74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -492,10 +492,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ScalpsSDK/Info.plist;
+				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scalps.sdk;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.matchmore.-alps.sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -507,7 +507,7 @@
 		};
 		5092AC491D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9795B8D8DF3ECA38966120F0 /* Pods-ScalpsSDK.release.xcconfig */;
+			baseConfigurationReference = 9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -516,10 +516,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ScalpsSDK/Info.plist;
+				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scalps.sdk;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.matchmore.-alps.sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -530,13 +530,13 @@
 		};
 		5092AC4B1D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F05555C4F74B3069025FCE0E /* Pods-ScalpsSDKTests.debug.xcconfig */;
+			baseConfigurationReference = F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
-				INFOPLIST_FILE = ScalpsSDKTests/Info.plist;
+				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scalps.api.ScalpsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.alps.api.AlpsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -544,13 +544,13 @@
 		};
 		5092AC4C1D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D74AA6C042E9D345A91177A /* Pods-ScalpsSDKTests.release.xcconfig */;
+			baseConfigurationReference = 9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
-				INFOPLIST_FILE = ScalpsSDKTests/Info.plist;
+				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scalps.api.ScalpsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.alps.api.AlpsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -559,7 +559,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5092AC2D1D93CB0C00EF8ECF /* Build configuration list for PBXProject "ScalpsSDK" */ = {
+		5092AC2D1D93CB0C00EF8ECF /* Build configuration list for PBXProject "AlpsSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5092AC451D93CB0C00EF8ECF /* Debug */,
@@ -568,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "ScalpsSDK" */ = {
+		5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5092AC481D93CB0C00EF8ECF /* Debug */,
@@ -577,7 +577,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "ScalpsSDKTests" */ = {
+		5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5092AC4B1D93CB0C00EF8ECF /* Debug */,
