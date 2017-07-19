@@ -46,8 +46,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-            self.onLocationUpdateClosure!(locations.last!)
             do {
+                try self.onLocationUpdateClosure!(locations.last!)
                 try alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                                              altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                                              verticalAccuracy: coord.verticalAccuracy) {

@@ -241,7 +241,7 @@ open class AlpsManager: AlpsSDK {
 
 
 
-    func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void) {
+    public func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void) {
         let _ = Alps.UserAPI.getUser(userId: userId) {
             (user, error) -> Void in
 
@@ -255,7 +255,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getUser(completion: @escaping (_ user: User) -> Void)  {
+    public func getUser(completion: @escaping (_ user: User) -> Void)  {
         if let u = alpsUser {
             completion(u.user)
         } else {
@@ -264,7 +264,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {
+    public func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {
 
         if let u = alpsUser, let d = alpsDevice {
             let _ = Alps.UserAPI.getDevice(userId: u.user.userId!, deviceId: d.device.deviceId!) {
@@ -276,7 +276,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getDevice(completion: @escaping (_ device: Device) -> Void)  {
+    public func getDevice(completion: @escaping (_ device: Device) -> Void)  {
         if let u = alpsUser, let d = alpsDevice {
             let _ = Alps.UserAPI.getDevice(userId: u.user.userId!, deviceId: d.device.deviceId!) {
                 (device, error) -> Void in
@@ -287,7 +287,8 @@ open class AlpsManager: AlpsSDK {
             completion(d.device)
         }
     }
-    func getPublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void) {
+
+    public func getPublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void) {
         let _ = Alps.PublicationAPI.getPublication(userId: userId, deviceId: deviceId, publicationId: publicationId) {
             (publication, error) -> Void in
             if let p = publication {
@@ -298,7 +299,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void) {
+    public func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void) {
         let _ = Alps.PublicationAPI.deletePublication(userId: userId, deviceId: deviceId, publicationId: publicationId) {
             (error) -> Void in
             if let e = error {
@@ -309,7 +310,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getAllPublications(completion: @escaping (_ publications: [Publication]) -> Void) {
+    public func getAllPublications(completion: @escaping (_ publications: [Publication]) -> Void) {
         if let u = alpsUser, let d = alpsDevice {
             // let _ = Alps.DeviceAPI.getPublications
             //                (publications, error) -> Void in
@@ -321,7 +322,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getAllSubscriptions(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {
+    public func getAllSubscriptions(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {
         if let u = alpsUser, let d = alpsDevice {
             // let _ = Alps.DeviceAPI.getPublications
             //                (publications, error) -> Void in
@@ -332,7 +333,8 @@ open class AlpsManager: AlpsSDK {
             completion(subscriptions)
         }
     }
-    func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {
+
+    public func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {
         let _ = Alps.PublicationAPI.getPublications(userId: userId, deviceId: deviceId) {
             (publications, error) -> Void in
             if let p = publications{
@@ -343,7 +345,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getSubscription(_ userId:String, deviceId: String, subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void) {
+    public func getSubscription(_ userId:String, deviceId: String, subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void) {
         let _ = Alps.SubscriptionAPI.getSubscription(userId: userId, deviceId: deviceId, subscriptionId: subscriptionId) {
             (subscription, error) -> Void in
             if let s = subscription {
@@ -354,7 +356,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func deleteSubscription(_ userId:String, deviceId:String, subscriptionId: String, completion: @escaping () -> Void) {
+    public func deleteSubscription(_ userId:String, deviceId:String, subscriptionId: String, completion: @escaping () -> Void) {
         let _ = Alps.SubscriptionAPI.deleteSubscription(userId: userId, deviceId: deviceId, subscriptionId: subscriptionId) {
             (error) -> Void in
             if let e = error {
@@ -365,7 +367,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    func getAllSubscriptionsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
+    public func getAllSubscriptionsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
         let _ = Alps.SubscriptionAPI.getSubscriptions(userId: userId, deviceId: deviceId) {
             (subscriptions, error) -> Void in
             if let s = subscriptions{
