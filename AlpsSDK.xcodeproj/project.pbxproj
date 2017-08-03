@@ -22,7 +22,6 @@
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
 		50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */; };
 		840D0E821F3326600069A1EA /* BeaconUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D0E811F3326600069A1EA /* BeaconUser.swift */; };
-		840D0E861F3348E50069A1EA /* DeviceBis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D0E851F3348E50069A1EA /* DeviceBis.swift */; };
 		855D12BB3E696B79A23574B9 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 		54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		840D0E811F3326600069A1EA /* BeaconUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconUser.swift; sourceTree = "<group>"; };
-		840D0E851F3348E50069A1EA /* DeviceBis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceBis.swift; sourceTree = "<group>"; };
 		9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
 		9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				502C858F1E01BB3F00EF8ECF /* Utils.swift */,
 				840D0E811F3326600069A1EA /* BeaconUser.swift */,
-				840D0E851F3348E50069A1EA /* DeviceBis.swift */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840D0E861F3348E50069A1EA /* DeviceBis.swift in Sources */,
 				504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */,
 				5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,

@@ -12,7 +12,7 @@ import CoreLocation
 
 class BeaconUser:NSObject {
     var alpsManager : AlpsManager
-    var beacons = [DeviceBis]()
+    var beacons = [Device]()
     
     init (alpsManager : AlpsManager) {
         self.alpsManager = alpsManager
@@ -27,13 +27,13 @@ class BeaconUser:NSObject {
 //        beacons.append(DeviceBis.init(mobileName: "mobile1", platform: "ios 9.0", deviceToken: "xxx", location: nil))
 //        beacons.append(DeviceBis.init(mobileName: "mobile2", platform: "ios 10.0", deviceToken: "xxx", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
 //        beacons.append(DeviceBis.init(pinName: "pin1", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
-        beacons.append(DeviceBis.init(beaconName: "beacon1 - rose", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 21978, minor: 59907))
-        beacons.append(DeviceBis.init(beaconName: "beacon2 - jaune canari", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 64575, minor: 19467))
-        beacons.append(DeviceBis.init(beaconName: "beacon3 - bordeau-betrave", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 53494, minor: 28090))
-        print("DUMMY Beacons ready.")
+//        beacons.append(DeviceBis.init(beaconName: "beacon1 - rose", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 21978, minor: 59907))
+//        beacons.append(DeviceBis.init(beaconName: "beacon2 - jaune canari", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 64575, minor: 19467))
+//        beacons.append(DeviceBis.init(beaconName: "beacon3 - bordeau-betrave", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 53494, minor: 28090))
+//        print("DUMMY Beacons ready.")
     }
     
-    public func getBeacons() -> [DeviceBis]{
+    public func getBeacons() -> [Device]{
         return beacons
     }
 }
