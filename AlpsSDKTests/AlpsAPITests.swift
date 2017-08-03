@@ -40,8 +40,9 @@ class AlpsAPITests: XCTestCase {
         let _ = Alps.UsersAPI.createUser(name: "Alps User 1", completion: {
             (user, error) -> Void in
 
-            XCTAssertNil(error, "Whoops, error \(error)")
+            
             createdUser = user
+            XCTAssertNil(error, "Whoops, error \(error)")
             expectation.fulfill()
         })
 
