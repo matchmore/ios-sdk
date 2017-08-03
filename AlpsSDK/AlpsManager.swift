@@ -424,6 +424,18 @@ open class AlpsManager: AlpsSDK {
     }
     
     //DEVELOP: Beacons
+    public func getUuid() -> [UUID]{
+        var uuids : [UUID] = []
+        for beacon in beacons{
+            if let uuid = beacon.type.getUuid(){
+                if !uuids.contains(uuid){
+                    uuids.append(uuid)
+                }
+            }
+        }
+        return uuids
+    }
+    
     public func startRanging(forUuid: UUID, identifier: String){
         locationManager?.startRanging(forUuid: forUuid, identifier: identifier)
     }
