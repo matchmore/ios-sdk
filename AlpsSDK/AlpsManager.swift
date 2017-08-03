@@ -422,4 +422,13 @@ open class AlpsManager: AlpsSDK {
     public func stopUpdatingLocation() {
         locationManager?.stopUpdatingLocation()
     }
+    
+    //DEVELOP: Beacons
+    public func startRanging(forUuid: UUID, identifier: String){
+        locationManager?.startRanging(forUuid: forUuid, identifier: identifier)
+    }
+    
+    public func stopRanging(forUuid: UUID){
+        locationManager?.stopRanging(forUuid: forUuid)
+    }
 }

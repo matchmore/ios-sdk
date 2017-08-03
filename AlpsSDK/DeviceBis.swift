@@ -44,32 +44,49 @@ struct DeviceBis {
         case Pin(location:CLLocation?)
         case Beacon(uuid:UUID, major:NSNumber, minor:NSNumber)
         
-        //    public func getLocation(_ type: Type) -> CLLocation{
-        //    switch type {
-        //    case .Mobile:
-        //        return location
-        //    case .Pin: break
-        //    case .Beacon: break
-        //    }
-        //    }
+        func getPlatform() -> String? {
+            switch self{
+                case .Mobile(let platform, _, _):
+                return platform
+                default :
+                return nil
+            }
+        }
+        
+        func getDeviceToken() -> String? {
+            switch self{
+            case .Mobile(_, let deviceToken, _):
+                return deviceToken
+            default:
+                return nil
+            }
+        }
         
         func getLocation() -> CLLocation? {
             switch self {
-            case .Mobile( _, _, let location):
-                return location!
-            case .Pin(let location):
+            case .Mobile( _, _, let location),
+                 .Pin(let location):
                 return location!
             default :
                 return nil
             }
         }
         
-        func getDeviceToken() -> String? {
-            switch self {
-            case .Mobile( _, let deviceToken, _):
-                return deviceToken
-            default :
+        func getUuid() -> UUID? {
+            switch self{
+            case .Beacon(let uuid,_,_):
+                return uuid
+            default:
                 return nil
+            }
+        }
+        
+        func getBeacon() -> (UUID?, NSNumber?, NSNumber?){
+            switch self{
+            case let .Beacon(uuid, major, minor):
+                return (uuid,major,minor)
+            default:
+                return (nil,nil,nil)
             }
         }
     }

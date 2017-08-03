@@ -17,6 +17,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     let clLocationManager: CLLocationManager
 
     var onLocationUpdateClosure: ((_ location: CLLocation) -> Void)?
+    var closestBeaconClosure: ((_ beacon: CLBeacon) -> Void)?
 
     public func onLocationUpdate(completion: @escaping (_ location: CLLocation) -> Void) {
         onLocationUpdateClosure = completion
@@ -85,5 +86,52 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
     func stopUpdatingLocation() {
         clLocationManager.stopUpdatingLocation()
+    }
+    
+    //DEVELOP: Beacons
+    func startRanging(forUuid : UUID, identifier : String){
+        let ourCLBeaconRegion = CLBeaconRegion.init(proximityUUID: forUuid, identifier: identifier)
+        clLocationManager.startRangingBeacons(in: ourCLBeaconRegion)
+    }
+    
+    func stopRanging(forUuid : UUID){
+        for region in clLocationManager.rangedRegions{
+            if let beaconRegion = region as? CLBeaconRegion {
+                if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
+                    clLocationManager.stopRangingBeacons(in: beaconRegion)
+                    print("Stopped ranging for a beacon region")
+                }
+            }
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        print(beacons)
+        var closest : CLBeacon?
+        if beacons.isEmpty != true{
+            closest = beacons.first!
+            for beacon in beacons{
+                if ((closest?.accuracy)! > beacon.accuracy) {
+                    closest = beacon;
+                }
+            }
+        }
+        
+        if let closestBeacon = closest {
+            do {
+                try self.closestBeaconClosure?(closestBeacon)
+            } catch {
+                // just to catch
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
+        print(error)
+    }
+    
+    public func closestBeaconClosure(completion: @escaping (_ beacon: CLBeacon) -> Void){
+        closestBeaconClosure = completion
     }
 }
