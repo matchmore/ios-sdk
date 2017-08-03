@@ -30,6 +30,9 @@ open class AlpsManager: AlpsSDK {
     let apiKey: String
     var locationManager: LocationManager? = nil
     var matchMonitor: MatchMonitor? = nil
+    
+    // DEVELOP: Beacons
+    var beaconUser: BeaconUser? = nil
 
     // FIXME: add the world id when it's there
     // var world: World
@@ -40,6 +43,13 @@ open class AlpsManager: AlpsSDK {
     var locations: [DeviceLocation] = []
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
+    
+    // DEVELOP: Beacons
+    // depending on the case beacons will have different class in his array
+    // Variant 1 is enum => Device with DeviceType
+    // Variant 2 is sub-classes => BeaconDevice
+    // Variant 3 is protocol => BeaconDevice
+    var beacons: [Device] = []
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
@@ -50,6 +60,15 @@ open class AlpsManager: AlpsSDK {
         self.headers = defaultHeaders.merged(with: ["api-key": apiKey])
         self.locationManager = LocationManager(alpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(alpsManager: self)
+        
+        
+        // DEVELOP: Beacons
+        self.beaconUser = BeaconUser(alpsManager: self)
+        if let bu = beaconUser{
+            self.beacons = bu.getBeacons()
+        }else{
+            print("None beaconUser found.")
+        }
 
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers

@@ -152,6 +152,11 @@ class AlpsSDKTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
+    
+    func test6GetBeacons() {
+        let alps = AlpsManager(apiKey: apiKey)
+        XCTAssertNotNil(alps.beacons)
+    }
 
     /*
      // XXX: still not found a way to allow location updates from tests
