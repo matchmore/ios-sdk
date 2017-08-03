@@ -12,7 +12,7 @@ import CoreLocation
 
 class BeaconUser:NSObject {
     var alpsManager : AlpsManager
-    var beacons = [Device]()
+    var beacons = [DeviceBis]()
     
     init (alpsManager : AlpsManager) {
         self.alpsManager = alpsManager
@@ -27,7 +27,7 @@ class BeaconUser:NSObject {
         print("DUMMY Beacons ready.")
     }
     
-    public func getBeacons() -> [Device]{
+    public func getBeacons() -> [DeviceBis]{
         return beacons
     }
 }

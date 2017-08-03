@@ -49,7 +49,7 @@ open class AlpsManager: AlpsSDK {
     // Variant 1 is enum => Device with DeviceType
     // Variant 2 is sub-classes => BeaconDevice
     // Variant 3 is protocol => BeaconDevice
-    var beacons: [Device] = []
+    var beacons: [DeviceBis] = []
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
