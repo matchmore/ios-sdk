@@ -49,7 +49,7 @@ open class AlpsManager: AlpsSDK {
     // Variant 1 is enum => Device with DeviceType
     // Variant 2 is sub-classes => BeaconDevice
     // Variant 3 is protocol => BeaconDevice
-    var beacons: [Device] = []
+    var beacons: [PBeaconDevice] = []
 
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
@@ -424,17 +424,22 @@ open class AlpsManager: AlpsSDK {
     }
     
     //DEVELOP: Beacons
-//    public func getUuid() -> [UUID]{
-//        var uuids : [UUID] = []
-//        for beacon in beacons{
-//            if let uuid = beacon.type.getUuid(){
-//                if !uuids.contains(uuid){
-//                    uuids.append(uuid)
-//                }
-//            }
-//        }
-//        return uuids
-//    }
+    public func getUuid() -> [UUID]{
+        var uuids : [UUID] = []
+        for beacon in beacons{
+            let uuid = beacon.uuid
+            if !uuids.contains(uuid){
+                uuids.append(uuid)
+            }
+        }
+        return uuids
+    }
+    
+    public func onBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
+        if let lm = locationManager {
+            lm.onBeaconUpdate(completion: completion)
+        }
+    }
     
     public func startRanging(forUuid: UUID, identifier: String){
         locationManager?.startRanging(forUuid: forUuid, identifier: identifier)

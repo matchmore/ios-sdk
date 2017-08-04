@@ -131,7 +131,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         print(error)
     }
     
-    public func closestBeaconClosure(completion: @escaping (_ beacon: CLBeacon) -> Void){
+    public func onBeaconUpdate(completion: @escaping (_ beacon: CLBeacon) -> Void){
         closestBeaconClosure = completion
     }
 }
