@@ -9,13 +9,13 @@
 import Foundation
 import Alps
 
-class PPinDevice : PDevice {
-    var deviceId: String?
-    var name: String?
+open class PPinDevice : PDevice {
+    public var deviceId: String?
+    public var name: String?
     
-    var location : Location!
+    public var location : Location!
     
-    convenience init(name: String, location: Location) {
+    public convenience init(name: String, location: Location) {
         self.init(name: name, location: location)
     }
 }

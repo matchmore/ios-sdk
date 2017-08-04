@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-class PMobileDevice : PDevice {
+open class PMobileDevice : PDevice {
     // Protocol
     public var deviceId: String?
     public var name: String?
@@ -24,7 +24,7 @@ class PMobileDevice : PDevice {
         self.init(name: name, platform: platform, deviceToken: deviceToken, location: Location())
     }
     
-    init(name: String, platform: String, deviceToken: String, location : Location?) {
+    public init(name: String, platform: String, deviceToken: String, location : Location?) {
         self.name = name
         self.platform = platform
         self.deviceToken = deviceToken
