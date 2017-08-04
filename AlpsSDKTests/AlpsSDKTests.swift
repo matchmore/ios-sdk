@@ -153,12 +153,6 @@ class AlpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    // This test should implement asynchronous call to get the beacons and construct a beacon object
-    func test7CreateBeacons() {
-        // 1. given
-        XCTAssertNotNil(DeviceBis.init(beaconName: "beacon1 - rose", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 21978, minor: 59907))
-    }
-    
     func test6GetBeacons() {
         let alps = AlpsManager(apiKey: apiKey)
         XCTAssertNotNil(alps.beacons)
