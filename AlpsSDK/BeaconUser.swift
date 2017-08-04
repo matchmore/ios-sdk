@@ -10,6 +10,8 @@ import Foundation
 import Alps
 import CoreLocation
 
+// BeaconUser is the middleware between our core and SDK, it works as the same as AlpsDevice etc..
+// AlpsManager will call BeaconUser, which will communicate with the API.
 class BeaconUser:NSObject {
     var alpsManager : AlpsManager
     var beacons = [PBeaconDevice]()
