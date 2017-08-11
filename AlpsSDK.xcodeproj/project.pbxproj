@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14C26E7339F791723C872A2C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */; };
 		502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* LocationManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
@@ -22,12 +21,7 @@
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
 		50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */; };
 		840D0E821F3326600069A1EA /* BeaconUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D0E811F3326600069A1EA /* BeaconUser.swift */; };
-		84AAEFD81F3496E700D6A9FD /* PDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFD71F3496E700D6A9FD /* PDevice.swift */; };
-		84AAEFDA1F34975D00D6A9FD /* PMobileDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFD91F34975D00D6A9FD /* PMobileDevice.swift */; };
-		84AAEFDC1F34987300D6A9FD /* PPinDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFDB1F34987300D6A9FD /* PPinDevice.swift */; };
-		84AAEFDE1F3499EE00D6A9FD /* PBeaconDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFDD1F3499EE00D6A9FD /* PBeaconDevice.swift */; };
 		84AAEFE21F34ACF300D6A9FD /* BeaconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */; };
-		855D12BB3E696B79A23574B9 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		502C85891E01BB3F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		502C858A1E01BB3F00EF8ECF /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
@@ -59,17 +52,8 @@
 		50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsDevice.swift; sourceTree = "<group>"; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTest.swift; sourceTree = "<group>"; };
-		54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		840D0E811F3326600069A1EA /* BeaconUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconUser.swift; sourceTree = "<group>"; };
-		84AAEFD71F3496E700D6A9FD /* PDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDevice.swift; sourceTree = "<group>"; };
-		84AAEFD91F34975D00D6A9FD /* PMobileDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMobileDevice.swift; sourceTree = "<group>"; };
-		84AAEFDB1F34987300D6A9FD /* PPinDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPinDevice.swift; sourceTree = "<group>"; };
-		84AAEFDD1F3499EE00D6A9FD /* PBeaconDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBeaconDevice.swift; sourceTree = "<group>"; };
 		84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTests.swift; sourceTree = "<group>"; };
-		9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
-		9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14C26E7339F791723C872A2C /* Pods_AlpsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +69,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */,
-				855D12BB3E696B79A23574B9 /* Pods_AlpsSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,10 +89,6 @@
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				502C858F1E01BB3F00EF8ECF /* Utils.swift */,
 				840D0E811F3326600069A1EA /* BeaconUser.swift */,
-				84AAEFD71F3496E700D6A9FD /* PDevice.swift */,
-				84AAEFD91F34975D00D6A9FD /* PMobileDevice.swift */,
-				84AAEFDB1F34987300D6A9FD /* PPinDevice.swift */,
-				84AAEFDD1F3499EE00D6A9FD /* PBeaconDevice.swift */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -134,8 +112,6 @@
 				502C85881E01BB3F00EF8ECF /* AlpsSDK */,
 				502C85971E01BB5F00EF8ECF /* AlpsSDKTests */,
 				5092AC341D93CB0C00EF8ECF /* Products */,
-				B9E6607062928A8E60F3F241 /* Pods */,
-				5613821143A5BC848DB9649D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,26 +122,6 @@
 				5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5613821143A5BC848DB9649D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				54C26E9B4B7CE15ED81AEDAD /* Pods_AlpsSDK.framework */,
-				1E1A19F705F82C064D0F13D2 /* Pods_AlpsSDKTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B9E6607062928A8E60F3F241 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */,
-				9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */,
-				F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */,
-				9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,12 +141,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDK" */;
 			buildPhases = (
-				3053F18375185E356E7B47B2 /* [CP] Check Pods Manifest.lock */,
 				5092AC2E1D93CB0C00EF8ECF /* Sources */,
 				5092AC2F1D93CB0C00EF8ECF /* Frameworks */,
 				5092AC301D93CB0C00EF8ECF /* Headers */,
 				5092AC311D93CB0C00EF8ECF /* Resources */,
-				DD3076F4E03E22E1053A9F11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,12 +159,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDKTests" */;
 			buildPhases = (
-				E7C2C68A553A0F481B82BDF6 /* [CP] Check Pods Manifest.lock */,
 				5092AC381D93CB0C00EF8ECF /* Sources */,
 				5092AC391D93CB0C00EF8ECF /* Frameworks */,
 				5092AC3A1D93CB0C00EF8ECF /* Resources */,
-				A04E3FED69C3D67EA7337CC8 /* [CP] Embed Pods Frameworks */,
-				64783D3008E1E9E1129DAF6C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,84 +231,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3053F18375185E356E7B47B2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		64783D3008E1E9E1129DAF6C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A04E3FED69C3D67EA7337CC8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD3076F4E03E22E1053A9F11 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E7C2C68A553A0F481B82BDF6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5092AC2E1D93CB0C00EF8ECF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -365,14 +238,10 @@
 			files = (
 				504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */,
 				5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */,
-				84AAEFDC1F34987300D6A9FD /* PPinDevice.swift in Sources */,
-				84AAEFDA1F34975D00D6A9FD /* PMobileDevice.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				840D0E821F3326600069A1EA /* BeaconUser.swift in Sources */,
 				50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */,
-				84AAEFD81F3496E700D6A9FD /* PDevice.swift in Sources */,
-				84AAEFDE1F3499EE00D6A9FD /* PBeaconDevice.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */,
@@ -507,7 +376,6 @@
 		};
 		5092AC481D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74A39AC04A89DA7A96BCBDF7 /* Pods-AlpsSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -531,7 +399,6 @@
 		};
 		5092AC491D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9795B8D8DF3ECA38966120F0 /* Pods-AlpsSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -554,7 +421,6 @@
 		};
 		5092AC4B1D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F05555C4F74B3069025FCE0E /* Pods-AlpsSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
@@ -568,7 +434,6 @@
 		};
 		5092AC4C1D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D74AA6C042E9D345A91177A /* Pods-AlpsSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
