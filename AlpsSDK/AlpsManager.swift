@@ -13,6 +13,8 @@ enum AlpsManagerError: Error {
 
 open class AlpsManager: AlpsSDK {
 
+
+    
     let defaultHeaders = [
       // FIXME: pass both keys on AlpsManager creation
       "api-key": "833ec460-c09d-11e6-9bb0-cfb02086c30d",
@@ -49,8 +51,8 @@ open class AlpsManager: AlpsSDK {
     // Variant 1 is enum => Device with DeviceType
     // Variant 2 is sub-classes => BeaconDevice
     // Variant 3 is protocol => BeaconDevice
-    var beacons: [PBeaconDevice] = []
-
+    var beacons: [BeaconDevice] = []
+    
     public convenience init(apiKey: String) {
         self.init(apiKey: apiKey, clLocationManager: CLLocationManager())
     }
@@ -86,22 +88,46 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    public func createDevice(name: String, platform: String, deviceToken: String,
+//    public func createDevice(name: String, platform: String, deviceToken: String,
+//                             latitude: Double, longitude: Double, altitude: Double,
+//                             horizontalAccuracy: Double, verticalAccuracy: Double,
+//                             completion: @escaping (_ device: Device?) -> Void) {
+//        let userCompletion = completion
+//        if let u = alpsUser {
+//            let _ = Alps.UserAPI.createDevice(userId: u.user.userId!, name: name, platform: platform,
+//                                              deviceToken: deviceToken, latitude: latitude, longitude: longitude,
+//                                              altitude: altitude, horizontalAccuracy: horizontalAccuracy,
+//                                              verticalAccuracy: verticalAccuracy) {
+//                (device, error) -> Void in
+//                if let d = device {
+//                    self.devices.append(d)
+//                    self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
+//                }
+//                userCompletion(device)
+//            }
+//        } else {
+//            // XXX: error handling using exceptions?
+//            print("Alps user hasn't been initialized yet!")
+//            // throw AlpsManagerError.userNotIntialized
+//        }
+//    }
+    
+    public func createMobileDevice(name: String, platform: String, deviceToken: String,
                              latitude: Double, longitude: Double, altitude: Double,
                              horizontalAccuracy: Double, verticalAccuracy: Double,
-                             completion: @escaping (_ device: Device?) -> Void) {
+                             completion: @escaping (_ device: MobileDevice?) -> Void) {
         let userCompletion = completion
         if let u = alpsUser {
-            let _ = Alps.UserAPI.createDevice(userId: u.user.userId!, name: name, platform: platform,
+            let _ = Alps.UserAPI.createMobileDevice(userId: u.user.userId!, name: name, platform: platform,
                                               deviceToken: deviceToken, latitude: latitude, longitude: longitude,
                                               altitude: altitude, horizontalAccuracy: horizontalAccuracy,
                                               verticalAccuracy: verticalAccuracy) {
-                (device, error) -> Void in
-                if let d = device {
-                    self.devices.append(d)
-                    self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
-                }
-                userCompletion(device)
+                                                (mobileDevice, error) -> Void in
+                                                if let d = mobileDevice {
+//                                                    self.devices.append(d)
+                                                    self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
+                                                }
+                                                userCompletion(mobileDevice)
             }
         } else {
             // XXX: error handling using exceptions?
@@ -428,8 +454,8 @@ open class AlpsManager: AlpsSDK {
         var uuids : [UUID] = []
         for beacon in beacons{
             let uuid = beacon.uuid
-            if !uuids.contains(uuid){
-                uuids.append(uuid)
+            if !uuids.contains(UUID.init(uuidString: uuid!)!){
+                uuids.append(UUID.init(uuidString: uuid!)!)
             }
         }
         return uuids

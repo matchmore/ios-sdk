@@ -47,7 +47,7 @@ class AlpsSDKTests: XCTestCase {
         alps.createUser("Swift User 2") {
             (_ user) in
             if let _ = user {
-                alps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
@@ -68,7 +68,7 @@ class AlpsSDKTests: XCTestCase {
         alps.createUser("Swift User 3") {
             (_ user) in
             if user != nil {
-                alps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
@@ -99,7 +99,7 @@ class AlpsSDKTests: XCTestCase {
         alps.createUser("Swift User 4") {
             (_ user) in
             if user != nil {
-                alps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb664",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
@@ -129,7 +129,7 @@ class AlpsSDKTests: XCTestCase {
         alps.createUser("Swift User 5") {
             (_ user) in
             if user != nil {
-                alps.createDevice(name: "iPhone 7", platform: "iOS 10.2",
+                alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                                     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665",
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {

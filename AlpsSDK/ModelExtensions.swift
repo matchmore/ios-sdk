@@ -48,17 +48,46 @@ extension User {
     */
 }
 
-extension Device {
+//extension Device {
+//
+//    // Device(deviceId: UUID().uuidString, name: "Alps Test Device 1",
+//    // platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
+//
+//    public convenience init(name: String) {
+//        self.init()
+//        self.deviceId = UUID().uuidString
+//        self.name = name
+//    }
+//}
 
-    // Device(deviceId: UUID().uuidString, name: "Alps Test Device 1",
-    // platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
+extension BeaconDevice {
+    public convenience init(name: String, uuid: UUID, major: NSNumber, minor: NSNumber){
+        self.init()
+        self.deviceId = UUID().uuidString
+        self.name = name
+        self.uuid = uuid.uuidString
+        self.major = major as? Int32
+        self.minor = minor as? Int32
+    }
+}
 
-    public convenience init(name: String, platform: String, deviceToken: String) {
+extension MobileDevice {
+    public convenience init(name:String, platform: String, deviceToken: String, location: Location?){
         self.init()
         self.deviceId = UUID().uuidString
         self.name = name
         self.platform = platform
         self.deviceToken = deviceToken
+        self.location = location
+    }
+}
+
+extension PinDevice {
+    public convenience init(name: String, location: Location){
+        self.init()
+        self.deviceId = UUID().uuidString
+        self.name = name
+        self.location = location
     }
 }
 
@@ -91,8 +120,7 @@ extension Publication {
         self.topic = topic
         self.range = range
         self.duration = duration
-        self.location = location.location
-        self.properties = properties
+//        self.properties = properties
         self.op = "create"
     }
 }
@@ -109,7 +137,6 @@ extension Subscription {
         self.topic = topic
         self.range = range
         self.duration = duration
-        self.location = location.location
         self.selector = selector
         self.op = "create"
     }

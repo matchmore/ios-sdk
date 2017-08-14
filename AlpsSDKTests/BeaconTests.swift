@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import AlpsSDK
+@testable import Alps
 
 class BeaconTests: XCTestCase {
     
@@ -24,11 +25,11 @@ class BeaconTests: XCTestCase {
     // This test should implement asynchronous call to get the beacons and construct a beacon object
     func testCreateBeacon() {
         // 1. given
-        let b = PBeaconDevice.init(name: "beacon1 - rose", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 21978, minor: 59907)
+        let b = BeaconDevice.init(name: "beacon1 - rose", uuid: UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 21978, minor: 59907)
         
         // 3. should equal
         XCTAssertTrue(b.name == "beacon1 - rose")
-        XCTAssertTrue(b.uuid.uuidString == "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
+        XCTAssertTrue(b.uuid == "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
         XCTAssertTrue(b.major == 21978)
         XCTAssertTrue(b.minor == 59907)
     }

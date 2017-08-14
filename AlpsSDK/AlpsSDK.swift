@@ -15,10 +15,10 @@ protocol AlpsSDK {
     func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)
 
     // XXX: assume one user and one device in the AlpsManager for now
-    func createDevice(name: String, platform: String, deviceToken: String,
+    func createMobileDevice(name: String, platform: String, deviceToken: String,
                       latitude: Double, longitude: Double, altitude: Double,
                       horizontalAccuracy: Double, verticalAccuracy: Double,
-                      completion: @escaping (_ device: Device?) -> Void)
+                      completion: @escaping (_ device: MobileDevice?) -> Void)
 
     func createPublication(topic: String, range: Double, duration: Double, properties: Properties,
                            completion: @escaping (_ publication: Publication?) -> Void)
