@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Alps
+@testable import AlpsSDK
 import Alamofire
 
 class AlpsAPITests: XCTestCase {
@@ -36,13 +37,13 @@ class AlpsAPITests: XCTestCase {
     func createUser() -> User? {
         var createdUser: User?
         let expectation = self.expectation(description: "CreateUser")
-
-        let _ = Alps.UsersAPI.createUser(name: "Alps User 1", completion: {
+        let user = User.init(name: "Alps User 1")
+        let _ = Alps.UsersAPI.createUser(user: user, completion: {
             (user, error) -> Void in
 
             
             createdUser = user
-            XCTAssertNil(error, "Whoops, error \(error)")
+            XCTAssertNil(error, "Whoops, error \(String(describing: error))")
             expectation.fulfill()
         })
 
@@ -55,15 +56,13 @@ class AlpsAPITests: XCTestCase {
         let deviceExpectation = expectation(description: "CreateMobileDevice")
         
         var createdDevice: MobileDevice?
-        
-        let _ = Alps.UserAPI.createMobileDevice(userId: user.userId!, name: "Alps iPhone 7", platform: "iOS 9.3",
-                                          deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662",
-                                          latitude: 37.7858, longitude: 122.4064, altitude: 200.0,
-                                          horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+        let location = Location.init(latitude: 37.7858, longitude: 122.4064, altitude: 200.0, horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
+        let mobileDevice = MobileDevice.init(name: "Alps iPhone 7", platform: "iOS 9.3",deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662", location: location)
+        let _ = Alps.UserAPI.createDevice(userId: user.id!, device: mobileDevice) {
                                             (device, error) -> Void in
                                             
                                             XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                            createdDevice = device
+                                            createdDevice = device as? MobileDevice
                                             deviceExpectation.fulfill()
         }
         
@@ -76,14 +75,13 @@ class AlpsAPITests: XCTestCase {
         let deviceExpectation = expectation(description: "CreatePinDevice")
         
         var createdDevice: PinDevice?
-        
-        let _ = Alps.UserAPI.createPinDevice(userId: user.userId!, name: "Alps iPhone 7", latitude: 37.7858,
-                                             longitude: 122.4064, altitude: 200.0, horizontalAccuracy: 5.0,
-                                             verticalAccuracy: 5.0) {
+        let location = Location.init(latitude: 37.7858, longitude: 122.4064, altitude: 200.0, horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
+        let pinDevice = PinDevice.init(name: "Alps iPhone 7", location: location)
+        let _ = Alps.UserAPI.createDevice(userId: user.id!, device: pinDevice) {
                                                     (device, error) -> Void in
-                                                    
+            
                                                     XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                    createdDevice = device
+                                                    createdDevice = device as? PinDevice
                                                     deviceExpectation.fulfill()
         }
         
@@ -92,17 +90,16 @@ class AlpsAPITests: XCTestCase {
         return createdDevice
     }
     
-    func createBeaconDevice(_ user: User) -> BeaconDevice? {
+    func createBeaconDevice(_ user: User) -> IBeaconDevice? {
         let deviceExpectation = expectation(description: "CreateBeaconDevice")
         
-        var createdDevice: BeaconDevice?
-        
-        let _ = Alps.UserAPI.createBeaconDevice(userId: user.userId!, name: "Alps iPhone 7",
-                                                uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 10, minor: 10) {
+        var createdDevice: IBeaconDevice?
+        let iBeaconDevice = IBeaconDevice.init(name: "Alps iPhone 7", uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 10, minor: 10)
+        let _ = Alps.UserAPI.createDevice(userId: user.id!, device: iBeaconDevice) {
                                                 (device, error) -> Void in
                                                 
                                                 XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                createdDevice = device
+                                                createdDevice = device as? IBeaconDevice
                                                 deviceExpectation.fulfill()
         }
         
@@ -119,12 +116,11 @@ class AlpsAPITests: XCTestCase {
         // let properties = Properties(dictionaryLiteral: ("role", "'developer'"))
         let properties = ["role": "'developer'"]
 
-        let _ = Alps.DeviceAPI.createPublication(userId: user.userId!, deviceId: device.deviceId!,
-                                                   topic: "alps-test", range: 100.0, duration: 0.0,
-                                                   properties: properties) {
+        let publication = Publication.init(deviceId: device.id!, topic: "alps-test", range: 100.0, duration: 0.0, properties: properties)
+        let _ = Alps.DeviceAPI.createPublication(userId: user.id!, deviceId: device.id!, publication: publication) {
             (publication, error) -> Void in
 
-            XCTAssertNil(error, "Whoops, error \(error)")
+            XCTAssertNil(error, "Whoops, error \(String(describing: error))")
             createdPublication = publication
             pubExpectation.fulfill()
         }
@@ -140,12 +136,10 @@ class AlpsAPITests: XCTestCase {
         let subExpectation = expectation(description: "CreateSub")
         let selector = "role = 'developer'"
 
-        let _ = Alps.DeviceAPI.createSubscription(userId: user.userId!, deviceId: device.deviceId!,
-                                                    topic: "alps-test", selector: selector, range: 100.0,
-                                                    duration: 0.0) {
-            (subscription, error) -> Void in
-
-                                                        XCTAssertNil(error, "Whoops, error \(error)")
+        let subscription = Subscription.init(deviceId: device.id!, topic: "alps-test", range: 100.0, duration: 0.0, selector: selector)
+        let _ = Alps.DeviceAPI.createSubscription(userId: user.id!, deviceId: device.id!, subscription: subscription) {
+                                                    (subscription, error) -> Void in
+                                                        XCTAssertNil(error, "Whoops, error \(String(describing: error))")
                                                         createdSubscription = subscription
                                                         subExpectation.fulfill()
         }
@@ -159,14 +153,12 @@ class AlpsAPITests: XCTestCase {
         let locExpectation = expectation(description: "CreateLoc")
         var createdLocation: DeviceLocation?
 
-        let _ = Alps.DeviceAPI.createLocation(userId: user.userId!, deviceId: device.deviceId!,
-                                                latitude: 37.7858, longitude: -122.4064, altitude: 20.0,
-                                                horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-            (location, error) -> Void in
-
-            XCTAssertNil(error, "Whoops, error \(error)")
-            createdLocation = location
-            locExpectation.fulfill()
+        let location = Location.init(latitude: 37.7858, longitude: -122.4064, altitude: 20.0,horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
+        let _ = Alps.DeviceAPI.createLocation(userId: user.id!, deviceId: device.id!, location: location) {
+                (location, error) -> Void in
+                    XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                    createdLocation = location
+                    locExpectation.fulfill()
         }
 
         waitForExpectations(timeout: 5.0, handler: nil)
@@ -178,10 +170,10 @@ class AlpsAPITests: XCTestCase {
         let matchExpectation = expectation(description: "GetMatches")
         var gotMatches: [Match]?
 
-        let _ = Alps.DeviceAPI.getMatches(userId: user.userId!, deviceId: device.deviceId!) {
+        let _ = Alps.DeviceAPI.getMatches(userId: user.id!, deviceId: device.id!) {
             (matches, error) -> Void in
 
-            XCTAssertNil(error, "Whoops, error \(error)")
+            XCTAssertNil(error, "Whoops, error \(String(describing: error))")
             gotMatches = matches
             matchExpectation.fulfill()
         }
@@ -199,7 +191,7 @@ class AlpsAPITests: XCTestCase {
             .responseString { response in
                 print("Success: \(response.result.isSuccess)")
                 XCTAssert(response.result.isSuccess, "Status code not 200")
-                print("Response String: \(response.result.value)")
+                print("Response String: \(String(describing: response.result.value))")
 
                 expectation.fulfill()
         }
@@ -220,21 +212,21 @@ class AlpsAPITests: XCTestCase {
         }
     }
     
-    func test3CreatePinDevice() {
+    func test4CreatePinDevice() {
         if let user = createUser() {
             let device = createPinDevice(user)
             XCTAssertNotNil(device)
         }
     }
     
-    func test3CreateBeaconDevice() {
+    func test5CreateBeaconDevice() {
         if let user = createUser() {
             let device = createBeaconDevice(user)
             XCTAssertNotNil(device)
         }
     }
 
-    func test4CreatePublication() {
+    func test6CreatePublication() {
         if let user = createUser() {
             if let device = createMobileDevice(user) {
                 let publication = createPublication(user, device: device)
@@ -243,7 +235,7 @@ class AlpsAPITests: XCTestCase {
         }
     }
 
-    func test5CreateSubscription() {
+    func test7CreateSubscription() {
         if let user = createUser() {
             if let device = createMobileDevice(user) {
                 let subscription = createSubscription(user, device: device)
@@ -252,7 +244,7 @@ class AlpsAPITests: XCTestCase {
         }
     }
 
-    func test6CreateLocation() {
+    func test8CreateLocation() {
         if let user = createUser() {
             if let device = createMobileDevice(user) {
                 let location = createLocation(user, device: device)
@@ -261,7 +253,7 @@ class AlpsAPITests: XCTestCase {
         }
     }
 
-    func test7GetMatches() {
+    func test9GetMatches() {
         if let user = createUser() {
             if let device = createMobileDevice(user) {
                 let matches = getMatches(user, device: device)

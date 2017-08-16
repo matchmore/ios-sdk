@@ -60,12 +60,11 @@ extension User {
 //    }
 //}
 
-extension BeaconDevice {
-    public convenience init(name: String, uuid: UUID, major: NSNumber, minor: NSNumber){
+extension IBeaconDevice {
+    public convenience init(name: String, uuid: String, major: NSNumber, minor: NSNumber){
         self.init()
-        self.deviceId = UUID().uuidString
         self.name = name
-        self.uuid = uuid.uuidString
+        self.uuid = uuid
         self.major = major as? Int32
         self.minor = minor as? Int32
     }
@@ -74,7 +73,6 @@ extension BeaconDevice {
 extension MobileDevice {
     public convenience init(name:String, platform: String, deviceToken: String, location: Location?){
         self.init()
-        self.deviceId = UUID().uuidString
         self.name = name
         self.platform = platform
         self.deviceToken = deviceToken
@@ -85,7 +83,6 @@ extension MobileDevice {
 extension PinDevice {
     public convenience init(name: String, location: Location){
         self.init()
-        self.deviceId = UUID().uuidString
         self.name = name
         self.location = location
     }
@@ -97,43 +94,33 @@ extension DeviceLocation {
         self.init()
         self.deviceId = deviceId
         // XXX: use now for the timestamp
-        let location = Location()
-        location.altitude = altitude
-        location.latitude = latitude
-        location.longitude = longitude
-        // XXX: use some defaults
-        location.horizontalAccuracy = 5
-        location.verticalAccuracy = 5
+        // XXX: use some defaults horizontal and vertical accuracy
+        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: 5, verticalAccuracy: 5)
         self.location = location
     }
 }
 
 extension Publication {
 
-    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, location: DeviceLocation, properties: Properties) {
+    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: Properties) {
         self.init()
-        // XXX: use now for the timestamp
-        self.timestamp = now()
-        self.publicationId = UUID().uuidString
         // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
         self.topic = topic
         self.range = range
         self.duration = duration
-//        self.properties = properties
+        self.properties = properties
         self.op = "create"
     }
 }
 
 extension Subscription {
 
-    public convenience init(topic: String, range: Double, duration: Double, location: DeviceLocation, selector: String) {
+    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
 
         self.init()
         // XXX: use now for the timestamp
-        self.timestamp = now()
-        self.subscriptionId = UUID().uuidString
-        self.deviceId = location.deviceId!
+        self.deviceId = deviceId
         self.topic = topic
         self.range = range
         self.duration = duration
@@ -142,20 +129,32 @@ extension Subscription {
     }
 }
 
+extension Location {
+    
+    public convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double){
+        self.init()
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
+        self.horizontalAccuracy = horizontalAccuracy
+        self.verticalAccuracy = verticalAccuracy
+    }
+}
+
 extension Match: CustomStringConvertible, Hashable {
 
     // XXX: take the hashValue based on the hashValue of matchId
     public var hashValue: Int {
-        return matchId!.hashValue
+        return id!.hashValue
     }
 
     // XXX: Define the match equality based on the matchId only
     public static func ==(lhs: Match, rhs: Match) -> Bool {
-        return lhs.matchId! == rhs.matchId!
+        return lhs.id! == rhs.id!
     }
 
     public var description: String {
-        return "Match: (\(matchId!), \(timestamp!))"
+        return "Match: (\(id!), \(timestamp!))"
     }
 }
 

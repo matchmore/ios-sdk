@@ -19,6 +19,6 @@ open class AlpsUser {
     }
 
     public func id() -> String {
-        return user.userId!
+        return user.id!
     }
 }

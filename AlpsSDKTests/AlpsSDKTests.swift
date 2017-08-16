@@ -135,7 +135,7 @@ class AlpsSDKTests: XCTestCase {
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
-                        _ = DeviceLocation(deviceId: d.deviceId!,
+                        _ = DeviceLocation(deviceId: d.id!,
                                                          altitude: 0,
                                                          latitude: 37.785833999999994,
                                                          longitude: -122.406417)

@@ -21,7 +21,7 @@ open class AlpsDevice {
     }
 
     public func id() -> String {
-        return device.deviceId!
+        return device.id!
     }
 
     public func createPublication(_ publication: Publication, completion: @escaping (_ publication: Publication?) -> Void) {
