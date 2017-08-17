@@ -29,9 +29,9 @@ class BeaconUser:NSObject {
 //        beacons.append(DeviceBis.init(mobileName: "mobile1", platform: "ios 9.0", deviceToken: "xxx", location: nil))
 //        beacons.append(DeviceBis.init(mobileName: "mobile2", platform: "ios 10.0", deviceToken: "xxx", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
 //        beacons.append(DeviceBis.init(pinName: "pin1", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
-        beacons.append(IBeaconDevice.init(name: "beacon1 - rose", uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 21978, minor: 59907))
-        beacons.append(IBeaconDevice.init(name: "beacon2 - jaune canari", uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 64575, minor: 19467))
-        beacons.append(IBeaconDevice.init(name: "beacon3 - bordeau-betrave", uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 53494, minor: 28090))
+        beacons.append(IBeaconDevice.init(name: "beacon1 - rose", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 21978, minor: 59907))
+        beacons.append(IBeaconDevice.init(name: "beacon2 - jaune canari", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 64575, minor: 19467))
+        beacons.append(IBeaconDevice.init(name: "beacon3 - bordeau-betrave", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 53494, minor: 28090))
         print("DUMMY Beacons ready.")
     }
     

@@ -121,15 +121,19 @@ open class AlpsManager: AlpsSDK {
         if let u = alpsUser {
             let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
             let mobileDevice = MobileDevice.init(name: name, platform: platform, deviceToken: deviceToken, location: location)
-            let _ = Alps.UserAPI.createDevice(userId: u.user.id!, device: mobileDevice) {
-                                                (mobileDevice, error) -> Void in
-                                            if mobileDevice is MobileDevice{
-                                                if let d = mobileDevice as? MobileDevice {
-                                                    self.devices.append(d)
-                                                    self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
-                                                }
-                                                userCompletion(mobileDevice as! MobileDevice)
+            if let userId = u.user.id, let deviceId = mobileDevice.id {
+                let _ = Alps.UserAPI.createDevice(userId: userId, device: mobileDevice) {
+                                                    (mobileDevice, error) -> Void in
+                                                if mobileDevice is MobileDevice{
+                                                    if let d = mobileDevice as? MobileDevice {
+                                                        self.devices.append(d)
+                                                        self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
+                                                    }
+                                                    userCompletion(mobileDevice as! MobileDevice)
+                    }
                 }
+            } else {
+                print("Error forcing userId and deviceId are nil.")
             }
         } else {
             // XXX: error handling using exceptions?
@@ -452,7 +456,7 @@ open class AlpsManager: AlpsSDK {
     public func getUuid() -> [UUID]{
         var uuids : [UUID] = []
         for beacon in beacons{
-            let uuid = beacon.uuid
+            let uuid = beacon.proximityUUID
             if !uuids.contains(UUID.init(uuidString: uuid!)!){
                 uuids.append(UUID.init(uuidString: uuid!)!)
             }

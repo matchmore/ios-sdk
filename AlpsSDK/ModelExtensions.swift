@@ -61,10 +61,10 @@ extension User {
 //}
 
 extension IBeaconDevice {
-    public convenience init(name: String, uuid: String, major: NSNumber, minor: NSNumber){
+    public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
         self.init()
         self.name = name
-        self.uuid = uuid
+        self.proximityUUID = proximityUUID
         self.major = major as? Int32
         self.minor = minor as? Int32
     }

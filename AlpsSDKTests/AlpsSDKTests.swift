@@ -32,6 +32,12 @@ class AlpsSDKTests: XCTestCase {
         alps.createUser("Swift User 1") {
             (_ user) in
             XCTAssertNotNil(user, "Whoops, no user")
+            XCTAssertNotNil(user?.id, "test1CreateUser(): id is nil.")
+            if let name = user?.name {
+                XCTAssertEqual(name, "Swift User 1", "test1CreateUser(): Returned name is not equal to defined one.")
+            } else {
+                XCTFail("test1CreateUser(): name is nil.")
+            }
             expectation.fulfill()
         }
 
@@ -39,9 +45,9 @@ class AlpsSDKTests: XCTestCase {
     }
 
 
-    func test2CreateDevice() {
+    func test2CreateMobileDevice() {
         let alps = AlpsManager(apiKey: apiKey)
-        let deviceExpectation = expectation(description: "CreateDevice")
+        let deviceExpectation = expectation(description: "test2CreateMobileDevice")
 
 
         alps.createUser("Swift User 2") {
@@ -53,6 +59,37 @@ class AlpsSDKTests: XCTestCase {
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     XCTAssertNotNil(device, "Whoops, no device")
+                    // Test each fields
+                    if let deviceType = device?.deviceType?.rawValue {
+                        XCTAssertEqual(deviceType, "MobileDevice", "test2CreateMobileDevice(): deviceType is not equal to right type.")
+                    } else {
+                        XCTFail("test2CreateMobileDevice(): deviceType is nil.")
+                    }
+                    XCTAssertNotNil(device?.id, "test2CreateMobileDevice(): id is nil.")
+                    if let name = device?.name {
+                        XCTAssertEqual(name, "iPhone 7", "test2CreateMobileDevice(): Returned name is not equal to defined one.")
+                    } else {
+                        XCTFail("test2CreateMobileDevice(): name is nil.")
+                    }
+                    if let platform = device?.platform {
+                        XCTAssertEqual(platform, "iOS 10.2", "test2CreateMobileDevice(): Returned platform is not equal to defined one.")
+                    } else {
+                        XCTFail("test2CreateMobileDevice(): platform is nil.")
+                    }
+                    if let deviceToken = device?.deviceToken {
+                        XCTAssertEqual(deviceToken, "870470ea-7a8e-11e6-b49b-5358f3beb662", "test2CreateMobileDevice(): Returned deviceToken is not equal to defined one.")
+                    } else {
+                        XCTFail("test2CreateMobileDevice(): deviceToken is nil.")
+                    }
+                    if let location = device?.location {
+                        XCTAssertEqual(location.latitude, 37.7858, "test2CreateMobileDevice(): Returned latitude is not equal to defined one.")
+                        XCTAssertEqual(location.longitude, -122.4064, "test2CreateMobileDevice(): Returned longitude is not equal to defined one.")
+                        XCTAssertEqual(location.altitude, 100.0, "test2CreateMobileDevice(): Returned altitude is not equal to defined one.")
+                        XCTAssertEqual(location.horizontalAccuracy, 5.0, "test2CreateMobileDevice(): Returned horizontalAccuracy is not equal to defined one.")
+                        XCTAssertEqual(location.verticalAccuracy, 5.0, "test2CreateMobileDevice(): Returned verticalAccuracy is not equal to defined one.")
+                    } else {
+                        XCTFail("test2CreateMobileDevice(): location is nil.")
+                    }
                     deviceExpectation.fulfill()
                 }
             }
@@ -63,7 +100,7 @@ class AlpsSDKTests: XCTestCase {
 
     func test3CreatePublication() {
         let alps = AlpsManager(apiKey: apiKey)
-        let publicationExpectation = expectation(description: "CreatePub")
+        let publicationExpectation = expectation(description: "test3CreatePublication")
 
         alps.createUser("Swift User 3") {
             (_ user) in
@@ -73,7 +110,7 @@ class AlpsSDKTests: XCTestCase {
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
-                    if device != nil {
+                    if let device = device {
                         // FIXME: provide serialization to json string
                         let properties = ["mood": "'happy'"]
                         // let propertiesString = "{\"mood\": \"happy\"}"
@@ -82,6 +119,33 @@ class AlpsSDKTests: XCTestCase {
                                                  duration: 0, properties: properties) {
                             (_ publication) in
                             XCTAssertNotNil(publication)
+                            // Test each fields
+                            XCTAssertNotNil(publication?.id, "test3CreatePublication(): id is nil.")
+                            if let deviceId = publication?.deviceId {
+                                XCTAssertEqual(deviceId, device.id, "test3CreatePublication(): deviceId is not equal to defined one.")
+                            } else {
+                                XCTFail("test3CreatePublication(): deviceId is nil.")
+                            }
+                            if let topic = publication?.topic {
+                                XCTAssertEqual(topic, "alps-ios-test", "test3CreatePublication(): topic is not equal to defined one.")
+                            } else {
+                                XCTFail("test3CreatePublication(): topic is nil.")
+                            }
+                            if let range = publication?.range {
+                                XCTAssertEqual(range, 100.0, "test3CreatePublication(): range is not equal to defined one.")
+                            } else {
+                                XCTFail("test3CreatePublication(): range is nil.")
+                            }
+                            if let duration = publication?.duration {
+                                XCTAssertEqual(duration, 0.0, "test3CreatePublication(): duration is not equal to defined one.")
+                            } else {
+                                XCTFail("test3CreatePublication(): duration is nil.")
+                            }
+                            if let testedProperties = publication?.properties {
+                                XCTAssertEqual(testedProperties, properties, "test3CreatePublication(): properties is not equal to defined one.")
+                            } else {
+                                XCTFail("test3CreatePublication(): properties is nil.")
+                            }
                             publicationExpectation.fulfill()
                         }
                     }
@@ -94,7 +158,7 @@ class AlpsSDKTests: XCTestCase {
 
     func test4CreateSubscription() {
         let alps = AlpsManager(apiKey: apiKey)
-        let subscriptionExpectation = expectation(description: "CreateSub")
+        let subscriptionExpectation = expectation(description: "test4CreateSubscription")
 
         alps.createUser("Swift User 4") {
             (_ user) in
@@ -104,13 +168,41 @@ class AlpsSDKTests: XCTestCase {
                                     latitude: 37.7858, longitude: -122.4064, altitude: 100,
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
-                    if device != nil {
+                    if let device = device {
                         alps.createSubscription(topic: "alps-ios-test",
                                                   selector: "mood = 'happy'",
                                                   range: 100.0,
                                                   duration: 0) {
                             (_ subscription) in
                             XCTAssertNotNil(subscription)
+                            
+                            // Test each fields
+                            XCTAssertNotNil(subscription?.id, "test4CreateSubscription(): id is nil.")
+                            if let deviceId = subscription?.deviceId {
+                                XCTAssertEqual(deviceId, device.id, "test4CreateSubscription(): deviceId is not equal to defined one.")
+                            } else {
+                                XCTFail("test4CreateSubscription(): deviceId is nil.")
+                            }
+                            if let topic = subscription?.topic {
+                                XCTAssertEqual(topic, "alps-ios-test", "test4CreateSubscription(): topic is not equal to defined one.")
+                            } else {
+                                XCTFail("test4CreateSubscription(): topic is nil.")
+                            }
+                            if let range = subscription?.range {
+                                XCTAssertEqual(range, 100.0, "test4CreateSubscription(): range is not equal to defined one.")
+                            } else {
+                                XCTFail("test4CreateSubscription(): range is nil.")
+                            }
+                            if let duration = subscription?.duration {
+                                XCTAssertEqual(duration, 0.0, "test4CreateSubscription(): duration is not equal to defined one.")
+                            } else {
+                                XCTFail("test4CreateSubscription(): duration is nil.")
+                            }
+                            if let selector = subscription?.selector {
+                                XCTAssertEqual(selector, "mood = 'happy'", "test4CreateSubscription(): selector is not equal to defined one.")
+                            } else {
+                                XCTFail("test4CreateSubscription(): properties is nil.")
+                            }
                             subscriptionExpectation.fulfill()
                         }
                     }
@@ -124,7 +216,7 @@ class AlpsSDKTests: XCTestCase {
 
     func test5UpdateLocation() {
         let alps = AlpsManager(apiKey: apiKey)
-        let locationExpectation = expectation(description: "UpdateLocation")
+        let locationExpectation = expectation(description: "test5UpdateLocation")
 
         alps.createUser("Swift User 5") {
             (_ user) in
@@ -143,13 +235,28 @@ class AlpsSDKTests: XCTestCase {
                                               horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                             (_ location) in
                             XCTAssertNotNil(location)
+                            
+                            // Test each fields
+                            if let deviceId = location?.deviceId {
+                                XCTAssertEqual(deviceId, d.id, "test5UpdateLocation(): deviceId is not equal to defined one.")
+                            } else {
+                                XCTFail("test5UpdateLocation(): deviceId is nil.")
+                            }
+                            if let l = location?.location{
+                                XCTAssertEqual(l.latitude, 38.00, "test5UpdateLocation(): Returned latitude is not equal to defined one.")
+                                XCTAssertEqual(l.longitude, -123, "test5UpdateLocation(): Returned longitude is not equal to defined one.")
+                                XCTAssertEqual(l.altitude, 100, "test5UpdateLocation(): Returned altitude is not equal to defined one.")
+                                XCTAssertEqual(l.horizontalAccuracy, 5.0, "test5UpdateLocation(): Returned horizontalAccuracy is not equal to defined one.")
+                                XCTAssertEqual(l.verticalAccuracy, 5.0, "test5UpdateLocation(): Returned verticalAccuracy is not equal to defined one.")
+                            } else {
+                                XCTFail("test5UpdateLocation(): location is nil.")
+                            }
                             locationExpectation.fulfill()
                         }
                     }
                 }
             }
         }
-
         waitForExpectations(timeout: 5.0, handler: nil)
     }
     
