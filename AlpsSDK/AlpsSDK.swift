@@ -19,6 +19,11 @@ protocol AlpsSDK {
                       latitude: Double, longitude: Double, altitude: Double,
                       horizontalAccuracy: Double, verticalAccuracy: Double,
                       completion: @escaping (_ device: MobileDevice?) -> Void)
+    func createPinDevice(name: String, latitude: Double, longitude: Double, altitude: Double,
+                         horizontalAccuracy: Double, verticalAccuracy: Double,
+                         completion: @escaping (_ device: PinDevice?) -> Void)
+    func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
+                            completion: @escaping (_ device: IBeaconDevice?) -> Void)
 
     func createPublication(topic: String, range: Double, duration: Double, properties: Properties,
                            completion: @escaping (_ publication: Publication?) -> Void)

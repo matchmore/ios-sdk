@@ -21,6 +21,7 @@
 		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
 		50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */; };
 		840D0E821F3326600069A1EA /* BeaconUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D0E811F3326600069A1EA /* BeaconUser.swift */; };
+		843C25D91F46D2C900AFBEB3 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C25D81F46D2C900AFBEB3 /* ModelTests.swift */; };
 		84AAEFE21F34ACF300D6A9FD /* BeaconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTest.swift; sourceTree = "<group>"; };
 		840D0E811F3326600069A1EA /* BeaconUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconUser.swift; sourceTree = "<group>"; };
+		843C25D81F46D2C900AFBEB3 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 		502C85971E01BB5F00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				843C25D81F46D2C900AFBEB3 /* ModelTests.swift */,
 				50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */,
 				504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
@@ -255,6 +258,7 @@
 				84AAEFE21F34ACF300D6A9FD /* BeaconTests.swift in Sources */,
 				50E333F61E4CDEF600EF8ECF /* PropertiesTest.swift in Sources */,
 				50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */,
+				843C25D91F46D2C900AFBEB3 /* ModelTests.swift in Sources */,
 				504EFC271E01D0A700EF8ECF /* AlpsSDKTests.swift in Sources */,
 				50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */,
 			);

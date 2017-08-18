@@ -227,31 +227,33 @@ class AlpsSDKTests: XCTestCase {
                                     horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                     (_ device) in
                     if let d = device {
-                        _ = DeviceLocation(deviceId: d.id!,
-                                                         altitude: 0,
-                                                         latitude: 37.785833999999994,
-                                                         longitude: -122.406417)
-                        alps.updateLocation(latitude: 38.00, longitude: -123, altitude: 100,
-                                              horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-                            (_ location) in
-                            XCTAssertNotNil(location)
-                            
-                            // Test each fields
-                            if let deviceId = location?.deviceId {
-                                XCTAssertEqual(deviceId, d.id, "test5UpdateLocation(): deviceId is not equal to defined one.")
-                            } else {
-                                XCTFail("test5UpdateLocation(): deviceId is nil.")
+                        if let deviceId = d.id {
+                            _ = DeviceLocation(deviceId: deviceId,
+                                                             altitude: 0,
+                                                             latitude: 37.785833999999994,
+                                                             longitude: -122.406417)
+                            alps.updateLocation(latitude: 38.00, longitude: -123, altitude: 100,
+                                                  horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                                (_ location) in
+                                XCTAssertNotNil(location)
+                                
+                                // Test each fields
+                                if let testDeviceId = location?.deviceId {
+                                    XCTAssertEqual(testDeviceId, deviceId, "test5UpdateLocation(): deviceId is not equal to defined one.")
+                                } else {
+                                    XCTFail("test5UpdateLocation(): deviceId is nil.")
+                                }
+                                if let l = location?.location{
+                                    XCTAssertEqual(l.latitude, 38.00, "test5UpdateLocation(): Returned latitude is not equal to defined one.")
+                                    XCTAssertEqual(l.longitude, -123, "test5UpdateLocation(): Returned longitude is not equal to defined one.")
+                                    XCTAssertEqual(l.altitude, 100, "test5UpdateLocation(): Returned altitude is not equal to defined one.")
+                                    XCTAssertEqual(l.horizontalAccuracy, 5.0, "test5UpdateLocation(): Returned horizontalAccuracy is not equal to defined one.")
+                                    XCTAssertEqual(l.verticalAccuracy, 5.0, "test5UpdateLocation(): Returned verticalAccuracy is not equal to defined one.")
+                                } else {
+                                    XCTFail("test5UpdateLocation(): location is nil.")
+                                }
+                                locationExpectation.fulfill()
                             }
-                            if let l = location?.location{
-                                XCTAssertEqual(l.latitude, 38.00, "test5UpdateLocation(): Returned latitude is not equal to defined one.")
-                                XCTAssertEqual(l.longitude, -123, "test5UpdateLocation(): Returned longitude is not equal to defined one.")
-                                XCTAssertEqual(l.altitude, 100, "test5UpdateLocation(): Returned altitude is not equal to defined one.")
-                                XCTAssertEqual(l.horizontalAccuracy, 5.0, "test5UpdateLocation(): Returned horizontalAccuracy is not equal to defined one.")
-                                XCTAssertEqual(l.verticalAccuracy, 5.0, "test5UpdateLocation(): Returned verticalAccuracy is not equal to defined one.")
-                            } else {
-                                XCTFail("test5UpdateLocation(): location is nil.")
-                            }
-                            locationExpectation.fulfill()
                         }
                     }
                 }
@@ -260,7 +262,96 @@ class AlpsSDKTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func test6GetBeacons() {
+    func test6CreatePinDevice() {
+        let alps = AlpsManager(apiKey: apiKey)
+        let deviceExpectation = expectation(description: "test6CreatePinDevice")
+        
+        
+        alps.createUser("Swift User 6") {
+            (_ user) in
+            if let _ = user {
+                alps.createPinDevice(name: "SDK pin device",
+                                        latitude: 37.7858, longitude: -122.4064, altitude: 100,
+                                        horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
+                                            (_ device) in
+                                            XCTAssertNotNil(device, "Whoops, no device")
+                                            // Test each fields
+                                            if let deviceType = device?.deviceType?.rawValue {
+                                                XCTAssertEqual(deviceType, "PinDevice", "test6CreatePinDevice(): deviceType is not equal to right type.")
+                                            } else {
+                                                XCTFail("test6CreatePinDevice(): deviceType is nil.")
+                                            }
+                                            XCTAssertNotNil(device?.id, "test6CreatePinDevice(): id is nil.")
+                                            if let name = device?.name {
+                                                XCTAssertEqual(name, "SDK pin device", "test6CreatePinDevice(): Returned name is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test6CreatePinDevice(): name is nil.")
+                                            }
+                                            if let location = device?.location {
+                                                XCTAssertEqual(location.latitude, 37.7858, "test6CreatePinDevice(): Returned latitude is not equal to defined one.")
+                                                XCTAssertEqual(location.longitude, -122.4064, "test6CreatePinDevice(): Returned longitude is not equal to defined one.")
+                                                XCTAssertEqual(location.altitude, 100.0, "test6CreatePinDevice(): Returned altitude is not equal to defined one.")
+                                                XCTAssertEqual(location.horizontalAccuracy, 5.0, "test6CreatePinDevice(): Returned horizontalAccuracy is not equal to defined one.")
+                                                XCTAssertEqual(location.verticalAccuracy, 5.0, "test6CreatePinDevice(): Returned verticalAccuracy is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test6CreatePinDevice(): location is nil.")
+                                            }
+                                            deviceExpectation.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+    
+    func test7CreateIBeaconDevice() {
+        let alps = AlpsManager(apiKey: apiKey)
+        let deviceExpectation = expectation(description: "test7CreateIBeaconDevice")
+        
+        
+        alps.createUser("Swift User 7") {
+            (_ user) in
+            if let _ = user {
+                alps.createIBeaconDevice(name: "SDK iBeacon device",
+                                         proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 21978, minor: 59907) {
+                                            (_ device) in
+                                            XCTAssertNotNil(device, "Whoops, no device")
+                                            // Test each fields
+                                            if let deviceType = device?.deviceType?.rawValue {
+                                                XCTAssertEqual(deviceType, "IBeaconDevice", "test7CreateIBeaconDevice(): deviceType is not equal to right type.")
+                                            } else {
+                                                XCTFail("test7CreateIBeaconDevice(): deviceType is nil.")
+                                            }
+                                            XCTAssertNotNil(device?.id, "test7CreateIBeaconDevice(): id is nil.")
+                                            if let name = device?.name {
+                                                XCTAssertEqual(name, "SDK iBeacon device", "test7CreateIBeaconDevice(): Returned name is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test7CreateIBeaconDevice(): name is nil.")
+                                            }
+                                            if let proximityUUID = device?.proximityUUID {
+                                                XCTAssertEqual(proximityUUID, "B9407F30-F5F8-466E-AFF9-25556B57FE6D", "test7CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test7CreateIBeaconDevice(): proximityUUID is nil.")
+                                            }
+                                            if let major = device?.major {
+                                                XCTAssertEqual(major, 21978, "test7CreateIBeaconDevice(): Returned major is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test7CreateIBeaconDevice(): major is nil.")
+                                            }
+                                            if let minor = device?.minor {
+                                                XCTAssertEqual(minor, 59907, "test7CreateIBeaconDevice(): Returned minor is not equal to defined one.")
+                                            } else {
+                                                XCTFail("test7CreateIBeaconDevice(): minor is nil.")
+                                            }
+                                            deviceExpectation.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+    
+    // DUMMY Test to be replaced with API Calls
+    func test8GetBeacons() {
         let alps = AlpsManager(apiKey: apiKey)
         XCTAssertNotNil(alps.beacons)
         XCTAssertEqual(alps.beacons.count, 3, "Number of Dummy beacons should be 3.")

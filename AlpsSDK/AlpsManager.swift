@@ -121,7 +121,7 @@ open class AlpsManager: AlpsSDK {
         if let u = alpsUser {
             let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
             let mobileDevice = MobileDevice.init(name: name, platform: platform, deviceToken: deviceToken, location: location)
-            if let userId = u.user.id, let deviceId = mobileDevice.id {
+            if let userId = u.user.id {
                 let _ = Alps.UserAPI.createDevice(userId: userId, device: mobileDevice) {
                                                     (mobileDevice, error) -> Void in
                                                 if mobileDevice is MobileDevice{
@@ -133,7 +133,59 @@ open class AlpsManager: AlpsSDK {
                     }
                 }
             } else {
-                print("Error forcing userId and deviceId are nil.")
+                print("Error forcing userId is nil.")
+            }
+        } else {
+            // XXX: error handling using exceptions?
+            print("Alps user hasn't been initialized yet!")
+            // throw AlpsManagerError.userNotIntialized
+        }
+    }
+    
+    public func createPinDevice(name: String, latitude: Double, longitude: Double, altitude: Double,
+                         horizontalAccuracy: Double, verticalAccuracy: Double,
+                         completion: @escaping (_ device: PinDevice?) -> Void) {
+        let userCompletion = completion
+        if let u = alpsUser {
+            let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
+            let pinDevice = PinDevice.init(name: name, location: location)
+            if let userId = u.user.id {
+                let _ = Alps.UserAPI.createDevice(userId: userId, device: pinDevice) {
+                    (pinDevice, error) -> Void in
+                    if pinDevice is PinDevice{
+                        if let d = pinDevice as? PinDevice {
+                            self.devices.append(d)
+                        }
+                        userCompletion(pinDevice as! PinDevice)
+                    }
+                }
+            } else {
+                print("Error forcing userId is nil.")
+            }
+        } else {
+            // XXX: error handling using exceptions?
+            print("Alps user hasn't been initialized yet!")
+            // throw AlpsManagerError.userNotIntialized
+        }
+    }
+    
+    public func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
+                                    completion: @escaping (_ device: IBeaconDevice?) -> Void) {
+        let userCompletion = completion
+        if let u = alpsUser {
+            let iBeaconDevice = IBeaconDevice.init(name: name, proximityUUID: proximityUUID, major: major, minor: minor)
+            if let userId = u.user.id {
+                let _ = Alps.UserAPI.createDevice(userId: userId, device: iBeaconDevice) {
+                    (iBeaconDevice, error) -> Void in
+                    if iBeaconDevice is PinDevice{
+                        if let d = iBeaconDevice as? IBeaconDevice {
+                            self.devices.append(d)
+                        }
+                        userCompletion(iBeaconDevice as! IBeaconDevice)
+                    }
+                }
+            } else {
+                print("Error forcing userId is nil.")
             }
         } else {
             // XXX: error handling using exceptions?
