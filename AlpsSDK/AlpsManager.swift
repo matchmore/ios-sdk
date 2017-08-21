@@ -129,7 +129,7 @@ open class AlpsManager: AlpsSDK {
                                                         self.devices.append(d)
                                                         self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
                                                     }
-                                                    userCompletion(mobileDevice as! MobileDevice)
+                                                    userCompletion(mobileDevice as? MobileDevice)
                     }
                 }
             } else {
@@ -156,7 +156,7 @@ open class AlpsManager: AlpsSDK {
                         if let d = pinDevice as? PinDevice {
                             self.devices.append(d)
                         }
-                        userCompletion(pinDevice as! PinDevice)
+                        userCompletion(pinDevice as? PinDevice)
                     }
                 }
             } else {
@@ -181,7 +181,7 @@ open class AlpsManager: AlpsSDK {
                         if let d = iBeaconDevice as? IBeaconDevice {
                             self.devices.append(d)
                         }
-                        userCompletion(iBeaconDevice as! IBeaconDevice)
+                        userCompletion(iBeaconDevice as? IBeaconDevice)
                     }
                 }
             } else {

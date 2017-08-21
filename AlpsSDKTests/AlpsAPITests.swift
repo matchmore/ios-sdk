@@ -267,7 +267,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test3CreateMobileDevice(): location is nil.")
             }
         } else {
-            XCTFail("test3CreateMobileDevice(): user was not properly created.")
+            XCTFail("test3CreateMobileDevice(): No returned user.")
         }
     }
     
@@ -298,7 +298,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test4CreatePinDevice(): location is nil.")
             }
         } else {
-            XCTFail("test4CreatePinDevice(): user was not properly created.")
+            XCTFail("test4CreatePinDevice(): No returned user.")
         }
     }
     
@@ -335,7 +335,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test5CreateIBeaconDevice(): minor is nil.")
             }
         } else {
-            XCTFail("test5CreateIBeaconDevice(): user was not properly created.")
+            XCTFail("test5CreateIBeaconDevice(): No returned user.")
         }
     }
 
@@ -377,7 +377,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test6CreatePublication(): device was not properly created.")
             }
         } else {
-            XCTFail("test6CreatePublication(): user was not properly created.")
+            XCTFail("test6CreatePublication(): No returned user.")
         }
     }
 
@@ -418,7 +418,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test7CreateSubscription(): device was not properly created.")
             }
         } else {
-            XCTFail("test7CreateSubscription(): user was not properly created.")
+            XCTFail("test7CreateSubscription(): No returned user.")
         }
     }
 
@@ -447,7 +447,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test8CreateLocation(): device was not properly created.")
             }
         } else {
-            XCTFail("test8CreateLocation(): user was not properly created.")
+            XCTFail("test8CreateLocation(): No returned user.")
         }
     }
 
@@ -462,7 +462,7 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test9GetMatches(): device was not properly created.")
             }
         } else {
-            XCTFail("test9GetMatches(): user was not properly created.")
+            XCTFail("test9GetMatches(): No returned user.")
         }
     }
 }
