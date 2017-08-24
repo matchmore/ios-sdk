@@ -64,6 +64,7 @@ extension IBeaconDevice {
     internal convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
         self.init()
         self.name = name
+        self.deviceType = DeviceType.ibeacondevice
         self.proximityUUID = proximityUUID
         self.major = major as? Int32
         self.minor = minor as? Int32
@@ -74,6 +75,7 @@ extension MobileDevice {
     internal convenience init(name:String, platform: String, deviceToken: String, location: Location?){
         self.init()
         self.name = name
+        self.deviceType = DeviceType.mobileDevice
         self.platform = platform
         self.deviceToken = deviceToken
         self.location = location
@@ -84,6 +86,7 @@ extension PinDevice {
     internal convenience init(name: String, location: Location){
         self.init()
         self.name = name
+        self.deviceType = DeviceType.pinDevice
         self.location = location
     }
 }
