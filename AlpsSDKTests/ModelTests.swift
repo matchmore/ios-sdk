@@ -93,7 +93,7 @@ class ModelTests: XCTestCase {
     
     func testInitPublication() {
         // 1. given
-        let properties : [String:String] = ["role": "'developer'"]
+        let properties : [String:String] = ["role": "developer"]
         let publication = Publication.init(deviceId: "1234567890", topic: "alps-test", range: 100.0, duration: 0.0, properties: properties)
         let json = ["deviceId": "1234567890",
                     "topic": "alps-test",
@@ -111,6 +111,7 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(String(describing: publication.encodeToJSON()), String(describing: json))
         print(publication.encodeToJSON())
         print(json)
+        
         
     }
     

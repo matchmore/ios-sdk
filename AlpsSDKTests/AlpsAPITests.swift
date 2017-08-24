@@ -126,7 +126,7 @@ class AlpsAPITests: XCTestCase {
         let properties = ["role": "'developer'"]
 
         if let userId = user.id, let deviceId = device.id {
-            let publication = Publication.init(deviceId: device.id!, topic: "alps-test", range: 100.0, duration: 0.0, properties: properties)
+            let publication = Publication.init(deviceId: deviceId, topic: "alps-test", range: 100.0, duration: 0.0, properties: properties)
             let _ = Alps.DeviceAPI.createPublication(userId: userId, deviceId: deviceId, publication: publication) {
                 (publication, error) -> Void in
 
