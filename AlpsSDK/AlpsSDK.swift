@@ -25,7 +25,7 @@ protocol AlpsSDK {
     func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
                             completion: @escaping (_ device: IBeaconDevice?) -> Void)
 
-    func createPublication(topic: String, range: Double, duration: Double, properties: Properties,
+    func createPublication(topic: String, range: Double, duration: Double, properties: [String:String],
                            completion: @escaping (_ publication: Publication?) -> Void)
 
     func createSubscription(topic: String, selector: String, range: Double, duration: Double,
@@ -34,7 +34,7 @@ protocol AlpsSDK {
     // update device location
     func updateLocation(latitude: Double, longitude: Double, altitude: Double,
                         horizontalAccuracy: Double, verticalAccuracy: Double,
-                        completion: @escaping (_ location: DeviceLocation?) -> Void)
+                        completion: @escaping (_ location: Location?) -> Void)
 
     // queries
     func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void)

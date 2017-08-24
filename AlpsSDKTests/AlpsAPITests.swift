@@ -163,9 +163,9 @@ class AlpsAPITests: XCTestCase {
         return createdSubscription
     }
 
-    func createLocation(_ user: User,_ device: Device) -> DeviceLocation? {
+    func createLocation(_ user: User,_ device: Device) -> Location? {
         let locationExpectation = expectation(description: "CreateLocation")
-        var createdLocation: DeviceLocation?
+        var createdLocation: Location?
 
         let location = Location.init(latitude: 37.7858, longitude: -122.4064, altitude: 20.0,horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
         if let userId = user.id, let deviceId = device.id {
@@ -429,12 +429,12 @@ class AlpsAPITests: XCTestCase {
                 XCTAssertNotNil(location)
                 
                 // Test each fields
-                if let deviceId = location?.deviceId {
+                if let deviceId = device.id {
                     XCTAssertEqual(deviceId, device.id, "test8CreateLocation(): deviceId is not equal to defined one.")
                 } else {
                     XCTFail("test8CreateLocation(): deviceId is nil.")
                 }
-                if let l = location?.location{
+                if let l = location{
                     XCTAssertEqual(l.latitude, 37.7858, "test8CreateLocation(): Returned latitude is not equal to defined one.")
                     XCTAssertEqual(l.longitude, 122.4064, "test8CreateLocation(): Returned longitude is not equal to defined one.")
                     XCTAssertEqual(l.altitude, 200.0, "test8CreateLocation(): Returned altitude is not equal to defined one.")

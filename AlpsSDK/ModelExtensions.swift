@@ -23,7 +23,7 @@ extension Dictionary {
 }
 
 extension User {
-    public convenience init(name: String) {
+    internal convenience init(name: String) {
         self.init()
         self.name = name
     }
@@ -61,7 +61,7 @@ extension User {
 //}
 
 extension IBeaconDevice {
-    public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
+    internal convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
         self.init()
         self.name = name
         self.proximityUUID = proximityUUID
@@ -71,7 +71,7 @@ extension IBeaconDevice {
 }
 
 extension MobileDevice {
-    public convenience init(name:String, platform: String, deviceToken: String, location: Location?){
+    internal convenience init(name:String, platform: String, deviceToken: String, location: Location?){
         self.init()
         self.name = name
         self.platform = platform
@@ -81,28 +81,28 @@ extension MobileDevice {
 }
 
 extension PinDevice {
-    public convenience init(name: String, location: Location){
+    internal convenience init(name: String, location: Location){
         self.init()
         self.name = name
         self.location = location
     }
 }
 
-extension DeviceLocation {
-
-    public convenience init(deviceId: String, altitude: Double, latitude: Double, longitude: Double) {
-        self.init()
-        self.deviceId = deviceId
-        // XXX: use now for the timestamp
-        // XXX: use some defaults horizontal and vertical accuracy
-        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: 5, verticalAccuracy: 5)
-        self.location = location
-    }
-}
+//extension DeviceLocation {
+//
+//    internal convenience init(deviceId: String, altitude: Double, latitude: Double, longitude: Double) {
+//        self.init()
+//        self.deviceId = deviceId
+//        // XXX: use now for the timestamp
+//        // XXX: use some defaults horizontal and vertical accuracy
+//        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: 5, verticalAccuracy: 5)
+//        self.location = location
+//    }
+//}
 
 extension Publication {
 
-    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: Properties) {
+    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String:String]) {
         self.init()
         // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
@@ -110,13 +110,12 @@ extension Publication {
         self.range = range
         self.duration = duration
         self.properties = properties
-        self.op = "create"
     }
 }
 
 extension Subscription {
 
-    public convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
+    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
 
         self.init()
         // XXX: use now for the timestamp
@@ -125,13 +124,12 @@ extension Subscription {
         self.range = range
         self.duration = duration
         self.selector = selector
-        self.op = "create"
     }
 }
 
 extension Location {
     
-    public convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double){
+    internal convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double){
         self.init()
         self.latitude = latitude
         self.longitude = longitude
@@ -154,7 +152,7 @@ extension Match: CustomStringConvertible, Hashable {
     }
 
     public var description: String {
-        return "Match: (\(id!), \(timestamp!))"
+        return "Match: (\(id!), \(createdAt!))"
     }
 }
 

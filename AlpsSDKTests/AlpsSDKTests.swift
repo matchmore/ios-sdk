@@ -228,22 +228,13 @@ class AlpsSDKTests: XCTestCase {
                     (_ device) in
                     if let d = device {
                         if let deviceId = d.id {
-                            _ = DeviceLocation(deviceId: deviceId,
-                                                             altitude: 0,
-                                                             latitude: 37.785833999999994,
-                                                             longitude: -122.406417)
                             alps.updateLocation(latitude: 38.00, longitude: -123, altitude: 100,
                                                   horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
                                 (_ location) in
                                 XCTAssertNotNil(location)
                                 
                                 // Test each fields
-                                if let testDeviceId = location?.deviceId {
-                                    XCTAssertEqual(testDeviceId, deviceId, "test5UpdateLocation(): deviceId is not equal to defined one.")
-                                } else {
-                                    XCTFail("test5UpdateLocation(): deviceId is nil.")
-                                }
-                                if let l = location?.location{
+                                if let l = location{
                                     XCTAssertEqual(l.latitude, 38.00, "test5UpdateLocation(): Returned latitude is not equal to defined one.")
                                     XCTAssertEqual(l.longitude, -123, "test5UpdateLocation(): Returned longitude is not equal to defined one.")
                                     XCTAssertEqual(l.altitude, 100, "test5UpdateLocation(): Returned altitude is not equal to defined one.")
