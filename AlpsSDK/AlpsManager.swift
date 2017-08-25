@@ -26,8 +26,9 @@ open class AlpsManager: AlpsSDK {
     let headers: [String: String]
 
     // XXX: this has to come from a configuration
-    let alpsEndpoint = "https://api.matchmore.io/v03"
-
+    // let alpsEndpoint = "https://api.matchmore.io/v03"
+    // let alpsEndpoint = "http://localhost:9000"
+    
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
     var locationManager: LocationManager? = nil
@@ -177,7 +178,7 @@ open class AlpsManager: AlpsSDK {
             if let userId = u.user.id {
                 let _ = Alps.UserAPI.createDevice(userId: userId, device: iBeaconDevice) {
                     (iBeaconDevice, error) -> Void in
-                    if iBeaconDevice is PinDevice{
+                    if iBeaconDevice is IBeaconDevice{
                         if let d = iBeaconDevice as? IBeaconDevice {
                             self.devices.append(d)
                         }

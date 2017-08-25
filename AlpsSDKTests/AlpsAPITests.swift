@@ -23,7 +23,7 @@ class AlpsAPITests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        AlpsAPI.basePath = "http://localhost:9000"
+        // AlpsAPI.basePath = "http://localhost:9000"
         // AlpsAPI.basePath = "http://api.matchmore.io/v03"
         AlpsAPI.customHeaders = headers
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -436,8 +436,8 @@ class AlpsAPITests: XCTestCase {
                 }
                 if let l = location{
                     XCTAssertEqual(l.latitude, 37.7858, "test8CreateLocation(): Returned latitude is not equal to defined one.")
-                    XCTAssertEqual(l.longitude, 122.4064, "test8CreateLocation(): Returned longitude is not equal to defined one.")
-                    XCTAssertEqual(l.altitude, 200.0, "test8CreateLocation(): Returned altitude is not equal to defined one.")
+                    XCTAssertEqual(l.longitude, -122.4064, "test8CreateLocation(): Returned longitude is not equal to defined one.")
+                    XCTAssertEqual(l.altitude, 20.0, "test8CreateLocation(): Returned altitude is not equal to defined one.")
 //                    XCTAssertEqual(l.horizontalAccuracy, 5.0, "test8CreateLocation(): Returned horizontalAccuracy is not equal to defined one.")
 //                    XCTAssertEqual(l.verticalAccuracy, 5.0, "test8CreateLocation(): Returned verticalAccuracy is not equal to defined one.")
                 } else {

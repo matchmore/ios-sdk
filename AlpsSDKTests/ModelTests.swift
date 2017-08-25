@@ -99,7 +99,7 @@ class ModelTests: XCTestCase {
                     "topic": "alps-test",
                     "range": 100.0,
                     "duration": 0.0,
-                    "properties": ["role": "'developer'"]] as Any
+                    "properties": ["role": "developer"]] as Any
         // 3. should equal
         // Test each fields
         XCTAssertNil(publication.id)

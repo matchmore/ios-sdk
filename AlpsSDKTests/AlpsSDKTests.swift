@@ -319,7 +319,7 @@ class AlpsSDKTests: XCTestCase {
                                                 XCTFail("test7CreateIBeaconDevice(): name is nil.")
                                             }
                                             if let proximityUUID = device?.proximityUUID {
-                                                XCTAssertEqual(proximityUUID, "B9407F30-F5F8-466E-AFF9-25556B57FE6D", "test7CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
+                                                XCTAssertEqual(UUID.init(uuidString: proximityUUID), UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), "test7CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
                                             } else {
                                                 XCTFail("test7CreateIBeaconDevice(): proximityUUID is nil.")
                                             }
