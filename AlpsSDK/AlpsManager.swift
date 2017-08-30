@@ -35,7 +35,7 @@ open class AlpsManager: AlpsSDK {
     var matchMonitor: MatchMonitor? = nil
     
     // DEVELOP: Beacons
-    var beaconUser: BeaconUser? = nil
+    var beaconManager: BeaconManager? = nil
 
     // FIXME: add the world id when it's there
     // var world: World
@@ -66,9 +66,10 @@ open class AlpsManager: AlpsSDK {
         
         
         // DEVELOP: Beacons
-        self.beaconUser = BeaconUser(alpsManager: self)
-        if let bu = beaconUser{
+        self.beaconManager = BeaconManager(alpsManager: self)
+        if let bu = beaconManager{
             self.beacons = bu.getBeacons()
+            print("BEacon user 's beacon \(beacons)")
         }else{
             print("None beaconUser found.")
         }
@@ -540,17 +541,55 @@ open class AlpsManager: AlpsSDK {
         return uuids
     }
     
-    public func onBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
+    public func getClosestOnBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
         if let lm = locationManager {
-            lm.onBeaconUpdate(completion: completion)
+            lm.getClosestOnBeaconUpdate(completion: completion)
         }
     }
     
-    public func startRanging(forUuid: UUID, identifier: String){
+    public func getAllOnBeaconUpdate(completion: @escaping ((_ beacon: [CLBeacon]) -> Void)) {
+        if let lm = locationManager {
+            lm.getAllOnBeaconUpdate(completion: completion)
+        }
+    }
+    
+    public func startRangingBeacons(forUuid: UUID, identifier: String){
         locationManager?.startRanging(forUuid: forUuid, identifier: identifier)
     }
     
-    public func stopRanging(forUuid: UUID){
+    public func stopRangingBeacons(forUuid: UUID){
         locationManager?.stopRanging(forUuid: forUuid)
+    }
+    
+    public func startImmediateBeaconsProximityEvent() {
+        locationManager?.startImmediateBeaconsProximityEvent()
+    }
+    
+    public func startNearBeaconsProximityEvent() {
+        locationManager?.startNearBeaconsProximityEvent()
+    }
+    
+    public func startFarBeaconsProximityEvent() {
+        locationManager?.startFarBeaconsProximityEvent()
+    }
+    
+    public func startUnknownBeaconsProximityEvent() {
+        locationManager?.startUnknownBeaconsProximityEvent()
+    }
+    
+    public func stopImmediateBeaconsProximityEvent() {
+        locationManager?.stopImmediateBeaconsProximityEvent()
+    }
+    
+    public func stopNearBeaconsProximityEvent() {
+        locationManager?.stopNearBeaconsProximityEvent()
+    }
+    
+    public func stopFarBeaconsProximityEvent() {
+        locationManager?.stopFarBeaconsProximityEvent()
+    }
+    
+    public func stopUnknownBeaconsProximityEvent() {
+        locationManager?.stopUnknownBeaconsProximityEvent()
     }
 }

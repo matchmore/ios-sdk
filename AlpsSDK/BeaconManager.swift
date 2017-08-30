@@ -12,9 +12,14 @@ import CoreLocation
 
 // BeaconUser is the middleware between our core and SDK, it works as the same as AlpsDevice etc..
 // AlpsManager will call BeaconUser, which will communicate with the API.
-class BeaconUser:NSObject {
+class BeaconManager:NSObject {
     var alpsManager : AlpsManager
     var beacons = [IBeaconDevice]()
+    
+    // Triggered proximity event map
+    var immediateTrigger : [CLBeacon:ProximityEvent] = [:]
+    var nearTrigger : [CLBeacon:ProximityEvent] = [:]
+    var farTrigger : [CLBeacon:ProximityEvent] = [:]
     
     init (alpsManager : AlpsManager) {
         self.alpsManager = alpsManager
@@ -29,13 +34,20 @@ class BeaconUser:NSObject {
 //        beacons.append(DeviceBis.init(mobileName: "mobile1", platform: "ios 9.0", deviceToken: "xxx", location: nil))
 //        beacons.append(DeviceBis.init(mobileName: "mobile2", platform: "ios 10.0", deviceToken: "xxx", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
 //        beacons.append(DeviceBis.init(pinName: "pin1", location: CLLocation.init(latitude: CLLocationDegrees(46.522076), longitude: CLLocationDegrees(6.583502))))
-        beacons.append(IBeaconDevice.init(name: "beacon1 - rose", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 21978, minor: 59907))
-        beacons.append(IBeaconDevice.init(name: "beacon2 - jaune canari", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 64575, minor: 19467))
-        beacons.append(IBeaconDevice.init(name: "beacon3 - bordeau-betrave", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 53494, minor: 28090))
-        print("DUMMY Beacons ready.")
+        var b1 = IBeaconDevice.init(name: "beacon1 - rose", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 21978, minor: 59907)
+        b1.id = "1"
+        let b2 = IBeaconDevice.init(name: "beacon2 - jaune canari", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 64575, minor: 19467)
+        b2.id = "2"
+        let b3 = IBeaconDevice.init(name: "beacon3 - bordeau-betrave", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 53494, minor: 28090)
+        b3.id = "3"
+        beacons.append(b1)
+        beacons.append(b2)
+        beacons.append(b3)
     }
     
     public func getBeacons() -> [IBeaconDevice]{
         return beacons
     }
+    
+    
 }

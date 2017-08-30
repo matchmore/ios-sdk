@@ -58,4 +58,5 @@ protocol AlpsSDK {
     func getAllMatches(completion: @escaping (_ matches: Matches) -> Void)
     // register match handlers
     func onMatch(completion: @escaping (_ match: Match) -> Void)
+    // Beacons
 }
