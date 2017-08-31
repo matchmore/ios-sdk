@@ -21,7 +21,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // Beacons
     // Triggered proximity event map
-    var triggerTimer : Int = 5
+    var triggerTimer : Int = 5 * 1000 // timer is in milliseconds
     var proximityTrigger = Set<CLProximity>()
     var immediateTrigger : [String:ProximityEvent] = [:]
     var nearTrigger : [String:ProximityEvent] = [:]
@@ -122,8 +122,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        
-        
         // Returning the closest beacon and all the detected beacons
         var closest : CLBeacon?
         if beacons.isEmpty != true {
@@ -134,20 +132,26 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 }
             }
         }
-        
         if let closestBeacon = closest {
             do {
+                // If the developer needs the closest beacon or the detected beacons, he/she can access it with these 2 fields.
                 try self.closestBeaconClosure?(closestBeacon)
                     self.detectedBeaconsClosure?(beacons)
             } catch {
                 // just to catch
             }
         }
+        
+        // Proximity Events related
         parseBeaconsByProximity(beacons)
-        for (i, o) in immediateTrigger {
-            print(i)
-            print(o)
-        }
+//        print("IHHHOOOO")
+//        for (i, o) in immediateTrigger {
+//            print("-----")
+//            print(i)
+//            print(o)
+//            print(o.createdAt)
+//            print("------")
+//        }
         if proximityTrigger.isEmpty {
             print("NO proximity event triggering yet.")
         } else {
@@ -155,19 +159,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 switch pt {
                 case .immediate:
                     triggerImmediateBeaconsProximityEvent()
-                    print("Imm")
                     break
                 case .near:
                     triggerNearBeaconsProximityEvent()
-                    print("NEar")
                     break
                 case .far:
                     triggerFarBeaconsProximityEvent()
-                    print("Far")
                     break
                 case .unknown:
                     triggerUnknownBeaconsProximityEvent()
-                    print("Unknown")
                     break
                 }
             }
@@ -316,14 +316,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func triggerImmediateBeaconsProximityEvent() {
-        print("... immediate ...")
-        print(immediateBeacons)
-        print("... near ...")
-        print(nearBeacons)
-        print("... far ...")
-        print(farBeacons)
-        print("... unknown ...")
-        print(unknownBeacons)
+//        print("... immediate ...")
+//        print(immediateBeacons)
+//        print("... near ...")
+//        print(nearBeacons)
+//        print("... far ...")
+//        print(farBeacons)
+//        print("... unknown ...")
+//        print(unknownBeacons)
+        print("HERE")
         for id in immediateBeacons{
             // Check if a proximity event already exist
             if immediateTrigger[id] == nil {
@@ -332,17 +333,36 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 let userId = self.alpsManager.alpsUser?.user.id
                 triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
                     (_ proximityEvent) in
-                    print("------------------------")
-                    print(proximityEvent?.id)
-                    print(proximityEvent?.createdAt)
-                    print(proximityEvent?.deviceId)
-                    print(proximityEvent?.distance)
+//                    print("------------------------")
+//                    print(proximityEvent?.id)
+//                    print(proximityEvent?.createdAt)
+//                    print(proximityEvent?.deviceId)
+//                    print(proximityEvent?.distance)
                     self.immediateTrigger[id] = proximityEvent
                     print("ImmediateBeacons PROXIMITY event fired, for \(String(describing: proximityEvent?.deviceId))")
+                    print("And created At is : \(String(describing: proximityEvent?.createdAt))")
                 }
             } else {
                 // Check if the existed proximity event needs a refresh on a based timer
                 var proximityEvent = immediateTrigger[id]
+                // Represents  the current time
+                var now = Int64(Date().timeIntervalSince1970 * 1000)
+                print("and proximity event deviceId is : \(proximityEvent?.deviceId)")
+                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+                    print("NOW : \(now)")
+                    print("PROXIMITY TIME : \(proximityEventCreatedAt)")
+                    let gap = now - proximityEventCreatedAt
+                    var truncatedGap = Int(truncatingBitPattern: gap)
+                    
+                    let g = now % proximityEventCreatedAt
+                    print("THIS IS GGGG ::: \(g)")
+                    print("TRUNCATED GAP : \(truncatedGap)")
+                    if truncatedGap > triggerTimer {
+                        print("Fire another immediateBeacon Proximity event")
+                    }else{
+                        print("We are in time.")
+                    }
+                }
                 print("an already triggered proximity event, \(String(describing: proximityEvent))")
             }
         }

@@ -61,6 +61,7 @@ extension User {
 //}
 
 extension IBeaconDevice {
+    //TOCHANGE: put it in internal when beaconManager is working.
     public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
         self.init()
         self.name = name
