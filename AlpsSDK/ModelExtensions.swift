@@ -61,7 +61,7 @@ extension User {
 //}
 
 extension IBeaconDevice {
-    internal convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
+    public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
         self.init()
         self.name = name
         self.deviceType = DeviceType.ibeacondevice
@@ -156,6 +156,15 @@ extension Match: CustomStringConvertible, Hashable {
 
     public var description: String {
         return "Match: (\(id!), \(createdAt!))"
+    }
+}
+
+extension ProximityEvent {
+    
+    public convenience init(deviceId : String, distance: Double){
+        self.init()
+        self.deviceId = deviceId
+        self.distance = distance
     }
 }
 

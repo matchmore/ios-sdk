@@ -68,7 +68,7 @@ open class AlpsManager: AlpsSDK {
         // DEVELOP: Beacons
         self.beaconManager = BeaconManager(alpsManager: self)
         if let bu = beaconManager{
-            self.beacons = bu.getBeacons()
+//            self.beacons = bu.getBeacons()
             print("BEacon user 's beacon \(beacons)")
         }else{
             print("None beaconUser found.")
@@ -561,35 +561,16 @@ open class AlpsManager: AlpsSDK {
         locationManager?.stopRanging(forUuid: forUuid)
     }
     
-    public func startImmediateBeaconsProximityEvent() {
-        locationManager?.startImmediateBeaconsProximityEvent()
+    public func startBeaconsProximityEvent(forCLProximity: CLProximity){
+        locationManager?.startBeaconsProximityEvent(forCLProximity: forCLProximity)
     }
     
-    public func startNearBeaconsProximityEvent() {
-        locationManager?.startNearBeaconsProximityEvent()
+    public func stopBeaconsProximityEvent(forCLProximity: CLProximity){
+        locationManager?.stopBeaconsProximityEvent(forCLProximity: forCLProximity)
     }
     
-    public func startFarBeaconsProximityEvent() {
-        locationManager?.startFarBeaconsProximityEvent()
-    }
-    
-    public func startUnknownBeaconsProximityEvent() {
-        locationManager?.startUnknownBeaconsProximityEvent()
-    }
-    
-    public func stopImmediateBeaconsProximityEvent() {
-        locationManager?.stopImmediateBeaconsProximityEvent()
-    }
-    
-    public func stopNearBeaconsProximityEvent() {
-        locationManager?.stopNearBeaconsProximityEvent()
-    }
-    
-    public func stopFarBeaconsProximityEvent() {
-        locationManager?.stopFarBeaconsProximityEvent()
-    }
-    
-    public func stopUnknownBeaconsProximityEvent() {
-        locationManager?.stopUnknownBeaconsProximityEvent()
+    //TOSUPPRESS: function just here in needs
+    public func fixBeacons(beacons: [IBeaconDevice]){
+        self.beacons = beacons
     }
 }

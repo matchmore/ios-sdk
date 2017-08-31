@@ -144,8 +144,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             }
         }
         parseBeaconsByProximity(beacons)
+        for (i, o) in immediateTrigger {
+            print(i)
+            print(o)
+        }
         if proximityTrigger.isEmpty {
-            print("NO proximit event triggering yet.")
+            print("NO proximity event triggering yet.")
         } else {
             for pt in proximityTrigger{
                 switch pt {
@@ -286,13 +290,24 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func syncBeacon(beacon: CLBeacon) -> [IBeaconDevice] {
-        var b : [IBeaconDevice]
+        var b : [IBeaconDevice] = self.alpsManager.beacons
         b = self.alpsManager.beacons.filter{
-            let proximityUUID = $0.proximityUUID
-            let major = $0.major
-            let minor = $0.minor
+            let id = $0.id!
+            let proximityUUID = $0.proximityUUID!
+            let major = $0.major!
+            let minor = $0.minor!
             // It will be called 3 times because I have 3 beacons registered but it will be called the number of time of beacons registered in the app.
-            if proximityUUID == beacon.proximityUUID.uuidString && (major! as NSNumber) == beacon.major && (minor! as NSNumber) == beacon.minor {
+//            print(id)
+//            print(proximityUUID)
+//            print(beacon.proximityUUID.uuidString)
+//            print(".------")
+//            print(major)
+//            print(beacon.major)
+//            print(".------")
+//            print(minor)
+//            print(beacon.minor)
+//            print(".------")
+            if (proximityUUID.caseInsensitiveCompare(beacon.proximityUUID.uuidString) == ComparisonResult.orderedSame)  && (major as NSNumber) == beacon.major && (minor as NSNumber) == beacon.minor {
                 return true
             }
             return false
@@ -301,24 +316,33 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func triggerImmediateBeaconsProximityEvent() {
-//        print("... immediate ...")
-//        print(immediateBeacons)
-//        print("... near ...")
-//        print(nearBeacons)
-//        print("... far ...")
-//        print(farBeacons)
-//        print("... unknown ...")
-//        print(unknownBeacons)
+        print("... immediate ...")
+        print(immediateBeacons)
+        print("... near ...")
+        print(nearBeacons)
+        print("... far ...")
+        print(farBeacons)
+        print("... unknown ...")
+        print(unknownBeacons)
         for id in immediateBeacons{
             // Check if a proximity event already exist
             if immediateTrigger[id] == nil {
                 // Send the proximity event
-                let p = ProximityEvent.init(deviceId: id, distance: 0.5)
-                immediateTrigger[id] = p
-                print("ImmediateBeacons PROXIMITY event fired, for \(String(describing:p.deviceId))")
+                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 0.5)
+                let userId = self.alpsManager.alpsUser?.user.id
+                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+                    (_ proximityEvent) in
+                    print("------------------------")
+                    print(proximityEvent?.id)
+                    print(proximityEvent?.createdAt)
+                    print(proximityEvent?.deviceId)
+                    print(proximityEvent?.distance)
+                    self.immediateTrigger[id] = proximityEvent
+                    print("ImmediateBeacons PROXIMITY event fired, for \(String(describing: proximityEvent?.deviceId))")
+                }
             } else {
                 // Check if the existed proximity event needs a refresh on a based timer
-                let proximityEvent = immediateTrigger[id]
+                var proximityEvent = immediateTrigger[id]
                 print("an already triggered proximity event, \(String(describing: proximityEvent))")
             }
         }
@@ -372,35 +396,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func startImmediateBeaconsProximityEvent() {
-        proximityTrigger.insert(CLProximity.immediate)
+    private func triggerProximityEvent(userId: String, deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
+        let userCompletion = completion
+        let _ = Alps.DeviceAPI.triggerProximityEvents(userId: userId, deviceId: deviceId, proximityEvent: proximityEvent) {
+            (proximityEvent, error) -> Void in
+            
+            userCompletion(proximityEvent)
+        }
     }
     
-    func startNearBeaconsProximityEvent() {
-        proximityTrigger.insert(CLProximity.near)
+    func startBeaconsProximityEvent(forCLProximity: CLProximity) {
+        proximityTrigger.insert(forCLProximity)
     }
     
-    func startFarBeaconsProximityEvent() {
-        proximityTrigger.insert(CLProximity.far)
-    }
-    
-    func startUnknownBeaconsProximityEvent() {
-        proximityTrigger.insert(CLProximity.unknown)
-    }
-    
-    func stopImmediateBeaconsProximityEvent() {
-        proximityTrigger.remove(CLProximity.immediate)
-    }
-    
-    func stopNearBeaconsProximityEvent() {
-        proximityTrigger.remove(CLProximity.near)
-    }
-    
-    func stopFarBeaconsProximityEvent() {
-        proximityTrigger.remove(CLProximity.far)
-    }
-    
-    func stopUnknownBeaconsProximityEvent() {
-        proximityTrigger.remove(CLProximity.unknown)
+    func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
+        proximityTrigger.remove(forCLProximity)
     }
 }
