@@ -21,8 +21,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // Beacons
     // Triggered proximity event map
-    var triggerTimer : Int = 5 * 1000 // timer is in milliseconds
+    var refreshTimer : Int = 60 * 1000 // timer is in milliseconds
     var proximityTrigger = Set<CLProximity>()
+    // [Is the id of the IBeaconDevice registered in the core : The returned ProximityEvent will be stored ]
     var immediateTrigger : [String:ProximityEvent] = [:]
     var nearTrigger : [String:ProximityEvent] = [:]
     var farTrigger : [String:ProximityEvent] = [:]
@@ -144,30 +145,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         // Proximity Events related
         parseBeaconsByProximity(beacons)
-//        print("IHHHOOOO")
-//        for (i, o) in immediateTrigger {
-//            print("-----")
-//            print(i)
-//            print(o)
-//            print(o.createdAt)
-//            print("------")
-//        }
         if proximityTrigger.isEmpty {
-            print("NO proximity event triggering yet.")
+            // No proximity event are triggering yet since proximityTrigger array is empty
         } else {
             for pt in proximityTrigger{
                 switch pt {
                 case .immediate:
-                    triggerImmediateBeaconsProximityEvent()
+                    triggerBeaconsProximityEvent(forCLProximity: pt)
                     break
                 case .near:
-                    triggerNearBeaconsProximityEvent()
+                    triggerBeaconsProximityEvent(forCLProximity: pt)
                     break
                 case .far:
-                    triggerFarBeaconsProximityEvent()
+                    triggerBeaconsProximityEvent(forCLProximity: pt)
                     break
                 case .unknown:
-                    triggerUnknownBeaconsProximityEvent()
+                    triggerBeaconsProximityEvent(forCLProximity: pt)
                     break
                 }
             }
@@ -304,153 +297,153 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         return b
     }
     
-    private func triggerImmediateBeaconsProximityEvent() {
-        for id in immediateBeacons{
-            // Check if a proximity event already exist
-            if immediateTrigger[id] == nil {
-                // Send the proximity event
-                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 0.5)
-                let userId = self.alpsManager.alpsUser?.user.id
-                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
-                    (_ proximityEvent) in
-                    self.immediateTrigger[id] = proximityEvent
-                }
-            } else {
-                // Check if the existed proximity event needs a refresh on a based timer
-                let proximityEvent = immediateTrigger[id]
-                // Represents  the UNIX current time in milliseconds
-                let now = Int64(Date().timeIntervalSince1970 * 1000)
-                if let proximityEventCreatedAt = proximityEvent?.createdAt{
-                    let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
-                    if truncatedGap > triggerTimer {
-                        // Send the refreshing proximity event based on the timer
-                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 0.5)
-                        let userId = self.alpsManager.alpsUser?.user.id
-                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
-                            (_ proximityEvent) in
-                            self.immediateTrigger[id] = proximityEvent
-                        }
-                    }else{
-                        // Do something when it doesn't need to be refreshed
-                    }
-                } else {
-                    print("ERROR : CreatedAt in a proximity event is nil.")
-                }
-            }
-        }
-    }
-    
-    private func triggerNearBeaconsProximityEvent() {
-        for id in nearBeacons{
-            // Check if a proximity event already exist
-            if nearTrigger[id] == nil {
-                // Send the proximity event
-                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 3.0)
-                let userId = self.alpsManager.alpsUser?.user.id
-                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
-                    (_ proximityEvent) in
-                    self.nearTrigger[id] = proximityEvent
-                }
-            } else {
-                // Check if the existed proximity event needs a refresh on a based timer
-                let proximityEvent = nearTrigger[id]
-                // Represents  the UNIX current time in milliseconds
-                let now = Int64(Date().timeIntervalSince1970 * 1000)
-                if let proximityEventCreatedAt = proximityEvent?.createdAt{
-                    let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
-                    if truncatedGap > triggerTimer {
-                        // Send the refreshing proximity event based on the timer
-                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 3.0)
-                        let userId = self.alpsManager.alpsUser?.user.id
-                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
-                            (_ proximityEvent) in
-                            self.nearTrigger[id] = proximityEvent
-                        }
-                    }else{
-                        // Do something when it doesn't need to be refreshed
-                    }
-                } else {
-                    print("ERROR : CreatedAt in a proximity event is nil.")
-                }
-            }
-        }
-    }
-    
-    private func triggerFarBeaconsProximityEvent() {
-        for id in farBeacons{
-            // Check if a proximity event already exist
-            if farTrigger[id] == nil {
-                // Send the proximity event
-                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 50.0)
-                let userId = self.alpsManager.alpsUser?.user.id
-                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
-                    (_ proximityEvent) in
-                    self.farTrigger[id] = proximityEvent
-                }
-            } else {
-                // Check if the existed proximity event needs a refresh on a based timer
-                let proximityEvent = farTrigger[id]
-                // Represents  the UNIX current time in milliseconds
-                let now = Int64(Date().timeIntervalSince1970 * 1000)
-                if let proximityEventCreatedAt = proximityEvent?.createdAt{
-                    let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
-                    if truncatedGap > triggerTimer {
-                        // Send the refreshing proximity event based on the timer
-                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 50.0)
-                        let userId = self.alpsManager.alpsUser?.user.id
-                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
-                            (_ proximityEvent) in
-                            self.farTrigger[id] = proximityEvent
-                        }
-                    }else{
-                        // Do something when it doesn't need to be refreshed
-                    }
-                } else {
-                    print("ERROR : CreatedAt in a proximity event is nil.")
-                }
-            }
-        }
-    }
-    
-    private func triggerUnknownBeaconsProximityEvent() {
-        for id in unknownBeacons{
-            // Check if a proximity event already exist
-            if unknownTrigger[id] == nil {
-                // Send the proximity event
-                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 200.0)
-                let userId = self.alpsManager.alpsUser?.user.id
-                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
-                    (_ proximityEvent) in
-                    self.unknownTrigger[id] = proximityEvent
-                }
-            } else {
-                // Check if the existed proximity event needs a refresh on a based timer
-                let proximityEvent = unknownTrigger[id]
-                // Represents  the UNIX current time in milliseconds
-                let now = Int64(Date().timeIntervalSince1970 * 1000)
-                if let proximityEventCreatedAt = proximityEvent?.createdAt{
-                    let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
-                    if truncatedGap > triggerTimer {
-                        // Send the refreshing proximity event based on the timer
-                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 200.0)
-                        let userId = self.alpsManager.alpsUser?.user.id
-                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
-                            (_ proximityEvent) in
-                            self.unknownTrigger[id] = proximityEvent
-                        }
-                    }else{
-                        // Do something when it doesn't need to be refreshed
-                    }
-                } else {
-                    print("ERROR : CreatedAt in a proximity event is nil.")
-                }
-            }
-        }
-    }
+//    private func triggerImmediateBeaconsProximityEvent() {
+//        for id in immediateBeacons{
+//            // Check if a proximity event already exist
+//            if immediateTrigger[id] == nil {
+//                // Send the proximity event
+//                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 0.5)
+//                let userId = self.alpsManager.alpsUser?.user.id
+//                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+//                    (_ proximityEvent) in
+//                    self.immediateTrigger[id] = proximityEvent
+//                }
+//            } else {
+//                // Check if the existed proximity event needs a refresh on a based timer
+//                let proximityEvent = immediateTrigger[id]
+//                // Represents  the UNIX current time in milliseconds
+//                let now = Int64(Date().timeIntervalSince1970 * 1000)
+//                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+//                    let gap = now - proximityEventCreatedAt
+//                    let truncatedGap = Int(truncatingBitPattern: gap)
+//                    if truncatedGap > triggerTimer {
+//                        // Send the refreshing proximity event based on the timer
+//                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 0.5)
+//                        let userId = self.alpsManager.alpsUser?.user.id
+//                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+//                            (_ proximityEvent) in
+//                            self.immediateTrigger[id] = proximityEvent
+//                        }
+//                    }else{
+//                        // Do something when it doesn't need to be refreshed
+//                    }
+//                } else {
+//                    print("ERROR : CreatedAt in a proximity event is nil.")
+//                }
+//            }
+//        }
+//    }
+//    
+//    private func triggerNearBeaconsProximityEvent() {
+//        for id in nearBeacons{
+//            // Check if a proximity event already exist
+//            if nearTrigger[id] == nil {
+//                // Send the proximity event
+//                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 3.0)
+//                let userId = self.alpsManager.alpsUser?.user.id
+//                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+//                    (_ proximityEvent) in
+//                    self.nearTrigger[id] = proximityEvent
+//                }
+//            } else {
+//                // Check if the existed proximity event needs a refresh on a based timer
+//                let proximityEvent = nearTrigger[id]
+//                // Represents  the UNIX current time in milliseconds
+//                let now = Int64(Date().timeIntervalSince1970 * 1000)
+//                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+//                    let gap = now - proximityEventCreatedAt
+//                    let truncatedGap = Int(truncatingBitPattern: gap)
+//                    if truncatedGap > triggerTimer {
+//                        // Send the refreshing proximity event based on the timer
+//                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 3.0)
+//                        let userId = self.alpsManager.alpsUser?.user.id
+//                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+//                            (_ proximityEvent) in
+//                            self.nearTrigger[id] = proximityEvent
+//                        }
+//                    }else{
+//                        // Do something when it doesn't need to be refreshed
+//                    }
+//                } else {
+//                    print("ERROR : CreatedAt in a proximity event is nil.")
+//                }
+//            }
+//        }
+//    }
+//    
+//    private func triggerFarBeaconsProximityEvent() {
+//        for id in farBeacons{
+//            // Check if a proximity event already exist
+//            if farTrigger[id] == nil {
+//                // Send the proximity event
+//                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 50.0)
+//                let userId = self.alpsManager.alpsUser?.user.id
+//                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+//                    (_ proximityEvent) in
+//                    self.farTrigger[id] = proximityEvent
+//                }
+//            } else {
+//                // Check if the existed proximity event needs a refresh on a based timer
+//                let proximityEvent = farTrigger[id]
+//                // Represents  the UNIX current time in milliseconds
+//                let now = Int64(Date().timeIntervalSince1970 * 1000)
+//                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+//                    let gap = now - proximityEventCreatedAt
+//                    let truncatedGap = Int(truncatingBitPattern: gap)
+//                    if truncatedGap > triggerTimer {
+//                        // Send the refreshing proximity event based on the timer
+//                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 50.0)
+//                        let userId = self.alpsManager.alpsUser?.user.id
+//                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+//                            (_ proximityEvent) in
+//                            self.farTrigger[id] = proximityEvent
+//                        }
+//                    }else{
+//                        // Do something when it doesn't need to be refreshed
+//                    }
+//                } else {
+//                    print("ERROR : CreatedAt in a proximity event is nil.")
+//                }
+//            }
+//        }
+//    }
+//    
+//    private func triggerUnknownBeaconsProximityEvent() {
+//        for id in unknownBeacons{
+//            // Check if a proximity event already exist
+//            if unknownTrigger[id] == nil {
+//                // Send the proximity event
+//                var proximityEvent = ProximityEvent.init(deviceId: id, distance: 200.0)
+//                let userId = self.alpsManager.alpsUser?.user.id
+//                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+//                    (_ proximityEvent) in
+//                    self.unknownTrigger[id] = proximityEvent
+//                }
+//            } else {
+//                // Check if the existed proximity event needs a refresh on a based timer
+//                let proximityEvent = unknownTrigger[id]
+//                // Represents  the UNIX current time in milliseconds
+//                let now = Int64(Date().timeIntervalSince1970 * 1000)
+//                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+//                    let gap = now - proximityEventCreatedAt
+//                    let truncatedGap = Int(truncatingBitPattern: gap)
+//                    if truncatedGap > triggerTimer {
+//                        // Send the refreshing proximity event based on the timer
+//                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: 200.0)
+//                        let userId = self.alpsManager.alpsUser?.user.id
+//                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+//                            (_ proximityEvent) in
+//                            self.unknownTrigger[id] = proximityEvent
+//                        }
+//                    }else{
+//                        // Do something when it doesn't need to be refreshed
+//                    }
+//                } else {
+//                    print("ERROR : CreatedAt in a proximity event is nil.")
+//                }
+//            }
+//        }
+//    }
     
     private func triggerProximityEvent(userId: String, deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
         let userCompletion = completion
@@ -468,4 +461,166 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
     }
+    
+    private func triggerBeaconsProximityEvent(forCLProximity: CLProximity) {
+        var beacons : [String] = []
+        var trigger : [String:ProximityEvent] = [:]
+        var distance : Double = 0.0
+        // Setting parameters upon the case
+        switch forCLProximity{
+        case .immediate:
+            beacons = immediateBeacons
+            trigger = immediateTrigger
+            distance = 0.5
+            break
+        case .near:
+            beacons = nearBeacons
+            trigger = nearTrigger
+            distance = 3.0
+            break
+        case .far:
+            beacons = farBeacons
+            trigger = farTrigger
+            distance = 50.0
+            break
+        case .unknown:
+            beacons = unknownBeacons
+            trigger = unknownTrigger
+            distance = 200.0
+            break
+        }
+        for id in beacons{
+            // Check if a proximity event already exist
+            if trigger[id] == nil {
+                // Send the proximity event
+                var proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
+                let userId = self.alpsManager.alpsUser?.user.id
+                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+                    (_ proximityEvent) in
+                    trigger[id] = proximityEvent
+                    switch forCLProximity{
+                    case .immediate:
+                        self.immediateTrigger = trigger
+                        break
+                    case .near:
+                        self.nearTrigger = trigger
+                        break
+                    case .far:
+                        self.farTrigger = trigger
+                        break
+                    case .unknown:
+                        self.unknownTrigger = trigger
+                        break
+                    }
+                }
+            } else {
+                // Check if the existed proximity event needs a refresh on a based timer
+                let proximityEvent = trigger[id]
+                // Represents  the UNIX current time in milliseconds
+                let now = Int64(Date().timeIntervalSince1970 * 1000)
+                if let proximityEventCreatedAt = proximityEvent?.createdAt{
+                    let gap = now - proximityEventCreatedAt
+                    let truncatedGap = Int(truncatingBitPattern: gap)
+                    if truncatedGap > refreshTimer {
+                        // Send the refreshing proximity event based on the timer
+                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
+                        let userId = self.alpsManager.alpsUser?.user.id
+                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+                            (_ proximityEvent) in
+                            trigger[id] = proximityEvent
+                            switch forCLProximity{
+                            case .immediate:
+                                self.immediateTrigger = trigger
+                                break
+                            case .near:
+                                self.nearTrigger = trigger
+                                break
+                            case .far:
+                                self.farTrigger = trigger
+                                break
+                            case .unknown:
+                                self.unknownTrigger = trigger
+                                break
+                            }
+                        }
+                    }else{
+                        // Do something when it doesn't need to be refreshed
+                    }
+                } else {
+                    print("ERROR : CreatedAt in a proximity event is nil.")
+                }
+            }
+        }
+    }
+    
+    private func clearTriggers() {
+        var trigger : [String:ProximityEvent] = [:]
+        func refresh(trigger: [String:ProximityEvent]){
+            var t : [String:ProximityEvent] = [:]
+            t = trigger
+            for (id, proximityEvent) in t {
+                
+                if let createdAt = proximityEvent.createdAt {
+                    let now = Int64(Date().timeIntervalSince1970 * 1000)
+                    let gap = now - createdAt
+                    
+                    if gap > 5 * 60 * 1000 {
+                        t.removeValue(forKey: id)
+                        for i in 0...3 {
+                            switch i{
+                            case 0:
+                                // unknown
+                                unknownTrigger = t
+                                break
+                            case 1:
+                                // immediate
+                                immediateTrigger = t
+                                break
+                            case 2:
+                                // near
+                                nearTrigger = t
+                                break
+                            case 3:
+                                // far
+                                farTrigger = t
+                                break
+                            default:
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        for i in 0...3 {
+            switch i {
+            case 0:
+                // unknown
+                trigger = unknownTrigger
+                refresh(trigger: trigger)
+                break
+            case 1:
+                // immediate
+                trigger = immediateTrigger
+                refresh(trigger: trigger)
+                break
+            case 2:
+                // near
+                trigger = nearTrigger
+                refresh(trigger: trigger)
+                break
+            case 3:
+                // far
+                trigger = farTrigger
+                refresh(trigger: trigger)
+                break
+            default:
+                print("Why are we in default ?")
+                break
+            }
+        }
+    }
+
 }
