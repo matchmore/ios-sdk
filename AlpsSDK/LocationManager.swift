@@ -24,14 +24,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     var refreshTimer : Int = 60 * 1000 // timer is in milliseconds
     var proximityTrigger = Set<CLProximity>()
     // [Is the id of the IBeaconDevice registered in the core : The returned ProximityEvent will be stored ]
-    var immediateTrigger : [String:ProximityEvent] = [:]
-    var nearTrigger : [String:ProximityEvent] = [:]
-    var farTrigger : [String:ProximityEvent] = [:]
-    var unknownTrigger : [String:ProximityEvent] = [:]
+    static var immediateTrigger : [String:ProximityEvent] = [:]
+    static var nearTrigger : [String:ProximityEvent] = [:]
+    static var farTrigger : [String:ProximityEvent] = [:]
+    static var unknownTrigger : [String:ProximityEvent] = [:]
     var immediateBeacons : [String] = []
     var nearBeacons : [String] = []
     var farBeacons : [String] = []
     var unknownBeacons : [String] = []
+    var immediateTimer : Timer?
+    var nearTimer : Timer?
+    var farTimer : Timer?
+    var unknownTimer : Timer?
     var closestBeaconClosure: ((_ beacon: CLBeacon) -> Void)?
     var detectedBeaconsClosure: ((_ beacons: [CLBeacon]) -> Void)?
 
@@ -288,7 +292,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let proximityUUID = $0.proximityUUID!
             let major = $0.major!
             let minor = $0.minor!
-            // It will be called 3 times because I have 3 beacons registered but it will be called the number of time of beacons registered in the app.
+            // it will be called the number of time of beacons registered in the app. In example : It will be called 3 times because I have 3 beacons registered.
             if (proximityUUID.caseInsensitiveCompare(beacon.proximityUUID.uuidString) == ComparisonResult.orderedSame)  && (major as NSNumber) == beacon.major && (minor as NSNumber) == beacon.minor {
                 return true
             }
@@ -456,10 +460,39 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
+        // To change https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
+        switch forCLProximity {
+        case .immediate:
+            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+            break
+        case .near:
+            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+            break
+        case .far:
+            farTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+            break
+        case .unknown:
+            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+            break
+        }
     }
     
     func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
+        switch forCLProximity {
+        case .immediate:
+            immediateTimer?.invalidate()
+            break
+        case .near:
+            nearTimer?.invalidate()
+            break
+        case .far:
+            farTimer?.invalidate()
+            break
+        case .unknown:
+            unknownTimer?.invalidate()
+            break
+        }
     }
     
     private func triggerBeaconsProximityEvent(forCLProximity: CLProximity) {
@@ -470,22 +503,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         switch forCLProximity{
         case .immediate:
             beacons = immediateBeacons
-            trigger = immediateTrigger
+            trigger = LocationManager.immediateTrigger
             distance = 0.5
             break
         case .near:
             beacons = nearBeacons
-            trigger = nearTrigger
+            trigger = LocationManager.nearTrigger
             distance = 3.0
             break
         case .far:
             beacons = farBeacons
-            trigger = farTrigger
+            trigger = LocationManager.farTrigger
             distance = 50.0
             break
         case .unknown:
             beacons = unknownBeacons
-            trigger = unknownTrigger
+            trigger = LocationManager.unknownTrigger
             distance = 200.0
             break
         }
@@ -500,16 +533,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     trigger[id] = proximityEvent
                     switch forCLProximity{
                     case .immediate:
-                        self.immediateTrigger = trigger
+                        LocationManager.immediateTrigger = trigger
                         break
                     case .near:
-                        self.nearTrigger = trigger
+                        LocationManager.nearTrigger = trigger
                         break
                     case .far:
-                        self.farTrigger = trigger
+                        LocationManager.farTrigger = trigger
                         break
                     case .unknown:
-                        self.unknownTrigger = trigger
+                        LocationManager.unknownTrigger = trigger
                         break
                     }
                 }
@@ -530,16 +563,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                             trigger[id] = proximityEvent
                             switch forCLProximity{
                             case .immediate:
-                                self.immediateTrigger = trigger
+                                LocationManager.immediateTrigger = trigger
                                 break
                             case .near:
-                                self.nearTrigger = trigger
+                                LocationManager.nearTrigger = trigger
                                 break
                             case .far:
-                                self.farTrigger = trigger
+                                LocationManager.farTrigger = trigger
                                 break
                             case .unknown:
-                                self.unknownTrigger = trigger
+                                LocationManager.unknownTrigger = trigger
                                 break
                             }
                         }
@@ -553,7 +586,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func clearTriggers() {
+    @objc
+    private class func refreshTriggers() {
         var trigger : [String:ProximityEvent] = [:]
         func refresh(trigger: [String:ProximityEvent]){
             var t : [String:ProximityEvent] = [:]
@@ -564,7 +598,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     let now = Int64(Date().timeIntervalSince1970 * 1000)
                     let gap = now - createdAt
                     
+                    // If gap is higher than 5 minutes we will clear the value in the trigger dictionary
+                    print("3 - - - - ")
+                   
                     if gap > 5 * 60 * 1000 {
+                        for (i, o) in t{
+                            print(i)
+                            print(o)
+                            print("XX")
+                        }
                         t.removeValue(forKey: id)
                         for i in 0...3 {
                             switch i{
@@ -573,12 +615,45 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                                 unknownTrigger = t
                                 break
                             case 1:
+                                print("final . . . . ")
+                                for (i, o) in immediateTrigger{
+                                    print(i)
+                                    print(o)
+                                    print("YY")
+                                }
                                 // immediate
                                 immediateTrigger = t
+                                for (i, o) in immediateTrigger{
+                                    print(i)
+                                    print(o)
+                                    print("ZZ")
+                                }
+                                print("ZZ DEVRAIT ETRE VIDE APRES CA")
+                                for (i, o) in t{
+                                    print(i)
+                                    print(o)
+                                    print("ZZ2")
+                                }
                                 break
                             case 2:
+                                for (i, o) in nearTrigger{
+                                    print(i)
+                                    print(o)
+                                    print("YYNEAR")
+                                }
                                 // near
                                 nearTrigger = t
+                                for (i, o) in nearTrigger{
+                                    print(i)
+                                    print(o)
+                                    print("ZZNEAR")
+                                }
+                                print("ZZNEAR DEVRAIT ETRE VIDE APRES CA")
+                                for (i, o) in t{
+                                    print(i)
+                                    print(o)
+                                    print("ZZ2NEAR")
+                                }
                                 break
                             case 3:
                                 // far
@@ -603,7 +678,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 break
             case 1:
                 // immediate
+                print("2 - - -- - ")
+                for (i, o) in immediateTrigger{
+                    print(i)
+                    print(o)
+                    print("22 A")
+                }
                 trigger = immediateTrigger
+                for (i, o) in trigger{
+                    print(i)
+                    print(o)
+                    print("22 B")
+                }
                 refresh(trigger: trigger)
                 break
             case 2:
