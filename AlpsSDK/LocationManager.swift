@@ -460,21 +460,21 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
-        // To change https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
-        switch forCLProximity {
-        case .immediate:
-            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
-            break
-        case .near:
-            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
-            break
-        case .far:
-            farTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
-            break
-        case .unknown:
-            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
-            break
-        }
+        // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
+//        switch forCLProximity {
+//        case .immediate:
+//            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            break
+//        case .near:
+//            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            break
+//        case .far:
+//            farTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            break
+//        case .unknown:
+//            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            break
+//        }
     }
     
     func stopBeaconsProximityEvent(forCLProximity: CLProximity) {

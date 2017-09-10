@@ -33,6 +33,8 @@ class AlpsSDKTests: XCTestCase {
             (_ user) in
             XCTAssertNotNil(user, "Whoops, no user")
             XCTAssertNotNil(user?.id, "test1CreateUser(): id is nil.")
+            XCTAssertNotNil(user?.createdAt, "test1CreateUser(): createdAt is nil.")
+            print("")
             if let name = user?.name {
                 XCTAssertEqual(name, "Swift User 1", "test1CreateUser(): Returned name is not equal to defined one.")
             } else {
