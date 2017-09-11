@@ -204,6 +204,9 @@ open class AlpsManager: AlpsSDK {
                                                  publication: publication) {
             (publication, error) -> Void in
 
+                                                    if let p = publication {
+                                                        self.publications.append(p)
+                                                    }
             userCompletion(publication)
         }
     }
@@ -577,5 +580,9 @@ open class AlpsManager: AlpsSDK {
     //TOSUPPRESS: function just here in needs
     public func fixBeacons(beacons: [IBeaconDevice]){
         self.beacons = beacons
+    }
+    
+    public func addBeacon(beacon: IBeaconDevice){
+        self.beacons.append(beacon)
     }
 }

@@ -453,12 +453,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         let userCompletion = completion
         let _ = Alps.DeviceAPI.triggerProximityEvents(userId: userId, deviceId: deviceId, proximityEvent: proximityEvent) {
             (proximityEvent, error) -> Void in
-            
             userCompletion(proximityEvent)
         }
     }
     
-    func startBeaconsProximityEvent(forCLProximity: CLProximity) {
+    public func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
         // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
 //        switch forCLProximity {
@@ -477,7 +476,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 //        }
     }
     
-    func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
+    public func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
         switch forCLProximity {
         case .immediate:
@@ -504,6 +503,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         case .immediate:
             beacons = immediateBeacons
             trigger = LocationManager.immediateTrigger
+            for (p,o) in trigger{
+                print("In the triggerProximityEvent function, you get the id of the proximity event and the device for which this prox event was triggered.")
+                print(o.id)
+                print(o.deviceId)
+            }
             distance = 0.5
             break
         case .near:
