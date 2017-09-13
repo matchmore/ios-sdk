@@ -44,6 +44,8 @@ open class AlpsManager: AlpsSDK {
     var devices: [Device] = []
     var alpsDevice: AlpsDevice?
     var locations: [String: Location] = [:]
+//    var publications: [String: [Publication]] = [:]
+//    var subscriptions: [String: [Subscription]] = [:]
     var publications: [Publication] = []
     var subscriptions: [Subscription] = []
     
@@ -78,6 +80,7 @@ open class AlpsManager: AlpsSDK {
         AlpsAPI.customHeaders = headers
     }
 
+    // Create Alps entities
     public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
         let userCompletion = completion
         let user = User.init(name: userName)
@@ -91,6 +94,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
+    // Deprecated v.0.0.3
 //    public func createDevice(name: String, platform: String, deviceToken: String,
 //                             latitude: Double, longitude: Double, altitude: Double,
 //                             horizontalAccuracy: Double, verticalAccuracy: Double,
@@ -115,6 +119,7 @@ open class AlpsManager: AlpsSDK {
 //        }
 //    }
     
+    // Create Main device, this function replace createDevice in v 0.0.3
     public func createMobileDevice(name: String, platform: String, deviceToken: String,
                              latitude: Double, longitude: Double, altitude: Double,
                              horizontalAccuracy: Double, verticalAccuracy: Double,
@@ -130,6 +135,8 @@ open class AlpsManager: AlpsSDK {
                                                     if let d = mobileDevice as? MobileDevice {
                                                         self.devices.append(d)
                                                         self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
+//                                                        self.publications[d.id!] = [Publication]()
+//                                                        self.subscriptions[d.id!] = [Subscription]()
                                                     }
                                                     userCompletion(mobileDevice as? MobileDevice)
                     }
@@ -144,6 +151,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
     
+    // Create a pinned Device, stays at the same location
     public func createPinDevice(name: String, latitude: Double, longitude: Double, altitude: Double,
                          horizontalAccuracy: Double, verticalAccuracy: Double,
                          completion: @escaping (_ device: PinDevice?) -> Void) {
@@ -157,6 +165,8 @@ open class AlpsManager: AlpsSDK {
                     if pinDevice is PinDevice{
                         if let d = pinDevice as? PinDevice {
                             self.devices.append(d)
+//                            self.publications[d.id!] = [Publication]()
+//                            self.subscriptions[d.id!] = [Subscription]()
                         }
                         userCompletion(pinDevice as? PinDevice)
                     }
@@ -171,6 +181,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
     
+    // Create a BLE iBeacon Device
     public func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
                                     completion: @escaping (_ device: IBeaconDevice?) -> Void) {
         let userCompletion = completion
@@ -182,6 +193,8 @@ open class AlpsManager: AlpsSDK {
                     if iBeaconDevice is IBeaconDevice{
                         if let d = iBeaconDevice as? IBeaconDevice {
                             self.devices.append(d)
+//                            self.publications[d.id!] = [Publication]()
+//                            self.subscriptions[d.id!] = [Subscription]()
                         }
                         userCompletion(iBeaconDevice as? IBeaconDevice)
                     }
@@ -209,6 +222,7 @@ open class AlpsManager: AlpsSDK {
                                                             (publication, error) -> Void in
                                                             
                                                             if let p = publication {
+//                                                                self.publications[deviceId]?.append(p)
                                                                 self.publications.append(p)
                                                             }
                                                             
@@ -223,7 +237,8 @@ open class AlpsManager: AlpsSDK {
             // throw AlpsManagerError.userNotIntialized
         }
     }
-
+    
+    // Create a publication for the given userId and given deviceId
     public func createPublication(userId: String, deviceId: String, topic: String, range: Double, duration: Double, properties: [String:String],
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
@@ -233,6 +248,7 @@ open class AlpsManager: AlpsSDK {
             (publication, error) -> Void in
 
                                                     if let p = publication {
+//                                                        self.publications[deviceId]?.append(p)
                                                         self.publications.append(p)
                                                     }
             userCompletion(publication)
@@ -252,6 +268,7 @@ open class AlpsManager: AlpsSDK {
                     (subscription, error) -> Void in
 
                     if let p = subscription {
+//                        self.subscriptions[deviceId]?.append(p)
                         self.subscriptions.append(p)
                     }
 
@@ -267,6 +284,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
     
+    // Create a subscription for the given userId and given deviceId
     public func createSubscription(userId: String, deviceId: String, topic: String, selector: String, range: Double, duration: Double,
                                    completion: @escaping (_ subscription: Subscription?) -> Void) {
         let userCompletion = completion
@@ -274,6 +292,10 @@ open class AlpsManager: AlpsSDK {
         let _ = Alps.DeviceAPI.createSubscription(userId: userId, deviceId: deviceId,
                                                   subscription: subscription) {
                                                     (subscription, error) -> Void in
+                                                    if let p = subscription{
+//                                                        self.subscriptions[deviceId]?.append(p)
+                                                        self.subscriptions.append(p)
+                                                    }
                                                     userCompletion(subscription)
         }
     }
@@ -290,6 +312,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
+    // Update main device location
     public func updateLocation(latitude: Double, longitude: Double, altitude: Double,
                                horizontalAccuracy: Double, verticalAccuracy: Double,
                                completion: @escaping (_ location: Location?) -> Void) {
@@ -330,6 +353,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
+    // Get all matches for main device
     public func getAllMatches(completion: @escaping (_ matches: Matches) -> Void) {
         let userCompletion = completion
 
@@ -354,6 +378,7 @@ open class AlpsManager: AlpsSDK {
 
     }
 
+    // register match handlers
     public func onMatch(completion: @escaping (_ match: Match) -> Void) {
         if let mm = matchMonitor {
             mm.onMatch(completion: completion)

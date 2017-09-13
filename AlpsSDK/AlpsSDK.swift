@@ -14,27 +14,44 @@ protocol AlpsSDK {
     // create Alps entities
     func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)
 
-    // XXX: assume one user and one device in the AlpsManager for now
+    // XXX: v 0.0.3: assume one user and one device in the AlpsManager for now
+    // to 0.4.0 assume one user and one main device(Mobile) and many devices in the AlpsManager for now
+    // Create Main device, this function replace createDevice in v 0.0.3
     func createMobileDevice(name: String, platform: String, deviceToken: String,
                       latitude: Double, longitude: Double, altitude: Double,
                       horizontalAccuracy: Double, verticalAccuracy: Double,
                       completion: @escaping (_ device: MobileDevice?) -> Void)
+    // Create a pinned Device, stays at the same location
     func createPinDevice(name: String, latitude: Double, longitude: Double, altitude: Double,
                          horizontalAccuracy: Double, verticalAccuracy: Double,
                          completion: @escaping (_ device: PinDevice?) -> Void)
+    // Create a BLE iBeacon Device
     func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
                             completion: @escaping (_ device: IBeaconDevice?) -> Void)
-
+    
+    // create a publication for the main device
     func createPublication(topic: String, range: Double, duration: Double, properties: [String:String],
                            completion: @escaping (_ publication: Publication?) -> Void)
+    // Create a publication for the given userId and given deviceId
+    func createPublication(userId: String, deviceId: String, topic: String, range: Double, duration: Double, properties: [String:String],
+                                  completion: @escaping (_ publication: Publication?) -> Void)
 
+    // Create subscription for main device
     func createSubscription(topic: String, selector: String, range: Double, duration: Double,
                                    completion: @escaping (_ subscription: Subscription?) -> Void)
-
-    // update device location
+    // Create a subscription for the given userId and given deviceId
+    func createSubscription(userId: String, deviceId: String, topic: String, selector: String, range: Double, duration: Double,
+                                   completion: @escaping (_ subscription: Subscription?) -> Void)
+    
+    // Update main device location
     func updateLocation(latitude: Double, longitude: Double, altitude: Double,
                         horizontalAccuracy: Double, verticalAccuracy: Double,
                         completion: @escaping (_ location: Location?) -> Void)
+    
+    // Get all matches for main device
+    func getAllMatches(completion: @escaping (_ matches: Matches) -> Void)
+    // register match handlers
+    func onMatch(completion: @escaping (_ match: Match) -> Void)
 
     // queries
     func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void)
@@ -54,9 +71,6 @@ protocol AlpsSDK {
 
     // query stats
 
-    // Matches
-    func getAllMatches(completion: @escaping (_ matches: Matches) -> Void)
-    // register match handlers
-    func onMatch(completion: @escaping (_ match: Match) -> Void)
+    
     // Beacons
 }
