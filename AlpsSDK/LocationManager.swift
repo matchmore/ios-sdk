@@ -73,7 +73,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                                              altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                                              verticalAccuracy: coord.verticalAccuracy) {
                     (_ location) in
-                    NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
+//                    NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
                 }
             } catch {
                 // Allow to update location even when there is no device / user created
@@ -190,8 +190,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let b = syncBeacon(beacon: beacon)
             if b.isEmpty != true {
                 ourBeacon = b[0]
+                var i = 1
+                for t in b {
+                    print(i)
+                    print(t.id)
+                    i += 1
+                }
             }
             if var deviceId = ourBeacon?.id{
+                print("le id choisi always")
+                print(deviceId)
                 switch beacon.proximity {
                 case .immediate:
                     if immediateBeacons.contains(deviceId){
@@ -292,6 +300,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let proximityUUID = $0.proximityUUID!
             let major = $0.major!
             let minor = $0.minor!
+//            print(proximityUUID)
+//            print(major)
+//            print(minor)
+//            print("----------__ ANOTHER ONE")
             // it will be called the number of time of beacons registered in the app. In example : It will be called 3 times because I have 3 beacons registered.
             if (proximityUUID.caseInsensitiveCompare(beacon.proximityUUID.uuidString) == ComparisonResult.orderedSame)  && (major as NSNumber) == beacon.major && (minor as NSNumber) == beacon.minor {
                 return true
@@ -478,20 +490,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     public func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
-        switch forCLProximity {
-        case .immediate:
-            immediateTimer?.invalidate()
-            break
-        case .near:
-            nearTimer?.invalidate()
-            break
-        case .far:
-            farTimer?.invalidate()
-            break
-        case .unknown:
-            unknownTimer?.invalidate()
-            break
-        }
+//        switch forCLProximity {
+//        case .immediate:
+//            immediateTimer?.invalidate()
+//            break
+//        case .near:
+//            nearTimer?.invalidate()
+//            break
+//        case .far:
+//            farTimer?.invalidate()
+//            break
+//        case .unknown:
+//            unknownTimer?.invalidate()
+//            break
+//        }
     }
     
     private func triggerBeaconsProximityEvent(forCLProximity: CLProximity) {
@@ -503,11 +515,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         case .immediate:
             beacons = immediateBeacons
             trigger = LocationManager.immediateTrigger
-            for (p,o) in trigger{
-                print("In the triggerProximityEvent function, you get the id of the proximity event and the device for which this prox event was triggered.")
-                print(o.id)
-                print(o.deviceId)
-            }
             distance = 0.5
             break
         case .near:
@@ -532,7 +539,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 // Send the proximity event
                 var proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
                 let userId = self.alpsManager.alpsUser?.user.id
-                triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: proximityEvent) {
+                let deviceId = self.alpsManager.alpsDevice?.device.id
+                triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: proximityEvent) {
                     (_ proximityEvent) in
                     trigger[id] = proximityEvent
                     switch forCLProximity{
@@ -562,7 +570,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                         // Send the refreshing proximity event based on the timer
                         let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
                         let userId = self.alpsManager.alpsUser?.user.id
-                        triggerProximityEvent(userId: userId!, deviceId: id, proximityEvent: newProximityEvent) {
+                        let deviceId = self.alpsManager.alpsDevice?.device.id
+                        triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: newProximityEvent) {
                             (_ proximityEvent) in
                             trigger[id] = proximityEvent
                             switch forCLProximity{
