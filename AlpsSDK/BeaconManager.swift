@@ -16,11 +16,6 @@ class BeaconManager:NSObject {
     var alpsManager : AlpsManager
     var beacons = [IBeaconDevice]()
     
-    // Triggered proximity event map
-    var immediateTrigger : [CLBeacon:ProximityEvent] = [:]
-    var nearTrigger : [CLBeacon:ProximityEvent] = [:]
-    var farTrigger : [CLBeacon:ProximityEvent] = [:]
-    
     init (alpsManager : AlpsManager) {
         self.alpsManager = alpsManager
         super.init()

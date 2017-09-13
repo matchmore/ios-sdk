@@ -69,11 +69,20 @@ open class AlpsManager: AlpsSDK {
         
         // DEVELOP: Beacons
         self.beaconManager = BeaconManager(alpsManager: self)
+        print("GETTING BEACON")
+        getBeacons(completion: {
+            (_ beacon) in
+            print("BEacon user 's beacon \(beacon.id)")
+//            print("MANAGER 's beacon \(self.beacons)")
+        })
         if let bu = beaconManager{
-//            self.beacons = bu.getBeacons()
-            print("BEacon user 's beacon \(beacons)")
+            
         }else{
             print("None beaconUser found.")
+        }
+        print("BEACON SHOULD BE GETTEN")
+        for p in beacons {
+            print(p.id)
         }
 
         AlpsAPI.basePath = alpsEndpoint
@@ -603,12 +612,25 @@ open class AlpsManager: AlpsSDK {
         contextManager?.refreshTimer = refreshEveryInMilliseconds
     }
     
-    //TOSUPPRESS: function just here in needs
-    public func fixBeacons(beacons: [IBeaconDevice]){
-        self.beacons = beacons
+    public func getBeacons(completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
+        let userId = "00000000-0000-0000-0000-000000000000"
+        let deviceId = "3f3e4f45-5454-45a1-aa06-5388718bb32f"
+        let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
+            (device, error) -> Void in
+            print(error)
+            print(device)
+            if let d = device{
+            completion(d as! IBeaconDevice)
+            }
+        }
     }
     
-    public func addBeacon(beacon: IBeaconDevice){
-        self.beacons.append(beacon)
-    }
+    //TOSUPPRESS: function just here in needs
+//    public func fixBeacons(beacons: [IBeaconDevice]){
+//        self.beacons = beacons
+//    }
+//    
+//    public func addBeacon(beacon: IBeaconDevice){
+//        self.beacons.append(beacon)
+//    }
 }
