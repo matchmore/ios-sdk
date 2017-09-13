@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* LocationManager.swift */; };
+		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
 		502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858F1E01BB3F00EF8ECF /* Utils.swift */; };
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		502C85891E01BB3F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		502C858A1E01BB3F00EF8ECF /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		502C858A1E01BB3F00EF8ECF /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManager.swift; sourceTree = "<group>"; };
 		502C858F1E01BB3F00EF8ECF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
 				503487691E01CAF300EF8ECF /* AlpsSDK.swift */,
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
-				502C858A1E01BB3F00EF8ECF /* LocationManager.swift */,
+				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				502C858F1E01BB3F00EF8ECF /* Utils.swift */,
@@ -246,7 +246,7 @@
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				840D0E821F3326600069A1EA /* BeaconManager.swift in Sources */,
 				50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */,
-				502C85911E01BB3F00EF8ECF /* LocationManager.swift in Sources */,
+				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */,

@@ -31,7 +31,7 @@ open class AlpsManager: AlpsSDK {
     
     // Put setup code here. This method is called before the invocation of each test method in t
     let apiKey: String
-    var locationManager: LocationManager? = nil
+    var contextManager: ContextManager? = nil
     var matchMonitor: MatchMonitor? = nil
     
     // DEVELOP: Beacons
@@ -61,7 +61,7 @@ open class AlpsManager: AlpsSDK {
     public init(apiKey: String, clLocationManager: CLLocationManager) {
         self.apiKey = apiKey
         self.headers = defaultHeaders.merged(with: ["api-key": apiKey])
-        self.locationManager = LocationManager(alpsManager: self, locationManager: clLocationManager)
+        self.contextManager = ContextManager(alpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(alpsManager: self)
         
         
@@ -508,7 +508,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func onLocationUpdate(completion: @escaping ((_ location: CLLocation) -> Void)) {
-        if let lm = locationManager {
+        if let lm = contextManager {
             lm.onLocationUpdate(completion: completion)
         }
     }
@@ -526,11 +526,11 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func startUpdatingLocation() {
-        locationManager?.startUpdatingLocation()
+        contextManager?.startUpdatingLocation()
     }
 
     public func stopUpdatingLocation() {
-        locationManager?.stopUpdatingLocation()
+        contextManager?.stopUpdatingLocation()
     }
     
     //DEVELOP: Beacons
@@ -546,36 +546,36 @@ open class AlpsManager: AlpsSDK {
     }
     
     public func getClosestOnBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
-        if let lm = locationManager {
+        if let lm = contextManager {
             lm.getClosestOnBeaconUpdate(completion: completion)
         }
     }
     
     public func getAllOnBeaconUpdate(completion: @escaping ((_ beacon: [CLBeacon]) -> Void)) {
-        if let lm = locationManager {
+        if let lm = contextManager {
             lm.getAllOnBeaconUpdate(completion: completion)
         }
     }
     
     public func startRangingBeacons(forUuid: UUID, identifier: String){
-        locationManager?.startRanging(forUuid: forUuid, identifier: identifier)
+        contextManager?.startRanging(forUuid: forUuid, identifier: identifier)
     }
     
     public func stopRangingBeacons(forUuid: UUID){
-        locationManager?.stopRanging(forUuid: forUuid)
+        contextManager?.stopRanging(forUuid: forUuid)
     }
     
     public func startBeaconsProximityEvent(forCLProximity: CLProximity){
-        locationManager?.startBeaconsProximityEvent(forCLProximity: forCLProximity)
+        contextManager?.startBeaconsProximityEvent(forCLProximity: forCLProximity)
     }
     
     public func stopBeaconsProximityEvent(forCLProximity: CLProximity){
-        locationManager?.stopBeaconsProximityEvent(forCLProximity: forCLProximity)
+        contextManager?.stopBeaconsProximityEvent(forCLProximity: forCLProximity)
     }
     
     // Default time to refresh is 60 seconds(= 60'000 milliseconds)
     public func setRefreshTimerForProximityEvent(refreshEveryInMilliseconds: Int){
-        locationManager?.refreshTimer = refreshEveryInMilliseconds
+        contextManager?.refreshTimer = refreshEveryInMilliseconds
     }
     
     //TOSUPPRESS: function just here in needs

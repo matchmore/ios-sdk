@@ -1,5 +1,5 @@
 //
-//  LocationManager.swift
+//  ContextManager.swift
 //  Alps
 //
 //  Created by Rafal Kowalski on 28.09.16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Alps
 
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class ContextManager: NSObject, CLLocationManagerDelegate {
     var alpsManager: AlpsManager
     var seenError = false
     var locationFixAchieved = false
@@ -474,16 +474,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
 //        switch forCLProximity {
 //        case .immediate:
-//            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
 //            break
 //        case .near:
-//            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
 //            break
 //        case .far:
-//            farTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            farTimer = Timer.scheduledTimer(timeInterval: 300, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
 //            break
 //        case .unknown:
-//            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: LocationManager.self , selector: #selector(LocationManager.refreshTriggers), userInfo: nil, repeats: true)
+//            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
 //            break
 //        }
     }
@@ -514,22 +514,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         switch forCLProximity{
         case .immediate:
             beacons = immediateBeacons
-            trigger = LocationManager.immediateTrigger
+            trigger = ContextManager.immediateTrigger
             distance = 0.5
             break
         case .near:
             beacons = nearBeacons
-            trigger = LocationManager.nearTrigger
+            trigger = ContextManager.nearTrigger
             distance = 3.0
             break
         case .far:
             beacons = farBeacons
-            trigger = LocationManager.farTrigger
+            trigger = ContextManager.farTrigger
             distance = 50.0
             break
         case .unknown:
             beacons = unknownBeacons
-            trigger = LocationManager.unknownTrigger
+            trigger = ContextManager.unknownTrigger
             distance = 200.0
             break
         }
@@ -545,16 +545,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     trigger[id] = proximityEvent
                     switch forCLProximity{
                     case .immediate:
-                        LocationManager.immediateTrigger = trigger
+                        ContextManager.immediateTrigger = trigger
                         break
                     case .near:
-                        LocationManager.nearTrigger = trigger
+                        ContextManager.nearTrigger = trigger
                         break
                     case .far:
-                        LocationManager.farTrigger = trigger
+                        ContextManager.farTrigger = trigger
                         break
                     case .unknown:
-                        LocationManager.unknownTrigger = trigger
+                        ContextManager.unknownTrigger = trigger
                         break
                     }
                 }
@@ -576,16 +576,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                             trigger[id] = proximityEvent
                             switch forCLProximity{
                             case .immediate:
-                                LocationManager.immediateTrigger = trigger
+                                ContextManager.immediateTrigger = trigger
                                 break
                             case .near:
-                                LocationManager.nearTrigger = trigger
+                                ContextManager.nearTrigger = trigger
                                 break
                             case .far:
-                                LocationManager.farTrigger = trigger
+                                ContextManager.farTrigger = trigger
                                 break
                             case .unknown:
-                                LocationManager.unknownTrigger = trigger
+                                ContextManager.unknownTrigger = trigger
                                 break
                             }
                         }
