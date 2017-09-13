@@ -18,7 +18,7 @@ the Example directory first.
 Alps is available through [CocoaPods](http://cocoapods.org) it, simply add the following
 line to your Podfile:
 
-    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.0.3'
+    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.4.0'
 
 
 ## Author

@@ -190,16 +190,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             let b = syncBeacon(beacon: beacon)
             if b.isEmpty != true {
                 ourBeacon = b[0]
-                var i = 1
-                for t in b {
-                    print(i)
-                    print(t.id)
-                    i += 1
-                }
             }
             if var deviceId = ourBeacon?.id{
-                print("le id choisi always")
-                print(deviceId)
                 switch beacon.proximity {
                 case .immediate:
                     if immediateBeacons.contains(deviceId){
@@ -300,10 +292,6 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             let proximityUUID = $0.proximityUUID!
             let major = $0.major!
             let minor = $0.minor!
-//            print(proximityUUID)
-//            print(major)
-//            print(minor)
-//            print("----------__ ANOTHER ONE")
             // it will be called the number of time of beacons registered in the app. In example : It will be called 3 times because I have 3 beacons registered.
             if (proximityUUID.caseInsensitiveCompare(beacon.proximityUUID.uuidString) == ComparisonResult.orderedSame)  && (major as NSNumber) == beacon.major && (minor as NSNumber) == beacon.minor {
                 return true
@@ -612,14 +600,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                     let gap = now - createdAt
                     
                     // If gap is higher than 5 minutes we will clear the value in the trigger dictionary
-                    print("3 - - - - ")
                    
                     if gap > 5 * 60 * 1000 {
-                        for (i, o) in t{
-                            print(i)
-                            print(o)
-                            print("XX")
-                        }
                         t.removeValue(forKey: id)
                         for i in 0...3 {
                             switch i{
@@ -628,45 +610,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                                 unknownTrigger = t
                                 break
                             case 1:
-                                print("final . . . . ")
-                                for (i, o) in immediateTrigger{
-                                    print(i)
-                                    print(o)
-                                    print("YY")
-                                }
                                 // immediate
                                 immediateTrigger = t
-                                for (i, o) in immediateTrigger{
-                                    print(i)
-                                    print(o)
-                                    print("ZZ")
-                                }
-                                print("ZZ DEVRAIT ETRE VIDE APRES CA")
-                                for (i, o) in t{
-                                    print(i)
-                                    print(o)
-                                    print("ZZ2")
-                                }
                                 break
                             case 2:
-                                for (i, o) in nearTrigger{
-                                    print(i)
-                                    print(o)
-                                    print("YYNEAR")
-                                }
                                 // near
                                 nearTrigger = t
-                                for (i, o) in nearTrigger{
-                                    print(i)
-                                    print(o)
-                                    print("ZZNEAR")
-                                }
-                                print("ZZNEAR DEVRAIT ETRE VIDE APRES CA")
-                                for (i, o) in t{
-                                    print(i)
-                                    print(o)
-                                    print("ZZ2NEAR")
-                                }
                                 break
                             case 3:
                                 // far
@@ -691,18 +640,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 break
             case 1:
                 // immediate
-                print("2 - - -- - ")
-                for (i, o) in immediateTrigger{
-                    print(i)
-                    print(o)
-                    print("22 A")
-                }
                 trigger = immediateTrigger
-                for (i, o) in trigger{
-                    print(i)
-                    print(o)
-                    print("22 B")
-                }
                 refresh(trigger: trigger)
                 break
             case 2:
