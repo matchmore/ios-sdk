@@ -425,10 +425,10 @@ open class AlpsManager: AlpsSDK {
             if let userId = u.user.id, let deviceId = d.device.id {
                 let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
                     (device, error) -> Void in
-
+                    if let d = device{
+                        completion(d)
+                    }
                 }
-                // XXX: ignore the returned device for now
-                completion(d.device)
             }
         } else {
             print("Error forcing userId or/and deviceId is nil.")
@@ -440,11 +440,11 @@ open class AlpsManager: AlpsSDK {
             if let userId = u.user.id, let deviceId = d.device.id {
                 let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
                     (device, error) -> Void in
-
+                    
+                    if let d = device {
+                        completion(d)
+                    }
                 }
-
-                // XXX: ignore the returned device for now
-                completion(d.device)
             }
         } else {
             print("Error forcing userId or/and deviceId is nil.")
