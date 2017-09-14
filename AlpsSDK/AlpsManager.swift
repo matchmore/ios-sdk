@@ -65,28 +65,19 @@ open class AlpsManager: AlpsSDK {
         self.headers = defaultHeaders.merged(with: ["api-key": apiKey])
         self.contextManager = ContextManager(alpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(alpsManager: self)
-        
-        
-        // DEVELOP: Beacons
-        self.beaconManager = BeaconManager(alpsManager: self)
-        print("GETTING BEACON")
-        getBeacons(completion: {
-            (_ beacon) in
-            print("BEacon user 's beacon \(beacon.id)")
-//            print("MANAGER 's beacon \(self.beacons)")
-        })
-        if let bu = beaconManager{
-            
-        }else{
-            print("None beaconUser found.")
-        }
-        print("BEACON SHOULD BE GETTEN")
-        for p in beacons {
-            print(p.id)
-        }
 
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
+        // DEVELOP: Beacons
+        self.beaconManager = BeaconManager(alpsManager: self)
+        getBeacons(completion: {
+            (_ beacon) in
+            self.beacons.append(beacon)
+        })
+        if let bu = beaconManager{
+        }else{
+            print("None beaconUser found.")
+        }
     }
 
     // Create Alps entities
@@ -612,7 +603,7 @@ open class AlpsManager: AlpsSDK {
         contextManager?.refreshTimer = refreshEveryInMilliseconds
     }
     
-    public func getBeacons(completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
+    private func getBeacons(completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
         let userId = "00000000-0000-0000-0000-000000000000"
         let deviceId = "3f3e4f45-5454-45a1-aa06-5388718bb32f"
         let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
@@ -623,6 +614,12 @@ open class AlpsManager: AlpsSDK {
             completion(d as! IBeaconDevice)
             }
         }
+        
+//        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
+//            for d in devices! {
+//                print(d.id)
+//            }
+//        })
     }
     
     //TOSUPPRESS: function just here in needs
