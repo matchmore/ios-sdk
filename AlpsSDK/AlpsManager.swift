@@ -70,9 +70,26 @@ open class AlpsManager: AlpsSDK {
         AlpsAPI.customHeaders = headers
         // DEVELOP: Beacons
         self.beaconManager = BeaconManager(alpsManager: self)
-        getBeacons(completion: {
+        getBeacons(deviceId: "3f3e4f45-5454-45a1-aa06-5388718bb32f", completion: {
             (_ beacon) in
             self.beacons.append(beacon)
+            print(beacon.name)
+            print(beacon.major)
+            print(beacon.minor)
+        })
+        getBeacons(deviceId: "d0a4e3e2-e9bb-4648-83b5-9b0ed68126d8", completion: {
+            (_ beacon) in
+            self.beacons.append(beacon)
+            print(beacon.name)
+            print(beacon.major)
+            print(beacon.minor)
+        })
+        getBeacons(deviceId: "c323b88e-8476-4291-9f52-c8572ed947a2", completion: {
+            (_ beacon) in
+            self.beacons.append(beacon)
+            print(beacon.name)
+            print(beacon.major)
+            print(beacon.minor)
         })
         if let bu = beaconManager{
         }else{
@@ -603,23 +620,24 @@ open class AlpsManager: AlpsSDK {
         contextManager?.refreshTimer = refreshEveryInMilliseconds
     }
     
-    private func getBeacons(completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
+    private func getBeacons(deviceId: String, completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
         let userId = "00000000-0000-0000-0000-000000000000"
-        let deviceId = "3f3e4f45-5454-45a1-aa06-5388718bb32f"
         let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
             (device, error) -> Void in
-            print(error)
-            print(device)
             if let d = device{
             completion(d as! IBeaconDevice)
             }
         }
-        
+    
 //        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
 //            for d in devices! {
 //                print(d.id)
 //            }
 //        })
+    }
+    
+    public func getBeacons() -> [IBeaconDevice] {
+        return beacons
     }
     
     //TOSUPPRESS: function just here in needs
