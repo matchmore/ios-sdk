@@ -70,26 +70,47 @@ open class AlpsManager: AlpsSDK {
         AlpsAPI.customHeaders = headers
         // DEVELOP: Beacons
         self.beaconManager = BeaconManager(alpsManager: self)
-        getBeacons(deviceId: "3f3e4f45-5454-45a1-aa06-5388718bb32f", completion: {
-            (_ beacon) in
-            self.beacons.append(beacon)
-            print(beacon.name)
-            print(beacon.major)
-            print(beacon.minor)
+//        getBeacons(deviceId: "93816efe-053a-4d9f-9624-8fe5b51cef75", completion: {
+//            (_ beacon) in
+//            self.beacons.append(beacon)
+//            print(beacon.name)
+//            print(beacon.major)
+//            print(beacon.minor)
+//        })
+//        getBeacons(deviceId: "b0bac8dc-36a4-45ea-a796-71b7f05f826b", completion: {
+//            (_ beacon) in
+//            self.beacons.append(beacon)
+//            print(beacon.name)
+//            print(beacon.major)
+//            print(beacon.minor)
+//        })
+//        getBeacons(deviceId: "b2948349-ccb2-449a-8338-65ccf8a93e0a", completion: {
+//            (_ beacon) in
+//            self.beacons.append(beacon)
+//            print(beacon.name)
+//            print(beacon.major)
+//            print(beacon.minor)
+//        })
+        superGetBeacons(completion: {
+            (_ beacons) in
+            self.beacons = beacons
+            for b in beacons {
+                print("FIRST")
+                print(b.name)
+                print(b.major)
+                print(b.minor)
+            }
         })
-        getBeacons(deviceId: "d0a4e3e2-e9bb-4648-83b5-9b0ed68126d8", completion: {
-            (_ beacon) in
-            self.beacons.append(beacon)
-            print(beacon.name)
-            print(beacon.major)
-            print(beacon.minor)
-        })
-        getBeacons(deviceId: "c323b88e-8476-4291-9f52-c8572ed947a2", completion: {
-            (_ beacon) in
-            self.beacons.append(beacon)
-            print(beacon.name)
-            print(beacon.major)
-            print(beacon.minor)
+        superGetBeacons(completion: {
+            (_ beacons) in
+            
+            self.beacons = beacons
+            for b in beacons {
+                print("SECOND")
+                print(b.name)
+                print(b.major)
+                print(b.minor)
+            }
         })
         if let bu = beaconManager{
         }else{
@@ -621,19 +642,21 @@ open class AlpsManager: AlpsSDK {
     }
     
     private func getBeacons(deviceId: String, completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
-        let userId = "00000000-0000-0000-0000-000000000000"
+        let userId = self.apiKey
         let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
             (device, error) -> Void in
             if let d = device{
             completion(d as! IBeaconDevice)
             }
         }
+    }
     
-//        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
-//            for d in devices! {
-//                print(d.id)
-//            }
-//        })
+    private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)){
+        let userId = self.apiKey
+        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
+            completion(devices as! [IBeaconDevice])
+        })
+
     }
     
     public func getBeacons() -> [IBeaconDevice] {
