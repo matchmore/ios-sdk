@@ -41,10 +41,10 @@ open class AlpsManager: AlpsSDK {
     var devices: [Device] = []
     var alpsDevice: AlpsDevice?
     var locations: [String: Location] = [:]
-//    var publications: [String: [Publication]] = [:]
-//    var subscriptions: [String: [Subscription]] = [:]
-    var publications: [Publication] = []
-    var subscriptions: [Subscription] = []
+    var publications: [String: [Publication]] = [:]
+    var subscriptions: [String: [Subscription]] = [:]
+//    var publications: [Publication] = []
+//    var subscriptions: [Subscription] = []
     
     // DEVELOP: Beacons
     // depending on the case beacons will have different class in his array
@@ -231,8 +231,8 @@ open class AlpsManager: AlpsSDK {
                                                             (publication, error) -> Void in
                                                             
                                                             if let p = publication {
-//                                                                self.publications[deviceId]?.append(p)
-                                                                self.publications.append(p)
+                                                                self.publications[deviceId]?.append(p)
+//                                                                self.publications.append(p)
                                                             }
                                                             
                                                             userCompletion(publication)
@@ -257,8 +257,8 @@ open class AlpsManager: AlpsSDK {
             (publication, error) -> Void in
 
                                                     if let p = publication {
-//                                                        self.publications[deviceId]?.append(p)
-                                                        self.publications.append(p)
+                                                        self.publications[deviceId]?.append(p)
+//                                                        self.publications.append(p)
                                                     }
             userCompletion(publication)
         }
@@ -277,8 +277,8 @@ open class AlpsManager: AlpsSDK {
                     (subscription, error) -> Void in
 
                     if let p = subscription {
-//                        self.subscriptions[deviceId]?.append(p)
-                        self.subscriptions.append(p)
+                        self.subscriptions[deviceId]?.append(p)
+//                        self.subscriptions.append(p)
                     }
 
                     userCompletion(subscription)
@@ -302,8 +302,8 @@ open class AlpsManager: AlpsSDK {
                                                   subscription: subscription) {
                                                     (subscription, error) -> Void in
                                                     if let p = subscription{
-//                                                        self.subscriptions[deviceId]?.append(p)
-                                                        self.subscriptions.append(p)
+                                                        self.subscriptions[deviceId]?.append(p)
+//                                                        self.subscriptions.append(p)
                                                     }
                                                     userCompletion(subscription)
         }
@@ -460,6 +460,9 @@ open class AlpsManager: AlpsSDK {
             if let e = error {
                 print("Impossible to delete the publication!")
             }else {
+                if let index = self.publications[deviceId]?.index(where: {$0.id == publicationId}) {
+                    self.publications[deviceId]?.remove(at: index)
+                }
                 completion()
             }
         }
@@ -493,6 +496,9 @@ open class AlpsManager: AlpsSDK {
             if let e = error {
                 print("Impossible to delete the subscription!")
             }else {
+                if let index = self.subscriptions[deviceId]?.index(where: {$0.id == subscriptionId}) {
+                    self.subscriptions[deviceId]?.remove(at: index)
+                }
                 completion()
             }
         }
@@ -583,7 +589,9 @@ open class AlpsManager: AlpsSDK {
     private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)){
         let userId = self.apiKey
         let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
+            if error == nil {
             completion(devices as! [IBeaconDevice])
+            }
         })
 
     }
@@ -618,7 +626,7 @@ open class AlpsManager: AlpsSDK {
         return locations
     }
     
-    public func getAllPublicationsMainUser(completion: @escaping (_ publications: [Publication]) -> Void) {
+    public func getAllPublicationsMainUser(completion: @escaping (_ publications: [String:[Publication]]) -> Void) {
         if let u = alpsUser, let d = alpsDevice {
             // let _ = Alps.DeviceAPI.getPublications
             //                (publications, error) -> Void in
@@ -630,7 +638,7 @@ open class AlpsManager: AlpsSDK {
         }
     }
     
-    public func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {
+    public func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [String:[Subscription]]) -> Void)  {
         if let u = alpsUser, let d = alpsDevice {
             // let _ = Alps.DeviceAPI.getPublications
             //                (publications, error) -> Void in

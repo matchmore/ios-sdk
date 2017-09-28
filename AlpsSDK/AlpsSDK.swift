@@ -17,9 +17,10 @@ protocol AlpsSDK {
     func getMainDevice() -> Device?
     func getAllDevicesMainUser() -> [Device]
     func getAllLocationsMainUser() -> [String: Location]
-    func getAllPublicationsMainUser(completion: @escaping (_ publications: [Publication]) -> Void)
-    func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [Subscription]) -> Void) 
+    func getAllPublicationsMainUser(completion: @escaping (_ publications: [String:[Publication]]) -> Void)
+    func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [String:[Subscription]]) -> Void)
     func getExistingBeacons() -> [IBeaconDevice]
+    
     // MARK: API CALL Functions
     // create Alps entities
     func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)

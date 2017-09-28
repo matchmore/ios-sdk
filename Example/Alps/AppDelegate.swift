@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createSubscription() {
         if device != nil {
-            let selector = "mood = 'happy'"
+            let selector = "mood = happy"
 
             self.alps.createSubscription(topic: "alps-ios-test",
                                            selector: selector, range: 100.0, duration: 60) {

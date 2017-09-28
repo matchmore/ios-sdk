@@ -506,7 +506,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 refresh(trigger: trigger)
                 break
             default:
-                print("Why are we in default ?")
+                print("This shouldn't be printed, we are in default case.")
                 break
             }
         }
