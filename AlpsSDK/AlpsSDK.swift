@@ -8,9 +8,19 @@
 
 import Foundation
 import Alps
+import CoreLocation
 
 protocol AlpsSDK {
 
+    // MARK: DYNAMIC Functions
+    func getMainUser() -> User?
+    func getMainDevice() -> Device?
+    func getAllDevicesMainUser() -> [Device]
+    func getAllLocationsMainUser() -> [String: Location]
+    func getAllPublicationsMainUser(completion: @escaping (_ publications: [Publication]) -> Void)
+    func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [Subscription]) -> Void) 
+    func getExistingBeacons() -> [IBeaconDevice]
+    // MARK: API CALL Functions
     // create Alps entities
     func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)
 
@@ -47,6 +57,8 @@ protocol AlpsSDK {
     func updateLocation(latitude: Double, longitude: Double, altitude: Double,
                         horizontalAccuracy: Double, verticalAccuracy: Double,
                         completion: @escaping (_ location: Location?) -> Void)
+    // register location handlers
+    func onLocationUpdate(completion: @escaping ((_ location: CLLocation) -> Void))
     
     // Get all matches for main device
     func getAllMatches(completion: @escaping (_ matches: Matches) -> Void)
@@ -55,9 +67,8 @@ protocol AlpsSDK {
 
     // queries
     func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void)
-    func getUser(completion: @escaping (_ user: User) -> Void)
     func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void)
-    func getDevice(completion: @escaping (_ device: Device) -> Void)
+//    func getDevice(completion: @escaping (_ device: Device) -> Void)
     func getPublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void)
     func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void)
     func getAllPublicationsForDevice(_ userId:String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void)
@@ -65,12 +76,22 @@ protocol AlpsSDK {
     func deleteSubscription(_ userId:String, deviceId:String, subscriptionId: String, completion: @escaping () -> Void)
     func getAllSubscriptionsForDevice(_ userId:String, deviceId:String, completion: @escaping (_ subscriptions: [Subscription]) -> Void)
 
-    // cancel (unpublish and unsubscribe)
-
     // delete Alps entities
 
     // query stats
 
+    // start/stop function
+    func startMonitoringMatches()
+    func stopMonitoringMatches()
+    func startUpdatingLocation()
+    func stopUpdatingLocation()
+    func startRangingBeacons(forUuid: UUID, identifier: String)
+    func stopRangingBeacons(forUuid: UUID)
+    func startBeaconsProximityEvent(forCLProximity: CLProximity)
+    func stopBeaconsProximityEvent(forCLProximity: CLProximity)
     
     // Beacons
+    func getClosestOnBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void))
+    func getAllOnBeaconUpdate(completion: @escaping ((_ beacon: [CLBeacon]) -> Void))
+    func setRefreshTimerForProximityEvent(refreshEveryInMilliseconds: Int)
 }

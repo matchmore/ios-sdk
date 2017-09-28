@@ -33,9 +33,6 @@ open class AlpsManager: AlpsSDK {
     let apiKey: String
     var contextManager: ContextManager? = nil
     var matchMonitor: MatchMonitor? = nil
-    
-    // DEVELOP: Beacons
-    var beaconManager: BeaconManager? = nil
 
     // FIXME: add the world id when it's there
     // var world: World
@@ -69,28 +66,6 @@ open class AlpsManager: AlpsSDK {
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
         // DEVELOP: Beacons
-        self.beaconManager = BeaconManager(alpsManager: self)
-//        getBeacons(deviceId: "93816efe-053a-4d9f-9624-8fe5b51cef75", completion: {
-//            (_ beacon) in
-//            self.beacons.append(beacon)
-//            print(beacon.name)
-//            print(beacon.major)
-//            print(beacon.minor)
-//        })
-//        getBeacons(deviceId: "b0bac8dc-36a4-45ea-a796-71b7f05f826b", completion: {
-//            (_ beacon) in
-//            self.beacons.append(beacon)
-//            print(beacon.name)
-//            print(beacon.major)
-//            print(beacon.minor)
-//        })
-//        getBeacons(deviceId: "b2948349-ccb2-449a-8338-65ccf8a93e0a", completion: {
-//            (_ beacon) in
-//            self.beacons.append(beacon)
-//            print(beacon.name)
-//            print(beacon.major)
-//            print(beacon.minor)
-//        })
         superGetBeacons(completion: {
             (_ beacons) in
             self.beacons = beacons
@@ -112,10 +87,6 @@ open class AlpsManager: AlpsSDK {
                 print(b.minor)
             }
         })
-        if let bu = beaconManager{
-        }else{
-            print("None beaconUser found.")
-        }
     }
 
     // Create Alps entities
@@ -439,19 +410,10 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    public func getUser(completion: @escaping (_ user: User) -> Void)  {
-        if let u = alpsUser {
-            completion(u.user)
-        } else {
-            print("Alps user doesn't exist!")
-            //            // throw AlpsManagerError.userNotIntialized
-        }
-    }
-
     public func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {
 
         if let u = alpsUser, let d = alpsDevice {
-            if let userId = u.user.id, let deviceId = d.device.id {
+            if let userId = u.user.id {
                 let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
                     (device, error) -> Void in
                     if let d = device{
@@ -464,21 +426,22 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    public func getDevice(completion: @escaping (_ device: Device) -> Void)  {
-        if let u = alpsUser, let d = alpsDevice {
-            if let userId = u.user.id, let deviceId = d.device.id {
-                let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
-                    (device, error) -> Void in
-                    
-                    if let d = device {
-                        completion(d)
-                    }
-                }
-            }
-        } else {
-            print("Error forcing userId or/and deviceId is nil.")
-        }
-    }
+    // Deprecated for dynamic getMainDevice()
+//    public func getDevice(completion: @escaping (_ device: Device) -> Void)  {
+//        if let u = alpsUser, let d = alpsDevice {
+//            if let userId = u.user.id, let deviceId = d.device.id {
+//                let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
+//                    (device, error) -> Void in
+//                    
+//                    if let d = device {
+//                        completion(d)
+//                    }
+//                }
+//            }
+//        } else {
+//            print("Error forcing userId or/and deviceId is nil.")
+//        }
+//    }
 
     public func getPublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void) {
         let _ = Alps.PublicationAPI.getPublication(userId: userId, deviceId: deviceId, publicationId: publicationId) {
@@ -499,30 +462,6 @@ open class AlpsManager: AlpsSDK {
             }else {
                 completion()
             }
-        }
-    }
-
-    public func getAllPublications(completion: @escaping (_ publications: [Publication]) -> Void) {
-        if let u = alpsUser, let d = alpsDevice {
-            // let _ = Alps.DeviceAPI.getPublications
-            //                (publications, error) -> Void in
-            //
-            //            }
-
-            // XXX: ignore the returned device for now
-            completion(publications)
-        }
-    }
-
-    public func getAllSubscriptions(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {
-        if let u = alpsUser, let d = alpsDevice {
-            // let _ = Alps.DeviceAPI.getPublications
-            //                (publications, error) -> Void in
-            //
-            //            }
-
-            // XXX: ignore the returned device for now
-            completion(subscriptions)
         }
     }
 
@@ -597,26 +536,26 @@ open class AlpsManager: AlpsSDK {
     }
     
     //DEVELOP: Beacons
-    public func getUuid() -> [UUID]{
-        var uuids : [UUID] = []
-        for beacon in beacons{
-            let uuid = beacon.proximityUUID
-            if !uuids.contains(UUID.init(uuidString: uuid!)!){
-                uuids.append(UUID.init(uuidString: uuid!)!)
-            }
-        }
-        return uuids
-    }
+//    public func getUuid() -> [UUID]{
+//        var uuids : [UUID] = []
+//        for beacon in beacons{
+//            let uuid = beacon.proximityUUID
+//            if !uuids.contains(UUID.init(uuidString: uuid!)!){
+//                uuids.append(UUID.init(uuidString: uuid!)!)
+//            }
+//        }
+//        return uuids
+//    }
     
     public func getClosestOnBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
-        if let lm = contextManager {
-            lm.getClosestOnBeaconUpdate(completion: completion)
+        if let cm = contextManager {
+            cm.getClosestOnBeaconUpdate(completion: completion)
         }
     }
     
     public func getAllOnBeaconUpdate(completion: @escaping ((_ beacon: [CLBeacon]) -> Void)) {
-        if let lm = contextManager {
-            lm.getAllOnBeaconUpdate(completion: completion)
+        if let cm = contextManager {
+            cm.getAllOnBeaconUpdate(completion: completion)
         }
     }
     
@@ -641,16 +580,6 @@ open class AlpsManager: AlpsSDK {
         contextManager?.refreshTimer = refreshEveryInMilliseconds
     }
     
-    private func getBeacons(deviceId: String, completion: @escaping ((_ beacon: IBeaconDevice) -> Void)) {
-        let userId = self.apiKey
-        let _ = Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) {
-            (device, error) -> Void in
-            if let d = device{
-            completion(d as! IBeaconDevice)
-            }
-        }
-    }
-    
     private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)){
         let userId = self.apiKey
         let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
@@ -659,16 +588,62 @@ open class AlpsManager: AlpsSDK {
 
     }
     
-    public func getBeacons() -> [IBeaconDevice] {
+    public func getMainUser() -> User? {
+        var user : User?
+        if let u = alpsUser {
+            user = u.user
+        } else {
+            print("Alps user doesn't exist!")
+            //            // throw AlpsManagerError.userNotIntialized
+        }
+        return user
+    }
+    
+    public func getMainDevice() -> Device? {
+        var device : Device?
+        if let d = alpsDevice {
+            device = d.device
+        } else {
+            print("Alps device doesn't exist!")
+            //            // throw AlpsManagerError.deviceNotIntialized
+        }
+        return device
+    }
+    
+    public func getAllDevicesMainUser() -> [Device]{
+        return devices
+    }
+    
+    public func getAllLocationsMainUser() -> [String: Location]{
+        return locations
+    }
+    
+    public func getAllPublicationsMainUser(completion: @escaping (_ publications: [Publication]) -> Void) {
+        if let u = alpsUser, let d = alpsDevice {
+            // let _ = Alps.DeviceAPI.getPublications
+            //                (publications, error) -> Void in
+            //
+            //            }
+            
+            // XXX: ignore the returned device for now
+            completion(publications)
+        }
+    }
+    
+    public func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [Subscription]) -> Void)  {
+        if let u = alpsUser, let d = alpsDevice {
+            // let _ = Alps.DeviceAPI.getPublications
+            //                (publications, error) -> Void in
+            //
+            //            }
+            
+            // XXX: ignore the returned device for now
+            completion(subscriptions)
+        }
+    }
+    
+    public func getExistingBeacons() -> [IBeaconDevice] {
         return beacons
     }
     
-    //TOSUPPRESS: function just here in needs
-//    public func fixBeacons(beacons: [IBeaconDevice]){
-//        self.beacons = beacons
-//    }
-//    
-//    public func addBeacon(beacon: IBeaconDevice){
-//        self.beacons.append(beacon)
-//    }
 }
