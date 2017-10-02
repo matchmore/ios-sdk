@@ -65,27 +65,11 @@ open class AlpsManager: AlpsSDK {
 
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
+        
         // DEVELOP: Beacons
         superGetBeacons(completion: {
             (_ beacons) in
             self.beacons = beacons
-            for b in beacons {
-                print("FIRST")
-                print(b.name)
-                print(b.major)
-                print(b.minor)
-            }
-        })
-        superGetBeacons(completion: {
-            (_ beacons) in
-            
-            self.beacons = beacons
-            for b in beacons {
-                print("SECOND")
-                print(b.name)
-                print(b.major)
-                print(b.minor)
-            }
         })
     }
 
@@ -457,7 +441,7 @@ open class AlpsManager: AlpsSDK {
     public func deletePublication(_ userId:String, deviceId:String, publicationId: String, completion: @escaping () -> Void) {
         let _ = Alps.PublicationAPI.deletePublication(userId: userId, deviceId: deviceId, publicationId: publicationId) {
             (error) -> Void in
-            if let e = error {
+            if error != nil {
                 print("Impossible to delete the publication!")
             }else {
                 if let index = self.publications[deviceId]?.index(where: {$0.id == publicationId}) {

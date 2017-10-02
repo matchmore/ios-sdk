@@ -67,17 +67,19 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-            do {
-                try self.onLocationUpdateClosure?(locations.last!)
-                try alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+//            do {
+                //try self.onLocationUpdateClosure?(locations.last!)
+                //try alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+            self.onLocationUpdateClosure?(locations.last!)
+            alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                                              altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                                              verticalAccuracy: coord.verticalAccuracy) {
                     (_ location) in
 //                    NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
                 }
-            } catch {
-                // Allow to update location even when there is no device / user created
-            }
+//            } catch {
+//                // Allow to update location even when there is no device / user created
+//            }
         }
     }
 
@@ -138,13 +140,14 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             }
         }
         if let closestBeacon = closest {
-            do {
-                // If the developer needs the closest beacon or the detected beacons, he/she can access it with these 2 fields.
-                try self.closestBeaconClosure?(closestBeacon)
+//            do {
+//                // If the developer needs the closest beacon or the detected beacons, he/she can access it with these 2 fields.
+//                try self.closestBeaconClosure?(closestBeacon)
+                    self.closestBeaconClosure?(closestBeacon)
                     self.detectedBeaconsClosure?(beacons)
-            } catch {
-                // just to catch
-            }
+//            } catch {
+//                // just to catch
+//            }
         }
         
         // Proximity Events related
@@ -191,7 +194,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if b.isEmpty != true {
                 ourBeacon = b[0]
             }
-            if var deviceId = ourBeacon?.id{
+            if let deviceId = ourBeacon?.id{
                 switch beacon.proximity {
                 case .immediate:
                     if immediateBeacons.contains(deviceId){
@@ -377,7 +380,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             // Check if a proximity event already exist
             if trigger[id] == nil {
                 // Send the proximity event
-                var proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
+                let proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
                 let userId = self.alpsManager.alpsUser?.user.id
                 let deviceId = self.alpsManager.alpsDevice?.device.id
                 triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: proximityEvent) {
