@@ -144,8 +144,8 @@ open class AlpsManager: AlpsSDK {
                                                     if let d = mobileDevice as? MobileDevice {
                                                         self.devices.append(d)
                                                         self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
-//                                                        self.publications[d.id!] = [Publication]()
-//                                                        self.subscriptions[d.id!] = [Subscription]()
+                                                        self.publications[d.id!] = [Publication]()
+                                                        self.subscriptions[d.id!] = [Subscription]()
                                                     }
                                                     userCompletion(mobileDevice as? MobileDevice)
                     }
@@ -174,8 +174,8 @@ open class AlpsManager: AlpsSDK {
                     if pinDevice is PinDevice{
                         if let d = pinDevice as? PinDevice {
                             self.devices.append(d)
-//                            self.publications[d.id!] = [Publication]()
-//                            self.subscriptions[d.id!] = [Subscription]()
+                            self.publications[d.id!] = [Publication]()
+                            self.subscriptions[d.id!] = [Subscription]()
                         }
                         userCompletion(pinDevice as? PinDevice)
                     }
@@ -202,8 +202,8 @@ open class AlpsManager: AlpsSDK {
                     if iBeaconDevice is IBeaconDevice{
                         if let d = iBeaconDevice as? IBeaconDevice {
                             self.devices.append(d)
-//                            self.publications[d.id!] = [Publication]()
-//                            self.subscriptions[d.id!] = [Subscription]()
+                            self.publications[d.id!] = [Publication]()
+                            self.subscriptions[d.id!] = [Subscription]()
                         }
                         userCompletion(iBeaconDevice as? IBeaconDevice)
                     }
