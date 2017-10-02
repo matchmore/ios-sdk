@@ -13,7 +13,7 @@ Alps SDK requires iOS 7+, if you want to use iBeacons.
 Alps is available through [CocoaPods](http://cocoapods.org), simply add the following
 line to your Podfile:
 
-    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.4.0'
+    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.4.2'
 
 ## Technical overview
 
