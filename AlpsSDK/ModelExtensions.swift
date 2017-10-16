@@ -1,4 +1,3 @@
-
 //
 //  ModelExtensions.swift
 //  Alps
@@ -12,7 +11,9 @@ import Alps
 
 extension Dictionary {
     mutating func merge(with dictionary: Dictionary) {
-        dictionary.forEach { updateValue($1, forKey: $0) }
+        dictionary.forEach {
+            updateValue($1, forKey: $0)
+        }
     }
 
     func merged(with dictionary: Dictionary) -> Dictionary {
@@ -62,7 +63,7 @@ extension User {
 
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
-    public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber){
+    public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber) {
         self.init()
         self.name = name
         self.deviceType = DeviceType.ibeacondevice
@@ -73,7 +74,7 @@ extension IBeaconDevice {
 }
 
 extension MobileDevice {
-    internal convenience init(name:String, platform: String, deviceToken: String, location: Location?){
+    internal convenience init(name: String, platform: String, deviceToken: String, location: Location?) {
         self.init()
         self.name = name
         self.deviceType = DeviceType.mobileDevice
@@ -84,7 +85,7 @@ extension MobileDevice {
 }
 
 extension PinDevice {
-    internal convenience init(name: String, location: Location){
+    internal convenience init(name: String, location: Location) {
         self.init()
         self.name = name
         self.deviceType = DeviceType.pinDevice
@@ -106,7 +107,7 @@ extension PinDevice {
 
 extension Publication {
 
-    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String:String]) {
+    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String: String]) {
         self.init()
         // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
@@ -132,8 +133,8 @@ extension Subscription {
 }
 
 extension Location {
-    
-    internal convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double){
+
+    internal convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double) {
         self.init()
         self.latitude = latitude
         self.longitude = longitude
@@ -151,7 +152,7 @@ extension Match: CustomStringConvertible, Hashable {
     }
 
     // XXX: Define the match equality based on the matchId only
-    public static func ==(lhs: Match, rhs: Match) -> Bool {
+    public static func == (lhs: Match, rhs: Match) -> Bool {
         return lhs.id! == rhs.id!
     }
 
@@ -161,8 +162,8 @@ extension Match: CustomStringConvertible, Hashable {
 }
 
 extension ProximityEvent {
-    
-    public convenience init(deviceId : String, distance: Double){
+
+    public convenience init(deviceId: String, distance: Double) {
         self.init()
         self.deviceId = deviceId
         self.distance = distance

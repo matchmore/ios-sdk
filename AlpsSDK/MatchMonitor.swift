@@ -17,8 +17,8 @@ class MatchMonitor {
     var onMatchClosure: ((_ match: Match) -> Void)
 
     convenience init(alpsManager: AlpsManager) {
-        self.init(alpsManager: alpsManager, onMatch: {
-            (_ match: Match) in NSLog("Got a match: \(match)")
+        self.init(alpsManager: alpsManager, onMatch: { (_ match: Match) in
+            NSLog("Got a match: \(match)")
         })
     }
 
@@ -33,11 +33,11 @@ class MatchMonitor {
 
     public func startMonitoringMatches() {
         self.timer = Timer.scheduledTimer(
-          timeInterval: 1.0,
-          target: self,
-          selector: #selector(MatchMonitor.checkMatches),
-          userInfo: nil,
-          repeats: true)
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(MatchMonitor.checkMatches),
+                userInfo: nil,
+                repeats: true)
     }
 
     public func stopMonitoringMatches() {
@@ -46,8 +46,7 @@ class MatchMonitor {
 
     @objc func checkMatches() {
         NSLog("checking matches")
-        alpsManager.getAllMatches {
-            (_ matches: Matches) in
+        alpsManager.getAllMatches { (_ matches: Matches) in
             NSLog("got all matches from the cloud: \(matches)")
 
             for m in matches {

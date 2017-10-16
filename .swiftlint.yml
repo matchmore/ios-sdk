@@ -5,4 +5,5 @@ excluded: # paths to ignore during linting.
   - Pods
 # parameterized rules can be customized from this configuration file
 line_length: 200
+file_length: 500
 trailing_whitespace: false
