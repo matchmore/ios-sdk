@@ -15,15 +15,17 @@ class NotificationManager : NSObject, UNUserNotificationCenterDelegate {
     var deviceToken : Data? = nil
     var deviceTokenString : String = ""
     var seenError : Bool = false
-    var initialize : Bool = false
     
     init(alpsManager: AlpsManager){
         self.alpsManager = alpsManager
         super.init()
+    }
+    
+    func initialize() {
         self.seenError = registerForPushNotifications()
     }
     
-    func registerForPushNotifications() -> Bool{
+    private func registerForPushNotifications() -> Bool{
         // iOS 10 support
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in
@@ -34,6 +36,7 @@ class NotificationManager : NSObject, UNUserNotificationCenterDelegate {
                     return }
                 // If get notification settings is not .authorized, register for remote notification is not called
                 self.getNotificationSettings()
+                UNUserNotificationCenter.current().delegate = self
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
@@ -55,11 +58,12 @@ class NotificationManager : NSObject, UNUserNotificationCenterDelegate {
             self.getNotificationSettings()
         }
         
+        print("Notification Manager is initialized.")
         return !UIApplication.shared.isRegisteredForRemoteNotifications
     }
     
     
-    func getNotificationSettings(){
+    private func getNotificationSettings(){
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 print("***********************************************")
@@ -78,22 +82,27 @@ class NotificationManager : NSObject, UNUserNotificationCenterDelegate {
         print("REGISTERED DEVICE TOKEN")
         self.deviceToken = deviceToken
         self.deviceTokenString = deviceTokenString
-        self.initialize = true
     }
     
-    func handleRemoteNotification(userInfo: [AnyHashable : Any], fetchCompletionHandler: UIBackgroundFetchResult){
-        
+    func handleRemoteNotification(userInfo: [AnyHashable : Any]){
+        print("--------- handle remote notification")
+        print(userInfo.description)
     }
     
     // MARK: UNUserNotificationCenter Delegate
-    // Handle notification when app is in foreground
+    @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // CODE
-        print(response.description)
+        // Called when app is open in background and click on notification
+        print("did Receive function : ")
+        print(response.notification.request.content.body)
+        completionHandler()
     }
     
+    @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // CODE
-        print(notification.hashValue)
+        // Called when app is in foreground
+        // Assume that the request.content.body contains the match id.
+        print("will present function : ")
+        print(notification.request.content.body)
     }
 }

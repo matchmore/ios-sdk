@@ -58,6 +58,45 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         self.clLocationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.clLocationManager.requestAlwaysAuthorization()
     }
+    
+    func initialize(){
+        superGetBeacons(completion: {
+            (_ beacons) in
+            if !beacons.isEmpty{
+                let uuid = self.getUuid(beacons: beacons)
+                var i = 0
+                for region in uuid {
+                    self.startRanging(forUuid: region, identifier: "Region " + String(i))
+                    i += 1
+                }
+                self.startBeaconsProximityEvent(forCLProximity: .immediate)
+                self.startBeaconsProximityEvent(forCLProximity: .near)
+            }
+            print("Context Manager is initialized.")
+            
+
+        })
+    }
+    
+    private func getUuid(beacons: [IBeaconDevice]) -> [UUID]{
+        var uuids : [UUID] = []
+        for beacon in beacons{
+            let uuid = beacon.proximityUUID
+            if !uuids.contains(UUID.init(uuidString: uuid!)!){
+                uuids.append(UUID.init(uuidString: uuid!)!)
+            }
+        }
+        return uuids
+    }
+    
+    private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)){
+        let userId = alpsManager.apiKey
+        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
+            if error == nil {
+                completion(devices as! [IBeaconDevice])
+            }
+        })
+    }
 
     // Location Manager Delegate stuff
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -113,12 +152,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     }
     
     //DEVELOP: Beacons
-    func startRanging(forUuid : UUID, identifier : String){
+    private func startRanging(forUuid : UUID, identifier : String){
         let ourCLBeaconRegion = CLBeaconRegion.init(proximityUUID: forUuid, identifier: identifier)
         clLocationManager.startRangingBeacons(in: ourCLBeaconRegion)
     }
     
-    func stopRanging(forUuid : UUID){
+    private func stopRanging(forUuid : UUID){
         for region in clLocationManager.rangedRegions{
             if let beaconRegion = region as? CLBeaconRegion {
                 if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
@@ -178,8 +217,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
         print(error)
+        seenError = true
     }
-    
     
     func getClosestOnBeaconUpdate(completion: @escaping (_ beacon: CLBeacon) -> Void){
         closestBeaconClosure = completion
@@ -314,7 +353,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    public func startBeaconsProximityEvent(forCLProximity: CLProximity) {
+    private func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
         // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
 //        switch forCLProximity {
@@ -333,7 +372,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 //        }
     }
     
-    public func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
+    private func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
 //        switch forCLProximity {
 //        case .immediate:
@@ -478,15 +517,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                                 // far
                                 farTrigger = t
                                 break
-                            default:
-                                break
                             }
                         }
                     }
                 }
             }
         }
-        
         
         for proximity in CLProximity.allValues {
             switch proximity {
@@ -509,7 +545,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 // far
                 trigger = farTrigger
                 refresh(trigger: trigger)
-                break            }
+                break
+            }
         }
     }
 
