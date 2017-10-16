@@ -9,7 +9,6 @@
 
 import Foundation
 import Alps
-import CoreLocation
 
 extension Dictionary {
     mutating func merge(with dictionary: Dictionary) {
@@ -168,11 +167,6 @@ extension ProximityEvent {
         self.deviceId = deviceId
         self.distance = distance
     }
-}
-
-extension CLProximity{
-    
-    static let allValues = [unknown, immediate, near, far]
 }
 
 /*

@@ -38,8 +38,6 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     var unknownTimer : Timer?
     var closestBeaconClosure: ((_ beacon: CLBeacon) -> Void)?
     var detectedBeaconsClosure: ((_ beacons: [CLBeacon]) -> Void)?
-    
-    
 
     public func onLocationUpdate(completion: @escaping (_ location: CLLocation) -> Void) {
         onLocationUpdateClosure = completion
@@ -57,45 +55,6 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         self.clLocationManager.delegate = self
         self.clLocationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.clLocationManager.requestAlwaysAuthorization()
-    }
-    
-    func initialize(){
-        superGetBeacons(completion: {
-            (_ beacons) in
-            if !beacons.isEmpty{
-                let uuid = self.getUuid(beacons: beacons)
-                var i = 0
-                for region in uuid {
-                    self.startRanging(forUuid: region, identifier: "Region " + String(i))
-                    i += 1
-                }
-                self.startBeaconsProximityEvent(forCLProximity: .immediate)
-                self.startBeaconsProximityEvent(forCLProximity: .near)
-            }
-            print("Context Manager is initialized.")
-            
-
-        })
-    }
-    
-    private func getUuid(beacons: [IBeaconDevice]) -> [UUID]{
-        var uuids : [UUID] = []
-        for beacon in beacons{
-            let uuid = beacon.proximityUUID
-            if !uuids.contains(UUID.init(uuidString: uuid!)!){
-                uuids.append(UUID.init(uuidString: uuid!)!)
-            }
-        }
-        return uuids
-    }
-    
-    private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)){
-        let userId = alpsManager.apiKey
-        let _ = Alps.UserAPI.getDevices(userId: userId, completion: {(_ devices, error)in
-            if error == nil {
-                completion(devices as! [IBeaconDevice])
-            }
-        })
     }
 
     // Location Manager Delegate stuff
@@ -152,12 +111,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     }
     
     //DEVELOP: Beacons
-    private func startRanging(forUuid : UUID, identifier : String){
+    func startRanging(forUuid : UUID, identifier : String){
         let ourCLBeaconRegion = CLBeaconRegion.init(proximityUUID: forUuid, identifier: identifier)
         clLocationManager.startRangingBeacons(in: ourCLBeaconRegion)
     }
     
-    private func stopRanging(forUuid : UUID){
+    func stopRanging(forUuid : UUID){
         for region in clLocationManager.rangedRegions{
             if let beaconRegion = region as? CLBeaconRegion {
                 if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
@@ -217,8 +176,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
         print(error)
-        seenError = true
     }
+    
     
     func getClosestOnBeaconUpdate(completion: @escaping (_ beacon: CLBeacon) -> Void){
         closestBeaconClosure = completion
@@ -353,7 +312,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func startBeaconsProximityEvent(forCLProximity: CLProximity) {
+    public func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
         // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
 //        switch forCLProximity {
@@ -372,7 +331,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 //        }
     }
     
-    private func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
+    public func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
 //        switch forCLProximity {
 //        case .immediate:
@@ -499,23 +458,25 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                    
                     if gap > 5 * 60 * 1000 {
                         t.removeValue(forKey: id)
-                        for proximity in CLProximity.allValues {
-                            switch proximity{
-                            case .unknown:
+                        for i in 0...3 {
+                            switch i{
+                            case 0:
                                 // unknown
                                 unknownTrigger = t
                                 break
-                            case .immediate:
+                            case 1:
                                 // immediate
                                 immediateTrigger = t
                                 break
-                            case .near:
+                            case 2:
                                 // near
                                 nearTrigger = t
                                 break
-                            case .far:
+                            case 3:
                                 // far
                                 farTrigger = t
+                                break
+                            default:
                                 break
                             }
                         }
@@ -524,27 +485,31 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             }
         }
         
-        for proximity in CLProximity.allValues {
-            switch proximity {
-            case .unknown:
+        
+        for i in 0...3 {
+            switch i {
+            case 0:
                 // unknown
                 trigger = unknownTrigger
                 refresh(trigger: trigger)
                 break
-            case .immediate:
+            case 1:
                 // immediate
                 trigger = immediateTrigger
                 refresh(trigger: trigger)
                 break
-            case .near:
+            case 2:
                 // near
                 trigger = nearTrigger
                 refresh(trigger: trigger)
                 break
-            case .far:
+            case 3:
                 // far
                 trigger = farTrigger
                 refresh(trigger: trigger)
+                break
+            default:
+                print("This shouldn't be printed, we are in default case.")
                 break
             }
         }
