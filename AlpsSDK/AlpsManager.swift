@@ -33,6 +33,7 @@ open class AlpsManager: AlpsSDK {
     let apiKey: String
     var contextManager: ContextManager? = nil
     var matchMonitor: MatchMonitor? = nil
+    var notificationManager: NotificationManager? = nil
 
     // FIXME: add the world id when it's there
     // var world: World
@@ -62,6 +63,7 @@ open class AlpsManager: AlpsSDK {
         self.headers = defaultHeaders.merged(with: ["api-key": apiKey])
         self.contextManager = ContextManager(alpsManager: self, locationManager: clLocationManager)
         self.matchMonitor = MatchMonitor(alpsManager: self)
+        self.notificationManager = NotificationManager(alpsManager: self)
 
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
@@ -71,6 +73,11 @@ open class AlpsManager: AlpsSDK {
             (_ beacons) in
             self.beacons = beacons
         })
+    }
+    
+    private func initiliaze() -> Bool {
+        
+        return false
     }
 
     // Create Alps entities
@@ -577,7 +584,6 @@ open class AlpsManager: AlpsSDK {
             completion(devices as! [IBeaconDevice])
             }
         })
-
     }
     
     public func getMainUser() -> User? {
@@ -638,4 +644,7 @@ open class AlpsManager: AlpsSDK {
         return beacons
     }
     
+    public func registerDeviceToken(deviceToken: Data, deviceTokenString: String){
+        notificationManager?.registerDeviceToken(deviceToken: deviceToken, deviceTokenString: deviceTokenString)
+    }
 }

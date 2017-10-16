@@ -38,6 +38,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     var unknownTimer : Timer?
     var closestBeaconClosure: ((_ beacon: CLBeacon) -> Void)?
     var detectedBeaconsClosure: ((_ beacons: [CLBeacon]) -> Void)?
+    
+    
 
     public func onLocationUpdate(completion: @escaping (_ location: CLLocation) -> Void) {
         onLocationUpdateClosure = completion
@@ -458,21 +460,21 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                    
                     if gap > 5 * 60 * 1000 {
                         t.removeValue(forKey: id)
-                        for i in 0...3 {
-                            switch i{
-                            case 0:
+                        for proximity in CLProximity.allValues {
+                            switch proximity{
+                            case .unknown:
                                 // unknown
                                 unknownTrigger = t
                                 break
-                            case 1:
+                            case .immediate:
                                 // immediate
                                 immediateTrigger = t
                                 break
-                            case 2:
+                            case .near:
                                 // near
                                 nearTrigger = t
                                 break
-                            case 3:
+                            case .far:
                                 // far
                                 farTrigger = t
                                 break
@@ -486,32 +488,28 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         }
         
         
-        for i in 0...3 {
-            switch i {
-            case 0:
+        for proximity in CLProximity.allValues {
+            switch proximity {
+            case .unknown:
                 // unknown
                 trigger = unknownTrigger
                 refresh(trigger: trigger)
                 break
-            case 1:
+            case .immediate:
                 // immediate
                 trigger = immediateTrigger
                 refresh(trigger: trigger)
                 break
-            case 2:
+            case .near:
                 // near
                 trigger = nearTrigger
                 refresh(trigger: trigger)
                 break
-            case 3:
+            case .far:
                 // far
                 trigger = farTrigger
                 refresh(trigger: trigger)
-                break
-            default:
-                print("This shouldn't be printed, we are in default case.")
-                break
-            }
+                break            }
         }
     }
 
