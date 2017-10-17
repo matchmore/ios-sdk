@@ -82,8 +82,6 @@ class AlpsSDKTests: XCTestCase {
                         XCTAssertEqual(location.latitude, 37.7858, "test2CreateMobileDevice(): Returned latitude is not equal to defined one.")
                         XCTAssertEqual(location.longitude, -122.4064, "test2CreateMobileDevice(): Returned longitude is not equal to defined one.")
                         XCTAssertEqual(location.altitude, 100.0, "test2CreateMobileDevice(): Returned altitude is not equal to defined one.")
-//                        XCTAssertEqual(location.horizontalAccuracy, 5.0, "test2CreateMobileDevice(): Returned horizontalAccuracy is not equal to defined one.")
-//                        XCTAssertEqual(location.verticalAccuracy, 5.0, "test2CreateMobileDevice(): Returned verticalAccuracy is not equal to defined one.")
                     } else {
                         XCTFail("test2CreateMobileDevice(): location is nil.")
                     }
@@ -225,8 +223,6 @@ class AlpsSDKTests: XCTestCase {
                                     XCTAssertEqual(l.latitude, 38.00, "test5UpdateLocation(): Returned latitude is not equal to defined one.")
                                     XCTAssertEqual(l.longitude, -123, "test5UpdateLocation(): Returned longitude is not equal to defined one.")
                                     XCTAssertEqual(l.altitude, 100, "test5UpdateLocation(): Returned altitude is not equal to defined one.")
-//                                    XCTAssertEqual(l.horizontalAccuracy, 5.0, "test5UpdateLocation(): Returned horizontalAccuracy is not equal to defined one.")
-//                                    XCTAssertEqual(l.verticalAccuracy, 5.0, "test5UpdateLocation(): Returned verticalAccuracy is not equal to defined one.")
                                 } else {
                                     XCTFail("test5UpdateLocation(): location is nil.")
                                 }
@@ -266,8 +262,6 @@ class AlpsSDKTests: XCTestCase {
                         XCTAssertEqual(location.latitude, 37.7858, "test6CreatePinDevice(): Returned latitude is not equal to defined one.")
                         XCTAssertEqual(location.longitude, -122.4064, "test6CreatePinDevice(): Returned longitude is not equal to defined one.")
                         XCTAssertEqual(location.altitude, 100.0, "test6CreatePinDevice(): Returned altitude is not equal to defined one.")
-//                                                XCTAssertEqual(location.horizontalAccuracy, 5.0, "test6CreatePinDevice(): Returned horizontalAccuracy is not equal to defined one.")
-//                                                XCTAssertEqual(location.verticalAccuracy, 5.0, "test6CreatePinDevice(): Returned verticalAccuracy is not equal to defined one.")
                     } else {
                         XCTFail("test6CreatePinDevice(): location is nil.")
                     }
@@ -331,44 +325,4 @@ class AlpsSDKTests: XCTestCase {
         XCTAssertNotNil(alps.beacons)
         XCTAssertEqual(alps.beacons.count, 3, "Number of Dummy beacons should be 3.")
     }
-
-    /*
-     // XXX: still not found a way to allow location updates from tests
-     // http://stackoverflow.com/questions/40033185/how-to-access-calendar-camera-etc-from-tests
-     func test6ContinouslyUpdatingLocation() {
-     let alps = AlpsManager(apiKey: apiKey)
-     let deviceTemplate = Device(name: "Alps Test Device 5",
-     platform: "iOS 9.3",
-     deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb665")
-
-     let locationExpectation = expectation(description: "UpdateLocation")
-
-     alps.createUser("Swift User 5") {
-     (_ user) in
-     if let u = user {
-     // alps.createDevice(deviceTemplate, for: u) {
-     alps.createDevice(deviceTemplate) {
-     (_ device) in
-     if let d = device {
-     alps.startUpdatingLocation()
-     /*
-     let newLocation = DeviceLocation(deviceId: d.deviceId!,
-     altitude: 0,
-     latitude: 37.785833999999994,
-     longitude: -122.406417)
-     alps.updateLocation(newLocation, for: u, on: d) {
-     (_ location) in
-     XCTAssertNotNil(location)
-     locationExpectation.fulfill()
-     }
-     */
-     }
-     }
-     }
-     }
-
-     waitForExpectations(timeout: 5.0, handler: nil)
-     alps.stopUpdatingLocation()
-     }
-     */
 }

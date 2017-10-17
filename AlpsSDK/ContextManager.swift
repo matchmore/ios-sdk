@@ -68,18 +68,11 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
-//            do {
-            //try self.onLocationUpdateClosure?(locations.last!)
-            //try alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
             self.onLocationUpdateClosure?(locations.last!)
             alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                     altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                     verticalAccuracy: coord.verticalAccuracy) { (_ location) in
-//                    NSLog("updating location to: \(coord.coordinate.latitude), \(coord.coordinate.longitude), \(coord.altitude)")
             }
-//            } catch {
-//                // Allow to update location even when there is no device / user created
-//            }
         }
     }
 
@@ -137,14 +130,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             }
         }
         if let closestBeacon = closest {
-//            do {
-//                // If the developer needs the closest beacon or the detected beacons, he/she can access it with these 2 fields.
-//                try self.closestBeaconClosure?(closestBeacon)
             self.closestBeaconClosure?(closestBeacon)
             self.detectedBeaconsClosure?(beacons)
-//            } catch {
-//                // just to catch
-//            }
         }
 
         // Proximity Events related
@@ -304,38 +291,10 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     public func startBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.insert(forCLProximity)
         // To change the TIMERS ! https://developer.apple.com/library/content/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/Timers.html Reducing overhead
-//        switch forCLProximity {
-//        case .immediate:
-//            immediateTimer = Timer.scheduledTimer(timeInterval: 2, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
-//            break
-//        case .near:
-//            nearTimer = Timer.scheduledTimer(timeInterval: 2, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
-//            break
-//        case .far:
-//            farTimer = Timer.scheduledTimer(timeInterval: 300, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
-//            break
-//        case .unknown:
-//            unknownTimer = Timer.scheduledTimer(timeInterval: 300, target: ContextManager.self , selector: #selector(ContextManager.refreshTriggers), userInfo: nil, repeats: true)
-//            break
-//        }
     }
 
     public func stopBeaconsProximityEvent(forCLProximity: CLProximity) {
         proximityTrigger.remove(forCLProximity)
-//        switch forCLProximity {
-//        case .immediate:
-//            immediateTimer?.invalidate()
-//            break
-//        case .near:
-//            nearTimer?.invalidate()
-//            break
-//        case .far:
-//            farTimer?.invalidate()
-//            break
-//        case .unknown:
-//            unknownTimer?.invalidate()
-//            break
-//        }
     }
 
     // TODO: improve code of method below so it matches swiftlint requirement regarding complexity + length

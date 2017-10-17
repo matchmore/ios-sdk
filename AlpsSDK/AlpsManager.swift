@@ -483,18 +483,6 @@ open class AlpsManager: AlpsSDK {
         contextManager?.stopUpdatingLocation()
     }
 
-    //DEVELOP: Beacons
-//    public func getUuid() -> [UUID]{
-//        var uuids : [UUID] = []
-//        for beacon in beacons{
-//            let uuid = beacon.proximityUUID
-//            if !uuids.contains(UUID.init(uuidString: uuid!)!){
-//                uuids.append(UUID.init(uuidString: uuid!)!)
-//            }
-//        }
-//        return uuids
-//    }
-
     public func getClosestOnBeaconUpdate(completion: @escaping ((_ beacon: CLBeacon) -> Void)) {
         if let cm = contextManager {
             cm.getClosestOnBeaconUpdate(completion: completion)
@@ -544,7 +532,6 @@ open class AlpsManager: AlpsSDK {
             user = u.user
         } else {
             print("Alps user doesn't exist!")
-            //            // throw AlpsManagerError.userNotIntialized
         }
         return user
     }
@@ -555,7 +542,6 @@ open class AlpsManager: AlpsSDK {
             device = d.device
         } else {
             print("Alps device doesn't exist!")
-            //            // throw AlpsManagerError.deviceNotIntialized
         }
         return device
     }
@@ -570,11 +556,6 @@ open class AlpsManager: AlpsSDK {
 
     public func getAllPublicationsMainUser(completion: @escaping (_ publications: [String: [Publication]]) -> Void) {
         if alpsUser != nil, alpsDevice != nil {
-            // let _ = Alps.DeviceAPI.getPublications
-            //                (publications, error) -> Void in
-            //
-            //            }
-
             // XXX: ignore the returned device for now
             completion(publications)
         }
@@ -582,11 +563,6 @@ open class AlpsManager: AlpsSDK {
 
     public func getAllSubscriptionsMainUser(completion: @escaping (_ subscriptions: [String: [Subscription]]) -> Void) {
         if alpsUser != nil, alpsDevice != nil {
-            // let _ = Alps.DeviceAPI.getPublications
-            //                (publications, error) -> Void in
-            //
-            //            }
-
             // XXX: ignore the returned device for now
             completion(subscriptions)
         }

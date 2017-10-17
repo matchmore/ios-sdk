@@ -28,38 +28,7 @@ extension User {
         self.init()
         self.name = name
     }
-
-    // XXX: The  problem is  we cannot  have a  stored property  in an
-    // extension  so where  should we  store the  created device?   It
-    // could help if we somehow always get the AlpsManager reference
-    // to store the values...
-    /*
-    public func createDevice(_ device: Device, completion: @escaping (_ device: Device?) -> Void) {
-        let f = completion
-        let _ = Alps.UserAPI.createDevice(userId: self.userId!, device: device, completion: {
-            (device, error) -> Void in
-
-            if let d = device {
-                self.devices.append(d)
-            }
-
-            f(device)
-        })
-    }
-    */
 }
-
-//extension Device {
-//
-//    // Device(deviceId: UUID().uuidString, name: "Alps Test Device 1",
-//    // platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662")
-//
-//    public convenience init(name: String) {
-//        self.init()
-//        self.deviceId = UUID().uuidString
-//        self.name = name
-//    }
-//}
 
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
@@ -93,18 +62,6 @@ extension PinDevice {
     }
 }
 
-//extension DeviceLocation {
-//
-//    internal convenience init(deviceId: String, altitude: Double, latitude: Double, longitude: Double) {
-//        self.init()
-//        self.deviceId = deviceId
-//        // XXX: use now for the timestamp
-//        // XXX: use some defaults horizontal and vertical accuracy
-//        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: 5, verticalAccuracy: 5)
-//        self.location = location
-//    }
-//}
-
 extension Publication {
 
     internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String: String]) {
@@ -121,7 +78,6 @@ extension Publication {
 extension Subscription {
 
     internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
-
         self.init()
         // XXX: use now for the timestamp
         self.deviceId = deviceId
@@ -169,25 +125,3 @@ extension ProximityEvent {
         self.distance = distance
     }
 }
-
-/*
-extension Payload: JSONEncodable {
-    public var dictionary = [String:String]()
-
-    public init() {}
-
-    public init(dictionary: [String: String]) {
-        self.dictionary = dictionary
-    }
-
-    // MARK: JSONEncodable
-    internal func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        for (key, value) in self.dictionary {
-            nillableDictionary[key] = value
-        }
-
-        return APIHelper.rejectNil(nillableDictionary) ?? [:]
-    }
-}
-*/

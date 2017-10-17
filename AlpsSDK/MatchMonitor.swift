@@ -12,9 +12,9 @@ import Foundation
 
 class MatchMonitor {
     let alpsManager: AlpsManager
-    var timer: Timer = Timer()
+    var timer: Timer?
     var deliveredMatches = Set<Match>()
-    var onMatchClosure: ((_ match: Match) -> Void)
+    var onMatchClosure: (_ match: Match) -> Void
 
     convenience init(alpsManager: AlpsManager) {
         self.init(alpsManager: alpsManager, onMatch: { (_ match: Match) in
@@ -41,7 +41,7 @@ class MatchMonitor {
     }
 
     public func stopMonitoringMatches() {
-        self.timer.invalidate()
+        self.timer?.invalidate()
     }
 
     @objc func checkMatches() {

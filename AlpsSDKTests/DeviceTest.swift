@@ -44,16 +44,6 @@ class DeviceTest: XCTestCase {
 
         print("json: \(mobileDevice.encodeToJSON())")
         // TOOD: Add json string we're expecting and use XCTAssert to verify it!
-        // XXX: wrong!
-        /* let json = ["name": "Alps iPhone 7",
-         "deviceToken": "870470ea-7a8e-11e6-b49b-5358f3beb662",
-         "location": ["latitude": 37.785800000000002,
-             "verticalAccuracy": 5.0,
-             "horizontalAccuracy": 5.0,
-             "longitude": 122.4064,
-             "altitude": 200.0],
-         "platform": "iOS 9.3"]
-         */
     }
 
     func test4DeviceEncodeToJSON() {
@@ -66,15 +56,5 @@ class DeviceTest: XCTestCase {
         print("valid: \(JSONSerialization.isValidJSONObject(mobileDevice.encodeToJSON()))")
 
         // TOOD: Add json string we're expecting and use XCTAssert to verify it!
-        // XXX: wrong!
-        /* let json = ["name": "Alps iPhone 7",
-         "deviceToken": "870470ea-7a8e-11e6-b49b-5358f3beb662",
-         "location": ["latitude": 37.785800000000002,
-             "verticalAccuracy": 5.0,
-             "horizontalAccuracy": 5.0,
-             "longitude": 122.4064,
-             "altitude": 200.0],
-         "platform": "iOS 9.3"]
-         */
     }
 }
