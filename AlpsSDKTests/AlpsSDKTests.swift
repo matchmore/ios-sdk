@@ -11,7 +11,6 @@ import XCTest
 import Alps
 @testable import AlpsSDK
 
-
 class AlpsSDKTests: XCTestCase {
     let apiKey = "ea0df90a-db0a-11e5-bd35-3bd106df139b"
 
@@ -100,22 +99,19 @@ class AlpsSDKTests: XCTestCase {
         let alps = AlpsManager(apiKey: apiKey)
         let publicationExpectation = expectation(description: "test3CreatePublication")
 
-        alps.createUser("Swift User 3") {
-            (_ user) in
+        alps.createUser("Swift User 3") { (_ user) in
             if user != nil {
                 alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                         deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb663",
                         latitude: 37.7858, longitude: -122.4064, altitude: 100,
-                        horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-                    (_ device) in
+                        horizontalAccuracy: 5.0, verticalAccuracy: 5.0) { (_ device) in
                     if let device = device {
                         // FIXME: provide serialization to json string
                         let properties = ["mood": "'happy'"]
                         // let propertiesString = "{\"mood\": \"happy\"}"
 
                         alps.createPublication(topic: "alps-ios-test", range: 100.0,
-                                duration: 0, properties: properties) {
-                            (_ publication) in
+                                duration: 0, properties: properties) { (_ publication) in
                             XCTAssertNotNil(publication)
                             // Test each fields
                             XCTAssertNotNil(publication?.id, "test3CreatePublication(): id is nil.")
@@ -158,20 +154,17 @@ class AlpsSDKTests: XCTestCase {
         let alps = AlpsManager(apiKey: apiKey)
         let subscriptionExpectation = expectation(description: "test4CreateSubscription")
 
-        alps.createUser("Swift User 4") {
-            (_ user) in
+        alps.createUser("Swift User 4") { (_ user) in
             if user != nil {
                 alps.createMobileDevice(name: "iPhone 7", platform: "iOS 10.2",
                         deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb664",
                         latitude: 37.7858, longitude: -122.4064, altitude: 100,
-                        horizontalAccuracy: 5.0, verticalAccuracy: 5.0) {
-                    (_ device) in
+                        horizontalAccuracy: 5.0, verticalAccuracy: 5.0) { (_ device) in
                     if let device = device {
                         alps.createSubscription(topic: "alps-ios-test",
                                 selector: "mood = 'happy'",
                                 range: 100.0,
-                                duration: 0) {
-                            (_ subscription) in
+                                duration: 0) { (_ subscription) in
                             XCTAssertNotNil(subscription)
 
                             // Test each fields
@@ -210,7 +203,6 @@ class AlpsSDKTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-
 
     func test5UpdateLocation() {
         let alps = AlpsManager(apiKey: apiKey)
@@ -308,7 +300,10 @@ class AlpsSDKTests: XCTestCase {
                         XCTFail("test7CreateIBeaconDevice(): name is nil.")
                     }
                     if let proximityUUID = device?.proximityUUID {
-                        XCTAssertEqual(UUID.init(uuidString: proximityUUID), UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), "test7CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
+                        XCTAssertEqual(
+                            UUID.init(uuidString: proximityUUID),
+                            UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
+                            "test7CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
                     } else {
                         XCTFail("test7CreateIBeaconDevice(): proximityUUID is nil.")
                     }

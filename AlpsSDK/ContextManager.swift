@@ -11,7 +11,6 @@ import CoreLocation
 import Alps
 
 // TODO: Take away responsibilites from Context Manager
-// swiftlint:disable:next type_body_length
 class ContextManager: NSObject, CLLocationManagerDelegate {
     var alpsManager: AlpsManager
     var seenError = false
