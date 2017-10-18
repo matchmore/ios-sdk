@@ -11,10 +11,11 @@ import Alps
 import Foundation
 
 class MatchMonitor {
-    let alpsManager: AlpsManager
-    var timer: Timer?
     var deliveredMatches = Set<Match>()
-    var onMatchClosure: (_ match: Match) -> Void
+    var onMatch: (_ match: Match) -> Void
+    
+    fileprivate let alpsManager: AlpsManager
+    fileprivate var timer: Timer?
 
     convenience init(alpsManager: AlpsManager) {
         self.init(alpsManager: alpsManager, onMatch: { (_ match: Match) in
@@ -24,20 +25,18 @@ class MatchMonitor {
 
     init(alpsManager: AlpsManager, onMatch: @escaping ((_ match: Match) -> Void)) {
         self.alpsManager = alpsManager
-        self.onMatchClosure = onMatch
-    }
-
-    public func onMatch(completion: @escaping (_ match: Match) -> Void) {
-        onMatchClosure = completion
+        self.onMatch = onMatch
     }
 
     public func startMonitoringMatches() {
-        self.timer = Timer.scheduledTimer(
+        if timer != nil { return }
+        timer = Timer.scheduledTimer(
                 timeInterval: 1.0,
                 target: self,
                 selector: #selector(MatchMonitor.checkMatches),
                 userInfo: nil,
-                repeats: true)
+                repeats: true
+        )
     }
 
     public func stopMonitoringMatches() {
@@ -52,7 +51,7 @@ class MatchMonitor {
             for m in matches {
                 if !self.deliveredMatches.contains(m) {
                     NSLog("deliver this match: \(m)")
-                    self.onMatchClosure(m)
+                    self.onMatch(m)
                     self.deliveredMatches.insert(m)
                 }
             }

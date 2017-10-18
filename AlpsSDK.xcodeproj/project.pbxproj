@@ -10,19 +10,11 @@
 		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
-		502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858F1E01BB3F00EF8ECF /* Utils.swift */; };
 		5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503487691E01CAF300EF8ECF /* AlpsSDK.swift */; };
 		504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* AlpsUser.swift */; };
-		504EFC271E01D0A700EF8ECF /* AlpsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */; };
-		504FD1AE1F4F146200EF8ECF /* DeviceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FD1AD1F4F146200EF8ECF /* DeviceTest.swift */; };
 		5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; };
 		50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */; };
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
-		50E333F61E4CDEF600EF8ECF /* PropertiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */; };
-		50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C85991E01BB5F00EF8ECF /* PayloadTest.swift */; };
-		50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */; };
-		843C25D91F46D2C900AFBEB3 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C25D81F46D2C900AFBEB3 /* ModelTests.swift */; };
-		84AAEFE21F34ACF300D6A9FD /* BeaconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */; };
 		9D25EC5A256A8E763D90CC8C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */; };
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
 /* End PBXBuildFile section */
@@ -44,22 +36,15 @@
 		502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManager.swift; sourceTree = "<group>"; };
 		502C858F1E01BB3F00EF8ECF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		502C85981E01BB5F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		502C85991E01BB5F00EF8ECF /* PayloadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadTest.swift; sourceTree = "<group>"; };
-		502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsAPITests.swift; sourceTree = "<group>"; };
 		503487681E01CAF300EF8ECF /* AlpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlpsSDK.h; sourceTree = "<group>"; };
 		503487691E01CAF300EF8ECF /* AlpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDK.swift; sourceTree = "<group>"; };
 		504485F31E0AD62300EF8ECF /* AlpsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsUser.swift; sourceTree = "<group>"; };
-		504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDKTests.swift; sourceTree = "<group>"; };
-		504FD1AD1F4F146200EF8ECF /* DeviceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTest.swift; sourceTree = "<group>"; };
 		5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsDevice.swift; sourceTree = "<group>"; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
-		50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTest.swift; sourceTree = "<group>"; };
 		733679ED441109E9F7829A7F /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
-		843C25D81F46D2C900AFBEB3 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		8468D0DF37CC1A55852398D0 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTests.swift; sourceTree = "<group>"; };
 		9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,13 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
-				504FD1AD1F4F146200EF8ECF /* DeviceTest.swift */,
-				843C25D81F46D2C900AFBEB3 /* ModelTests.swift */,
-				50E333F51E4CDEF600EF8ECF /* PropertiesTest.swift */,
-				504EFC261E01D0A700EF8ECF /* AlpsSDKTests.swift */,
-				502C85991E01BB5F00EF8ECF /* PayloadTest.swift */,
-				502C859A1E01BB5F00EF8ECF /* AlpsAPITests.swift */,
-				84AAEFE11F34ACF300D6A9FD /* BeaconTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -388,7 +366,6 @@
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
-				502C85961E01BB3F00EF8ECF /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,13 +373,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84AAEFE21F34ACF300D6A9FD /* BeaconTests.swift in Sources */,
-				50E333F61E4CDEF600EF8ECF /* PropertiesTest.swift in Sources */,
-				50F1BA0B1E01C50100EF8ECF /* AlpsAPITests.swift in Sources */,
-				504FD1AE1F4F146200EF8ECF /* DeviceTest.swift in Sources */,
-				843C25D91F46D2C900AFBEB3 /* ModelTests.swift in Sources */,
-				504EFC271E01D0A700EF8ECF /* AlpsSDKTests.swift in Sources */,
-				50F1BA0A1E01C50100EF8ECF /* PayloadTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

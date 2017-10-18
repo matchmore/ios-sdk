@@ -1,6 +1,10 @@
-/**
- * AlpsManager
- */
+//
+//  AlpsManager.swift
+//  Alps
+//
+//  Created by Rafal Kowalski on 04/10/2016
+//  Copyright © 2016 Alps. All rights reserved.
+//
 
 import Foundation
 import CoreLocation
@@ -228,9 +232,7 @@ open class AlpsManager: AlpsSDK {
 
     // register match handlers
     public func onMatch(completion: @escaping (_ match: Match) -> Void) {
-        if let mm = matchMonitor {
-            mm.onMatch(completion: completion)
-        }
+        matchMonitor?.onMatch = completion
     }
 
     public func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {
