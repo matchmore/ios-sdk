@@ -13,7 +13,6 @@ import CoreLocation
 protocol AlpsSDK {
 
     // MARK: DYNAMIC Functions
-    func getMainUser() -> User?
     func getMainDevice() -> Device?
     func getAllDevicesMainUser() -> [Device]
     func getAllLocationsMainUser() -> [String: Location]
@@ -23,7 +22,6 @@ protocol AlpsSDK {
 
     // MARK: API CALL Functions
     // create Alps entities
-    func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void)
 
     // TODO: possibly minimize number of arguments or fix swiftlint config
     // swiftlint:disable function_parameter_count
@@ -70,7 +68,6 @@ protocol AlpsSDK {
     func onMatch(completion: @escaping (_ match: Match) -> Void)
 
     // queries
-    func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void)
     func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void)
 //    func getDevice(completion: @escaping (_ device: Device) -> Void)
     func getPublication(_ userId: String, deviceId: String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void)

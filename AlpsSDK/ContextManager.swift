@@ -281,9 +281,9 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         return b
     }
 
-    private func triggerProximityEvent(userId: String, deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
+    private func triggerProximityEvent(deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
         let userCompletion = completion
-        Alps.DeviceAPI.triggerProximityEvents(userId: userId, deviceId: deviceId, proximityEvent: proximityEvent) { (proximityEvent, _) in
+        Alps.DeviceAPI.triggerProximityEvents(deviceId: deviceId, proximityEvent: proximityEvent) { (proximityEvent, _) in
             userCompletion(proximityEvent)
         }
     }
@@ -327,9 +327,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if trigger[id] == nil {
                 // Send the proximity event
                 let proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                let userId = self.alpsManager.alpsUser?.user.id
                 let deviceId = self.alpsManager.alpsDevice?.device.id
-                triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: proximityEvent) { (_ proximityEvent) in
+                triggerProximityEvent(deviceId: deviceId!, proximityEvent: proximityEvent) { (_ proximityEvent) in
                     trigger[id] = proximityEvent
                     switch forCLProximity {
                     case .immediate:
@@ -353,9 +352,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                     if truncatedGap > refreshTimer {
                         // Send the refreshing proximity event based on the timer
                         let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                        let userId = self.alpsManager.alpsUser?.user.id
                         let deviceId = self.alpsManager.alpsDevice?.device.id
-                        triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: newProximityEvent) { (_ proximityEvent) in
+                        triggerProximityEvent(deviceId: deviceId!, proximityEvent: newProximityEvent) { (_ proximityEvent) in
                             trigger[id] = proximityEvent
                             switch forCLProximity {
                             case .immediate:

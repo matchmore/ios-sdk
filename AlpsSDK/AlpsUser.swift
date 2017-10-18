@@ -11,14 +11,8 @@ import Alps
 
 open class AlpsUser {
     public let manager: AlpsManager
-    public let user: User
 
-    public init(manager: AlpsManager, user: User) {
+    public init(manager: AlpsManager) {
         self.manager = manager
-        self.user = user
-    }
-
-    public func id() -> String {
-        return user.id!
     }
 }

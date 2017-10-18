@@ -11,12 +11,10 @@ import Alps
 
 open class AlpsDevice {
     public let manager: AlpsManager
-    public let user: User
     public let device: Device
 
-    public init(manager: AlpsManager, user: User, device: Device) {
+    public init(manager: AlpsManager, device: Device) {
         self.manager = manager
-        self.user = user
         self.device = device
     }
 

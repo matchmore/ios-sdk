@@ -34,7 +34,6 @@ open class AlpsManager: AlpsSDK {
 
     // FIXME: add the world id when it's there
     // var world: World
-    var users: [User] = []
     var alpsUser: AlpsUser?
     var devices: [Device] = []
     var alpsDevice: AlpsDevice?
@@ -70,44 +69,6 @@ open class AlpsManager: AlpsSDK {
         })
     }
 
-    // Create Alps entities
-    public func createUser(_ userName: String, completion: @escaping (_ user: User?) -> Void) {
-        let userCompletion = completion
-        let user = User.init(name: userName)
-        Alps.UsersAPI.createUser(user: user) { (user, _) -> Void in
-            if let u = user {
-                self.users.append(u)
-                self.alpsUser = AlpsUser(manager: self, user: self.users[0])
-            }
-            userCompletion(user)
-        }
-    }
-
-    // Deprecated v.0.0.3
-//    public func createDevice(name: String, platform: String, deviceToken: String,
-//                             latitude: Double, longitude: Double, altitude: Double,
-//                             horizontalAccuracy: Double, verticalAccuracy: Double,
-//                             completion: @escaping (_ device: Device?) -> Void) {
-//        let userCompletion = completion
-//        if let u = alpsUser {
-//            let _ = Alps.UserAPI.createDevice(userId: u.user.userId!, name: name, platform: platform,
-//                                              deviceToken: deviceToken, latitude: latitude, longitude: longitude,
-//                                              altitude: altitude, horizontalAccuracy: horizontalAccuracy,
-//                                              verticalAccuracy: verticalAccuracy) {
-//                (device, error) -> Void in
-//                if let d = device {
-//                    self.devices.append(d)
-//                    self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
-//                }
-//                userCompletion(device)
-//            }
-//        } else {
-//            // XXX: error handling using exceptions?
-//            print("Alps user hasn't been initialized yet!")
-//            // throw AlpsManagerError.userNotIntialized
-//        }
-//    }
-
     // Create Main device, this function replace createDevice in v 0.0.3
     // TODO: possibly minimize number of arguments or fix swiftlint config
     // swiftlint:disable function_parameter_count
@@ -116,28 +77,18 @@ open class AlpsManager: AlpsSDK {
                                    horizontalAccuracy: Double, verticalAccuracy: Double,
                                    completion: @escaping (_ device: MobileDevice?) -> Void) {
         let userCompletion = completion
-        if let u = alpsUser {
-            let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
-            let mobileDevice = MobileDevice.init(name: name, platform: platform, deviceToken: deviceToken, location: location)
-            if let userId = u.user.id {
-                Alps.UserAPI.createDevice(userId: userId, device: mobileDevice) { (mobileDevice, _) -> Void in
-                    if mobileDevice is MobileDevice {
-                        if let d = mobileDevice as? MobileDevice {
-                            self.devices.append(d)
-                            self.alpsDevice = AlpsDevice(manager: self, user: u.user, device: self.devices[0])
-                            self.publications[d.id!] = [Publication]()
-                            self.subscriptions[d.id!] = [Subscription]()
-                        }
-                        userCompletion(mobileDevice as? MobileDevice)
-                    }
+        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
+        let mobileDevice = MobileDevice.init(name: name, platform: platform, deviceToken: deviceToken, location: location)
+        Alps.DeviceAPI.createDevice(device: mobileDevice) { (mobileDevice, _) -> Void in
+            if mobileDevice is MobileDevice {
+                if let d = mobileDevice as? MobileDevice {
+                    self.devices.append(d)
+                    self.alpsDevice = AlpsDevice(manager: self, device: self.devices[0])
+                    self.publications[d.id!] = [Publication]()
+                    self.subscriptions[d.id!] = [Subscription]()
                 }
-            } else {
-                print("Error forcing userId is nil.")
+                userCompletion(mobileDevice as? MobileDevice)
             }
-        } else {
-            // XXX: error handling using exceptions?
-            print("Alps user hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
         }
     }
 
@@ -145,83 +96,49 @@ open class AlpsManager: AlpsSDK {
     public func createPinDevice(name: String, latitude: Double, longitude: Double, altitude: Double,
                                 horizontalAccuracy: Double, verticalAccuracy: Double,
                                 completion: @escaping (_ device: PinDevice?) -> Void) {
-        let userCompletion = completion
-        if let u = alpsUser {
-            let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
-            let pinDevice = PinDevice.init(name: name, location: location)
-            if let userId = u.user.id {
-                Alps.UserAPI.createDevice(userId: userId, device: pinDevice) { (pinDevice, _) -> Void in
-                    if pinDevice is PinDevice {
-                        if let d = pinDevice as? PinDevice {
-                            self.devices.append(d)
-                            self.publications[d.id!] = [Publication]()
-                            self.subscriptions[d.id!] = [Subscription]()
-                        }
-                        userCompletion(pinDevice as? PinDevice)
-                    }
+        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
+        let pinDevice = PinDevice.init(name: name, location: location)
+        Alps.DeviceAPI.createDevice(device: pinDevice) { (pinDevice, _) -> Void in
+            if pinDevice is PinDevice {
+                if let d = pinDevice as? PinDevice {
+                    self.devices.append(d)
+                    self.publications[d.id!] = [Publication]()
+                    self.subscriptions[d.id!] = [Subscription]()
                 }
-            } else {
-                print("Error forcing userId is nil.")
+                completion(pinDevice as? PinDevice)
             }
-        } else {
-            // XXX: error handling using exceptions?
-            print("Alps user hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
         }
     }
 
     // Create a BLE iBeacon Device
     public func createIBeaconDevice(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber,
                                     completion: @escaping (_ device: IBeaconDevice?) -> Void) {
-        let userCompletion = completion
-        if let u = alpsUser {
-            let iBeaconDevice = IBeaconDevice.init(name: name, proximityUUID: proximityUUID, major: major, minor: minor)
-            if let userId = u.user.id {
-                Alps.UserAPI.createDevice(userId: userId, device: iBeaconDevice) { (iBeaconDevice, _) -> Void in
-                    if iBeaconDevice is IBeaconDevice {
-                        if let d = iBeaconDevice as? IBeaconDevice {
-                            self.devices.append(d)
-                            self.publications[d.id!] = [Publication]()
-                            self.subscriptions[d.id!] = [Subscription]()
-                        }
-                        userCompletion(iBeaconDevice as? IBeaconDevice)
-                    }
+        let iBeaconDevice = IBeaconDevice.init(name: name, proximityUUID: proximityUUID, major: major, minor: minor)
+        Alps.DeviceAPI.createDevice(device: iBeaconDevice) { (iBeaconDevice, _) -> Void in
+            if iBeaconDevice is IBeaconDevice {
+                if let d = iBeaconDevice as? IBeaconDevice {
+                    self.devices.append(d)
+                    self.publications[d.id!] = [Publication]()
+                    self.subscriptions[d.id!] = [Subscription]()
                 }
-            } else {
-                print("Error forcing userId is nil.")
+                completion(iBeaconDevice as? IBeaconDevice)
             }
-        } else {
-            // XXX: error handling using exceptions?
-            print("Alps user hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
         }
     }
 
     // create a publication for the main device
     public func createPublication(topic: String, range: Double, duration: Double, properties: [String: String],
                                   completion: @escaping (_ publication: Publication?) -> Void) {
-        let userCompletion = completion
-
-        if let u = alpsUser, let d = alpsDevice {
-            if let userId = u.user.id, let deviceId = d.device.id {
-                let publication = Publication.init(deviceId: deviceId, topic: topic, range: range, duration: duration, properties: properties)
-                Alps.DeviceAPI.createPublication(userId: userId, deviceId: deviceId,
-                        publication: publication) { (publication, _) -> Void in
-
-                    if let p = publication {
-                        self.publications[deviceId]?.append(p)
-//                                                                self.publications.append(p)
-                    }
-
-                    userCompletion(publication)
+        if let deviceId = alpsDevice?.device.id {
+            let publication = Publication(deviceId: deviceId, topic: topic, range: range, duration: duration, properties: properties)
+            Alps.DeviceAPI.createPublication(deviceId: deviceId, publication: publication) { (publication, _) -> Void in
+                if let p = publication {
+                    self.publications[deviceId]?.append(p)
                 }
-            } else {
-                print("Error forcing userId or/and deviceId is nil.")
+                completion(publication)
             }
         } else {
-            // XXX: error handling using exceptions?
-            print("Alps user and/or device hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
+            print("Error forcing userId or/and deviceId is nil.")
         }
     }
 
@@ -230,12 +147,9 @@ open class AlpsManager: AlpsSDK {
                                   completion: @escaping (_ publication: Publication?) -> Void) {
         let userCompletion = completion
         let publication = Publication.init(deviceId: deviceId, topic: topic, range: range, duration: duration, properties: properties)
-        Alps.DeviceAPI.createPublication(userId: userId, deviceId: deviceId,
-                publication: publication) { (publication, _) -> Void in
-
+        Alps.DeviceAPI.createPublication(deviceId: deviceId, publication: publication) { (publication, _) -> Void in
             if let p = publication {
                 self.publications[deviceId]?.append(p)
-//                                                        self.publications.append(p)
             }
             userCompletion(publication)
         }
@@ -244,54 +158,37 @@ open class AlpsManager: AlpsSDK {
     // Create subscription for main device
     public func createSubscription(topic: String, selector: String, range: Double, duration: Double,
                                    completion: @escaping (_ subscription: Subscription?) -> Void) {
-        let userCompletion = completion
-
-        if let u = alpsUser, let d = alpsDevice {
-            if let userId = u.user.id, let deviceId = d.device.id {
-                let subscription = Subscription.init(deviceId: deviceId, topic: topic, range: range, duration: duration, selector: selector)
-                Alps.DeviceAPI.createSubscription(userId: userId, deviceId: deviceId,
-                        subscription: subscription) { (subscription, _) -> Void in
-
-                    if let p = subscription {
-                        self.subscriptions[deviceId]?.append(p)
-//                        self.subscriptions.append(p)
-                    }
-
-                    userCompletion(subscription)
+        if let deviceId = alpsDevice?.device.id {
+            let subscription = Subscription.init(deviceId: deviceId, topic: topic, range: range, duration: duration, selector: selector)
+            Alps.DeviceAPI.createSubscription(deviceId: deviceId, subscription: subscription) { (subscription, _) -> Void in
+                if let p = subscription {
+                    self.subscriptions[deviceId]?.append(p)
                 }
-            } else {
-                print("Error forcing userId or/and deviceId is nil.")
+                completion(subscription)
             }
         } else {
-            // XXX: error handling using exceptions?
-            print("Alps user and/or device hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
+            print("Error forcing userId or/and deviceId is nil.")
         }
     }
 
     // Create a subscription for the given userId and given deviceId
     public func createSubscription(userId: String, deviceId: String, topic: String, selector: String, range: Double, duration: Double,
                                    completion: @escaping (_ subscription: Subscription?) -> Void) {
-        let userCompletion = completion
-        let subscription = Subscription.init(deviceId: deviceId, topic: topic, range: range, duration: duration, selector: selector)
-        Alps.DeviceAPI.createSubscription(userId: userId, deviceId: deviceId,
-                subscription: subscription) { (subscription, _) -> Void in
+        let subscription = Subscription(deviceId: deviceId, topic: topic, range: range, duration: duration, selector: selector)
+        Alps.DeviceAPI.createSubscription(deviceId: deviceId, subscription: subscription) { (subscription, _) -> Void in
             if let p = subscription {
                 self.subscriptions[deviceId]?.append(p)
-//                                                        self.subscriptions.append(p)
             }
-            userCompletion(subscription)
+            completion(subscription)
         }
     }
 
     public func updateLocation(userId: String, deviceId: String, latitude: Double, longitude: Double, altitude: Double,
                                horizontalAccuracy: Double, verticalAccuracy: Double,
                                completion: @escaping (_ location: Location?) -> Void) {
-        let userCompletion = completion
-        let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
-        Alps.DeviceAPI.createLocation(userId: userId, deviceId: deviceId,
-                location: location) { (location, _) -> Void in
-            userCompletion(location)
+        let location = Location(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
+        Alps.DeviceAPI.createLocation(deviceId: deviceId, location: location) { (location, _) -> Void in
+            completion(location)
         }
     }
 
@@ -299,63 +196,34 @@ open class AlpsManager: AlpsSDK {
     public func updateLocation(latitude: Double, longitude: Double, altitude: Double,
                                horizontalAccuracy: Double, verticalAccuracy: Double,
                                completion: @escaping (_ location: Location?) -> Void) {
-        let userCompletion = completion
-
-        if let u = alpsUser, let d = alpsDevice {
-            let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
-            if let userId = u.user.id, let deviceId = d.device.id {
-                Alps.DeviceAPI.createLocation(userId: userId, deviceId: deviceId,
-                        location: location) { (location, _) -> Void in
-
-                    if let l = location {
-                        self.locations[deviceId] = l
-                    }
-                    userCompletion(location)
+        let location = Location(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
+        if let deviceId = alpsDevice?.device.id {
+            Alps.DeviceAPI.createLocation(deviceId: deviceId, location: location) { (location, _) -> Void in
+                if let l = location {
+                    self.locations[deviceId] = l
                 }
-            } else {
-                print("Alps user and/or device has no id !")
+                completion(location)
             }
         } else {
-            // XXX: error handling using exceptions?
-            print("Alps user and/or device hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
+            print("Alps user and/or device has no id !")
         }
-
     }
 
     public func getAllMatches(userId: String, deviceId: String, completion: @escaping (_ matches: Matches) -> Void) {
-        let userCompletion = completion
-
-        Alps.DeviceAPI.getMatches(userId: userId, deviceId: deviceId) { (matches, _) -> Void in
-
-            if let ms = matches {
-                userCompletion(ms)
-            }
+        Alps.DeviceAPI.getMatches(deviceId: deviceId) { (matches, _) -> Void in
+            completion(matches ?? [])
         }
     }
 
     // Get all matches for main device
     public func getAllMatches(completion: @escaping (_ matches: Matches) -> Void) {
-        let userCompletion = completion
-
-        if let u = alpsUser, let d = alpsDevice {
-            if let userId = u.user.id, let deviceId = d.device.id {
-                Alps.DeviceAPI.getMatches(userId: userId, deviceId: deviceId) { (matches, _) -> Void in
-
-                    if let ms = matches {
-                        // self.matches.append(ms)
-                        userCompletion(ms)
-                    }
-                }
-            } else {
-                print("Error forcing userId or/and deviceId is nil.")
+        if let deviceId = alpsDevice?.device.id {
+            Alps.DeviceAPI.getMatches(deviceId: deviceId) { (matches, _) -> Void in
+                completion(matches ?? [])
             }
         } else {
-            // XXX: error handling using exceptions?
-            print("Alps user and/or device hasn't been initialized yet!")
-            // throw AlpsManagerError.userNotIntialized
+            print("Error forcing userId or/and deviceId is nil.")
         }
-
     }
 
     // register match handlers
@@ -365,34 +233,16 @@ open class AlpsManager: AlpsSDK {
         }
     }
 
-    public func getUser(_ userId: String, completion: @escaping (_ user: User) -> Void) {
-        Alps.UserAPI.getUser(userId: userId) { (user, _) -> Void in
-            if let u = user {
-                completion(u[0])
-            } else {
-                // XXX: error handling using exceptions?
-                print("Alps.user doesn't exist!")
-                // throw Alps.anagerError.userNotIntialized
-            }
-        }
-    }
-
     public func getDevice(_ deviceId: String, completion: @escaping (_ device: Device) -> Void) {
-        if let u = alpsUser, alpsDevice != nil {
-            if let userId = u.user.id {
-                Alps.UserAPI.getDevice(userId: userId, deviceId: deviceId) { (device, _) -> Void in
-                    if let d = device {
-                        completion(d)
-                    }
-                }
+        Alps.DeviceAPI.getDevice(deviceId: deviceId) { (device, _) -> Void in
+            if let d = device {
+                completion(d)
             }
-        } else {
-            print("Error forcing userId or/and deviceId is nil.")
         }
     }
 
     public func getPublication(_ userId: String, deviceId: String, publicationId: String, completion: @escaping (_ publication: Publication) -> Void) {
-        Alps.PublicationAPI.getPublication(userId: userId, deviceId: deviceId, publicationId: publicationId) { (publication, _) -> Void in
+        Alps.PublicationAPI.getPublication(deviceId: deviceId, publicationId: publicationId) { (publication, _) -> Void in
             if let p = publication {
                 completion(p)
             } else {
@@ -402,7 +252,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func deletePublication(_ userId: String, deviceId: String, publicationId: String, completion: @escaping () -> Void) {
-        Alps.PublicationAPI.deletePublication(userId: userId, deviceId: deviceId, publicationId: publicationId) { (error) -> Void in
+        Alps.PublicationAPI.deletePublication(deviceId: deviceId, publicationId: publicationId) { (error) -> Void in
             if error != nil {
                 print("Impossible to delete the publication!")
             } else {
@@ -415,7 +265,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func getAllPublicationsForDevice(_ userId: String, deviceId: String, completion: @escaping (_ publications: [Publication]) -> Void) {
-        Alps.PublicationAPI.getPublications(userId: userId, deviceId: deviceId) { (publications, _) -> Void in
+        Alps.PublicationAPI.getPublications(deviceId: deviceId) { (publications, _) -> Void in
             if let p = publications {
                 completion(p)
             } else {
@@ -425,7 +275,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func getSubscription(_ userId: String, deviceId: String, subscriptionId: String, completion: @escaping (_ subscription: Subscription) -> Void) {
-        Alps.SubscriptionAPI.getSubscription(userId: userId, deviceId: deviceId, subscriptionId: subscriptionId) { (subscription, _) -> Void in
+        Alps.SubscriptionAPI.getSubscription(deviceId: deviceId, subscriptionId: subscriptionId) { (subscription, _) -> Void in
             if let s = subscription {
                 completion(s)
             } else {
@@ -435,7 +285,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func deleteSubscription(_ userId: String, deviceId: String, subscriptionId: String, completion: @escaping () -> Void) {
-        Alps.SubscriptionAPI.deleteSubscription(userId: userId, deviceId: deviceId, subscriptionId: subscriptionId) { (error) -> Void in
+        Alps.SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: subscriptionId) { (error) -> Void in
             if error != nil {
                 print("Impossible to delete the subscription!")
             } else {
@@ -448,7 +298,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     public func getAllSubscriptionsForDevice(_ userId: String, deviceId: String, completion: @escaping (_ subscriptions: [Subscription]) -> Void) {
-        Alps.SubscriptionAPI.getSubscriptions(userId: userId, deviceId: deviceId) { (subscriptions, _) -> Void in
+        Alps.SubscriptionAPI.getSubscriptions(deviceId: deviceId) { (subscriptions, _) -> Void in
             if let s = subscriptions {
                 completion(s)
             } else {
@@ -517,23 +367,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)) {
-        let userId = self.apiKey
-        Alps.UserAPI.getDevices(userId: userId, completion: { (_ devices, error) in
-            if error == nil {
-                completion(devices as? [IBeaconDevice] ?? [])
-            }
-        })
-
-    }
-
-    public func getMainUser() -> User? {
-        var user: User?
-        if let u = alpsUser {
-            user = u.user
-        } else {
-            print("Alps user doesn't exist!")
-        }
-        return user
+        print("to be implemented")
     }
 
     public func getMainDevice() -> Device? {
