@@ -10,13 +10,11 @@
 		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
-		5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503487691E01CAF300EF8ECF /* AlpsSDK.swift */; };
-		504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504485F31E0AD62300EF8ECF /* AlpsUser.swift */; };
 		5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; };
-		50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */; };
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		9D25EC5A256A8E763D90CC8C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */; };
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
+		C3A7F6101F977EE8007CC20B /* AlpsManager+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,16 +34,14 @@
 		502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManager.swift; sourceTree = "<group>"; };
 		502C85981E01BB5F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503487681E01CAF300EF8ECF /* AlpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlpsSDK.h; sourceTree = "<group>"; };
-		503487691E01CAF300EF8ECF /* AlpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDK.swift; sourceTree = "<group>"; };
-		504485F31E0AD62300EF8ECF /* AlpsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsUser.swift; sourceTree = "<group>"; };
 		5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsDevice.swift; sourceTree = "<group>"; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		733679ED441109E9F7829A7F /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
 		8468D0DF37CC1A55852398D0 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Requests.swift"; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,15 +70,10 @@
 		502C85881E01BB3F00EF8ECF /* AlpsSDK */ = {
 			isa = PBXGroup;
 			children = (
+				C381EE791F977EB90061E7AC /* AlpsManager */,
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
-				503487691E01CAF300EF8ECF /* AlpsSDK.swift */,
-				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
-				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
-				50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */,
-				504485F31E0AD62300EF8ECF /* AlpsUser.swift */,
-				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
-				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
+				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -133,6 +124,17 @@
 				CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C381EE791F977EB90061E7AC /* AlpsManager */ = {
+			isa = PBXGroup;
+			children = (
+				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
+				C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */,
+				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
+				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
+			);
+			path = AlpsManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,13 +365,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504485F41E0AD62300EF8ECF /* AlpsUser.swift in Sources */,
-				5034876B1E01CAF300EF8ECF /* AlpsSDK.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
-				50B7115E1E0AED3500EF8ECF /* AlpsDevice.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
+				C3A7F6101F977EE8007CC20B /* AlpsManager+Requests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

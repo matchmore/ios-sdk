@@ -13,7 +13,7 @@ import SwiftyBeaver
 
 // TODO: Take away responsibilites from Context Manager
 class ContextManager: NSObject, CLLocationManagerDelegate {
-    var alpsManager: AlpsManager
+    fileprivate weak var alpsManager: AlpsManager?
     var seenError = false
     var locationFixAchieved = false
 
@@ -70,7 +70,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
             self.onLocationUpdateClosure?(locations.last!)
-            alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+            alpsManager?.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                     altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                     verticalAccuracy: coord.verticalAccuracy) { (_ location) in
             }
@@ -268,8 +268,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     }
 
     private func syncBeacon(beacon: CLBeacon) -> [IBeaconDevice] {
-        var b: [IBeaconDevice] = self.alpsManager.beacons
-        b = self.alpsManager.beacons.filter {
+        var b: [IBeaconDevice] = self.alpsManager?.beacons ?? []
+        b = b.filter {
             let proximityUUID = $0.proximityUUID!
             let major = $0.major!
             let minor = $0.minor!
@@ -328,7 +328,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if trigger[id] == nil {
                 // Send the proximity event
                 let proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                let deviceId = self.alpsManager.alpsDevice?.device.id
+                let deviceId = self.alpsManager?.mainDevice?.id
                 triggerProximityEvent(deviceId: deviceId!, proximityEvent: proximityEvent) { (_ proximityEvent) in
                     trigger[id] = proximityEvent
                     switch forCLProximity {
@@ -353,7 +353,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                     if truncatedGap > refreshTimer {
                         // Send the refreshing proximity event based on the timer
                         let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                        let deviceId = self.alpsManager.alpsDevice?.device.id
+                        let deviceId = self.alpsManager?.mainDevice?.id
                         triggerProximityEvent(deviceId: deviceId!, proximityEvent: newProximityEvent) { (_ proximityEvent) in
                             trigger[id] = proximityEvent
                             switch forCLProximity {

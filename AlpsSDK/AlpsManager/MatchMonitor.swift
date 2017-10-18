@@ -14,7 +14,7 @@ class MatchMonitor {
     var deliveredMatches = Set<Match>()
     var onMatch: (_ match: Match) -> Void
     
-    fileprivate let alpsManager: AlpsManager
+    fileprivate weak var alpsManager: AlpsManager?
     fileprivate var timer: Timer?
 
     convenience init(alpsManager: AlpsManager) {
@@ -27,7 +27,8 @@ class MatchMonitor {
         self.alpsManager = alpsManager
         self.onMatch = onMatch
     }
-
+    
+    // MARK: - Match Monitoring
     public func startMonitoringMatches() {
         if timer != nil { return }
         timer = Timer.scheduledTimer(
@@ -45,7 +46,7 @@ class MatchMonitor {
 
     @objc func checkMatches() {
         SwiftyBeaver.info("checking matches")
-        alpsManager.getAllMatches { (_ matches: Matches) in
+        alpsManager?.getAllMatches { (_ matches: Matches) in
             SwiftyBeaver.info("got all matches from the cloud: \(matches)")
             matches.forEach {
                 self.deliveredMatches.insert($0)
