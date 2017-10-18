@@ -34,7 +34,6 @@
 		502C858A1E01BB3F00EF8ECF /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManager.swift; sourceTree = "<group>"; };
-		502C858F1E01BB3F00EF8ECF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		502C85981E01BB5F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503487681E01CAF300EF8ECF /* AlpsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlpsSDK.h; sourceTree = "<group>"; };
 		503487691E01CAF300EF8ECF /* AlpsSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsSDK.swift; sourceTree = "<group>"; };
@@ -77,14 +76,13 @@
 			children = (
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
 				503487691E01CAF300EF8ECF /* AlpsSDK.swift */,
+				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
 				50B7115D1E0AED3500EF8ECF /* AlpsDevice.swift */,
 				504485F31E0AD62300EF8ECF /* AlpsUser.swift */,
 				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
 				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
-				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
-				502C858F1E01BB3F00EF8ECF /* Utils.swift */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -293,12 +291,18 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alps/Alps.framework",
 				"${BUILT_PRODUCTS_DIR}/AlpsSDK/AlpsSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alps.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlpsSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

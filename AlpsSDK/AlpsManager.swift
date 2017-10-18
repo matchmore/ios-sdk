@@ -9,11 +9,7 @@
 import Foundation
 import CoreLocation
 import Alps
-
-enum AlpsManagerError: Error {
-    case userNotIntialized
-    case deviceNotInitialized
-}
+import SwiftyBeaver
 
 open class AlpsManager: AlpsSDK {
 
@@ -66,6 +62,10 @@ open class AlpsManager: AlpsSDK {
 
         AlpsAPI.basePath = alpsEndpoint
         AlpsAPI.customHeaders = headers
+        
+        // TODO: Absctract logger to testable singleton
+        SwiftyBeaver.addDestination(ConsoleDestination())
+        
 
         // DEVELOP: Beacons
         superGetBeacons(completion: { (_ beacons) in
@@ -142,7 +142,7 @@ open class AlpsManager: AlpsSDK {
                 completion(publication)
             }
         } else {
-            print("Error forcing userId or/and deviceId is nil.")
+            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
         }
     }
 
@@ -171,7 +171,7 @@ open class AlpsManager: AlpsSDK {
                 completion(subscription)
             }
         } else {
-            print("Error forcing userId or/and deviceId is nil.")
+            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
         }
     }
 
@@ -209,7 +209,7 @@ open class AlpsManager: AlpsSDK {
                 completion(location)
             }
         } else {
-            print("Alps user and/or device has no id !")
+            SwiftyBeaver.info("Alps user and/or device has no id !")
         }
     }
 
@@ -226,7 +226,7 @@ open class AlpsManager: AlpsSDK {
                 completion(matches ?? [])
             }
         } else {
-            print("Error forcing userId or/and deviceId is nil.")
+            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
         }
     }
 
@@ -248,7 +248,7 @@ open class AlpsManager: AlpsSDK {
             if let p = publication {
                 completion(p)
             } else {
-                print("This publication doesn't exist!")
+                SwiftyBeaver.info("This publication doesn't exist!")
             }
         }
     }
@@ -256,7 +256,7 @@ open class AlpsManager: AlpsSDK {
     public func deletePublication(_ userId: String, deviceId: String, publicationId: String, completion: @escaping () -> Void) {
         Alps.PublicationAPI.deletePublication(deviceId: deviceId, publicationId: publicationId) { (error) -> Void in
             if error != nil {
-                print("Impossible to delete the publication!")
+                SwiftyBeaver.info("Impossible to delete the publication!")
             } else {
                 if let index = self.publications[deviceId]?.index(where: { $0.id == publicationId }) {
                     self.publications[deviceId]?.remove(at: index)
@@ -271,7 +271,7 @@ open class AlpsManager: AlpsSDK {
             if let p = publications {
                 completion(p)
             } else {
-                print("Can't find publications for this device")
+                SwiftyBeaver.info("Can't find publications for this device")
             }
         }
     }
@@ -281,7 +281,7 @@ open class AlpsManager: AlpsSDK {
             if let s = subscription {
                 completion(s)
             } else {
-                print("This subscription doesn't exist!")
+                SwiftyBeaver.info("This subscription doesn't exist!")
             }
         }
     }
@@ -289,7 +289,7 @@ open class AlpsManager: AlpsSDK {
     public func deleteSubscription(_ userId: String, deviceId: String, subscriptionId: String, completion: @escaping () -> Void) {
         Alps.SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: subscriptionId) { (error) -> Void in
             if error != nil {
-                print("Impossible to delete the subscription!")
+                SwiftyBeaver.info("Impossible to delete the subscription!")
             } else {
                 if let index = self.subscriptions[deviceId]?.index(where: { $0.id == subscriptionId }) {
                     self.subscriptions[deviceId]?.remove(at: index)
@@ -304,7 +304,7 @@ open class AlpsManager: AlpsSDK {
             if let s = subscriptions {
                 completion(s)
             } else {
-                print("Can't find subscriptions for this device")
+                SwiftyBeaver.info("Can't find subscriptions for this device")
             }
         }
     }
@@ -369,7 +369,7 @@ open class AlpsManager: AlpsSDK {
     }
 
     private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)) {
-        print("to be implemented")
+        SwiftyBeaver.info("to be implemented")
     }
 
     public func getMainDevice() -> Device? {
@@ -377,7 +377,7 @@ open class AlpsManager: AlpsSDK {
         if let d = alpsDevice {
             device = d.device
         } else {
-            print("Alps device doesn't exist!")
+            SwiftyBeaver.info("Alps device doesn't exist!")
         }
         return device
     }

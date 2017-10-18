@@ -8,6 +8,7 @@
 
 import Foundation
 import Alps
+import SwiftyBeaver
 
 open class AlpsDevice {
     public let manager: AlpsManager
@@ -23,6 +24,6 @@ open class AlpsDevice {
     }
 
     public func createPublication(_ publication: Publication, completion: @escaping (_ publication: Publication?) -> Void) {
-        print("Not implemented yet.")
+        SwiftyBeaver.info("Not implemented yet.")
     }
 }
