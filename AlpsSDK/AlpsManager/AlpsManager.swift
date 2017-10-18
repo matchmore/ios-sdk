@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 import Alps
-import SwiftyBeaver
 
 open class AlpsManager {
 
@@ -44,8 +43,6 @@ open class AlpsManager {
         self.matchMonitor = MatchMonitor(alpsManager: self)
         self.setupAPI()
         
-        SwiftyBeaver.addDestination(ConsoleDestination())
-        
         // DEVELOP: Beacons
         superGetBeacons(completion: { (_ beacons) in
             self.beacons = beacons
@@ -61,7 +58,7 @@ open class AlpsManager {
             "user-agent": "\(device.systemName) \(device.systemVersion)"
         ]
         AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "https://api.matchmore.io/v4"
+        AlpsAPI.basePath = "https://api.matchmore.io/v5"
     }
     
     // register match handlers
@@ -119,7 +116,7 @@ open class AlpsManager {
     }
 
     private func superGetBeacons(completion: @escaping ((_ beacons: [IBeaconDevice]) -> Void)) {
-        SwiftyBeaver.info("to be implemented")
+        NSLog("to be implemented")
     }
 
     public func getAllPublicationsMainUser(completion: @escaping (_ publications: [String: [Publication]]) -> Void) {

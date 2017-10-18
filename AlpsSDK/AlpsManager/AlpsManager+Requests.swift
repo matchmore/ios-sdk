@@ -8,7 +8,6 @@
 
 import Foundation
 import Alps
-import SwiftyBeaver
 
 extension AlpsManager {
     // Create Main device, this function replace createDevice in v 0.0.3
@@ -39,15 +38,13 @@ extension AlpsManager {
                                 completion: @escaping (_ device: PinDevice?) -> Void) {
         let location = Location.init(latitude: latitude, longitude: longitude, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy)
         let pinDevice = PinDevice.init(name: name, location: location)
-        Alps.DeviceAPI.createDevice(device: pinDevice) { (pinDevice, _) -> Void in
-            if pinDevice is PinDevice {
-                if let d = pinDevice as? PinDevice {
-                    self.devices.append(d)
-                    self.publications[d.id!] = [Publication]()
-                    self.subscriptions[d.id!] = [Subscription]()
-                }
-                completion(pinDevice as? PinDevice)
+        Alps.DeviceAPI.createDevice(device: pinDevice) { (pinDevice, error) -> Void in
+            if let d = pinDevice as? PinDevice {
+                self.devices.append(d)
+                self.publications[d.id!] = [Publication]()
+                self.subscriptions[d.id!] = [Subscription]()
             }
+            completion(pinDevice as? PinDevice)
         }
     }
     
@@ -79,7 +76,7 @@ extension AlpsManager {
                 completion(publication)
             }
         } else {
-            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
+            NSLog("Error forcing userId or/and deviceId is nil.")
         }
     }
     
@@ -108,7 +105,7 @@ extension AlpsManager {
                 completion(subscription)
             }
         } else {
-            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
+            NSLog("Error forcing userId or/and deviceId is nil.")
         }
     }
     
@@ -146,7 +143,7 @@ extension AlpsManager {
                 completion(location)
             }
         } else {
-            SwiftyBeaver.info("Alps user and/or device has no id !")
+            NSLog("Alps user and/or device has no id !")
         }
     }
     
@@ -163,7 +160,7 @@ extension AlpsManager {
                 completion(matches ?? [])
             }
         } else {
-            SwiftyBeaver.info("Error forcing userId or/and deviceId is nil.")
+            NSLog("Error forcing userId or/and deviceId is nil.")
         }
     }
     
@@ -180,7 +177,7 @@ extension AlpsManager {
             if let p = publication {
                 completion(p)
             } else {
-                SwiftyBeaver.info("This publication doesn't exist!")
+                NSLog("This publication doesn't exist!")
             }
         }
     }
@@ -188,7 +185,7 @@ extension AlpsManager {
     public func deletePublication(_ userId: String, deviceId: String, publicationId: String, completion: @escaping () -> Void) {
         Alps.PublicationAPI.deletePublication(deviceId: deviceId, publicationId: publicationId) { (error) -> Void in
             if error != nil {
-                SwiftyBeaver.info("Impossible to delete the publication!")
+                NSLog("Impossible to delete the publication!")
             } else {
                 if let index = self.publications[deviceId]?.index(where: { $0.id == publicationId }) {
                     self.publications[deviceId]?.remove(at: index)
@@ -203,7 +200,7 @@ extension AlpsManager {
             if let p = publications {
                 completion(p)
             } else {
-                SwiftyBeaver.info("Can't find publications for this device")
+                NSLog("Can't find publications for this device")
             }
         }
     }
@@ -213,7 +210,7 @@ extension AlpsManager {
             if let s = subscription {
                 completion(s)
             } else {
-                SwiftyBeaver.info("This subscription doesn't exist!")
+                NSLog("This subscription doesn't exist!")
             }
         }
     }
@@ -221,7 +218,7 @@ extension AlpsManager {
     public func deleteSubscription(_ userId: String, deviceId: String, subscriptionId: String, completion: @escaping () -> Void) {
         Alps.SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: subscriptionId) { (error) -> Void in
             if error != nil {
-                SwiftyBeaver.info("Impossible to delete the subscription!")
+                NSLog("Impossible to delete the subscription!")
             } else {
                 if let index = self.subscriptions[deviceId]?.index(where: { $0.id == subscriptionId }) {
                     self.subscriptions[deviceId]?.remove(at: index)
@@ -236,7 +233,7 @@ extension AlpsManager {
             if let s = subscriptions {
                 completion(s)
             } else {
-                SwiftyBeaver.info("Can't find subscriptions for this device")
+                NSLog("Can't find subscriptions for this device")
             }
         }
     }

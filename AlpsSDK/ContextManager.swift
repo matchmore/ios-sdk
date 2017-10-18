@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 import Alps
-import SwiftyBeaver
 
 // TODO: Take away responsibilites from Context Manager
 class ContextManager: NSObject, CLLocationManagerDelegate {
@@ -89,10 +88,10 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         }
 
         if shouldAllow == true {
-            SwiftyBeaver.info("Location updates allowed")
+            NSLog("Location updates allowed")
             manager.startUpdatingLocation()
         } else {
-            SwiftyBeaver.info("Location updates denied")
+            NSLog("Location updates denied")
         }
     }
 
@@ -115,7 +114,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if let beaconRegion = region as? CLBeaconRegion {
                 if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
                     clLocationManager.stopRangingBeacons(in: beaconRegion)
-                    SwiftyBeaver.info("Stopped ranging for a beacon region")
+                    NSLog("Stopped ranging for a beacon region")
                 }
             }
         }
@@ -371,7 +370,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                         // Do something when it doesn't need to be refreshed
                     }
                 } else {
-                    SwiftyBeaver.info("ERROR : CreatedAt in a proximity event is nil.")
+                    NSLog("ERROR : CreatedAt in a proximity event is nil.")
                 }
             }
         }
@@ -435,7 +434,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 trigger = farTrigger
                 refresh(trigger: trigger)
             default:
-                SwiftyBeaver.info("This shouldn't be printed, we are in default case.")
+                NSLog("This shouldn't be printed, we are in default case.")
             }
         }
     }

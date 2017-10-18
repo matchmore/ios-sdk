@@ -15,6 +15,7 @@
 		9D25EC5A256A8E763D90CC8C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */; };
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
 		C3A7F6101F977EE8007CC20B /* AlpsManager+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */; };
+		C3A7F6171F978ED7007CC20B /* CreateDevicesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* CreateDevicesSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Requests.swift"; sourceTree = "<group>"; };
+		C3A7F6161F978ED7007CC20B /* CreateDevicesSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDevicesSpec.swift; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -70,10 +72,12 @@
 		502C85881E01BB3F00EF8ECF /* AlpsSDK */ = {
 			isa = PBXGroup;
 			children = (
-				C381EE791F977EB90061E7AC /* AlpsManager */,
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
-				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
+				C381EE791F977EB90061E7AC /* AlpsManager */,
+				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
+				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
+				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -82,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
+				C3A7F6161F978ED7007CC20B /* CreateDevicesSpec.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -131,8 +136,6 @@
 			children = (
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				C3A7F60F1F977EE8007CC20B /* AlpsManager+Requests.swift */,
-				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
-				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 			);
 			path = AlpsManager;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 					5092AC3B1D93CB0C00EF8ECF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 2Y732Q5T2P;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -292,19 +296,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alps/Alps.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/AlpsSDK/AlpsSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlpsSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -377,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A7F6171F978ED7007CC20B /* CreateDevicesSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,11 +551,13 @@
 			baseConfigurationReference = B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
 				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.alps.api.AlpsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -560,6 +567,7 @@
 			baseConfigurationReference = C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2Y732Q5T2P;
 				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

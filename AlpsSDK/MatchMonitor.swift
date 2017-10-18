@@ -8,7 +8,6 @@
 
 import Alps
 import Foundation
-import SwiftyBeaver
 
 class MatchMonitor {
     var deliveredMatches = Set<Match>()
@@ -19,7 +18,7 @@ class MatchMonitor {
 
     convenience init(alpsManager: AlpsManager) {
         self.init(alpsManager: alpsManager, onMatch: { (_ match: Match) in
-            SwiftyBeaver.info("Got a match: \(match)")
+            NSLog("Got a match: \(match)")
         })
     }
 
@@ -45,9 +44,9 @@ class MatchMonitor {
     }
 
     @objc func checkMatches() {
-        SwiftyBeaver.info("checking matches")
+        NSLog("checking matches")
         alpsManager?.getAllMatches { (_ matches: Matches) in
-            SwiftyBeaver.info("got all matches from the cloud: \(matches)")
+            NSLog("got all matches from the cloud: \(matches)")
             matches.forEach {
                 self.deliveredMatches.insert($0)
             }
