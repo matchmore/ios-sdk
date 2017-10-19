@@ -1,0 +1,10 @@
+disabled_rules:
+  - trailing_whitespace
+excluded: # paths to ignore during linting.
+  - Carthage
+  - Pods
+# parameterized rules can be customized from this configuration file
+line_length: 200
+file_length: 600
+type_body_length: 350
+trailing_whitespace: false

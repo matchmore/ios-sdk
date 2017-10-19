@@ -19,7 +19,9 @@ class AlpsAPITests: XCTestCase {
         "Accept": "application/json, text/plain"
     ]
 
-    let now = { Int64(Date().timeIntervalSince1970 * 1000) }
+    let now = {
+        Int64(Date().timeIntervalSince1970 * 1000)
+    }
 
     override func setUp() {
         super.setUp()
@@ -38,9 +40,7 @@ class AlpsAPITests: XCTestCase {
         var createdUser: User?
         let expectation = self.expectation(description: "CreateUser")
         let user = User.init(name: "Alps User 1")
-        let _ = Alps.UsersAPI.createUser(user: user, completion: {
-            (user, error) -> Void in
-            
+        Alps.UsersAPI.createUser(user: user, completion: { (user, error) -> Void in
             createdUser = user
             XCTAssertNil(error, "Whoops, error \(String(describing: error))")
             expectation.fulfill()
@@ -50,74 +50,67 @@ class AlpsAPITests: XCTestCase {
 
         return createdUser
     }
-    
+
     func createMobileDevice(_ user: User) -> MobileDevice? {
         let deviceExpectation = expectation(description: "CreateMobileDevice")
-        
+
         var createdDevice: MobileDevice?
         let location = Location.init(latitude: 37.7858, longitude: 122.4064, altitude: 200.0, horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
-        let mobileDevice = MobileDevice.init(name: "Alps iPhone 7", platform: "iOS 9.3",deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662", location: location)
-        if let userId = user.id{
-            let _ = Alps.UserAPI.createDevice(userId: userId, device: mobileDevice) {
-                                                (device, error) -> Void in
-                
-                
-                                                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                createdDevice = device as? MobileDevice
-                                                deviceExpectation.fulfill()
+        let mobileDevice = MobileDevice.init(name: "Alps iPhone 7", platform: "iOS 9.3", deviceToken: "870470ea-7a8e-11e6-b49b-5358f3beb662", location: location)
+        if let userId = user.id {
+            Alps.UserAPI.createDevice(userId: userId, device: mobileDevice) { (device, error) -> Void in
+                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                createdDevice = device as? MobileDevice
+                deviceExpectation.fulfill()
             }
         } else {
             XCTFail("createMobileDevice() : userId is nil.")
         }
         waitForExpectations(timeout: 5.0, handler: nil)
-        
+
         return createdDevice
     }
-    
+
     func createPinDevice(_ user: User) -> PinDevice? {
         let deviceExpectation = expectation(description: "CreatePinDevice")
-        
+
         var createdDevice: PinDevice?
         let location = Location.init(latitude: 37.7858, longitude: 122.4064, altitude: 200.0, horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
         let pinDevice = PinDevice.init(name: "Alps pin 1", location: location)
         if let userId = user.id {
-            let _ = Alps.UserAPI.createDevice(userId: userId, device: pinDevice) {
-                                                        (device, error) -> Void in
-                
-                                                        XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                        createdDevice = device as? PinDevice
-                                                        deviceExpectation.fulfill()
+            Alps.UserAPI.createDevice(userId: userId, device: pinDevice) { (device, error) -> Void in
+                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                createdDevice = device as? PinDevice
+                deviceExpectation.fulfill()
             }
         } else {
             XCTFail("createPinDevice(): userId is nil.")
         }
         waitForExpectations(timeout: 5.0, handler: nil)
-        
+
         return createdDevice
     }
-    
+
     func createIBeaconDevice(_ user: User) -> IBeaconDevice? {
         let deviceExpectation = expectation(description: "CreateIBeaconDevice")
-        
+
         var createdDevice: IBeaconDevice?
         let iBeaconDevice = IBeaconDevice.init(name: "Alps iBeacon 1", proximityUUID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 10, minor: 10)
         if let userId = user.id {
-            let _ = Alps.UserAPI.createDevice(userId: userId, device: iBeaconDevice) {
-                                                    (device, error) -> Void in
-                                                    
-                                                    XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                    createdDevice = device as? IBeaconDevice
-                                                    deviceExpectation.fulfill()
+            Alps.UserAPI.createDevice(userId: userId, device: iBeaconDevice) {(device, error) -> Void in
+                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                createdDevice = device as? IBeaconDevice
+                deviceExpectation.fulfill()
             }
         } else {
             XCTFail("createIBeaconDevice(): userId is nil.")
         }
         waitForExpectations(timeout: 5.0, handler: nil)
-        
+
         return createdDevice
     }
 
-    func createPublication(_ user: User,_ device: Device) -> Publication? {
+    func createPublication(_ user: User, _ device: Device) -> Publication? {
         var createdPublication: Publication?
 
         let pubExpectation = expectation(description: "CreatePub")
@@ -127,9 +120,7 @@ class AlpsAPITests: XCTestCase {
 
         if let userId = user.id, let deviceId = device.id {
             let publication = Publication.init(deviceId: deviceId, topic: "alps-test", range: 100.0, duration: 0.0, properties: properties)
-            let _ = Alps.DeviceAPI.createPublication(userId: userId, deviceId: deviceId, publication: publication) {
-                (publication, error) -> Void in
-
+            Alps.DeviceAPI.createPublication(userId: userId, deviceId: deviceId, publication: publication) { (publication, error) -> Void in
                 XCTAssertNil(error, "Whoops, error \(String(describing: error))")
                 createdPublication = publication
                 pubExpectation.fulfill()
@@ -142,18 +133,17 @@ class AlpsAPITests: XCTestCase {
         return createdPublication
     }
 
-    func createSubscription(_ user: User,_ device: Device) -> Subscription? {
+    func createSubscription(_ user: User, _ device: Device) -> Subscription? {
         var createdSubscription: Subscription?
 
         let subExpectation = expectation(description: "CreateSub")
         let selector = "role = 'developer'"
         if let userId = user.id, let deviceId = device.id {
             let subscription = Subscription.init(deviceId: deviceId, topic: "alps-test", range: 100.0, duration: 0.0, selector: selector)
-            let _ = Alps.DeviceAPI.createSubscription(userId: userId, deviceId: deviceId, subscription: subscription) {
-                                                        (subscription, error) -> Void in
-                                                            XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                                                            createdSubscription = subscription
-                                                            subExpectation.fulfill()
+            Alps.DeviceAPI.createSubscription(userId: userId, deviceId: deviceId, subscription: subscription) { (subscription, error) -> Void in
+                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                createdSubscription = subscription
+                subExpectation.fulfill()
             }
         } else {
             XCTFail("createSubscription(): Error userId or deviceId is nil.")
@@ -163,17 +153,16 @@ class AlpsAPITests: XCTestCase {
         return createdSubscription
     }
 
-    func createLocation(_ user: User,_ device: Device) -> Location? {
+    func createLocation(_ user: User, _ device: Device) -> Location? {
         let locationExpectation = expectation(description: "CreateLocation")
         var createdLocation: Location?
 
-        let location = Location.init(latitude: 37.7858, longitude: -122.4064, altitude: 20.0,horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
+        let location = Location.init(latitude: 37.7858, longitude: -122.4064, altitude: 20.0, horizontalAccuracy: 5.0, verticalAccuracy: 5.0)
         if let userId = user.id, let deviceId = device.id {
-            let _ = Alps.DeviceAPI.createLocation(userId: userId, deviceId: deviceId, location: location) {
-                    (location, error) -> Void in
-                        XCTAssertNil(error, "Whoops, error \(String(describing: error))")
-                        createdLocation = location
-                        locationExpectation.fulfill()
+            Alps.DeviceAPI.createLocation(userId: userId, deviceId: deviceId, location: location) { (location, error) -> Void in
+                XCTAssertNil(error, "Whoops, error \(String(describing: error))")
+                createdLocation = location
+                locationExpectation.fulfill()
             }
         } else {
             XCTFail("createLocation(): Error userId or deviceId is nil.")
@@ -183,13 +172,11 @@ class AlpsAPITests: XCTestCase {
         return createdLocation
     }
 
-    func getMatches(_ user: User,_ device: Device) -> [Match]? {
+    func getMatches(_ user: User, _ device: Device) -> [Match]? {
         let matchExpectation = expectation(description: "GetMatches")
         var gotMatches: [Match]?
         if let userId = user.id, let deviceId = device.id {
-            let _ = Alps.DeviceAPI.getMatches(userId: userId, deviceId: deviceId) {
-                (matches, error) -> Void in
-
+            Alps.DeviceAPI.getMatches(userId: userId, deviceId: deviceId) { (matches, error) -> Void in
                 XCTAssertNil(error, "Whoops, error \(String(describing: error))")
                 gotMatches = matches
                 matchExpectation.fulfill()
@@ -206,18 +193,17 @@ class AlpsAPITests: XCTestCase {
         let expectation = self.expectation(description: "Alamofire")
 
         Alamofire.request(AlpsAPI.basePath.appending("/ping"), headers: headers)
-            .validate(statusCode: 200..<300)
-            .responseString { response in
-                print("Success: \(response.result.isSuccess)")
-                XCTAssert(response.result.isSuccess, "Status code not 200")
-                print("Response String: \(String(describing: response.result.value))")
+                .validate(statusCode: 200..<300)
+                .responseString { response in
+                    print("Success: \(response.result.isSuccess)")
+                    XCTAssert(response.result.isSuccess, "Status code not 200")
+                    print("Response String: \(String(describing: response.result.value))")
 
-                expectation.fulfill()
-        }
+                    expectation.fulfill()
+                }
 
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-
 
     func test2CreateUser() {
         let user = createUser()
@@ -229,12 +215,12 @@ class AlpsAPITests: XCTestCase {
             XCTFail("test2CreateUser(): name is nil.")
         }
     }
-    
+
     func test3CreateMobileDevice() {
         if let user = createUser() {
             let device = createMobileDevice(user)
             XCTAssertNotNil(device)
-            
+
             // Test each fields
             if let deviceType = device?.deviceType?.rawValue {
                 XCTAssertEqual(deviceType, "MobileDevice", "createMobileDevice(): deviceType is not equal to right type.")
@@ -270,12 +256,12 @@ class AlpsAPITests: XCTestCase {
             XCTFail("test3CreateMobileDevice(): No returned user.")
         }
     }
-    
+
     func test4CreatePinDevice() {
         if let user = createUser() {
             let device = createPinDevice(user)
             XCTAssertNotNil(device)
-            
+
             // Test each fields
             if let deviceType = device?.deviceType?.rawValue {
                 XCTAssertEqual(deviceType, "PinDevice", "test4CreatePinDevice(): deviceType is not equal to right type.")
@@ -301,12 +287,12 @@ class AlpsAPITests: XCTestCase {
             XCTFail("test4CreatePinDevice(): No returned user.")
         }
     }
-    
+
     func test5CreateBeaconDevice() {
         if let user = createUser() {
             let device = createIBeaconDevice(user)
             XCTAssertNotNil(device)
-            
+
             // Test each fields
             if let deviceType = device?.deviceType?.rawValue {
                 XCTAssertEqual(deviceType, "IBeaconDevice", "test5CreateIBeaconDevice(): deviceType is not equal to right type.")
@@ -320,7 +306,9 @@ class AlpsAPITests: XCTestCase {
                 XCTFail("test5CreateIBeaconDevice(): name is nil.")
             }
             if let proximityUUID = device?.proximityUUID {
-                XCTAssertEqual(UUID.init(uuidString: proximityUUID), UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), "test5CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
+                XCTAssertEqual(UUID.init(uuidString: proximityUUID),
+                               UUID.init(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
+                               "test5CreateIBeaconDevice(): Returned proximityUUID is not equal to defined one.")
             } else {
                 XCTFail("test5CreateIBeaconDevice(): proximityUUID is nil.")
             }
@@ -345,7 +333,7 @@ class AlpsAPITests: XCTestCase {
             if let device = createMobileDevice(user) {
                 let publication = createPublication(user, device)
                 XCTAssertNotNil(publication)
-                
+
                 // Test each fields
                 XCTAssertNotNil(publication?.id, "test6CreatePublication(): id is nil.")
                 if let deviceId = publication?.deviceId {
@@ -386,7 +374,7 @@ class AlpsAPITests: XCTestCase {
             if let device = createMobileDevice(user) {
                 let subscription = createSubscription(user, device)
                 XCTAssertNotNil(subscription)
-                
+
                 // Test each fields
                 XCTAssertNotNil(subscription?.id, "test7CreateSubscription(): id is nil.")
                 if let deviceId = subscription?.deviceId {
@@ -427,19 +415,17 @@ class AlpsAPITests: XCTestCase {
             if let device = createMobileDevice(user) {
                 let location = createLocation(user, device)
                 XCTAssertNotNil(location)
-                
+
                 // Test each fields
                 if let deviceId = device.id {
                     XCTAssertEqual(deviceId, device.id, "test8CreateLocation(): deviceId is not equal to defined one.")
                 } else {
                     XCTFail("test8CreateLocation(): deviceId is nil.")
                 }
-                if let l = location{
+                if let l = location {
                     XCTAssertEqual(l.latitude, 37.7858, "test8CreateLocation(): Returned latitude is not equal to defined one.")
                     XCTAssertEqual(l.longitude, -122.4064, "test8CreateLocation(): Returned longitude is not equal to defined one.")
                     XCTAssertEqual(l.altitude, 20.0, "test8CreateLocation(): Returned altitude is not equal to defined one.")
-//                    XCTAssertEqual(l.horizontalAccuracy, 5.0, "test8CreateLocation(): Returned horizontalAccuracy is not equal to defined one.")
-//                    XCTAssertEqual(l.verticalAccuracy, 5.0, "test8CreateLocation(): Returned verticalAccuracy is not equal to defined one.")
                 } else {
                     XCTFail("test8CreateLocation(): location is nil.")
                 }
@@ -456,7 +442,7 @@ class AlpsAPITests: XCTestCase {
             if let device = createMobileDevice(user) {
                 let matches = getMatches(user, device)
                 XCTAssertNotNil(matches)
-                
+
                 // Test each fields
             } else {
                 XCTFail("test9GetMatches(): device was not properly created.")

@@ -35,3 +35,6 @@ Carthage
 /Example/Pods
 /Podfile.lock
 /Pods/
+
+# AppCode
+.idea/

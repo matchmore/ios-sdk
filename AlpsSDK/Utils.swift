@@ -8,4 +8,6 @@
 
 import Foundation
 
-func now() -> Int64 { return Int64(Date().timeIntervalSince1970 * 1000) }
+func now() -> Int64 {
+    return Int64(Date().timeIntervalSince1970 * 1000)
+}
