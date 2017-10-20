@@ -15,7 +15,7 @@ final class PinDeviceAsyncRepo: AsyncRepostiory {
     
     func create(item: PinDevice, completion: @escaping (Result<PinDevice?>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
-            if let pinDevice = device as? PinDevice, error != nil {
+            if let pinDevice = device as? PinDevice, error == nil {
                 self.items.append(pinDevice)
                 completion(.success(pinDevice))
             } else {

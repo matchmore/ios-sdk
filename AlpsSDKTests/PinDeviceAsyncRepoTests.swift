@@ -18,10 +18,10 @@ class PinDeviceAsyncRepoTests: QuickSpec {
     func setupAPI() {
         let headers = [
             "api-key": "ee17b945-2dca-4d93-b3b4-75e4e9a007d2",
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
             ]
         AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "http://localhost:9000/v5"
+        AlpsAPI.basePath = "http://localhost:9000"
     }
     
     override func spec() {
