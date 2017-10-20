@@ -12,7 +12,7 @@ import Alps
 
 // TODO: Take away responsibilites from Context Manager
 class ContextManager: NSObject, CLLocationManagerDelegate {
-    var alpsManager: AlpsManager
+    fileprivate weak var alpsManager: AlpsManager?
     var seenError = false
     var locationFixAchieved = false
 
@@ -69,7 +69,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coord = locations.last {
             self.onLocationUpdateClosure?(locations.last!)
-            alpsManager.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
+            alpsManager?.updateLocation(latitude: coord.coordinate.latitude, longitude: coord.coordinate.longitude,
                     altitude: coord.altitude, horizontalAccuracy: coord.horizontalAccuracy,
                     verticalAccuracy: coord.verticalAccuracy) { (_ location) in
             }
@@ -88,10 +88,10 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         }
 
         if shouldAllow == true {
-            print("Location updates allowed")
+            NSLog("Location updates allowed")
             manager.startUpdatingLocation()
         } else {
-            print("Location updates denied")
+            NSLog("Location updates denied")
         }
     }
 
@@ -114,7 +114,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if let beaconRegion = region as? CLBeaconRegion {
                 if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
                     clLocationManager.stopRangingBeacons(in: beaconRegion)
-                    print("Stopped ranging for a beacon region")
+                    NSLog("Stopped ranging for a beacon region")
                 }
             }
         }
@@ -267,8 +267,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     }
 
     private func syncBeacon(beacon: CLBeacon) -> [IBeaconDevice] {
-        var b: [IBeaconDevice] = self.alpsManager.beacons
-        b = self.alpsManager.beacons.filter {
+        var b: [IBeaconDevice] = self.alpsManager?.beacons ?? []
+        b = b.filter {
             let proximityUUID = $0.proximityUUID!
             let major = $0.major!
             let minor = $0.minor!
@@ -281,9 +281,9 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         return b
     }
 
-    private func triggerProximityEvent(userId: String, deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
+    private func triggerProximityEvent(deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
         let userCompletion = completion
-        Alps.DeviceAPI.triggerProximityEvents(userId: userId, deviceId: deviceId, proximityEvent: proximityEvent) { (proximityEvent, _) in
+        Alps.DeviceAPI.triggerProximityEvents(deviceId: deviceId, proximityEvent: proximityEvent) { (proximityEvent, _) in
             userCompletion(proximityEvent)
         }
     }
@@ -327,9 +327,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             if trigger[id] == nil {
                 // Send the proximity event
                 let proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                let userId = self.alpsManager.alpsUser?.user.id
-                let deviceId = self.alpsManager.alpsDevice?.device.id
-                triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: proximityEvent) { (_ proximityEvent) in
+                let deviceId = self.alpsManager?.mainDevice?.id
+                triggerProximityEvent(deviceId: deviceId!, proximityEvent: proximityEvent) { (_ proximityEvent) in
                     trigger[id] = proximityEvent
                     switch forCLProximity {
                     case .immediate:
@@ -353,9 +352,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                     if truncatedGap > refreshTimer {
                         // Send the refreshing proximity event based on the timer
                         let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                        let userId = self.alpsManager.alpsUser?.user.id
-                        let deviceId = self.alpsManager.alpsDevice?.device.id
-                        triggerProximityEvent(userId: userId!, deviceId: deviceId!, proximityEvent: newProximityEvent) { (_ proximityEvent) in
+                        let deviceId = self.alpsManager?.mainDevice?.id
+                        triggerProximityEvent(deviceId: deviceId!, proximityEvent: newProximityEvent) { (_ proximityEvent) in
                             trigger[id] = proximityEvent
                             switch forCLProximity {
                             case .immediate:
@@ -372,7 +370,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                         // Do something when it doesn't need to be refreshed
                     }
                 } else {
-                    print("ERROR : CreatedAt in a proximity event is nil.")
+                    NSLog("ERROR : CreatedAt in a proximity event is nil.")
                 }
             }
         }
@@ -436,7 +434,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 trigger = farTrigger
                 refresh(trigger: trigger)
             default:
-                print("This shouldn't be printed, we are in default case.")
+                NSLog("This shouldn't be printed, we are in default case.")
             }
         }
     }

@@ -7,4 +7,5 @@ excluded: # paths to ignore during linting.
 line_length: 200
 file_length: 600
 type_body_length: 350
+function_parameter_count: 8
 trailing_whitespace: false

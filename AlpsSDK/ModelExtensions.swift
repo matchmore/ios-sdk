@@ -23,13 +23,6 @@ extension Dictionary {
     }
 }
 
-extension User {
-    internal convenience init(name: String) {
-        self.init()
-        self.name = name
-    }
-}
-
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
     public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber) {
