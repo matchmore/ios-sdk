@@ -348,7 +348,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 let now = Int64(Date().timeIntervalSince1970 * 1000)
                 if let proximityEventCreatedAt = proximityEvent?.createdAt {
                     let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
+                    let truncatedGap = Int(truncatingIfNeeded: gap)
                     if truncatedGap > refreshTimer {
                         // Send the refreshing proximity event based on the timer
                         let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
