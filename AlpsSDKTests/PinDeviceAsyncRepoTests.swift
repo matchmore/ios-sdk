@@ -18,8 +18,7 @@ class PinDeviceAsyncRepoTests: QuickSpec {
     func setupAPI() {
         let headers = [
             "api-key": "ee17b945-2dca-4d93-b3b4-75e4e9a007d2",
-            "Content-Type": "application/json; charset=UTF-8",
-            "Accept": "application/json"
+            "Content-Type": "application/json",
             ]
         AlpsAPI.customHeaders = headers
         AlpsAPI.basePath = "http://localhost/v5"
@@ -36,11 +35,8 @@ class PinDeviceAsyncRepoTests: QuickSpec {
                     waitUntil(timeout: 10) { done in
                         let pinDevice = PinDevice(name: "Test Pin", location: Location(latitude: 12, longitude: 12, altitude: 12, horizontalAccuracy: 10, verticalAccuracy: 10))
                         pinDeviceAsyncRepo.create(item: pinDevice, completion: { (result) in
-                            switch result {
-                            case let .success(pinDevice):
+                            if case let .success(pinDevice) = result {
                                 createdPinDevice = pinDevice
-                            case .failure(_):
-                                break
                             }
                             done()
                         })
