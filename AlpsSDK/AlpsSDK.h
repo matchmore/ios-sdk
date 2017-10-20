@@ -6,7 +6,7 @@
 //  Copyright © 2016 Alps. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for AlpsSDK.
 FOUNDATION_EXPORT double AlpsSDKVersionNumber;

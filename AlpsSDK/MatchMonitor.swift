@@ -7,14 +7,14 @@
 //
 
 import Alps
-
 import Foundation
 
 class MatchMonitor {
-    let alpsManager: AlpsManager
-    var timer: Timer?
     var deliveredMatches = Set<Match>()
-    var onMatchClosure: (_ match: Match) -> Void
+    var onMatch: (_ match: Match) -> Void
+    
+    fileprivate weak var alpsManager: AlpsManager?
+    fileprivate var timer: Timer?
 
     convenience init(alpsManager: AlpsManager) {
         self.init(alpsManager: alpsManager, onMatch: { (_ match: Match) in
@@ -24,20 +24,19 @@ class MatchMonitor {
 
     init(alpsManager: AlpsManager, onMatch: @escaping ((_ match: Match) -> Void)) {
         self.alpsManager = alpsManager
-        self.onMatchClosure = onMatch
+        self.onMatch = onMatch
     }
-
-    public func onMatch(completion: @escaping (_ match: Match) -> Void) {
-        onMatchClosure = completion
-    }
-
+    
+    // MARK: - Match Monitoring
     public func startMonitoringMatches() {
-        self.timer = Timer.scheduledTimer(
+        if timer != nil { return }
+        timer = Timer.scheduledTimer(
                 timeInterval: 1.0,
                 target: self,
                 selector: #selector(MatchMonitor.checkMatches),
                 userInfo: nil,
-                repeats: true)
+                repeats: true
+        )
     }
 
     public func stopMonitoringMatches() {
@@ -46,15 +45,10 @@ class MatchMonitor {
 
     @objc func checkMatches() {
         NSLog("checking matches")
-        alpsManager.getAllMatches { (_ matches: Matches) in
+        alpsManager?.getAllMatches { (_ matches: Matches) in
             NSLog("got all matches from the cloud: \(matches)")
-
-            for m in matches {
-                if !self.deliveredMatches.contains(m) {
-                    NSLog("deliver this match: \(m)")
-                    self.onMatchClosure(m)
-                    self.deliveredMatches.insert(m)
-                }
+            matches.forEach {
+                self.deliveredMatches.insert($0)
             }
         }
     }
