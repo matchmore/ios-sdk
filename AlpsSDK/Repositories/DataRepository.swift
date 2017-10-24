@@ -1,5 +1,5 @@
 //
-//  AsyncRepository.swift
+//  DataRepostiory.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 19/10/2017.

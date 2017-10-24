@@ -1,5 +1,5 @@
 //
-//  PinDeviceAsyncRepo.swift
+//  PinDeviceRepository.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 20/10/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class PinDeviceAsyncRepo: DataRepostiory, C, R, D {
+final class PinDeviceRepository: DataRepostiory, C, R, D {
     typealias DataType = PinDevice
     private(set) var items = [PinDevice]()
     
