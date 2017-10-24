@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class PinDeviceAsyncRepo: AsyncRepostiory {
+final class PinDeviceAsyncRepo: DataRepostiory, C, R, D {
     typealias DataType = PinDevice
     private(set) var items = [PinDevice]()
     
