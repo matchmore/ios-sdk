@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class DeviceRepository: DataRepostiory, C, R, D {
+final class DeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Device
     private(set) var items = [Device]()
     

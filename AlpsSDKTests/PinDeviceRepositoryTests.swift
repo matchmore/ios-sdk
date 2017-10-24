@@ -17,11 +17,11 @@ class PinDeviceAsyncRepoTests: QuickSpec {
     
     func setupAPI() {
         let headers = [
-            "api-key": "ee17b945-2dca-4d93-b3b4-75e4e9a007d2",
+            "api-key": "c9b9601d-55b9-4057-8331-f1e2c72d308d",
             "Content-Type": "application/json"
             ]
         AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "http://localhost:9000"
+        AlpsAPI.basePath = "http://localhost:9000/v4"
     }
     
     let kWaitTimeInterval = 10.0
