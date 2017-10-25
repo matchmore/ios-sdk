@@ -10,9 +10,10 @@ import Foundation
 import CoreLocation
 import Alps
 
-open class AlpsManager: MatchMonitorDelegate {
+open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+
     let apiKey: String
-    lazy var contextManager = ContextManager(alpsManager: self)
+    lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
 
     private init(apiKey: String) {
@@ -34,7 +35,21 @@ open class AlpsManager: MatchMonitorDelegate {
     
     // MARK: - Match Monitor Delegate
     
-    func didReceiveMatches(matches: [Match]) {
+    func matchMonitor(monitor: MatchMonitor, didReceiveMatches: [Match]) {
+        
+    }
+    
+    // MARK: - Context Manager Delegate
+    
+    func contextManager(manager monitor: ContextManager, didUpdateLocation: CLLocation) {
+        
+    }
+    
+    func contextManager(manager: ContextManager, didRangeClosestBeacon: CLBeacon) {
+        
+    }
+    
+    func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon]) {
         
     }
 }

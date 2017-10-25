@@ -10,16 +10,16 @@ import Foundation
 import CoreLocation
 import Alps
 
-// TODO: Take away responsibilites from Context Manager
+protocol ContextManagerDelegate: class {
+    func contextManager(manager: ContextManager, didUpdateLocation: CLLocation)
+    func contextManager(manager: ContextManager, didRangeClosestBeacon: CLBeacon)
+    func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon])
+}
+
 class ContextManager: NSObject, CLLocationManagerDelegate {
-    fileprivate weak var alpsManager: AlpsManager?
-    
-    var seenError = false
-    var locationFixAchieved = false
+    private weak var delegate: ContextManagerDelegate?
 
-    let clLocationManager: CLLocationManager
-
-    var onLocationUpdateClosure: ((_ location: CLLocation) -> Void)?
+    let locationManager = CLLocationManager()
 
     // Beacons
     // Triggered proximity event map
@@ -38,81 +38,35 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     var nearTimer: Timer?
     var farTimer: Timer?
     var unknownTimer: Timer?
-    var closestBeaconClosure: ((_ beacon: CLBeacon) -> Void)?
-    var detectedBeaconsClosure: ((_ beacons: [CLBeacon]) -> Void)?
 
-    public func onLocationUpdate(completion: @escaping (_ location: CLLocation) -> Void) {
-        onLocationUpdateClosure = completion
-    }
-
-    convenience init(alpsManager: AlpsManager) {
-        self.init(alpsManager: alpsManager, locationManager: CLLocationManager())
-    }
-
-    init(alpsManager: AlpsManager, locationManager: CLLocationManager) {
-        self.alpsManager = alpsManager
-        self.clLocationManager = locationManager
+    init(delegate: ContextManagerDelegate) {
         super.init()
-
-        self.clLocationManager.delegate = self
-        self.clLocationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.clLocationManager.requestAlwaysAuthorization()
+        self.delegate = delegate
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
     }
 
-    // Location Manager Delegate stuff
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        manager.stopUpdatingLocation()
-        seenError = true
-        print(error)
-    }
+    // MARK:- Core Location Manager Delegate
 
-    // Update locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            self.onLocationUpdateClosure?(lastLocation)
-            // update location
+            self.delegate?.contextManager(manager: self, didUpdateLocation: lastLocation)
         }
     }
 
-    // authorization status
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        var shouldAllow = false
-
-        switch status {
-        case .restricted, .denied, .notDetermined:
-            shouldAllow = false
-        default:
-            shouldAllow = true
-        }
-
-        if shouldAllow == true {
-            NSLog("Location updates allowed")
-            manager.startUpdatingLocation()
-        } else {
-            NSLog("Location updates denied")
-        }
-    }
-
-    func startUpdatingLocation() {
-        clLocationManager.startUpdatingLocation()
-    }
-
-    func stopUpdatingLocation() {
-        clLocationManager.stopUpdatingLocation()
-    }
-
-    //DEVELOP: Beacons
+    // MARK: - Beacons
+    
     func startRanging(forUuid: UUID, identifier: String) {
         let ourCLBeaconRegion = CLBeaconRegion.init(proximityUUID: forUuid, identifier: identifier)
-        clLocationManager.startRangingBeacons(in: ourCLBeaconRegion)
+        locationManager.startRangingBeacons(in: ourCLBeaconRegion)
     }
 
     func stopRanging(forUuid: UUID) {
-        for region in clLocationManager.rangedRegions {
+        for region in locationManager.rangedRegions {
             if let beaconRegion = region as? CLBeaconRegion {
                 if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
-                    clLocationManager.stopRangingBeacons(in: beaconRegion)
-                    NSLog("Stopped ranging for a beacon region")
+                    locationManager.stopRangingBeacons(in: beaconRegion)
                 }
             }
         }
@@ -128,8 +82,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             }
         }
         if let closestBeacon = closest {
-            self.closestBeaconClosure?(closestBeacon)
-            self.detectedBeaconsClosure?(beacons)
+            delegate?.contextManager(manager: self, didDetectBeacons: beacons)
+            delegate?.contextManager(manager: self, didRangeClosestBeacon: closestBeacon)
         }
 
         // Proximity Events related
@@ -150,18 +104,6 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
                 }
             }
         }
-    }
-
-    func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
-        print(error)
-    }
-
-    func getClosestOnBeaconUpdate(completion: @escaping (_ beacon: CLBeacon) -> Void) {
-        closestBeaconClosure = completion
-    }
-
-    func getAllOnBeaconUpdate(completion: @escaping (_ beacons: [CLBeacon]) -> Void) {
-        detectedBeaconsClosure = completion
     }
 
     // TODO: improve code of method below so it matches swiftlint requirement regarding complexity + length

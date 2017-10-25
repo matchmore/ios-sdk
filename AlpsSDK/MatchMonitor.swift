@@ -10,7 +10,7 @@ import Alps
 import Foundation
 
 protocol MatchMonitorDelegate: class {
-    func didReceiveMatches(matches: [Match])
+    func matchMonitor(monitor: MatchMonitor, didReceiveMatches: [Match])
 }
 
 class MatchMonitor {
@@ -35,7 +35,7 @@ class MatchMonitor {
     
     @objc func getMatches() {
         // get matches first
-        delegate?.didReceiveMatches(matches: [])
+        delegate?.matchMonitor(monitor: self, didReceiveMatches: [])
     }
 
     func stopMonitoringMatches() {
