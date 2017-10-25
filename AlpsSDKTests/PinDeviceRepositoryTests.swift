@@ -29,7 +29,7 @@ class PinDeviceAsyncRepoTests: QuickSpec {
     override func spec() {
         setupAPI()
         let pinDeviceRepository = PinDeviceRepository()
-        var createdPinDevice: PinDevice?
+        var createdPinDeviceId: String = ""
         
         context("pin device") {
             fit ("create") {
@@ -47,35 +47,36 @@ class PinDeviceAsyncRepoTests: QuickSpec {
                     pinDeviceRepository.create(item: pinDevice, 
                                                completion: { (result) in
                         if case let .success(pinDevice) = result {
-                            createdPinDevice = pinDevice
+                            createdPinDeviceId = pinDevice?.id ?? ""
                         }
                         done()
                     })
                 }
-                expect(createdPinDevice).toEventuallyNot(beNil())
+                expect(pinDeviceRepository.items.first).toEventuallyNot(beNil())
             }
+            
+            var readPinDevice: PinDevice?
             fit("read") {
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
-                    pinDeviceRepository.find(byId: createdPinDevice!.id!,
+                    pinDeviceRepository.find(byId: createdPinDeviceId,
                                              completion: { (result) in
                         if case let .success(pinDevice) = result {
-                            createdPinDevice = pinDevice
+                            readPinDevice = pinDevice
                         }
                         done()
                     })
                 }
-                expect(createdPinDevice).toEventuallyNot(beNil())
+                expect(readPinDevice).toEventuallyNot(beNil())
             }
+            
             fit("delete") {
-                var deleteError: Error?
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
-                    pinDeviceRepository.delete(item: createdPinDevice!,
-                                               completion: { (error) in
-                        deleteError = error
+                    pinDeviceRepository.delete(item: readPinDevice!,
+                                               completion: { (_) in
                         done()
                     })
                 }
-                expect(deleteError).toEventually(beNil())
+                expect(pinDeviceRepository.items.first).toEventually(beNil())
             }
         }
     }

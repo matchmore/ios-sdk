@@ -34,7 +34,7 @@ class MatchMonitor {
     }
     
     @objc func getMatches() {
-        // get matches first
+        // get matches with a request first
         delegate?.matchMonitor(monitor: self, didReceiveMatches: [])
     }
 

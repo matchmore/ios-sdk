@@ -47,62 +47,28 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.requestAlwaysAuthorization()
     }
 
-    // MARK:- Core Location Manager Delegate
+    // MARK: - Core Location Manager Delegate
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let lastLocation = locations.last {
-            self.delegate?.contextManager(manager: self, didUpdateLocation: lastLocation)
-        }
+        guard let lastLocation = locations.last else { return }
+        delegate?.contextManager(manager: self, didUpdateLocation: lastLocation)
     }
 
     // MARK: - Beacons
     
     func startRanging(forUuid: UUID, identifier: String) {
-        let ourCLBeaconRegion = CLBeaconRegion.init(proximityUUID: forUuid, identifier: identifier)
-        locationManager.startRangingBeacons(in: ourCLBeaconRegion)
-    }
-
-    func stopRanging(forUuid: UUID) {
-        for region in locationManager.rangedRegions {
-            if let beaconRegion = region as? CLBeaconRegion {
-                if forUuid.uuidString == beaconRegion.proximityUUID.uuidString {
-                    locationManager.stopRangingBeacons(in: beaconRegion)
-                }
-            }
-        }
+        let beaconRegion = CLBeaconRegion(proximityUUID: forUuid, identifier: identifier)
+        locationManager.startRangingBeacons(in: beaconRegion)
     }
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        // Returning the closest beacon and all the detected beacons
-        var closest: CLBeacon?
-        if beacons.isEmpty != true {
-            closest = beacons.first!
-            for beacon in beacons where (closest?.accuracy)! > beacon.accuracy {
-                closest = beacon
-            }
-        }
-        if let closestBeacon = closest {
-            delegate?.contextManager(manager: self, didDetectBeacons: beacons)
+        delegate?.contextManager(manager: self, didDetectBeacons: beacons)
+        if let closestBeacon = beacons.max(by: { $0.accuracy < $1.accuracy }) {
             delegate?.contextManager(manager: self, didRangeClosestBeacon: closestBeacon)
         }
-
-        // Proximity Events related
         parseBeaconsByProximity(beacons)
-        if proximityTrigger.isEmpty {
-            // No proximity event are triggering yet since proximityTrigger array is empty
-        } else {
-            for pt in proximityTrigger {
-                switch pt {
-                case .immediate:
-                    triggerBeaconsProximityEvent(forCLProximity: pt)
-                case .near:
-                    triggerBeaconsProximityEvent(forCLProximity: pt)
-                case .far:
-                    triggerBeaconsProximityEvent(forCLProximity: pt)
-                case .unknown:
-                    triggerBeaconsProximityEvent(forCLProximity: pt)
-                }
-            }
+        proximityTrigger.forEach {
+            triggerBeaconsProximityEvent(forCLProximity: $0)
         }
     }
 
@@ -110,6 +76,9 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     private func parseBeaconsByProximity(_ beacons: [CLBeacon]) {
         var ourBeacon: IBeaconDevice?
+        beacons.forEach {
+            let beacon = syncBeacon(beacon: $0)
+        }
         for beacon in beacons {
             let b = syncBeacon(beacon: beacon)
             if b.isEmpty != true {
