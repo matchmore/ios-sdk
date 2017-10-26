@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class BeaconsRepository: DataRepostiory, AsyncReadable {
+final class BeaconRepository: DataRepostiory, AsyncReadable {
     typealias DataType = IBeaconTriple
     private(set) var items = [IBeaconTriple]()
     
@@ -31,7 +31,7 @@ final class BeaconsRepository: DataRepostiory, AsyncReadable {
         }
     }
     
-    func updateBeaconTriplets(completion: (() -> Void)? = nil) {
+    private func updateBeaconTriplets(completion: (() -> Void)? = nil) {
         Alps.DeviceAPI.getIBeaconTriples { [weak self] (beaconTriplets, error) in
             if let beaconTriplets = beaconTriplets, error == nil {
                 self?.items = beaconTriplets

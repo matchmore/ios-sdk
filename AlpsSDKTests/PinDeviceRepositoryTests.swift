@@ -1,5 +1,5 @@
 //
-//  PinDeviceAsyncRepoTests.swift
+//  PinDeviceRepositoryTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 18/10/2017.
@@ -13,7 +13,7 @@ import Nimble
 @testable import AlpsSDK
 @testable import Alps
 
-class PinDeviceAsyncRepoTests: QuickSpec {
+class PinDeviceRepositoryTests: QuickSpec {
     
     func setupAPI() {
         let headers = [

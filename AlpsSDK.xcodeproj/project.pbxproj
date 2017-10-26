@@ -16,9 +16,11 @@
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
 		C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3227B361F9F277B00785BA4 /* DeviceRepository.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
-		C387A64C1FA0C5D500AB0371 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
+		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
+		C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */; };
+		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +98,8 @@
 			children = (
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
 				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
+				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -392,12 +398,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
-				C387A64C1FA0C5D500AB0371 /* BeaconRepository.swift in Sources */,
 				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
 				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
 			);
@@ -408,6 +414,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
+				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
+				C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
