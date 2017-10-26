@@ -53,9 +53,10 @@ class ProximityHandler {
                     let proximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
                     let deviceId = "NEED CHANGE to a guard"
                         sendProximityEvent(deviceId: deviceId, proximityEvent: proximityEvent) {(_ proximityEvent) in
-                            if let pe = proximityEvent {
-                                self.addProximityEvent(deviceId: id, proximityEvent: pe, clProximity: clProximity)
+                            guard let pe = proximityEvent else {
+                                return
                             }
+                            self.addProximityEvent(deviceId: id, proximityEvent: pe, clProximity: clProximity)
                     }
                 } else {
                     //this id is already triggered and might need to be refresh -> refreshTriggers()
@@ -73,21 +74,23 @@ class ProximityHandler {
                 let proximityEvent = trigger[id]
                 // Represents  the UNIX current time in milliseconds
                 let now = Int64(Date().timeIntervalSince1970 * 1000)
-                if let proximityEventCreatedAt = proximityEvent?.createdAt {
-                    let gap = now - proximityEventCreatedAt
-                    let truncatedGap = Int(truncatingBitPattern: gap)
-                    if truncatedGap > refreshTimer {
-                        // Send the refreshing proximity event based on the timer
-                        let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
-                        let deviceId = "NEED CHANGE"
-                        sendProximityEvent(deviceId: deviceId, proximityEvent: newProximityEvent) {(_ proximityEvent) in
-                            if let pe = proximityEvent {
-                                self.addProximityEvent(deviceId: id, proximityEvent: pe, clProximity: clProximity)
-                            }
+                guard let proximityEventCreatedAt = proximityEvent?.createdAt else {
+                    return
+                }
+                let gap = now - proximityEventCreatedAt
+                let truncatedGap = Int(truncatingBitPattern: gap)
+                if truncatedGap > refreshTimer {
+                    // Send the refreshing proximity event based on the timer
+                    let newProximityEvent = ProximityEvent.init(deviceId: id, distance: distance)
+                    let deviceId = "NEED CHANGE"
+                    sendProximityEvent(deviceId: deviceId, proximityEvent: newProximityEvent) {(_ proximityEvent) in
+                        guard let pe = proximityEvent else {
+                            return
                         }
-                    } else {
-                        // Do something when it doesn't need to be refreshed
+                        self.addProximityEvent(deviceId: id, proximityEvent: pe, clProximity: clProximity)
                     }
+                } else {
+                    // Do something when it doesn't need to be refreshed
                 }
             }
         }
@@ -99,13 +102,14 @@ class ProximityHandler {
         func clean(trigger: [String: ProximityEvent]) -> [String: ProximityEvent] {
             var t = trigger
             for (id, proximityEvent) in t {
-                if let createdAt = proximityEvent.createdAt {
-                    let now = Int64(Date().timeIntervalSince1970 * 1000)
-                    let gap = now - createdAt
-                    // If gap is higher than 5 minutes we will clear the value in the trigger dictionary
-                    if gap > 5 * 60 * 1000 {
-                        t.removeValue(forKey: id)
-                    }
+                guard let createdAt = proximityEvent.createdAt else {
+                    return
+                }
+                let now = Int64(Date().timeIntervalSince1970 * 1000)
+                let gap = now - createdAt
+                // If gap is higher than 5 minutes we will clear the value in the trigger dictionary
+                if gap > 5 * 60 * 1000 {
+                    t.removeValue(forKey: id)
                 }
             }
             return t
@@ -144,9 +148,10 @@ class ProximityHandler {
             var beaconsId: [String] = []
             beaconsId = fromArray
             if beaconsId.contains(deviceId) {
-                if let index = beaconsId.index(of: deviceId) {
-                    beaconsId.remove(at: index)
-                }
+                guard let index = beaconsId.index(of: deviceId) else {
+                        return
+                    }
+                beaconsId.remove(at: index)
             }
             return beaconsId
         }
