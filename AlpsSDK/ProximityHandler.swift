@@ -149,8 +149,8 @@ class ProximityHandler {
             beaconsId = fromArray
             if beaconsId.contains(deviceId) {
                 guard let index = beaconsId.index(of: deviceId) else {
-                        return
-                    }
+                    return
+                }
                 beaconsId.remove(at: index)
             }
             return beaconsId
