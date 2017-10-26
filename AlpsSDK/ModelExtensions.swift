@@ -8,6 +8,7 @@
 
 import Foundation
 import Alps
+import CoreLocation
 
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
@@ -102,4 +103,9 @@ extension ProximityEvent {
         self.deviceId = deviceId
         self.distance = distance
     }
+}
+
+extension CLProximity {
+    
+    static let allValues = [unknown, immediate, near, far]
 }

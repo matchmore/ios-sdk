@@ -13,8 +13,8 @@ import Alps
 open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
 
     let apiKey: String
-    lazy var contextManager = ContextManager(delegate: self)
-    lazy var matchMonitor = MatchMonitor(delegate: self)
+    lazy var contextManager: ContextManager = ContextManager(delegate: self)
+    lazy var matchMonitor: MatchMonitor = MatchMonitor(delegate: self)
 
     private init(apiKey: String) {
         self.apiKey = apiKey

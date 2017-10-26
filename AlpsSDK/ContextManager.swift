@@ -21,6 +21,9 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     private weak var delegate: ContextManagerDelegate?
 
     let locationManager = CLLocationManager()
+    private(set) var proximityHandler: ProximityHandler!
+    // id of all known beacons
+    var beacons: [IBeaconTriple] = []
 
     init(delegate: ContextManagerDelegate) {
         super.init()
@@ -28,6 +31,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
+        self.proximityHandler = ProximityHandler(contextManager: self)
     }
 
     // MARK: - Core Location Manager Delegate
@@ -49,11 +53,10 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         if let closestBeacon = beacons.max(by: { $0.accuracy < $1.accuracy }) {
             delegate?.contextManager(manager: self, didRangeClosestBeacon: closestBeacon)
         }
-        parseBeaconsByProximity(beacons)
-    }
-
-    private func parseBeaconsByProximity(_ beacons: [CLBeacon]) {
-        
+        // Proximity Events related
+        proximityHandler.parseBeaconsByProximity(beacons)
+        proximityHandler.triggerBeaconsProximityEvent()
+        proximityHandler.refreshTriggers()
     }
 
     private func triggerProximityEvent(deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
