@@ -14,10 +14,13 @@
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		9D25EC5A256A8E763D90CC8C /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */; };
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
-		C34BFC4C1F98BE0900CAB9BB /* AsyncRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* AsyncRepository.swift */; };
-		C3A197AA1F99E5230095E07E /* PinDeviceAsyncRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceAsyncRepo.swift */; };
-		C3A7F6171F978ED7007CC20B /* PinDeviceAsyncRepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceAsyncRepoTests.swift */; };
-		C3BA176E1F9A0C6300EC0F6F /* AlpsManager+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA176D1F9A0C6300EC0F6F /* AlpsManager+Requests.swift */; };
+		C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3227B361F9F277B00785BA4 /* DeviceRepository.swift */; };
+		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
+		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
+		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
+		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
+		C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */; };
+		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +47,13 @@
 		8468D0DF37CC1A55852398D0 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		9E0BBEF2EBC715F09EBB5ACF /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C34BFC4B1F98BE0900CAB9BB /* AsyncRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncRepository.swift; sourceTree = "<group>"; };
-		C3A197A91F99E5230095E07E /* PinDeviceAsyncRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceAsyncRepo.swift; sourceTree = "<group>"; };
-		C3A7F6161F978ED7007CC20B /* PinDeviceAsyncRepoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceAsyncRepoTests.swift; sourceTree = "<group>"; };
-		C3BA176D1F9A0C6300EC0F6F /* AlpsManager+Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Requests.swift"; sourceTree = "<group>"; };
+		C3227B361F9F277B00785BA4 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
+		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
+		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
+		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,7 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
-				C3A7F6161F978ED7007CC20B /* PinDeviceAsyncRepoTests.swift */,
+				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
+				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -139,8 +147,8 @@
 		C34BFC4A1F98BDF200CAB9BB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				C34BFC4B1F98BE0900CAB9BB /* AsyncRepository.swift */,
-				C3BA176C1F9A09BD00EC0F6F /* Pin Device */,
+				C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */,
+				C3BA176C1F9A09BD00EC0F6F /* Devices */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -148,18 +156,19 @@
 		C381EE791F977EB90061E7AC /* AlpsManager */ = {
 			isa = PBXGroup;
 			children = (
-				C3BA176D1F9A0C6300EC0F6F /* AlpsManager+Requests.swift */,
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 			);
 			path = AlpsManager;
 			sourceTree = "<group>";
 		};
-		C3BA176C1F9A09BD00EC0F6F /* Pin Device */ = {
+		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				C3A197A91F99E5230095E07E /* PinDeviceAsyncRepo.swift */,
+				C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */,
+				C3227B361F9F277B00785BA4 /* DeviceRepository.swift */,
+				C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */,
 			);
-			path = "Pin Device";
+			path = Devices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,13 +398,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
+				C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
-				C3BA176E1F9A0C6300EC0F6F /* AlpsManager+Requests.swift in Sources */,
-				C3A197AA1F99E5230095E07E /* PinDeviceAsyncRepo.swift in Sources */,
-				C34BFC4C1F98BE0900CAB9BB /* AsyncRepository.swift in Sources */,
+				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
+				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A7F6171F978ED7007CC20B /* PinDeviceAsyncRepoTests.swift in Sources */,
+				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
+				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
+				C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

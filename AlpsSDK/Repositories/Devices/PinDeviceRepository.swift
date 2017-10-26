@@ -1,5 +1,5 @@
 //
-//  PinDeviceAsyncRepo.swift
+//  PinDeviceRepository.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 20/10/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class PinDeviceAsyncRepo: AsyncRepostiory {
+final class PinDeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = PinDevice
     private(set) var items = [PinDevice]()
     
@@ -35,6 +35,7 @@ final class PinDeviceAsyncRepo: AsyncRepostiory {
     func delete(item: PinDevice, completion: @escaping (Error?) -> Void) {
         guard let id = item.id else { completion(nil); return }
         Alps.DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            self.items = self.items.filter { $0 !== item }
             completion(error)
         }
     }

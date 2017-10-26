@@ -1,5 +1,5 @@
 //
-//  AsyncRepository.swift
+//  DataRepostiory.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 19/10/2017.
@@ -13,12 +13,12 @@ enum Result<T> {
     case failure(Error?)
 }
 
-protocol AsyncRepostiory: AsyncCreateable, AsyncReadable, AsyncDeleteable {
-    var items: [DataType] { get }
-}
-
 protocol AssociatedDataType {
     associatedtype DataType
+}
+
+protocol DataRepostiory: AssociatedDataType {
+    var items: [DataType] { get }
 }
 
 protocol AsyncCreateable: AssociatedDataType {
@@ -28,6 +28,10 @@ protocol AsyncCreateable: AssociatedDataType {
 protocol AsyncReadable: AssociatedDataType {
     func find(byId: String, completion: @escaping (Result<DataType?>) -> Void)
     func findAll(completion: @escaping (Result<[DataType]>) -> Void)
+}
+
+protocol AsyncUpdateable: AssociatedDataType {
+    func update(item: DataType, completion: @escaping (Result<DataType?>) -> Void)
 }
 
 protocol AsyncDeleteable: AssociatedDataType {

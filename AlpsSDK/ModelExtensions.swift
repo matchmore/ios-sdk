@@ -9,20 +9,6 @@
 import Foundation
 import Alps
 
-extension Dictionary {
-    mutating func merge(with dictionary: Dictionary) {
-        dictionary.forEach {
-            updateValue($1, forKey: $0)
-        }
-    }
-
-    func merged(with dictionary: Dictionary) -> Dictionary {
-        var dict = self
-        dict.merge(with: dictionary)
-        return dict
-    }
-}
-
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
     public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber) {
@@ -72,7 +58,6 @@ extension Subscription {
 
     internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
         self.init()
-        // XXX: use now for the timestamp
         self.deviceId = deviceId
         self.topic = topic
         self.range = range
