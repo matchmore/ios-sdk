@@ -15,10 +15,25 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     let apiKey: String
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
+    
+    lazy var deviceRepository = DeviceRepository()
+    lazy var pubRepository = PublicationRepository()
+    lazy var subRepository = SubscriptionRepository()
+    
+    private var _mainDevice: Device?
+    var mainDevice: Device? {
+        if _mainDevice != nil {
+            return _mainDevice
+        } else {
+            createMainDevice()
+            return nil
+        }
+    }
 
     private init(apiKey: String) {
         self.apiKey = apiKey
         self.setupAPI()
+        self.createMainDevice()
     }
     
     private func setupAPI() {
@@ -31,6 +46,15 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         ]
         AlpsAPI.customHeaders = headers
         AlpsAPI.basePath = "https://api.matchmore.io/v5"
+    }
+    
+    private func createMainDevice() {
+        let mainDevice = Device()
+        deviceRepository.create(item: mainDevice) { [weak self] (result) in
+            if case let .success(device) = result {
+                self?._mainDevice = device
+            }
+        }
     }
     
     // MARK: - Match Monitor Delegate

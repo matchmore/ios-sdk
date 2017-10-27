@@ -35,6 +35,7 @@ final class DeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, As
     func delete(item: Device, completion: @escaping (Error?) -> Void) {
         guard let id = item.id else { completion(nil); return }
         Alps.DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            self.items = self.items.filter { $0 !== item }
             completion(error)
         }
     }

@@ -8,15 +8,7 @@
 
 import Foundation
 
-enum Result<T> {
-    case success(T)
-    case failure(Error?)
-}
-
-protocol AssociatedDataType {
-    associatedtype DataType
-}
-
+/// Together with protocols below defines full CRUD interface for model
 protocol DataRepostiory: AssociatedDataType {
     var items: [DataType] { get }
 }
@@ -36,4 +28,15 @@ protocol AsyncUpdateable: AssociatedDataType {
 
 protocol AsyncDeleteable: AssociatedDataType {
     func delete(item: DataType, completion: @escaping (Error?) -> Void)
+}
+
+// MARK: - Helper protocols
+
+enum Result<T> {
+    case success(T)
+    case failure(Error?)
+}
+
+protocol AssociatedDataType {
+    associatedtype DataType
 }
