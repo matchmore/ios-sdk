@@ -10,21 +10,31 @@ import Alps
 import Foundation
 
 protocol MatchMonitorDelegate: class {
-    func matchMonitor(monitor: MatchMonitor, didReceiveMatches: [Match])
+    func didFind(matches: [Match], for device: Device)
 }
 
 class MatchMonitor {
     private(set) weak var delegate: MatchMonitorDelegate?
-    private(set) var deliveredMatches = Set<Match>()
+    private var timer: Timer?
     
-    fileprivate var timer: Timer?
+    private var monitoredDevices = Set<Device>()
+    private(set) var deliveredMatches = Set<Match>()
 
     init(delegate: MatchMonitorDelegate) {
         self.delegate = delegate
+        self.startPollingTimer()
     }
     
     // MARK: - Match Monitoring
-    public func startMonitoringMatches() {
+    public func startMonitoringFor(device: Device) {
+        monitoredDevices.insert(device)
+    }
+    
+    public func stopMonitoringFor(device: Device) {
+        monitoredDevices.remove(device)
+    }
+    
+    private func startPollingTimer() {
         if timer != nil { return }
         Timer.scheduledTimer(timeInterval: 1,
                              target: self,
@@ -33,12 +43,18 @@ class MatchMonitor {
                              repeats: true)
     }
     
-    @objc func getMatches() {
-        // get matches with a request first
-        delegate?.matchMonitor(monitor: self, didReceiveMatches: [])
+    @objc private func getMatches() {
+        self.monitoredDevices.forEach {
+            getMatchesForDevice(device: $0)
+        }
     }
-
-    func stopMonitoringMatches() {
-        self.timer?.invalidate()
+    
+    private func getMatchesForDevice(device: Device) {
+        MatchesAPI.getMatches(deviceId: device.id ?? "") { (matches, error) in
+            if let matches = matches, matches.count > 0, error != nil {
+                self.deliveredMatches = self.deliveredMatches.union(Set(matches))
+                self.delegate?.didFind(matches: matches, for: device)
+            }
+        }
     }
 }

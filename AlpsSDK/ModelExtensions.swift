@@ -41,6 +41,16 @@ extension PinDevice {
     }
 }
 
+extension Device: Hashable {
+    public var hashValue: Int {
+        return id!.hashValue
+    }
+    
+    public static func == (lhs: Device, rhs: Device) -> Bool {
+        return lhs.id! == rhs.id!
+    }
+}
+
 extension Publication {
 
     internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String: String]) {
@@ -79,13 +89,11 @@ extension Location {
 }
 
 extension Match: CustomStringConvertible, Hashable {
-
-    // XXX: take the hashValue based on the hashValue of matchId
+    
     public var hashValue: Int {
         return id!.hashValue
     }
 
-    // XXX: Define the match equality based on the matchId only
     public static func == (lhs: Match, rhs: Match) -> Bool {
         return lhs.id! == rhs.id!
     }

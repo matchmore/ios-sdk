@@ -11,29 +11,32 @@ import CoreLocation
 import Alps
 
 open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
-
     let apiKey: String
+    var baseURL: String {
+        set {
+            AlpsAPI.basePath = newValue
+        } get {
+            return AlpsAPI.basePath
+        }
+    }
+    
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     
+    lazy var mobileDeviceRepository = MobileDeviceRepository()
     lazy var deviceRepository = DeviceRepository()
+    
     lazy var pubRepository = PublicationRepository()
     lazy var subRepository = SubscriptionRepository()
     
-    private var _mainDevice: Device?
-    var mainDevice: Device? {
-        if _mainDevice != nil {
-            return _mainDevice
-        } else {
-            createMainDevice()
-            return nil
-        }
-    }
+    var mainDevice: Device?
 
-    private init(apiKey: String) {
+    init(apiKey: String, baseUrl: String? = nil) {
         self.apiKey = apiKey
         self.setupAPI()
-        self.createMainDevice()
+        if let baseUrl = baseUrl {
+            self.baseURL = baseUrl
+        }
     }
     
     private func setupAPI() {
@@ -48,18 +51,23 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         AlpsAPI.basePath = "https://api.matchmore.io/v5"
     }
     
-    private func createMainDevice() {
-        let mainDevice = Device()
-        deviceRepository.create(item: mainDevice) { [weak self] (result) in
-            if case let .success(device) = result {
-                self?._mainDevice = device
+    func createMainDevice(device: MobileDevice? = nil, completion: ((MobileDevice?) -> Void)? = nil) {
+        let uiDevice = UIDevice.current
+        let mobileDevice = MobileDevice(name: device?.name ?? uiDevice.name,
+                              platform: device?.platform ?? uiDevice.systemName,
+                              deviceToken: device?.deviceToken ?? "",
+                              location: device?.location ?? nil)
+        mobileDeviceRepository.create(item: mobileDevice) { [weak self] (result) in
+            if case let .success(createdDevice) = result {
+                self?.mainDevice = createdDevice
+                completion?(createdDevice)
             }
         }
     }
     
     // MARK: - Match Monitor Delegate
     
-    func matchMonitor(monitor: MatchMonitor, didReceiveMatches: [Match]) {
+    func didFind(matches: [Match], for device: Device) {
         
     }
     
