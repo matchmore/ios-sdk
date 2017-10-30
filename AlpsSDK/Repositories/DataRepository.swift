@@ -9,9 +9,6 @@
 import Foundation
 
 /// Together with protocols below defines full CRUD interface for model
-protocol DataRepostiory: AssociatedDataType {
-    var items: [DataType] { get }
-}
 
 protocol AsyncCreateable: AssociatedDataType {
     func create(item: DataType, completion: @escaping (Result<DataType?>) -> Void)

@@ -11,10 +11,10 @@ import Foundation
 import Foundation
 import Alps
 
-final class MobileDeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = MobileDevice
     
-    private(set) var items = [MobileDevice]()
+    private var items = [MobileDevice]()
     private(set) var main: Device?
     
     func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {

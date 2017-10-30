@@ -9,9 +9,9 @@
 import Foundation
 import Alps
 
-final class SubscriptionRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Subscription
-    var items = [Subscription]()
+    private var items = [Subscription]()
     
     func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
         guard let deviceId = item.deviceId else { return }

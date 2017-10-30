@@ -11,12 +11,12 @@ import Alps
 
 /// filters location data update
 final class LocationUpdateManager {
-    private var lastLocation: Location?
+    private(set) var lastLocation: Location?
     
     func tryToSend(location: Location, for deviceId: String) {
         if location == lastLocation { return }
-        LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { [weak self] (location, error) in
-            if error == nil { return }
+        LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { [weak self] (createdLocation, error) in
+            print("\(String(describing: error))", "\(String(describing: createdLocation))")
             self?.lastLocation = location
         })
     }

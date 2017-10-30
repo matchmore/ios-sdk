@@ -9,9 +9,9 @@
 import Foundation
 import Alps
 
-final class PublicationRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Publication
-    var items = [Publication]()
+    private var items = [Publication]()
     
     func create(item: Publication, completion: @escaping (Result<Publication?>) -> Void) {
         guard let deviceId = item.deviceId else { return }

@@ -9,9 +9,9 @@
 import Foundation
 import Alps
 
-final class PinDeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = PinDevice
-    private(set) var items = [PinDevice]()
+    private var items = [PinDevice]()
     
     func create(item: PinDevice, completion: @escaping (Result<PinDevice?>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 import Alps
 
 extension IBeaconDevice {
@@ -85,6 +86,15 @@ extension Location {
         self.altitude = altitude
         self.horizontalAccuracy = horizontalAccuracy
         self.verticalAccuracy = verticalAccuracy
+    }
+    
+    internal convenience init(location: CLLocation) {
+        self.init()
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
+        self.altitude = location.altitude
+        self.horizontalAccuracy = location.horizontalAccuracy
+        self.verticalAccuracy = location.verticalAccuracy
     }
     
     public static func == (lhs: Location, rhs: Location?) -> Bool {

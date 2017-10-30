@@ -28,6 +28,8 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     lazy var publications = PublicationRepository()
     lazy var subscriptions = SubscriptionRepository()
+    
+    lazy var locationUpdateManager = LocationUpdateManager()
 
     init(apiKey: String, baseUrl: String? = nil) {
         self.apiKey = apiKey
@@ -57,7 +59,13 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     // MARK: - Context Manager Delegate
     
     func contextManager(manager monitor: ContextManager, didUpdateLocation: CLLocation) {
-        // update location
+        mobileDevices.findAll { (result) in
+            guard case let .success(mobileDevices) = result else { return }
+            mobileDevices.forEach {
+                guard let deviceId = $0.id else { return }
+                self.locationUpdateManager.tryToSend(location: Location(location: didUpdateLocation), for: deviceId)
+            }
+        }
     }
     
     func contextManager(manager: ContextManager, didRangeClosestBeacon: CLBeacon) {
