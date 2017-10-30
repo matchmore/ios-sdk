@@ -109,3 +109,9 @@ extension CLProximity {
     
     static let allValues = [unknown, immediate, near, far]
 }
+
+extension Date {
+    func nowTimeInterval() -> Int64 {
+        return Int64(Date().timeIntervalSince1970 * 1000)
+    }
+}

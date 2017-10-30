@@ -19,11 +19,11 @@ protocol ContextManagerDelegate: class {
 class ContextManager: NSObject, CLLocationManagerDelegate {
     
     private weak var delegate: ContextManagerDelegate?
+    let proximityHandler: ProximityHandlerDelegate? = ProximityHandler()
 
     let locationManager = CLLocationManager()
-    private(set) var proximityHandler: ProximityHandler!
     // id of all known beacons
-    var beacons: [IBeaconTriple] = []
+    var knownBeacons: IBeaconTriples = []
 
     init(delegate: ContextManagerDelegate) {
         super.init()
@@ -31,7 +31,6 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
-        self.proximityHandler = ProximityHandler(contextManager: self)
     }
 
     // MARK: - Core Location Manager Delegate
@@ -50,19 +49,9 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         delegate?.contextManager(manager: self, didDetectBeacons: beacons)
+        proximityHandler?.didRangeBeacons(manager: self, beacons: beacons, knownBeacons: knownBeacons)
         if let closestBeacon = beacons.max(by: { $0.accuracy < $1.accuracy }) {
             delegate?.contextManager(manager: self, didRangeClosestBeacon: closestBeacon)
-        }
-        // Proximity Events related
-        proximityHandler.parseBeaconsByProximity(beacons)
-        proximityHandler.triggerBeaconsProximityEvent()
-        proximityHandler.refreshTriggers()
-    }
-
-    private func triggerProximityEvent(deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
-        let userCompletion = completion
-        Alps.DeviceAPI.triggerProximityEvents(deviceId: deviceId, proximityEvent: proximityEvent) { (proximityEvent, _) in
-            userCompletion(proximityEvent)
         }
     }
 }
