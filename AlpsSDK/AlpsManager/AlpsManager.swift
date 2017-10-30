@@ -23,13 +23,11 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     
-    lazy var mobileDeviceRepository = MobileDeviceRepository()
-    lazy var deviceRepository = DeviceRepository()
+    lazy var mobileDevices = MobileDeviceRepository()
+    lazy var pinDevices = PinDeviceRepository()
     
-    lazy var pubRepository = PublicationRepository()
-    lazy var subRepository = SubscriptionRepository()
-    
-    var mainDevice: Device?
+    lazy var publications = PublicationRepository()
+    lazy var subscriptions = SubscriptionRepository()
 
     init(apiKey: String, baseUrl: String? = nil) {
         self.apiKey = apiKey
@@ -48,33 +46,18 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
             "user-agent": "\(device.systemName) \(device.systemVersion)"
         ]
         AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "https://api.matchmore.io/v5"
-    }
-    
-    func createMainDevice(device: MobileDevice? = nil, completion: ((MobileDevice?) -> Void)? = nil) {
-        let uiDevice = UIDevice.current
-        let mobileDevice = MobileDevice(name: device?.name ?? uiDevice.name,
-                              platform: device?.platform ?? uiDevice.systemName,
-                              deviceToken: device?.deviceToken ?? "",
-                              location: device?.location ?? nil)
-        mobileDeviceRepository.create(item: mobileDevice) { [weak self] (result) in
-            if case let .success(createdDevice) = result {
-                self?.mainDevice = createdDevice
-                completion?(createdDevice)
-            }
-        }
     }
     
     // MARK: - Match Monitor Delegate
     
     func didFind(matches: [Match], for device: Device) {
-        
+        // update watchers that match happen
     }
     
     // MARK: - Context Manager Delegate
     
     func contextManager(manager monitor: ContextManager, didUpdateLocation: CLLocation) {
-        
+        // update location
     }
     
     func contextManager(manager: ContextManager, didRangeClosestBeacon: CLBeacon) {

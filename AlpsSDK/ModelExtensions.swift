@@ -53,7 +53,7 @@ extension Device: Hashable {
 
 extension Publication {
 
-    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String: String]) {
+    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
         self.init()
         // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
@@ -66,7 +66,7 @@ extension Publication {
 
 extension Subscription {
 
-    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
+    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, selector: String) {
         self.init()
         self.deviceId = deviceId
         self.topic = topic
@@ -85,6 +85,11 @@ extension Location {
         self.altitude = altitude
         self.horizontalAccuracy = horizontalAccuracy
         self.verticalAccuracy = verticalAccuracy
+    }
+    
+    public static func == (lhs: Location, rhs: Location?) -> Bool {
+        guard let rhs = rhs else { return false }
+        return lhs.latitude! == rhs.latitude! && lhs.longitude! == rhs.longitude!
     }
 }
 

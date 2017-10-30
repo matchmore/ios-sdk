@@ -1,5 +1,5 @@
 //
-//  DeviceRepositoryTests.swift
+//  MobileDeviceRepositoryTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 26/10/2017.

@@ -13,12 +13,17 @@ import Alps
 
 final class MobileDeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = MobileDevice
+    
     private(set) var items = [MobileDevice]()
+    private(set) var main: Device?
     
     func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
             if let device = device as? MobileDevice, error == nil {
                 self.items.append(device)
+                if self.main == nil {
+                    self.main = device
+                }
                 completion(.success(device))
             } else {
                 completion(.failure(error))
@@ -37,6 +42,7 @@ final class MobileDeviceRepository: DataRepostiory, AsyncCreateable, AsyncReadab
     func delete(item: MobileDevice, completion: @escaping (Error?) -> Void) {
         guard let id = item.id else { completion(nil); return }
         Alps.DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            if self.main?.id == id { self.main = nil }
             self.items = self.items.filter { $0 !== item }
             completion(error)
         }

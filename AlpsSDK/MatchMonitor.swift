@@ -52,8 +52,11 @@ class MatchMonitor {
     private func getMatchesForDevice(device: Device) {
         MatchesAPI.getMatches(deviceId: device.id ?? "") { (matches, error) in
             if let matches = matches, matches.count > 0, error != nil {
-                self.deliveredMatches = self.deliveredMatches.union(Set(matches))
-                self.delegate?.didFind(matches: matches, for: device)
+                let union = self.deliveredMatches.union(Set(matches))
+                if union != self.deliveredMatches {
+                    self.deliveredMatches = union
+                    self.delegate?.didFind(matches: matches, for: device)
+                }
             }
         }
     }
