@@ -32,7 +32,6 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let items: [Publication]?
                 let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: properties)
                 alpsManager.createPublication(publication: publication)
                 expect(alpsManager.publications.items).toEventuallyNot(beEmpty())
@@ -51,9 +50,12 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("get a match") {
+                guard let mainDevice = alpsManager.mobileDevices.main else { return }
+                alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
-                    guard let mainDevice = alpsManager.mobileDevices.main else { return }
-                    alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
+                    alpsManager.onMatch = { _, _ in
+                        done()
+                    }
                 }
                 expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
             }

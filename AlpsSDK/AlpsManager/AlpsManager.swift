@@ -22,6 +22,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
+    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     lazy var mobileDevices = MobileDeviceRepository()
     lazy var pinDevices = PinDeviceRepository()
@@ -53,7 +54,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     // MARK: - Match Monitor Delegate
     
     func didFind(matches: [Match], for device: Device) {
-        // update watchers that match happen
+        onMatch?(matches, device)
     }
     
     // MARK: - Context Manager Delegate

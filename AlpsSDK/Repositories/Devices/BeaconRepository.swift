@@ -11,7 +11,7 @@ import Alps
 
 final class BeaconRepository: AsyncReadable {
     typealias DataType = IBeaconTriple
-    private var items = [IBeaconTriple]()
+    private(set) var items = [IBeaconTriple]()
     
     init() {
         updateBeaconTriplets()

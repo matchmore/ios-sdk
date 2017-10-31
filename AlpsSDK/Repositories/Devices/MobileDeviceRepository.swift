@@ -14,7 +14,7 @@ import Alps
 final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = MobileDevice
     
-    private var items = [MobileDevice]()
+    private(set) var items = [MobileDevice]()
     private(set) var main: Device?
     
     func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
