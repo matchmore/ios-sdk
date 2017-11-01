@@ -24,6 +24,7 @@
 		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
+		C3E499F51FAA1DF90048585A /* MobileDeviceArchiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
+		C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceArchiveTest.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,11 +109,9 @@
 		502C85971E01BB5F00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3E499F31FAA1DBF0048585A /* API Integration Tests */,
+				C3E499F21FAA1DBD0048585A /* Archiving Tests */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
-				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
-				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
-				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
-				C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -192,6 +192,25 @@
 				C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */,
 			);
 			path = PubSub;
+			sourceTree = "<group>";
+		};
+		C3E499F21FAA1DBD0048585A /* Archiving Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */,
+			);
+			path = "Archiving Tests";
+			sourceTree = "<group>";
+		};
+		C3E499F31FAA1DBF0048585A /* API Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
+				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
+				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */,
+			);
+			path = "API Integration Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +462,7 @@
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
 				C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */,
+				C3E499F51FAA1DF90048585A /* MobileDeviceArchiveTest.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

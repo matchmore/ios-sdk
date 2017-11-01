@@ -18,7 +18,7 @@ class PinDeviceRepositoryTests: QuickSpec {
     
     func setupAPI() {
         let headers = [
-            "api-key": "ba4b38d8-abbb-4947-b1de-ada6384e214c",
+            "api-key": "08940519-c414-4329-99d3-d0b8b2e5fce9",
             "Content-Type": "application/json"
             ]
         AlpsAPI.customHeaders = headers
