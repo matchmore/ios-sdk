@@ -42,7 +42,6 @@ class MobileDeviceArchiveTest: QuickSpec {
                 expect(mobileDevice?.name).to(equal("Test Archived Device"))
                 expect(mobileDevice?.platform).to(equal("Test iOS"))
                 expect(mobileDevice?.deviceToken).to(equal("None"))
-                expect(mobileDevice?.location).to(beNil())
             }
         }
     }

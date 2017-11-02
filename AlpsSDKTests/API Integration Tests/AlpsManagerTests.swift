@@ -19,7 +19,7 @@ final class AlpsManagerTests: QuickSpec {
     let kWaitTimeInterval = 10.0
     
     override func spec() {
-        let alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
+        var alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
                                       baseUrl: "http://localhost:9000/v4")
         
         let properties = ["test": "true"]
@@ -41,6 +41,12 @@ final class AlpsManagerTests: QuickSpec {
                 let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
                 alpsManager.createSubscription(subscription: subscription)
                 expect(alpsManager.subscriptions.items).toEventuallyNot(beEmpty())
+            }
+            
+            fit ("recover state") {
+                alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
+                                          baseUrl: "http://localhost:9000/v4")
+                expect(alpsManager.mobileDevices.main).toNot(beNil())
             }
             
             fit ("update location") {
