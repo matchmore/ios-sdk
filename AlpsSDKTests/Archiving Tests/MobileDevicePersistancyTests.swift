@@ -1,5 +1,5 @@
 //
-//  MobileDeviceArchiveTest.swift
+//  MobileDevicePersistancyTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 01/11/2017.
@@ -14,10 +14,10 @@ import Nimble
 @testable import Alps
 @testable import AlpsSDK
 
-class MobileDeviceArchiveTest: QuickSpec {
+class MobileDevicePersistancyTests: QuickSpec {
 
     override func spec() {
-        let fileName = "TestMobileDevice"
+        let fileName = "TestMobileDeviceFile"
         let archiver = NSKeyedArchiver(forWritingWith: NSMutableData())
         let mobileDevice = MobileDevice(name: "Test Archived Device", platform: "Test iOS", deviceToken: "None", location: nil)
         let encodableMobileDevice = mobileDevice.encodableMobileDevice

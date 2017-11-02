@@ -16,16 +16,16 @@
 		C0EAE78EA335B6D7C781D382 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0EC893141932D8F70449D0 /* Pods_AlpsSDKTests.framework */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistancyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistancyManager.swift */; };
+		C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
-		C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
 		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
-		C3E499F51FAA1DF90048585A /* MobileDeviceArchiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */; };
+		C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
@@ -56,16 +56,16 @@
 		B83DB166289707C178D356F6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistancyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistancyManager.swift; sourceTree = "<group>"; };
+		C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
-		C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
-		C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceArchiveTest.swift; sourceTree = "<group>"; };
+		C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
 		C74A3D3ED75A3745FA6C0CFA /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,7 +208,8 @@
 		C3E499F21FAA1DBD0048585A /* Archiving Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C3E499F41FAA1DF90048585A /* MobileDeviceArchiveTest.swift */,
+				C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */,
+				C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */,
 			);
 			path = "Archiving Tests";
 			sourceTree = "<group>";
@@ -219,7 +220,6 @@
 				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
 				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
 				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
-				C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */,
 			);
 			path = "API Integration Tests";
 			sourceTree = "<group>";
@@ -473,9 +473,9 @@
 			files = (
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
-				C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */,
-				C3E499F51FAA1DF90048585A /* MobileDeviceArchiveTest.swift in Sources */,
+				C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
+				C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

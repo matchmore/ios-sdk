@@ -12,12 +12,16 @@ import Foundation
 import Alps
 
 let kMainDeviceFile = "kMainDeviceFile.Alps"
-let kMobileDevicesFile = "kMainDeviceFile.Alps"
+let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 
 final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = MobileDevice
     
-    private(set) var items = [MobileDevice]()
+    private(set) var items = [MobileDevice]() {
+        didSet {
+            _ = PersistancyManager.save(object: self.items.map { $0.encodableMobileDevice }, to: kMobileDevicesFile)
+        }
+    }
     var main: MobileDevice? {
         didSet {
             _ = PersistancyManager.save(object: self.main?.encodableMobileDevice, to: kMainDeviceFile)
@@ -26,6 +30,7 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
     
     init() {
         self.main = PersistancyManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.object
+        self.items = PersistancyManager.read(type: [EncodableMobileDevice].self, from: kMobileDevicesFile)?.map { $0.object } ?? []
     }
     
     func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
