@@ -29,12 +29,12 @@ class MobileDevicePersistancyTests: QuickSpec {
             }
             
             fit ("saving") {
-                let success = PersistancyManager.save(object: encodableMobileDevice, to: fileName)
+                let success = PersistenceManager.save(object: encodableMobileDevice, to: fileName)
                 expect(success).to(beTrue())
             }
             
             fit ("reading") {
-                decodedMobileDevice = PersistancyManager.read(type: EncodableMobileDevice.self, from: fileName)
+                decodedMobileDevice = PersistenceManager.read(type: EncodableMobileDevice.self, from: fileName)
                 expect(decodedMobileDevice).toNot(beNil())
             }
             

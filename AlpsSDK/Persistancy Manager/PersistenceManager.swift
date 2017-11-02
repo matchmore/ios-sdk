@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-class PersistancyManager {
+class PersistenceManager {
     
     private class func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -17,9 +17,9 @@ class PersistancyManager {
     }
     
     class func save<T>(object: T?, to file: String) -> Bool {
-        guard let object = object else { return PersistancyManager.delete(file: file) }
+        guard let object = object else { return PersistenceManager.delete(file: file) }
         let data = NSKeyedArchiver.archivedData(withRootObject: object)
-        let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
+        let fullPath = PersistenceManager.getDocumentsDirectory().appendingPathComponent(file)
         do {
             try data.write(to: fullPath)
         } catch {
@@ -29,13 +29,13 @@ class PersistancyManager {
     }
     
     class func read<T>(type: T.Type, from file: String) -> T? {
-        let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
+        let fullPath = PersistenceManager.getDocumentsDirectory().appendingPathComponent(file)
         guard let readObject = NSKeyedUnarchiver.unarchiveObject(withFile: fullPath.path) as? T else { return nil }
         return readObject
     }
     
     class func delete(file: String) -> Bool {
-        let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
+        let fullPath = PersistenceManager.getDocumentsDirectory().appendingPathComponent(file)
         do {
             try FileManager.default.removeItem(at: fullPath)
         } catch {

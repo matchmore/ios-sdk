@@ -36,13 +36,13 @@ class MultiplePinDevicePersistancyTests: QuickSpec {
             }
             
             fit ("saving") {
-                let success = PersistancyManager.save(object: encodablePinDevices, to: fileName)
+                let success = PersistenceManager.save(object: encodablePinDevices, to: fileName)
                 expect(success).to(beTrue())
             }
             
             var decodedPinDevices: [EncodablePinDevice]?
             fit ("reading") {
-                decodedPinDevices = PersistancyManager.read(type: [EncodablePinDevice].self, from: fileName)
+                decodedPinDevices = PersistenceManager.read(type: [EncodablePinDevice].self, from: fileName)
                 expect(decodedPinDevices?.count).to(equal(4))
             }
             
