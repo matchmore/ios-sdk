@@ -17,7 +17,7 @@ class PinDeviceRepositoryTests: QuickSpec {
     
     func setupAPI() {
         let headers = [
-            "api-key": "c9b9601d-55b9-4057-8331-f1e2c72d308d",
+            "api-key": "ba4b38d8-abbb-4947-b1de-ada6384e214c",
             "Content-Type": "application/json"
             ]
         AlpsAPI.customHeaders = headers
@@ -71,7 +71,8 @@ class PinDeviceRepositoryTests: QuickSpec {
             
             fit("delete") {
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
-                    pinDeviceRepository.delete(item: readPinDevice!,
+                    guard let readPinDevice = readPinDevice else { done(); return }
+                    pinDeviceRepository.delete(item: readPinDevice,
                                                completion: { (_) in
                         done()
                     })
