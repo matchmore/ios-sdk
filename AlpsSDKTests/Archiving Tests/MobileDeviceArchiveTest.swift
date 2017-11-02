@@ -17,9 +17,10 @@ import Nimble
 class MobileDeviceArchiveTest: QuickSpec {
 
     override func spec() {
+        let fileName = "TestMobileDevice"
         let archiver = NSKeyedArchiver(forWritingWith: NSMutableData())
         let mobileDevice = MobileDevice(name: "Test Archived Device", platform: "Test iOS", deviceToken: "None", location: nil)
-        let encodableMobileDevice = EncodableMobileDevice(mobileDevice: mobileDevice)
+        let encodableMobileDevice = mobileDevice.encodableMobileDevice
         var decodedMobileDevice: EncodableMobileDevice?
         context("mobile device saving") {
             fit ("encoding") {
@@ -28,17 +29,17 @@ class MobileDeviceArchiveTest: QuickSpec {
             }
             
             fit ("saving") {
-                let success = PersistancyManager.save(object: encodableMobileDevice, to: "TestMobileDevice")
+                let success = PersistancyManager.save(object: encodableMobileDevice, to: fileName)
                 expect(success).to(beTrue())
             }
             
             fit ("reading") {
-                decodedMobileDevice = PersistancyManager.read(type: EncodableMobileDevice.self, from: "TestMobileDevice")
+                decodedMobileDevice = PersistancyManager.read(type: EncodableMobileDevice.self, from: fileName)
                 expect(decodedMobileDevice).toNot(beNil())
             }
             
             fit ("decoding") {
-                let mobileDevice = decodedMobileDevice?.mobileDevice
+                let mobileDevice = decodedMobileDevice?.object
                 expect(mobileDevice?.name).to(equal("Test Archived Device"))
                 expect(mobileDevice?.platform).to(equal("Test iOS"))
                 expect(mobileDevice?.deviceToken).to(equal("None"))

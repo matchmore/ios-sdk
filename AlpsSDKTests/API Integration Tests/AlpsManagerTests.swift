@@ -26,6 +26,11 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         context("Alps Manager") {
+            fit ("clear state") {
+                alpsManager.mobileDevices.main = nil
+                expect(alpsManager.mobileDevices.main).toEventually(beNil())
+            }
+            
             fit ("create main device") {
                 alpsManager.createMainDevice()
                 expect(alpsManager.mobileDevices.main).toEventuallyNot(beNil())

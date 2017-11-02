@@ -18,14 +18,14 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
     typealias DataType = MobileDevice
     
     private(set) var items = [MobileDevice]()
-    private(set) var main: MobileDevice? {
+    var main: MobileDevice? {
         didSet {
-            _ = PersistancyManager.save(object: EncodableMobileDevice(mobileDevice: self.main), to: kMainDeviceFile)
+            _ = PersistancyManager.save(object: self.main?.encodableMobileDevice, to: kMainDeviceFile)
         }
     }
     
     init() {
-        self.main = PersistancyManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.mobileDevice
+        self.main = PersistancyManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.object
     }
     
     func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {

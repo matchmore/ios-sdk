@@ -36,7 +36,7 @@ class MatchMonitor {
     
     private func startPollingTimer() {
         if timer != nil { return }
-        Timer.scheduledTimer(timeInterval: 1,
+        Timer.scheduledTimer(timeInterval: 5,
                              target: self,
                              selector: #selector(getMatches),
                              userInfo: nil,

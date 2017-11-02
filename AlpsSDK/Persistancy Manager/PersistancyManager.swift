@@ -16,7 +16,8 @@ class PersistancyManager {
         return paths[0]
     }
     
-    class func save<T: NSCoding>(object: T, to file: String) -> Bool {
+    class func save<T: NSCoding>(object: T?, to file: String) -> Bool {
+        guard let object = object else { return PersistancyManager.delete(file: file) }
         let data = NSKeyedArchiver.archivedData(withRootObject: object)
         let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
         do {
@@ -29,7 +30,19 @@ class PersistancyManager {
     
     class func read<T: NSCoding>(type: T.Type, from file: String) -> T? {
         let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
-        guard let readObject = NSKeyedUnarchiver.unarchiveObject(withFile: fullPath.path) as? T else { return nil }
-        return readObject
+        let readObject = NSKeyedUnarchiver.unarchiveObject(withFile: fullPath.path)
+        
+        guard let readObjectA = readObject as? T else { return nil }
+        return readObjectA
+    }
+    
+    class func delete(file: String) -> Bool {
+        let fullPath = PersistancyManager.getDocumentsDirectory().appendingPathComponent(file)
+        do {
+            try FileManager.default.removeItem(at: fullPath)
+        } catch {
+            return false
+        }
+        return true
     }
 }
