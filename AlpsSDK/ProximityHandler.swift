@@ -14,38 +14,48 @@ protocol ProximityHandlerDelegate : class {
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple])
 }
 
-class ProximityHandler: NSObject, ProximityHandlerDelegate {
+final class ProximityHandler: ProximityHandlerDelegate {
     var refreshTimer: Int = 60 * 1000 // timer is in milliseconds
-    var beaconsDetected: [String: [IBeaconTriple]] = [:]
-    var beaconsTriggered: [String: [String: ProximityEvent]] = [:]
+    lazy var beaconsDetected: [CLProximity: [IBeaconTriple]] = [:]
+    lazy var beaconsTriggered: [CLProximity: [String: ProximityEvent]] = [:]
     
-    override init() {
-        super.init()
-        beaconsTriggered["unknown"] = [String: ProximityEvent]()
-        beaconsTriggered["immediate"] = [String: ProximityEvent]()
-        beaconsTriggered["far"] = [String: ProximityEvent]()
-        beaconsTriggered["near"] = [String: ProximityEvent]()
+    init() {
+        beaconsTriggered[CLProximity.unknown] = [String: ProximityEvent]()
+        beaconsTriggered[CLProximity.immediate] = [String: ProximityEvent]()
+        beaconsTriggered[CLProximity.far] = [String: ProximityEvent]()
+        beaconsTriggered[CLProximity.near] = [String: ProximityEvent]()
     }
     
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) {
-        let unknownBeacons = beacons.filter {$0.proximity == CLProximity.unknown}
-        let immediateBeacons = beacons.filter {$0.proximity == CLProximity.immediate}
-        let nearBeacons = beacons.filter {$0.proximity == CLProximity.near}
-        let farBeacons = beacons.filter {$0.proximity == CLProximity.far}
+        let unknownBeacons = {
+            return beacons.filter {$0.proximity == CLProximity.unknown}
+        }
+        let immediateBeacons = {
+            return beacons.filter {$0.proximity == CLProximity.immediate}
+        }
+        let nearBeacons = {
+            return beacons.filter {$0.proximity == CLProximity.near}
+        }
+        let farBeacons = {
+            return beacons.filter {$0.proximity == CLProximity.far}
+        }
         
         // Filter with existing beacons in application
-        beaconsDetected["unknown"] = synchronizeBeacons(beacons: unknownBeacons, knownBeacons: knownBeacons)
-        beaconsDetected["immediate"] = synchronizeBeacons(beacons: immediateBeacons, knownBeacons: knownBeacons)
-        beaconsDetected["near"] = synchronizeBeacons(beacons: nearBeacons, knownBeacons: knownBeacons)
-        beaconsDetected["far"] = synchronizeBeacons(beacons: farBeacons, knownBeacons: knownBeacons)
+        beaconsDetected[CLProximity.unknown] = synchronizeBeacons(beacons: unknownBeacons(), knownBeacons: knownBeacons)
+        beaconsDetected[CLProximity.immediate] = synchronizeBeacons(beacons: immediateBeacons(), knownBeacons: knownBeacons)
+        beaconsDetected[CLProximity.near] = synchronizeBeacons(beacons: nearBeacons(), knownBeacons: knownBeacons)
+        beaconsDetected[CLProximity.far] = synchronizeBeacons(beacons: farBeacons(), knownBeacons: knownBeacons)
         
         // triggers for proximity event
-        beaconsDetected.forEach { (key, value) in
-            handleProximity(key: key, value: value)
+        beaconsDetected.forEach { (arg) in
+            let (key, value) = arg
+            // Required conditions(proximity match) are successful
+            actionContextMatch(key: key, value: value)
         }
     }
     
-    private func handleProximity(key: String, value: [IBeaconTriple]) {
+    // When the proximity match is successful, action the context match in the backend service
+    private func actionContextMatch(key: CLProximity, value: [IBeaconTriple]) {
         let distance = setUp(key: key)
         value.forEach { (iBeaconTriple) in
             guard let deviceId = iBeaconTriple.deviceId else {return}
@@ -61,8 +71,8 @@ class ProximityHandler: NSObject, ProximityHandlerDelegate {
     }
     
     // Trigger the proximity event
-    private func triggers(key: String, deviceId: String, distance: Double) {
-        let proximityEvent = ProximityEvent.init(deviceId: deviceId, distance: distance)
+    private func triggers(key: CLProximity, deviceId: String, distance: Double) {
+        let proximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
         sendProximityEvent(deviceId: deviceId, proximityEvent: proximityEvent) {(_ proximityEvent) in
             guard let pe = proximityEvent else {return}
             self.beaconsTriggered[key]?[deviceId] = pe
@@ -70,7 +80,7 @@ class ProximityHandler: NSObject, ProximityHandlerDelegate {
     }
     
     // Re-launch a proximity event depending on refreshTimer (Default : 60 seconds)
-    private func refreshTriggers(key: String, deviceId: String, distance: Double) {
+    private func refreshTriggers(key: CLProximity, deviceId: String, distance: Double) {
         // Check if the existed proximity event needs a refresh on a based timer
         guard let proximityEvent = beaconsTriggered[key]?[deviceId] else {return}
         // Represents  the UNIX current time in milliseconds
@@ -80,7 +90,7 @@ class ProximityHandler: NSObject, ProximityHandlerDelegate {
         let truncatedGap = Int(truncatingIfNeeded: gap)
         if truncatedGap > refreshTimer {
             // Send the refreshing proximity event based on the timer
-            let newProximityEvent = ProximityEvent.init(deviceId: deviceId, distance: distance)
+            let newProximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
             sendProximityEvent(deviceId: deviceId, proximityEvent: newProximityEvent) {(_ proximityEvent) in
                 guard let pe = proximityEvent else {return}
                 self.beaconsTriggered[key]?[deviceId] = pe
@@ -88,16 +98,16 @@ class ProximityHandler: NSObject, ProximityHandlerDelegate {
         }
     }
     
-    // MARK: API CALLS
+    // MARK: - API CALLS
     // Send the proximity event to the cloud service
     private func sendProximityEvent(deviceId: String, proximityEvent: ProximityEvent, completion: @escaping (_ proximityEvent: ProximityEvent?) -> Void) {
         let userCompletion = completion
-        _ = Alps.DeviceAPI.triggerProximityEvents(deviceId: deviceId, proximityEvent: proximityEvent) {(proximityEvent, _) -> Void in
+        DeviceAPI.triggerProximityEvents(deviceId: deviceId, proximityEvent: proximityEvent) {(proximityEvent, _) -> Void in
             userCompletion(proximityEvent)
         }
     }
     
-    // MARK: Helper Function
+    // MARK: - Helper Function
     // List of beacons currently tracked by the application, means beacons are registered in portal
     private func synchronizeBeacons(beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) -> [IBeaconTriple] {
         var result = [IBeaconTriple]()
@@ -117,19 +127,17 @@ class ProximityHandler: NSObject, ProximityHandlerDelegate {
     }
     
     // setting up constant parameters depending on CLProximity distance
-    private func setUp(key: String) -> Double {
+    private func setUp(key: CLProximity) -> Double {
         var distance = 0.0
         switch key {
-        case "immediate":
+        case .immediate:
             distance = 0.5
-        case "near":
+        case .near:
             distance = 3.0
-        case "far":
+        case .far:
             distance = 50.0
-        case "unknow":
+        case .unknown:
             distance = 200.0
-        default:
-            break
         }
         return distance
     }

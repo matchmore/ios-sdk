@@ -107,7 +107,14 @@ extension ProximityEvent {
 
 extension CLProximity {
     
-    static let allValues = [unknown, immediate, near, far]
+    func rawValueString() -> String {
+        switch self {
+        case .unknown: return "unknown"
+        case .immediate: return "immediate"
+        case .near: return "near"
+        case .far: return "far"
+        }
+    }
 }
 
 extension Date {
