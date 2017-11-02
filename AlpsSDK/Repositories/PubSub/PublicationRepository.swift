@@ -41,5 +41,4 @@ final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteab
             completion(error)
         })
     }
-    
 }

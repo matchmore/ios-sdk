@@ -17,17 +17,32 @@ import Nimble
 class MobileDeviceArchiveTest: QuickSpec {
 
     override func spec() {
+        let archiver = NSKeyedArchiver(forWritingWith: NSMutableData())
+        let mobileDevice = MobileDevice(name: "Test Archived Device", platform: "Test iOS", deviceToken: "None", location: nil)
+        let encodableMobileDevice = EncodableMobileDevice(mobileDevice: mobileDevice)
+        var decodedMobileDevice: EncodableMobileDevice?
         context("mobile device saving") {
-            fit ("archiving") {
-                let mobileDevice = MobileDevice(name: "Test Archived Device", platform: "Test iOS", deviceToken: "None", location: nil)
-                let encodedMobileDevice = EncodableMobileDevice(mobileDevice: mobileDevice)
-                
-                let archiver = NSKeyedArchiver(forWritingWith: NSMutableData())
-                archiver.encode(encodedMobileDevice, forKey: "mobileDevice")
-                
-                let unarchiver = NSKeyedUnarchiver(forReadingWith: archiver.encodedData)
-                let decodedMobileDevice = unarchiver.decodeObject(forKey: "mobileDevice") as? EncodableMobileDevice
-                expect(decodedMobileDevice?.mobileDevice.name).to(equal("Test Archived Device"))
+            fit ("encoding") {
+                archiver.encode(encodableMobileDevice, forKey: "mobileDevice")
+                expect(archiver.encodedData.count).to(beGreaterThan(0))
+            }
+            
+            fit ("saving") {
+                let success = PersistancyManager.save(object: encodableMobileDevice, to: "TestMobileDevice")
+                expect(success).to(beTrue())
+            }
+            
+            fit ("reading") {
+                decodedMobileDevice = PersistancyManager.read(type: EncodableMobileDevice.self, from: "TestMobileDevice")
+                expect(decodedMobileDevice).toNot(beNil())
+            }
+            
+            fit ("decoding") {
+                let mobileDevice = decodedMobileDevice?.mobileDevice
+                expect(mobileDevice?.name).to(equal("Test Archived Device"))
+                expect(mobileDevice?.platform).to(equal("Test iOS"))
+                expect(mobileDevice?.deviceToken).to(equal("None"))
+                expect(mobileDevice?.location).to(beNil())
             }
         }
     }
