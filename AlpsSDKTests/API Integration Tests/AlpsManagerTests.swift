@@ -19,7 +19,7 @@ final class AlpsManagerTests: QuickSpec {
     let kWaitTimeInterval = 10.0
     
     override func spec() {
-        let alpsManager = AlpsManager(apiKey: "08940519-c414-4329-99d3-d0b8b2e5fce9",
+        let alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
                                       baseUrl: "http://localhost:9000/v4")
         
         let properties = ["test": "true"]

@@ -18,7 +18,7 @@ class BeaconRepositoryTests: QuickSpec {
     
     func setupAPI() {
         let headers = [
-            "api-key": "08940519-c414-4329-99d3-d0b8b2e5fce9",
+            "api-key": "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
             "Content-Type": "application/json"
         ]
         AlpsAPI.customHeaders = headers
