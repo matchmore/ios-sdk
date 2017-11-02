@@ -13,13 +13,18 @@
 		5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; };
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */; };
-		C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3227B361F9F277B00785BA4 /* DeviceRepository.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
-		C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */; };
+		C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
+		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
+		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
+		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
+		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
+		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
+		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +48,18 @@
 		5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityHandler.swift; sourceTree = "<group>"; };
-		C3227B361F9F277B00785BA4 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
-		C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
+		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
+		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
+		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
+		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
+		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 				84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */,
 				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
+				C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 			);
 			path = AlpsSDK;
@@ -90,9 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
+				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
 				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
 				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
-				C3BF3A311FA1C543008754A8 /* DeviceRepositoryTests.swift */,
+				C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -120,6 +132,7 @@
 			children = (
 				C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */,
 				C3BA176C1F9A09BD00EC0F6F /* Devices */,
+				C3C8C1AB1FA73C61002827B6 /* PubSub */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -128,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
+				C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */,
 			);
 			path = AlpsManager;
 			sourceTree = "<group>";
@@ -135,11 +149,20 @@
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */,
 				C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */,
-				C3227B361F9F277B00785BA4 /* DeviceRepository.swift */,
 				C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */,
 			);
 			path = Devices;
+			sourceTree = "<group>";
+		};
+		C3C8C1AB1FA73C61002827B6 /* PubSub */ = {
+			isa = PBXGroup;
+			children = (
+				C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */,
+				C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */,
+			);
+			path = PubSub;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,13 +297,17 @@
 			files = (
 				C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */,
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
+				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
-				C3227B371F9F277B00785BA4 /* DeviceRepository.swift in Sources */,
+				C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */,
+				C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
+				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
 				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
+				C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +317,8 @@
 			files = (
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
-				C3BF3A321FA1C543008754A8 /* DeviceRepositoryTests.swift in Sources */,
+				C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */,
+				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
