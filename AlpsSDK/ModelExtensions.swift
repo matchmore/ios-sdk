@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 import Alps
 
 extension IBeaconDevice {
@@ -41,9 +42,19 @@ extension PinDevice {
     }
 }
 
+extension Device: Hashable {
+    public var hashValue: Int {
+        return id!.hashValue
+    }
+    
+    public static func == (lhs: Device, rhs: Device) -> Bool {
+        return lhs.id! == rhs.id!
+    }
+}
+
 extension Publication {
 
-    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, properties: [String: String]) {
+    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
         self.init()
         // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
@@ -56,7 +67,7 @@ extension Publication {
 
 extension Subscription {
 
-    internal convenience init(deviceId: String, topic: String, range: Double, duration: Double, selector: String) {
+    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, selector: String) {
         self.init()
         self.deviceId = deviceId
         self.topic = topic
@@ -76,16 +87,28 @@ extension Location {
         self.horizontalAccuracy = horizontalAccuracy
         self.verticalAccuracy = verticalAccuracy
     }
+    
+    internal convenience init(location: CLLocation) {
+        self.init()
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
+        self.altitude = location.altitude
+        self.horizontalAccuracy = location.horizontalAccuracy
+        self.verticalAccuracy = location.verticalAccuracy
+    }
+    
+    public static func == (lhs: Location, rhs: Location?) -> Bool {
+        guard let rhs = rhs else { return false }
+        return lhs.latitude! == rhs.latitude! && lhs.longitude! == rhs.longitude!
+    }
 }
 
 extension Match: CustomStringConvertible, Hashable {
-
-    // XXX: take the hashValue based on the hashValue of matchId
+    
     public var hashValue: Int {
         return id!.hashValue
     }
 
-    // XXX: Define the match equality based on the matchId only
     public static func == (lhs: Match, rhs: Match) -> Bool {
         return lhs.id! == rhs.id!
     }
