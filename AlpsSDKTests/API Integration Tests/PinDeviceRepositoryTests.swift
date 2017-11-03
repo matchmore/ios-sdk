@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import Quick
+
 import Nimble
+import Quick
 
 @testable import AlpsSDK
 @testable import Alps
@@ -17,7 +18,7 @@ class PinDeviceRepositoryTests: QuickSpec {
     
     func setupAPI() {
         let headers = [
-            "api-key": "ba4b38d8-abbb-4947-b1de-ada6384e214c",
+            "api-key": "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
             "Content-Type": "application/json"
             ]
         AlpsAPI.customHeaders = headers

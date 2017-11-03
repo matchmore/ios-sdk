@@ -14,15 +14,17 @@
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
+		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
+		C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
-		C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
 		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
+		C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
@@ -49,15 +51,17 @@
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
 		84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityHandler.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
-		C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
+		C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +91,7 @@
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
 				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
 				C34BFC4A1F98BDF200CAB9BB /* Repositories */,
+				C34CFDAC1FAB11930053C490 /* Persistancy Manager */,
 				C381EE791F977EB90061E7AC /* AlpsManager */,
 				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
 				84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */,
@@ -100,11 +105,9 @@
 		502C85971E01BB5F00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3E499F31FAA1DBF0048585A /* API Integration Tests */,
+				C3E499F21FAA1DBD0048585A /* Archiving Tests */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
-				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
-				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
-				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
-				C3BF3A311FA1C543008754A8 /* MobileDeviceRepositoryTests.swift */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -137,6 +140,14 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		C34CFDAC1FAB11930053C490 /* Persistancy Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */,
+			);
+			path = "Persistancy Manager";
+			sourceTree = "<group>";
+		};
 		C381EE791F977EB90061E7AC /* AlpsManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +174,25 @@
 				C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */,
 			);
 			path = PubSub;
+			sourceTree = "<group>";
+		};
+		C3E499F21FAA1DBD0048585A /* Archiving Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */,
+				C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */,
+			);
+			path = "Archiving Tests";
+			sourceTree = "<group>";
+		};
+		C3E499F31FAA1DBF0048585A /* API Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
+				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
+				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+			);
+			path = "API Integration Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +252,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Alps;
 				TargetAttributes = {
 					5092AC321D93CB0C00EF8ECF = {
@@ -299,6 +329,7 @@
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
 				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
+				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
 				C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */,
 				C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
@@ -317,8 +348,9 @@
 			files = (
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
-				C3BF3A321FA1C543008754A8 /* MobileDeviceRepositoryTests.swift in Sources */,
+				C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
+				C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
