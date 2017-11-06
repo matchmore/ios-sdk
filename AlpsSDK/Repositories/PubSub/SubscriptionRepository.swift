@@ -11,7 +11,16 @@ import Alps
 
 final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Subscription
-    private(set) var items = [Subscription]()
+    
+    private(set) var items = [Subscription](){
+        didSet {
+            
+        }
+    }
+    
+    init() {
+        
+    }
     
     func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
         guard let deviceId = item.deviceId else { return }
@@ -20,7 +29,7 @@ final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
                 self.items.append(subscription)
                 completion(.success(subscription))
             } else {
-                completion(.failure(error))
+                completion(.failure(error as? ErrorResponse))
             }
         }
     }
@@ -33,12 +42,12 @@ final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
         completion(.success(items))
     }
     
-    func delete(item: Subscription, completion: @escaping (Error?) -> Void) {
+    func delete(item: Subscription, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(nil); return }
         guard let deviceId = item.deviceId else { completion(nil); return }
         SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: id, completion: { (error) in
             self.items = self.items.filter { $0 !== item }
-            completion(error)
+            completion(error as? ErrorResponse)
         })
     }
 }

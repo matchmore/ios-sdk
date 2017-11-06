@@ -20,9 +20,10 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         }
     }
     
+    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
+    
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
-    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     lazy var mobileDevices = MobileDeviceRepository()
     lazy var pinDevices = PinDeviceRepository()

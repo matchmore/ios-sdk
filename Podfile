@@ -11,10 +11,6 @@ target 'AlpsSDKTests' do
     # Testing description and matching
     pod 'Nimble', '~> 7.0'
     pod 'Quick', '~> 1.2'
-    
-    # Main SDK
-#    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.4.0'
-    pod 'AlpsSDK', :path => '../alps-ios-sdk/'
 
     # Networking
     pod 'Alamofire', '~> 4.5'

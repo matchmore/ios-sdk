@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Alps
 
-/// Together with protocols below defines full CRUD interface for model
+/// Together with all protocols below defines full CRUD interface for data type model
 
 protocol AsyncCreateable: AssociatedDataType {
     func create(item: DataType, completion: @escaping (Result<DataType?>) -> Void)
@@ -24,16 +25,23 @@ protocol AsyncUpdateable: AssociatedDataType {
 }
 
 protocol AsyncDeleteable: AssociatedDataType {
-    func delete(item: DataType, completion: @escaping (Error?) -> Void)
+    func delete(item: DataType, completion: @escaping (ErrorResponse?) -> Void)
 }
 
 // MARK: - Helper protocols
 
 enum Result<T> {
     case success(T)
-    case failure(Error?)
+    case failure(ErrorResponse?)
 }
 
 protocol AssociatedDataType {
     associatedtype DataType
+}
+
+extension ErrorResponse {
+    var description: String? {
+        guard case let .Error(_, data, _) = self, data != nil else { return nil }
+        return String(data: data!, encoding: String.Encoding.utf8)
+    }
 }

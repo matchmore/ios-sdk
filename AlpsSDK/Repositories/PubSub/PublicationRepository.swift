@@ -11,7 +11,16 @@ import Alps
 
 final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Publication
-    private(set) var items = [Publication]()
+    
+    private(set) var items = [Publication]() {
+        didSet {
+            
+        }
+    }
+    
+    init() {
+        
+    }
     
     func create(item: Publication, completion: @escaping (Result<Publication?>) -> Void) {
         guard let deviceId = item.deviceId else { return }
@@ -20,7 +29,7 @@ final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteab
                 self.items.append(publication)
                 completion(.success(publication))
             } else {
-                completion(.failure(error))
+                completion(.failure(error as? ErrorResponse))
             }
         }
     }
@@ -33,12 +42,12 @@ final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteab
         completion(.success(items))
     }
     
-    func delete(item: Publication, completion: @escaping (Error?) -> Void) {
+    func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(nil); return }
         guard let deviceId = item.deviceId else { completion(nil); return }
         PublicationAPI.deletePublication(deviceId: deviceId, publicationId: id, completion: { (error) in
             self.items = self.items.filter { $0 !== item }
-            completion(error)
+            completion(error as? ErrorResponse)
         })
     }
 }

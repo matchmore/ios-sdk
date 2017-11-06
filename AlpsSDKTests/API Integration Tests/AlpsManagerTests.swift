@@ -19,17 +19,41 @@ final class AlpsManagerTests: QuickSpec {
     let kWaitTimeInterval = 10.0
     
     override func spec() {
-        var alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
-                                      baseUrl: "http://localhost:9000/v4")
-        
+        let apiKey = """
+                    eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9
+                    .eyJpc3MiOiJhbHBzIiwic3ViIjoiMmQwN2Q
+                    xODQtZjU1OS00OGU5LTlmZTctNWJiNWQ0ZDQ
+                    0Y2VhIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmY
+                    iOjE1MDk5NjYyMzMsImlhdCI6MTUwOTk2NjI
+                    zMywianRpIjoiMSJ9.w8Zc6AK_fuCBde6oYd
+                    MD7iot2waB8H6FzicK-IKdepN4cMFMQ9XH87
+                    -hGndONQ8KmZ3-JkS8tcFmUUJVjg1K_Q
+                    """
+        let baseUrl = "http://146.148.15.57/v5"
         let properties = ["test": "true"]
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
+        var alpsManager = AlpsManager(apiKey: apiKey,
+                                      baseUrl: baseUrl
+        )
+        var errorResponse: ErrorResponse?
+        
         context("Alps Manager") {
-            fit ("clear state") {
-                alpsManager.mobileDevices.main = nil
-                expect(alpsManager.mobileDevices.main).to(beNil())
-                expect(alpsManager.mobileDevices.items).to(beEmpty())
+            beforeEach {
+                errorResponse = nil
+            }
+            
+            fit ("clear main device") {
+                waitUntil(timeout: self.kWaitTimeInterval) { done in
+                    guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
+                    alpsManager.mobileDevices.delete(item: mainDevice, completion: { error in
+                        errorResponse = error
+                        done()
+                    })
+                }
+                expect(alpsManager.mobileDevices.main).toEventually(beNil())
+                expect(alpsManager.mobileDevices.items).toEventually(beEmpty())
+                expect(errorResponse?.description).toEventually(beNil())
             }
             
             fit ("create main device") {
@@ -40,23 +64,26 @@ final class AlpsManagerTests: QuickSpec {
                 }
                 expect(alpsManager.mobileDevices.main).toEventuallyNot(beNil())
                 expect(alpsManager.mobileDevices.items).toEventuallyNot(beEmpty())
+                expect(errorResponse?.description).toEventually(beNil())
             }
             
             fit ("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: properties)
                 alpsManager.createPublication(publication: publication)
                 expect(alpsManager.publications.items).toEventuallyNot(beEmpty())
+                expect(errorResponse).toEventually(beNil())
             }
             
             fit ("create a subscription") {
                 let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
                 alpsManager.createSubscription(subscription: subscription)
                 expect(alpsManager.subscriptions.items).toEventuallyNot(beEmpty())
+                expect(errorResponse).toEventually(beNil())
             }
             
             fit ("recover state") {
-                alpsManager = AlpsManager(apiKey: "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
-                                          baseUrl: "http://localhost:9000/v4")
+                alpsManager = AlpsManager(apiKey: apiKey,
+                                          baseUrl: baseUrl)
                 expect(alpsManager.mobileDevices.main).toNot(beNil())
                 expect(alpsManager.mobileDevices.items).toNot(beEmpty())
             }
@@ -67,10 +94,10 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.locationUpdateManager.lastLocation).toEventuallyNot(beNil())
             }
             
-            guard let mainDevice = alpsManager.mobileDevices.main else { return }
             fit ("get a match") {
-                alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
+                    guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
+                    alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
                     alpsManager.onMatch = { _, _ in
                         done()
                     }
@@ -79,8 +106,9 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("delete device") {
-                alpsManager.matchMonitor.stopMonitoringFor(device: mainDevice)
                 waitUntil(timeout: self.kWaitTimeInterval) { done in
+                    guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
+                    alpsManager.matchMonitor.stopMonitoringFor(device: mainDevice)
                     alpsManager.mobileDevices.delete(item: alpsManager.mobileDevices.main!, completion: { (_) in
                         done()
                     })
