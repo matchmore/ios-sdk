@@ -53,7 +53,7 @@ final class AlpsManagerTests: QuickSpec {
                 }
                 expect(alpsManager.mobileDevices.main).toEventually(beNil())
                 expect(alpsManager.mobileDevices.items).toEventually(beEmpty())
-                expect(errorResponse?.description).toEventually(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             fit ("create main device") {
@@ -64,21 +64,21 @@ final class AlpsManagerTests: QuickSpec {
                 }
                 expect(alpsManager.mobileDevices.main).toEventuallyNot(beNil())
                 expect(alpsManager.mobileDevices.items).toEventuallyNot(beEmpty())
-                expect(errorResponse?.description).toEventually(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             fit ("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: properties)
                 alpsManager.createPublication(publication: publication)
                 expect(alpsManager.publications.items).toEventuallyNot(beEmpty())
-                expect(errorResponse).toEventually(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             fit ("create a subscription") {
                 let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
                 alpsManager.createSubscription(subscription: subscription)
                 expect(alpsManager.subscriptions.items).toEventuallyNot(beEmpty())
-                expect(errorResponse).toEventually(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             fit ("recover state") {

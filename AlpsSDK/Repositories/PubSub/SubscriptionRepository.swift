@@ -12,7 +12,7 @@ import Alps
 final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Subscription
     
-    private(set) var items = [Subscription](){
+    private(set) var items = [Subscription]() {
         didSet {
             
         }

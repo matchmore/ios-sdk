@@ -11,15 +11,15 @@ import Foundation
 class MulticastDelegate<T: AnyObject> {
     private let delegates: NSHashTable<T> = NSHashTable.weakObjects()
     
-    func add(delegate: T) {
+    func add(_ delegate: T) {
         delegates.add(delegate)
     }
     
-    func remove(delegate: T) {
+    func remove(_ delegate: T) {
         delegates.remove(delegate)
     }
     
-    func invoke(invocation: (T) -> Void) {
+    func invoke(_ invocation: (T) -> Void) {
         delegates.allObjects.forEach {
             invocation($0)
         }
@@ -27,9 +27,9 @@ class MulticastDelegate<T: AnyObject> {
 }
 
 func += <T> (left: MulticastDelegate<T>, right: T) {
-    left.add(delegate: right)
+    left.add(right)
 }
 
 func -= <T> (left: MulticastDelegate<T>, right: T) {
-    left.remove(delegate: right)
+    left.remove(right)
 }

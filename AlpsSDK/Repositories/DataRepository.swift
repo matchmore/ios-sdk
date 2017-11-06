@@ -40,7 +40,7 @@ protocol AssociatedDataType {
 }
 
 extension ErrorResponse {
-    var description: String? {
+    var errorMessage: String? {
         guard case let .Error(_, data, _) = self, data != nil else { return nil }
         return String(data: data!, encoding: String.Encoding.utf8)
     }
