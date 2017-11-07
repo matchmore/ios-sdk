@@ -31,7 +31,7 @@ protocol AsyncDeleteable: AssociatedDataType {
 
 // MARK: - Helper protocols
 
-enum Result<T> {
+public enum Result<T> {
     case success(T)
     case failure(ErrorResponse?)
 }

@@ -10,7 +10,7 @@ import Foundation
 import Alps
 
 /// filters location data update
-final class LocationUpdateManager {
+final public class LocationUpdateManager {
     private(set) var lastLocation: Location?
     
     func tryToSend(location: Location, for deviceId: String) {

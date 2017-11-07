@@ -13,7 +13,7 @@ protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
 }
 
-class MatchMonitor {
+public class MatchMonitor {
     private(set) weak var delegate: MatchMonitorDelegate?
     private(set) var monitoredDevices = Set<Device>()
     private(set) var deliveredMatches = Set<Match>()

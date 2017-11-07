@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Subscription
     
     private(set) var items = [Subscription]() {

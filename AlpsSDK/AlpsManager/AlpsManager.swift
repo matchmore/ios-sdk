@@ -16,8 +16,8 @@ public protocol AlpsManagerDelegate: class {
     var onMatch: OnMatchClojure { get set }
 }
 
-open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
-    var delegates = MulticastDelegate<AlpsManagerDelegate>()
+public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+    public var delegates = MulticastDelegate<AlpsManagerDelegate>()
     
     let apiKey: String
     var baseURL: String {
@@ -28,22 +28,22 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         }
     }
     
-    lazy var contextManager = ContextManager(delegate: self)
-    lazy var matchMonitor = MatchMonitor(delegate: self)
+    public lazy var contextManager = ContextManager(delegate: self)
+    public lazy var matchMonitor = MatchMonitor(delegate: self)
     
-    lazy var mobileDevices = MobileDeviceRepository()
-    lazy var pinDevices = PinDeviceRepository()
+    public lazy var mobileDevices = MobileDeviceRepository()
+    public lazy var pinDevices = PinDeviceRepository()
     
-    lazy var publications = PublicationRepository()
-    lazy var subscriptions = SubscriptionRepository()
+    public lazy var publications = PublicationRepository()
+    public lazy var subscriptions = SubscriptionRepository()
     
-    lazy var locationUpdateManager = LocationUpdateManager()
+    public lazy var locationUpdateManager = LocationUpdateManager()
 
-    init(apiKey: String, baseUrl: String? = nil) {
+    public init(apiKey: String, baseURL: String? = nil) {
         self.apiKey = apiKey
         self.setupAPI()
-        if let baseUrl = baseUrl {
-            self.baseURL = baseUrl
+        if let baseURL = baseURL {
+            self.baseURL = baseURL
         }
     }
     

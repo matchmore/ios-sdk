@@ -14,7 +14,7 @@ import Alps
 let kMainDeviceFile = "kMainDeviceFile.Alps"
 let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 
-final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = MobileDevice
     
     private(set) var items = [MobileDevice]() {
@@ -22,7 +22,7 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
             _ = PersistenceManager.save(object: self.items.map { $0.encodableMobileDevice }, to: kMobileDevicesFile)
         }
     }
-    private(set) var main: MobileDevice? {
+    public var main: MobileDevice? {
         didSet {
             _ = PersistenceManager.save(object: self.main?.encodableMobileDevice, to: kMainDeviceFile)
         }

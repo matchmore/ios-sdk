@@ -11,7 +11,7 @@ import Alps
 
 let kPinDevicesFile = "kPinDevicesFile.Alps"
 
-final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = PinDevice
     
     private(set) var items = [PinDevice]() {

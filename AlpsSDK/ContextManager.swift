@@ -16,7 +16,7 @@ protocol ContextManagerDelegate: class {
     func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon])
 }
 
-class ContextManager: NSObject, CLLocationManagerDelegate {
+public class ContextManager: NSObject, CLLocationManagerDelegate {
     
     private weak var delegate: ContextManagerDelegate?
     let proximityHandler: ProximityHandlerDelegate? = ProximityHandler()
@@ -35,7 +35,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Core Location Manager Delegate
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let lastLocation = locations.last else { return }
         delegate?.contextManager(manager: self, didUpdateLocation: lastLocation)
     }
@@ -47,7 +47,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         locationManager.startRangingBeacons(in: beaconRegion)
     }
 
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         delegate?.contextManager(manager: self, didDetectBeacons: beacons)
         proximityHandler?.didRangeBeacons(manager: self, beacons: beacons, knownBeacons: knownBeacons)
         if let closestBeacon = beacons.max(by: { $0.accuracy < $1.accuracy }) {
