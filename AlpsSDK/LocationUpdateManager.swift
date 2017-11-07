@@ -15,8 +15,10 @@ final class LocationUpdateManager {
     
     func tryToSend(location: Location, for deviceId: String) {
         if location == lastLocation { return }
-        LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { [weak self] (createdLocation, _) in
-            self?.lastLocation = createdLocation
+        LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { [weak self] (createdLocation, error) in
+            if error != nil {
+                self?.lastLocation = createdLocation
+            }
         })
     }
 }

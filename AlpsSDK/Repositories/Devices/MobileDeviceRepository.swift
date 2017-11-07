@@ -54,11 +54,17 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
     }
     
     func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
-        guard let id = item.id else { completion(nil); return }
+        guard let id = item.id else { completion(ErrorResponse.missingId); return }
+        if self.main?.id == id { self.main = nil }
+        self.items = self.items.filter { $0 !== item }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
-            if self.main?.id == id { self.main = nil }
-            self.items = self.items.filter { $0 !== item }
             completion(error as? ErrorResponse)
         }
+    }
+    
+    func deleteAll() {
+        items.forEach { self.delete(item: $0, completion: { (_) in }) }
+        items = []
+        main = nil
     }
 }

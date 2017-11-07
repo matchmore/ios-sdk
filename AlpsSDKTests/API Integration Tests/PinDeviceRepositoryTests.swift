@@ -16,34 +16,20 @@ import Quick
 
 class PinDeviceRepositoryTests: QuickSpec {
     
-    func setupAPI() {
-        let headers = [
-            "api-key": """
-            eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9
-            .eyJpc3MiOiJhbHBzIiwic3ViIjoiMmQwN2Q
-            xODQtZjU1OS00OGU5LTlmZTctNWJiNWQ0ZDQ
-            0Y2VhIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmY
-            iOjE1MDk5NjYyMzMsImlhdCI6MTUwOTk2NjI
-            zMywianRpIjoiMSJ9.w8Zc6AK_fuCBde6oYd
-            MD7iot2waB8H6FzicK-IKdepN4cMFMQ9XH87
-            -hGndONQ8KmZ3-JkS8tcFmUUJVjg1K_Q
-            """,
-            "Content-Type": "application/json"
-            ]
-        AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "http://146.148.15.57/v5"
-    }
-    
-    let kWaitTimeInterval = 10.0
-    
     override func spec() {
-        setupAPI()
+        TestsConfig.setupAPI()
+        
         let pinDeviceRepository = PinDeviceRepository()
         var createdPinDeviceId: String = ""
         
+        var errorResponse: ErrorResponse?
+        
         context("pin device") {
+            beforeEach {
+                errorResponse = nil
+            }
             fit ("create") {
-                waitUntil(timeout: self.kWaitTimeInterval) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     let pinDevice = PinDevice(
                         name: "Test Pin",
                         location: Location(
@@ -56,38 +42,48 @@ class PinDeviceRepositoryTests: QuickSpec {
                     )
                     pinDeviceRepository.create(item: pinDevice, 
                                                completion: { (result) in
-                        if case let .success(pinDevice) = result {
+                        switch result {
+                        case .success(let pinDevice):
                             createdPinDeviceId = pinDevice?.id ?? ""
+                        case .failure(let error):
+                            errorResponse = error
                         }
                         done()
                     })
                 }
                 expect(pinDeviceRepository.items.first).toEventuallyNot(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             var readPinDevice: PinDevice?
             fit("read") {
-                waitUntil(timeout: self.kWaitTimeInterval) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     pinDeviceRepository.find(byId: createdPinDeviceId,
                                              completion: { (result) in
-                        if case let .success(pinDevice) = result {
+                        switch result {
+                        case .success(let pinDevice):
                             readPinDevice = pinDevice
+                        case .failure(let error):
+                            errorResponse = error
                         }
                         done()
                     })
                 }
                 expect(readPinDevice).toEventuallyNot(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
             
             fit("delete") {
-                waitUntil(timeout: self.kWaitTimeInterval) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     guard let readPinDevice = readPinDevice else { done(); return }
                     pinDeviceRepository.delete(item: readPinDevice,
-                                               completion: { (_) in
+                                               completion: { (error) in
+                        errorResponse = error
                         done()
                     })
                 }
                 expect(pinDeviceRepository.items.first).toEventually(beNil())
+                expect(errorResponse?.errorMessage).toEventually(beNil())
             }
         }
     }

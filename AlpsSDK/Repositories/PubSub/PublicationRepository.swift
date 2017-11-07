@@ -43,11 +43,16 @@ final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteab
     }
     
     func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
-        guard let id = item.id else { completion(nil); return }
-        guard let deviceId = item.deviceId else { completion(nil); return }
+        guard let id = item.id else { completion(ErrorResponse.missingId); return }
+        guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
+        self.items = self.items.filter { $0 !== item }
         PublicationAPI.deletePublication(deviceId: deviceId, publicationId: id, completion: { (error) in
-            self.items = self.items.filter { $0 !== item }
             completion(error as? ErrorResponse)
         })
+    }
+    
+    func deleteAll() {
+        items.forEach { self.delete(item: $0, completion: { (_) in }) }
+        items = []
     }
 }

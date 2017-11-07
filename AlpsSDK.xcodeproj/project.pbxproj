@@ -18,6 +18,7 @@
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
 		C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */; };
+		C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
@@ -59,6 +60,7 @@
 		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
+		C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		502C85971E01BB5F00EF8ECF /* AlpsSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */,
 				C3E499F31FAA1DBF0048585A /* API Integration Tests */,
 				C3E499F21FAA1DBD0048585A /* Archiving Tests */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
@@ -484,6 +487,7 @@
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
 				C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */,
+				C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
 				C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */,
 			);

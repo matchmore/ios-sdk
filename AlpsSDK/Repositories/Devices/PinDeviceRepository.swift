@@ -44,10 +44,15 @@ final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable
     }
     
     func delete(item: PinDevice, completion: @escaping (ErrorResponse?) -> Void) {
-        guard let id = item.id else { completion(nil); return }
+        guard let id = item.id else { completion(ErrorResponse.missingId); return }
+        self.items = self.items.filter { $0 !== item }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
-            self.items = self.items.filter { $0 !== item }
             completion(error as? ErrorResponse)
         }
+    }
+    
+    func deleteAll() {
+        items.forEach { self.delete(item: $0, completion: { (_) in }) }
+        items = []
     }
 }

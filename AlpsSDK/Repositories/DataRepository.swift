@@ -26,6 +26,7 @@ protocol AsyncUpdateable: AssociatedDataType {
 
 protocol AsyncDeleteable: AssociatedDataType {
     func delete(item: DataType, completion: @escaping (ErrorResponse?) -> Void)
+    func deleteAll()
 }
 
 // MARK: - Helper protocols
@@ -43,5 +44,15 @@ extension ErrorResponse {
     var errorMessage: String? {
         guard case let .Error(_, data, _) = self, data != nil else { return nil }
         return String(data: data!, encoding: String.Encoding.utf8)
+    }
+    
+    static var missingId: ErrorResponse {
+        let info = "missing id"
+        let code = 10408
+        return errorWith(info: info, code: code)
+    }
+    
+    static func errorWith(info: String, code: Int) -> ErrorResponse {
+        return .Error(code, info.data(using: .utf8), NSError(domain: "localhost", code: code, userInfo: ["reason": info]))
     }
 }
