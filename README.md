@@ -80,9 +80,9 @@ See the [http://dev.matchmore.com/documentation/api](http://dev.matchmore.com/do
 
 ## Authors
 
-@tharpa, rk@matchmore.com
-@wenjdu, jean-marc.du@matchmore.com
-@maciejburda, maciej.burda@matchmore.com
+- @tharpa, rk@matchmore.com
+- @wenjdu, jean-marc.du@matchmore.com
+- @maciejburda, maciej.burda@matchmore.com
 
 
 ## License

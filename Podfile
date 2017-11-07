@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'AlpsSDK' do
     pod 'Alps', :path => '../alps-ios-api/'
-#   pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => '0.4.0'
+#   pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => 'meetup_round_1'
 end
 
 target 'AlpsSDKTests' do

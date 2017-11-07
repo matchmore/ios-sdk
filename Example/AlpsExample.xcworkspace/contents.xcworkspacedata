@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/rk/Developer/alps/alps-client-ios/sdk/Example/AlpsExample.xcodeproj">
+      location = "group:AlpsExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:AlpsExample.xcodeproj">
    </FileRef>
 </Workspace>
