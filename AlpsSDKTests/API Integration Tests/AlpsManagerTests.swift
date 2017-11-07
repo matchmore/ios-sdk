@@ -93,12 +93,17 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("get a match") {
+                class MatchDelegate: AlpsManagerDelegate {
+                    var onMatch: OnMatchClojure
+                    init(_ onMatch: @escaping OnMatchClojure) {
+                        self.onMatch = onMatch
+                    }
+                }
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
+                    let matchDelegate = MatchDelegate { _, _ in done() }
+                    alpsManager.delegates += matchDelegate
                     alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
-                    alpsManager.onMatch = { _, _ in
-                        done()
-                    }
                 }
                 expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
             }

@@ -8,20 +8,25 @@
 
 import Foundation
 
-class MulticastDelegate<T: AnyObject> {
-    private let delegates: NSHashTable<T> = NSHashTable.weakObjects()
+class MulticastDelegate<T> {
+    private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
+    
+    public var isEmpty: Bool {
+        return delegates.count == 0
+    }
     
     func add(_ delegate: T) {
-        delegates.add(delegate)
+        delegates.add(delegate as AnyObject)
     }
     
     func remove(_ delegate: T) {
-        delegates.remove(delegate)
+        delegates.remove(delegate as AnyObject)
     }
     
     func invoke(_ invocation: (T) -> Void) {
         delegates.allObjects.forEach {
-            invocation($0)
+            // swiftlint:disable:next force_cast
+            invocation($0 as! T)
         }
     }
 }
