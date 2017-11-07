@@ -4,16 +4,16 @@
 
 ## Versioning
 
-Only compatible with Swift 3.
+SDK is written using Swift 4.
 
-Alps SDK requires iOS 7+, if you want to use iBeacons.
+Alps SDK requires iOS 9+.
 
 ## Installation
 
 Alps is available through [CocoaPods](http://cocoapods.org), simply add the following
 line to your Podfile:
 
-    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.4.2'
+    pod 'AlpsSDK', :git => 'https://github.com/MatchMore/alps-ios-sdk.git'
 
 ## Technical overview
 
@@ -31,101 +31,58 @@ Everytime you call an asynchronous function and it succeeds, our SDK stores it. 
 
 ## Usage
 
+Please refer to documentation "tutorial" to get a full explanation on this example:
+
+Setup application API key, get it for free from [http://dev.matchmore.com/](http://dev.matchmore.com/).
 ```swift
-// hold a strong reference to the AlpsManager, as you probably will have to call it in many 
-// differents views in your application
-// we advice you to initiate the AlpsManager in the AppDelegate
-class AppDelegate: UIResponder, UIApplicationDelegate {
+let alpsManager = AlpsManager(apiKey: "YOUR_API_KEY")
+```
 
-let APIKEY = "ea0df90a-db0a-11e5-bd35-3bd106df139b" // <- Please provide a valid Matchmore
-// Application Api-key, obtain it for free on dev.matchmore.io, see the README.md 
-// file for more informations
-
-var alps: AlpsManager!
-var locationManager = CLLocationManager()
-
-// ...
-
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-// Override point for customization after application launch.
-if APIKEY.isEmpty {
-fatalError("To run this project, please provide a valid Matchmore Application Api-key. Obtain it for free on dev.matchmore.io, see the README.md file for more informations")
-}else{
-alps = AlpsManager(apiKey: APIKEY, clLocationManager : locationManager)
-}
-return true
-}
-
-// ...
+Create first device, publication and subscription.
+```swift
+alpsManager.createMainDevice { _ in
+    let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: properties)
+    alpsManager.createPublication(publication: publication, completion: { _ in
+        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
+        alpsManager.createSubscription(subscription: subscription, completion: { _ in
+            print("We're all good! 🏔")
+        })
+    })                    
 }
 ```
 
-Here is an example on how to create your first user with device and get a match.
-Please refer to documentation "tutorial" to get a full explanation on this example.
-
+Create a AlpsManagerDelegate that has `OnMatchClojure`.
 ```swift
-// ...
-
-// Create a User
-appDelegate.alps.createUser("Alice", completion: {(_ user) in
-if let u = user {
-print(u.id)
-// Create a MobileDevice
-// Using this function inside of createUser closure is important, we want to make sure user is
-// created before calling the creation of a mobile device. This imply to publication and
-// subscription too. We want to make sure user and device are initiated before publishing or
-// subscribing.
-self.appDelegate.alps.createMobileDevice(name: "Alice's mobile device", platform: "iOS 9.0", deviceToken: "personnalUUID", latitude: 0.0, longitude: 0.0, altitude: 0.0, horizontalAccuracy: 0.0, verticalAccuracy: 0.0, completion: {
-(_ mobileDevice) in
-if let md = mobileDevice{
-print(md.id)
-// Create a publication
-let properties = ["mood": "happy"]
-self.appDelegate.alps.createPublication(topic: "tutorial", range: 1000, duration: 300, properties: properties, completion: {
-(_ publication) in
-if let p = publication {
-print(p.id)
+class MatchDelegate: AlpsManagerDelegate {
+    var onMatch: OnMatchClojure
+    init(_ onMatch: @escaping OnMatchClojure) {
+        self.onMatch = onMatch
+    }
 }
-})
 
-// Create a subscription
-let selector = "mood = 'happy'"
-self.appDelegate.alps.createSubscription(topic: "tutorial", selector: selector, range: 1000, duration: 300, completion: {
-(_ subscription) in
-if let s = subscription {
-print(s.id)
-}
-})
+let matchDelegate = MatchDelegate { matches, _ in print(matches) }
+```
 
-// Starts updating mobile device location to our cloud service
-self.appDelegate.alps.startUpdatingLocation()
-// Get the matches
-self.appDelegate.alps.startMonitoringMatches()
-// onMatch function is called everytime a match occurs.
-self.appDelegate.alps.onMatch(completion: {
-(_ match) in
-print(match.id)
-})
-}
-})
-}
-})
-
-// ...
+Start listening for main device matches.
+```swift
+guard let mainDevice = alpsManager.mobileDevices.main else { return }
+alpsManager.delegates += matchDelegate
+alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main)
 ```
 
 ## Example
 
-To run the example project, clone the repo, and run \`pod install\` from
-the Example directory first.
+in `AlpsSDK/Example/` you will find working simple example.
 
 ## Documentation
 
 See the [http://dev.matchmore.com/documentation/api](http://dev.matchmore.com/documentation/api) or consult our website for further information [http://dev.matchmore.com/](http://dev.matchmore.com/)
 
-## Author
+## Authors
 
-rk, rafal.kowalski@mac.com
+@tharpa, rk@matchmore.com
+@wenjdu, jean-marc.du@matchmore.com
+@maciejburda, maciej.burda@matchmore.com
 
 
 ## License
