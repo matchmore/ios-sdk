@@ -134,7 +134,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 2Y732Q5T2P;
+						DevelopmentTeam = PAYVP3AFKX;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -352,7 +352,7 @@
 			baseConfigurationReference = CBD18F0EA62409885AA28FAD /* Pods-AlpsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2Y732Q5T2P;
+				DEVELOPMENT_TEAM = PAYVP3AFKX;
 				INFOPLIST_FILE = Alps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -367,7 +367,7 @@
 			baseConfigurationReference = 50DB9285378A544108B2E65A /* Pods-AlpsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2Y732Q5T2P;
+				DEVELOPMENT_TEAM = PAYVP3AFKX;
 				INFOPLIST_FILE = Alps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
