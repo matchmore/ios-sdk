@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Alps
 
-open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
     let apiKey: String
     var baseURL: String {
         set {
@@ -22,6 +22,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
+    lazy var remoteNotificationManager = RemoteNotificationManager(delegate: self)
     var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     lazy var mobileDevices = MobileDeviceRepository()
@@ -32,7 +33,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     lazy var locationUpdateManager = LocationUpdateManager()
 
-    init(apiKey: String, baseUrl: String? = nil) {
+    public init(apiKey: String, baseUrl: String? = nil) {
         self.apiKey = apiKey
         self.setupAPI()
         if let baseUrl = baseUrl {
@@ -75,5 +76,15 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon]) {
         
+    }
+    
+    // MARK: - Remote Notification Manager Delegate
+    
+    func remoteNotificationManager(manager: RemoteNotificationManager, registerDeviceToken: Data) {
+        manager.registerDeviceToken(deviceToken: registerDeviceToken)
+    }
+    
+    func remoteNotificationManager(manager: RemoteNotificationManager, handleRemoteNotification: [AnyHashable: Any]) {
+        manager.handleRemoteNotification(userInfo: handleRemoteNotification)
     }
 }
