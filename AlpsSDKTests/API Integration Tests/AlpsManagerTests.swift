@@ -26,10 +26,14 @@ final class AlpsManagerTests: QuickSpec {
         
         context("Alps Manager") {
             
-            fit ("clear mobile devices") {
+            fit ("clear manager") {
                 alpsManager.mobileDevices.deleteAll()
+                alpsManager.publications.deleteAll()
+                alpsManager.subscriptions.deleteAll()
                 expect(alpsManager.mobileDevices.main).to(beNil())
                 expect(alpsManager.mobileDevices.items).to(beEmpty())
+                expect(alpsManager.publications.items).to(beEmpty())
+                expect(alpsManager.subscriptions.items).to(beEmpty())
             }
             
             beforeEach {
