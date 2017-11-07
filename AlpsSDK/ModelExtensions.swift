@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import Alps
+import CoreLocation
 
 extension IBeaconDevice {
     //TOCHANGE: put it in internal when beaconManager is working.
@@ -124,5 +125,23 @@ extension ProximityEvent {
         self.init()
         self.deviceId = deviceId
         self.distance = distance
+    }
+}
+
+extension CLProximity {
+    
+    func rawValueString() -> String {
+        switch self {
+        case .unknown: return "unknown"
+        case .immediate: return "immediate"
+        case .near: return "near"
+        case .far: return "far"
+        }
+    }
+}
+
+extension Date {
+    func nowTimeInterval() -> Int64 {
+        return Int64(Date().timeIntervalSince1970 * 1000)
     }
 }
