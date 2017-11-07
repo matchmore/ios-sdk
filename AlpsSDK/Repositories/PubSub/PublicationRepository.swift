@@ -9,17 +9,19 @@
 import Foundation
 import Alps
 
+let kPublicationFile = "kPublicationFile.Alps"
+
 final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Publication
     
     private(set) var items = [Publication]() {
         didSet {
-            
+            _ = PersistenceManager.save(object: self.items.map { $0.encodablePublication }, to: kPublicationFile)
         }
     }
     
     init() {
-        
+        self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object } ?? []
     }
     
     func create(item: Publication, completion: @escaping (Result<Publication?>) -> Void) {
