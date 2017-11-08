@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-final class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Publication
     
     private(set) var items = [Publication]() {

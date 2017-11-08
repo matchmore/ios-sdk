@@ -21,7 +21,7 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         var alpsManager = AlpsManager(apiKey: TestsConfig.kApiKey,
-                                      baseUrl: TestsConfig.kBaseUrl)
+                                      baseURL: TestsConfig.kBaseUrl)
         var errorResponse: ErrorResponse?
         
         context("Alps Manager") {
@@ -80,7 +80,7 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("recover state") {
                 alpsManager = AlpsManager(apiKey: TestsConfig.kApiKey,
-                                          baseUrl: TestsConfig.kBaseUrl)
+                                          baseURL: TestsConfig.kBaseUrl)
                 expect(alpsManager.mobileDevices.main).toNot(beNil())
                 expect(alpsManager.mobileDevices.items).toNot(beEmpty())
             }

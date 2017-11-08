@@ -10,7 +10,11 @@ import Foundation
 import Alps
 
 extension AlpsManager {
-    func createMainDevice(device: MobileDevice? = nil, completion: ((Result<MobileDevice?>) -> Void)? = nil) {
+    public func createMainDevice(device: MobileDevice? = nil, completion: ((Result<MobileDevice?>) -> Void)? = nil) {
+        if let mainDevice = mobileDevices.main {
+            completion?(.success(mainDevice))
+            return
+        }
         let uiDevice = UIDevice.current
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10) // location will be optional in the future
         let mobileDevice = MobileDevice(name: device?.name ?? uiDevice.name,
@@ -22,14 +26,14 @@ extension AlpsManager {
         }
     }
     
-    func createPublication(publication: Publication, for deviceWithId: String? = nil, completion: ((Result<Publication?>) -> Void)? = nil) {
+    public func createPublication(publication: Publication, for deviceWithId: String? = nil, completion: ((Result<Publication?>) -> Void)? = nil) {
         publication.deviceId = deviceWithId ?? mobileDevices.main?.id
         publications.create(item: publication) { (result) in
             completion?(result)
         }
     }
     
-    func createSubscription(subscription: Subscription, for deviceWithId: String? = nil, completion: ((Result<Subscription?>) -> Void)? = nil) {
+    public func createSubscription(subscription: Subscription, for deviceWithId: String? = nil, completion: ((Result<Subscription?>) -> Void)? = nil) {
         subscription.deviceId = deviceWithId ?? mobileDevices.main?.id
         subscriptions.create(item: subscription) { (result) in
             completion?(result)

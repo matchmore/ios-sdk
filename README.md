@@ -41,7 +41,7 @@ let alpsManager = AlpsManager(apiKey: "YOUR_API_KEY")
 Create first device, publication and subscription.
 ```swift
 alpsManager.createMainDevice { _ in
-    let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: properties)
+    let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test": "true"])
     alpsManager.createPublication(publication: publication, completion: { _ in
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
         alpsManager.createSubscription(subscription: subscription, completion: { _ in
@@ -65,9 +65,10 @@ let matchDelegate = MatchDelegate { matches, _ in print(matches) }
 
 Start listening for main device matches.
 ```swift
-guard let mainDevice = alpsManager.mobileDevices.main else { return }
-alpsManager.delegates += matchDelegate
-alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main)
+if let mainDevice = alpsManager.mobileDevices.main {
+    alpsManager.delegates += matchDelegate
+    alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
+}
 ```
 
 ## Example

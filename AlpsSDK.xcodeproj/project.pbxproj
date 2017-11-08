@@ -313,7 +313,7 @@
 					};
 					5092AC3B1D93CB0C00EF8ECF = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2Y732Q5T2P;
+						DevelopmentTeam = PAYVP3AFKX;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -678,7 +678,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2Y732Q5T2P;
+				DEVELOPMENT_TEAM = PAYVP3AFKX;
 				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.alps.api.AlpsTests;
@@ -695,7 +695,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2Y732Q5T2P;
+				DEVELOPMENT_TEAM = PAYVP3AFKX;
 				INFOPLIST_FILE = AlpsSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.alps.api.AlpsTests;
