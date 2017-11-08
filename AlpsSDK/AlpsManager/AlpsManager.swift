@@ -10,7 +10,15 @@ import Foundation
 import CoreLocation
 import Alps
 
+public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
+
+public protocol AlpsManagerDelegate: class {
+    var onMatch: OnMatchClosure { get set }
+}
+
 open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+    var delegates = MulticastDelegate<AlpsManagerDelegate>()
+    
     let apiKey: String
     var baseURL: String {
         set {
@@ -22,7 +30,6 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
-    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     lazy var mobileDevices = MobileDeviceRepository()
     lazy var pinDevices = PinDeviceRepository()
@@ -54,7 +61,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     // MARK: - Match Monitor Delegate
     
     func didFind(matches: [Match], for device: Device) {
-        onMatch?(matches, device)
+        delegates.invoke { $0.onMatch(matches, device) }
     }
     
     // MARK: - Context Manager Delegate

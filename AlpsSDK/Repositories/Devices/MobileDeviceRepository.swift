@@ -22,7 +22,7 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
             _ = PersistenceManager.save(object: self.items.map { $0.encodableMobileDevice }, to: kMobileDevicesFile)
         }
     }
-    var main: MobileDevice? {
+    private(set) var main: MobileDevice? {
         didSet {
             _ = PersistenceManager.save(object: self.main?.encodableMobileDevice, to: kMainDeviceFile)
         }
@@ -37,12 +37,10 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
             if let device = device as? MobileDevice, error == nil {
                 self.items.append(device)
-                if self.main == nil {
-                    self.main = device
-                }
+                if self.main == nil { self.main = device }
                 completion(.success(device))
             } else {
-                completion(.failure(error))
+                completion(.failure(error as? ErrorResponse))
             }
         }
     }
@@ -55,12 +53,18 @@ final class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeletea
         completion(.success(items))
     }
     
-    func delete(item: MobileDevice, completion: @escaping (Error?) -> Void) {
-        guard let id = item.id else { completion(nil); return }
-        Alps.DeviceAPI.deleteDevice(deviceId: id) { (error) in
-            if self.main?.id == id { self.main = nil }
-            self.items = self.items.filter { $0 !== item }
-            completion(error)
+    func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
+        guard let id = item.id else { completion(ErrorResponse.missingId); return }
+        if self.main?.id == id { self.main = nil }
+        self.items = self.items.filter { $0 !== item }
+        DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            completion(error as? ErrorResponse)
         }
+    }
+    
+    func deleteAll() {
+        items.forEach { self.delete(item: $0, completion: { (_) in }) }
+        items = []
+        main = nil
     }
 }

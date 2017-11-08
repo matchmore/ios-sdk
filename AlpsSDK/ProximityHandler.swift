@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Alps
 
-protocol ProximityHandlerDelegate : class {
+protocol ProximityHandlerDelegate: class {
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple])
 }
 

@@ -15,10 +15,10 @@ protocol MatchMonitorDelegate: class {
 
 class MatchMonitor {
     private(set) weak var delegate: MatchMonitorDelegate?
-    private var timer: Timer?
-    
-    private var monitoredDevices = Set<Device>()
+    private(set) var monitoredDevices = Set<Device>()
     private(set) var deliveredMatches = Set<Match>()
+    
+    private var timer: Timer?
 
     init(delegate: MatchMonitorDelegate) {
         self.delegate = delegate
@@ -52,13 +52,8 @@ class MatchMonitor {
     private func getMatchesForDevice(device: Device) {
         guard let deviceId = device.id else { return }
         MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
-            if let matches = matches, matches.count > 0, error == nil {
-                let union = self.deliveredMatches.union(Set(matches))
-                if union != self.deliveredMatches {
-                    self.deliveredMatches = union
-                    self.delegate?.didFind(matches: matches, for: device)
-                }
-            }
+            guard let matches = matches, matches.count > 0, error == nil else { return }
+            self.deliveredMatches = Set(matches)
         }
     }
 }

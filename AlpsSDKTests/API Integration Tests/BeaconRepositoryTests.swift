@@ -16,19 +16,8 @@ import Nimble
 
 class BeaconRepositoryTests: QuickSpec {
     
-    func setupAPI() {
-        let headers = [
-            "api-key": "2d07d184-f559-48e9-9fe7-5bb5d4d44cea",
-            "Content-Type": "application/json"
-        ]
-        AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = "http://localhost:9000/v4"
-    }
-    
-    let kWaitTimeInterval = 10.0
-    
     override func spec() {
-        setupAPI()
+        TestsConfig.setupAPI()
         let beaconRepository = BeaconRepository()
         
         context("beacons") {

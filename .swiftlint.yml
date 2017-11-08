@@ -3,8 +3,9 @@ disabled_rules:
 excluded: # paths to ignore during linting.
   - Carthage
   - Pods
+  - Example
 # parameterized rules can be customized from this configuration file
-function_body_length: 60
+function_body_length: 80
 line_length: 200
 file_length: 600
 type_body_length: 350
