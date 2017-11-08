@@ -98,8 +98,8 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("get a match") {
                 class MatchDelegate: AlpsManagerDelegate {
-                    var onMatch: OnMatchClojure
-                    init(_ onMatch: @escaping OnMatchClojure) {
+                    var onMatch: OnMatchClosure
+                    init(_ onMatch: @escaping OnMatchClosure) {
                         self.onMatch = onMatch
                     }
                 }

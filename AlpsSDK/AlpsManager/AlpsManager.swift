@@ -10,10 +10,10 @@ import Foundation
 import CoreLocation
 import Alps
 
-public typealias OnMatchClojure = (_ matches: [Match], _ device: Device) -> Void
+public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
 public protocol AlpsManagerDelegate: class {
-    var onMatch: OnMatchClojure { get set }
+    var onMatch: OnMatchClosure { get set }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
