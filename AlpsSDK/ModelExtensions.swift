@@ -12,7 +12,6 @@ import Alps
 import CoreLocation
 
 extension IBeaconDevice {
-    //TOCHANGE: put it in internal when beaconManager is working.
     public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber) {
         self.init()
         self.name = name
@@ -24,7 +23,7 @@ extension IBeaconDevice {
 }
 
 extension MobileDevice {
-    internal convenience init(name: String, platform: String, deviceToken: String, location: Location?) {
+    public convenience init(name: String, platform: String, deviceToken: String, location: Location?) {
         self.init()
         self.name = name
         self.deviceType = DeviceType.mobileDevice
@@ -35,7 +34,7 @@ extension MobileDevice {
 }
 
 extension PinDevice {
-    internal convenience init(name: String, location: Location) {
+    public convenience init(name: String, location: Location) {
         self.init()
         self.name = name
         self.deviceType = DeviceType.pinDevice
@@ -53,11 +52,9 @@ extension Device: Hashable {
     }
 }
 
-extension Publication {
-
-    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
+public extension Publication {
+    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
         self.init()
-        // XXX: use the deviceId of the DeviceLocation provided
         self.deviceId = deviceId
         self.topic = topic
         self.range = range
@@ -66,9 +63,8 @@ extension Publication {
     }
 }
 
-extension Subscription {
-
-    internal convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, selector: String) {
+public extension Subscription {
+    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, selector: String) {
         self.init()
         self.deviceId = deviceId
         self.topic = topic
@@ -78,9 +74,8 @@ extension Subscription {
     }
 }
 
-extension Location {
-
-    internal convenience init(latitude: Double, longitude: Double, altitude: Double, horizontalAccuracy: Double, verticalAccuracy: Double) {
+public extension Location {
+    internal convenience init(latitude: Double, longitude: Double, altitude: Double? = nil, horizontalAccuracy: Double? = nil, verticalAccuracy: Double? = nil) {
         self.init()
         self.latitude = latitude
         self.longitude = longitude
@@ -120,8 +115,7 @@ extension Match: CustomStringConvertible, Hashable {
 }
 
 extension ProximityEvent {
-
-    public convenience init(deviceId: String, distance: Double) {
+    internal convenience init(deviceId: String, distance: Double) {
         self.init()
         self.deviceId = deviceId
         self.distance = distance
@@ -129,7 +123,6 @@ extension ProximityEvent {
 }
 
 extension CLProximity {
-    
     func rawValueString() -> String {
         switch self {
         case .unknown: return "unknown"

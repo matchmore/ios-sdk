@@ -32,7 +32,7 @@ final class BeaconRepository: AsyncReadable {
     }
     
     private func updateBeaconTriplets(completion: (() -> Void)? = nil) {
-        Alps.DeviceAPI.getIBeaconTriples { [weak self] (beaconTriplets, error) in
+        DeviceAPI.getIBeaconTriples { [weak self] (beaconTriplets, error) in
             if let beaconTriplets = beaconTriplets, error == nil {
                 self?.items = beaconTriplets
             }

@@ -10,7 +10,19 @@ import Foundation
 import CoreLocation
 import Alps
 
+<<<<<<< HEAD
 open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
+=======
+public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
+
+public protocol AlpsManagerDelegate: class {
+    var onMatch: OnMatchClosure { get set }
+}
+
+public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+    public var delegates = MulticastDelegate<AlpsManagerDelegate>()
+    
+>>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
     let apiKey: String
     var baseURL: String {
         set {
@@ -20,24 +32,33 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNoti
         }
     }
     
+<<<<<<< HEAD
     lazy var contextManager = ContextManager(delegate: self)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     var remoteNotificationManager: RemoteNotificationManager!
     var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
+=======
+    public lazy var contextManager = ContextManager(delegate: self)
+    public lazy var matchMonitor = MatchMonitor(delegate: self)
+>>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
     
-    lazy var mobileDevices = MobileDeviceRepository()
-    lazy var pinDevices = PinDeviceRepository()
+    public lazy var mobileDevices = MobileDeviceRepository()
+    public lazy var pinDevices = PinDeviceRepository()
     
-    lazy var publications = PublicationRepository()
-    lazy var subscriptions = SubscriptionRepository()
+    public lazy var publications = PublicationRepository()
+    public lazy var subscriptions = SubscriptionRepository()
     
-    lazy var locationUpdateManager = LocationUpdateManager()
+    public lazy var locationUpdateManager = LocationUpdateManager()
 
+<<<<<<< HEAD
     public init(apiKey: String, baseUrl: String? = nil) {
+=======
+    public init(apiKey: String, baseURL: String? = nil) {
+>>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
         self.apiKey = apiKey
         self.setupAPI()
-        if let baseUrl = baseUrl {
-            self.baseURL = baseUrl
+        if let baseURL = baseURL {
+            self.baseURL = baseURL
         }
         remoteNotificationManager = RemoteNotificationManager(delegate: self)
     }
@@ -56,7 +77,7 @@ open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNoti
     // MARK: - Match Monitor Delegate
     
     func didFind(matches: [Match], for device: Device) {
-        onMatch?(matches, device)
+        delegates.invoke { $0.onMatch(matches, device) }
     }
     
     // MARK: - Context Manager Delegate

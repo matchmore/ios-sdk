@@ -9,9 +9,20 @@
 import Foundation
 import Alps
 
-final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+let kPinDevicesFile = "kPinDevicesFile.Alps"
+
+final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = PinDevice
-    private(set) var items = [PinDevice]()
+    
+    private(set) var items = [PinDevice]() {
+        didSet {
+            _ = PersistenceManager.save(object: self.items.map { $0.encodablePinDevice }, to: kPinDevicesFile)
+        }
+    }
+    
+    init() {
+        self.items = PersistenceManager.read(type: [EncodablePinDevice].self, from: kPinDevicesFile)?.map { $0.object } ?? []
+    }
     
     func create(item: PinDevice, completion: @escaping (Result<PinDevice?>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
@@ -19,7 +30,7 @@ final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable
                 self.items.append(pinDevice)
                 completion(.success(pinDevice))
             } else {
-                completion(.failure(error))
+                completion(.failure(error as? ErrorResponse))
             }
         }
     }
@@ -32,11 +43,16 @@ final class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable
         completion(.success(items))
     }
     
-    func delete(item: PinDevice, completion: @escaping (Error?) -> Void) {
-        guard let id = item.id else { completion(nil); return }
-        Alps.DeviceAPI.deleteDevice(deviceId: id) { (error) in
-            self.items = self.items.filter { $0 !== item }
-            completion(error)
+    func delete(item: PinDevice, completion: @escaping (ErrorResponse?) -> Void) {
+        guard let id = item.id else { completion(ErrorResponse.missingId); return }
+        self.items = self.items.filter { $0 !== item }
+        DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            completion(error as? ErrorResponse)
         }
+    }
+    
+    func deleteAll() {
+        items.forEach { self.delete(item: $0, completion: { (_) in }) }
+        items = []
     }
 }
