@@ -13,7 +13,8 @@ protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
 }
 
-public class MatchMonitor {
+public class MatchMonitor: RemoteNotificationManagerDelegate {
+    
     private(set) weak var delegate: MatchMonitorDelegate?
     private(set) var monitoredDevices = Set<Device>()
     private(set) var deliveredMatches = Set<Match>()
@@ -55,6 +56,15 @@ public class MatchMonitor {
             guard let matches = matches, matches.count > 0, error == nil else { return }
             self.deliveredMatches = Set(matches)
             self.delegate?.didFind(matches: matches, for: device)
+        }
+    }
+    
+    // When MatchMonitor receive a notification(push or ws) it will get the matches for the monitored devices.
+    internal func remoteNotificationManager(manager: RemoteNotificationManager, didReceiveNotification: String) {
+        monitoredDevices.forEach {
+            if $0.id == didReceiveNotification {
+                getMatchesForDevice(device: $0)
+            }
         }
     }
 }

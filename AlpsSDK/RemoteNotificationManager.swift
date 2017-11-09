@@ -6,18 +6,24 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Foundation
 import UserNotifications
+import UIKit
+
+protocol RemoteNotificationManagerDelegate: class {
+    func remoteNotificationManager(manager: RemoteNotificationManager, didReceiveNotification: String)
+}
 
 public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
+    private weak var delegate: RemoteNotificationManagerDelegate?
     var deviceTokenData: Data?
     public lazy var deviceToken: String = {
         return self.deviceTokenData?.reduce("", {$0 + String(format: "%02X", $1)})
         }()!
     
-    override init() {
+    init(delegate: RemoteNotificationManagerDelegate) {
         super.init()
+        self.delegate = delegate
         registerForPushNotifications()
     }
     
@@ -65,14 +71,16 @@ public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelega
         // Called when app is open in background and click on notification
         NSLog("did Receive function : ")
         NSLog(response.notification.request.content.body)
+        delegate?.remoteNotificationManager(manager: self, didReceiveNotification: response.notification.request.content.body)
         completionHandler()
     }
     
     @available(iOS 10.0, *)
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Called when app is in foreground
-        // Assume that the request.content.body contains the match id.
+        // Assume that the request.content.body contains the device id.
         NSLog("will present function : ")
         NSLog(notification.request.content.body)
+        delegate?.remoteNotificationManager(manager: self, didReceiveNotification: notification.request.content.body)
     }
 }

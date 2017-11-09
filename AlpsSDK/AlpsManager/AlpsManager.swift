@@ -30,7 +30,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     public lazy var contextManager = ContextManager(delegate: self)
     public lazy var matchMonitor = MatchMonitor(delegate: self)
-    public let remoteNotificationManager: RemoteNotificationManager = RemoteNotificationManager()
+    public var remoteNotificationManager: RemoteNotificationManager!
     var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     public lazy var mobileDevices = MobileDeviceRepository()
@@ -47,6 +47,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         if let baseURL = baseURL {
             self.baseURL = baseURL
         }
+        remoteNotificationManager = RemoteNotificationManager(delegate: matchMonitor)
     }
     
     private func setupAPI() {
