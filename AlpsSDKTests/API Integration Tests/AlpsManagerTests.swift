@@ -103,9 +103,10 @@ final class AlpsManagerTests: QuickSpec {
                         self.onMatch = onMatch
                     }
                 }
+                let matchDelegate = MatchDelegate { _, _ in }
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    matchDelegate.onMatch = { _, _ in done() }
                     guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
-                    let matchDelegate = MatchDelegate { _, _ in done() }
                     alpsManager.delegates += matchDelegate
                     alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
                 }
@@ -124,7 +125,6 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.mobileDevices.main).toEventually(beNil())
                 expect(errorResponse?.errorMessage).toEventually(beNil())
             }
-            
         }
         
     }
