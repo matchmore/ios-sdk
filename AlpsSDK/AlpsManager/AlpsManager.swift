@@ -10,19 +10,15 @@ import Foundation
 import CoreLocation
 import Alps
 
-<<<<<<< HEAD
-open class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
-=======
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
 public protocol AlpsManagerDelegate: class {
     var onMatch: OnMatchClosure { get set }
 }
 
-public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
     public var delegates = MulticastDelegate<AlpsManagerDelegate>()
     
->>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
     let apiKey: String
     var baseURL: String {
         set {
@@ -32,15 +28,10 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         }
     }
     
-<<<<<<< HEAD
-    lazy var contextManager = ContextManager(delegate: self)
-    lazy var matchMonitor = MatchMonitor(delegate: self)
-    var remoteNotificationManager: RemoteNotificationManager!
-    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
-=======
     public lazy var contextManager = ContextManager(delegate: self)
     public lazy var matchMonitor = MatchMonitor(delegate: self)
->>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
+    var remoteNotificationManager: RemoteNotificationManager!
+    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     public lazy var mobileDevices = MobileDeviceRepository()
     public lazy var pinDevices = PinDeviceRepository()
@@ -50,11 +41,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     public lazy var locationUpdateManager = LocationUpdateManager()
 
-<<<<<<< HEAD
-    public init(apiKey: String, baseUrl: String? = nil) {
-=======
     public init(apiKey: String, baseURL: String? = nil) {
->>>>>>> 6bf8df037161341e277f6482de94fc2cfa9e7965
         self.apiKey = apiKey
         self.setupAPI()
         if let baseURL = baseURL {
