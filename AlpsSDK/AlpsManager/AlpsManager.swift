@@ -92,4 +92,8 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     public func remoteNotificationManager(registerDeviceToken: Data) {
         self.remoteNotificationManager.registerDeviceToken(deviceToken: registerDeviceToken)
     }
+    
+    public func getDeviceToken() -> String {
+        return remoteNotificationManager.deviceToken
+    }
 }

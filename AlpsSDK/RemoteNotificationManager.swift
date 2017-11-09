@@ -17,19 +17,14 @@ protocol RemoteNotificationManagerDelegate: class {
 class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
-    var deviceToken: Data?
-    lazy var deviceTokenString: String = {
-        [unowned self] in
-        return self.deviceToken?.reduce("", {$0 + String(format: "%02X", $1)})
+    var deviceTokenData: Data?
+    lazy var deviceToken: String = {
+        return self.deviceTokenData?.reduce("", {$0 + String(format: "%02X", $1)})
         }()!
     
     init(delegate: RemoteNotificationManagerDelegate) {
         super.init()
         self.delegate = delegate
-        initialize()
-    }
-    
-    func initialize() {
         registerForPushNotifications()
     }
     
@@ -37,8 +32,8 @@ class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         // iOS 10 support
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (granted, _) in
-                print("***********************************************")
-                print("Permission granted: \(granted)")
+                NSLog("***********************************************")
+                NSLog("Permission granted: \(granted)")
                 
                 // If get notification settings is not .authorized, register for remote notification is not called
                 self.getNotificationSettings()
@@ -47,35 +42,36 @@ class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
             }
         }
         
-        print("Notification Manager is initialized.")
+        NSLog("Notification Manager is initialized.")
     }
     
     private func getNotificationSettings() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                print("***********************************************")
-                print("Notification settings: \(settings)")
+                NSLog("***********************************************")
+                NSLog("Notification settings: \(settings)")
                 guard settings.authorizationStatus == .authorized else { return }
             }
         } else {
             // Fallback on earlier versions
-            print("************PREVIOUS VERSION")
+            NSLog("************PREVIOUS VERSION*************")
+            NSLog("NOT SUPPORTED BY ALPS SDK for iOS less than 10.")
         }
     }
     
     // Called when AppDelegate func didRegisterForRemoteNotificationsWithDeviceToken
     //
     func registerDeviceToken(deviceToken: Data) {
-        print("REGISTERED DEVICE TOKEN")
-        self.deviceToken = deviceToken
+        NSLog("REGISTERED DEVICE TOKEN")
+        self.deviceTokenData = deviceToken
     }
     
     // MARK: UNUserNotificationCenter Delegate
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         // Called when app is open in background and click on notification
-        print("did Receive function : ")
-        print(response.notification.request.content.body)
+        NSLog("did Receive function : ")
+        NSLog(response.notification.request.content.body)
         completionHandler()
     }
     
@@ -83,7 +79,7 @@ class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Called when app is in foreground
         // Assume that the request.content.body contains the match id.
-        print("will present function : ")
-        print(notification.request.content.body)
+        NSLog("will present function : ")
+        NSLog(notification.request.content.body)
     }
 }
