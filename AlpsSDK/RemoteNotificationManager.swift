@@ -11,15 +11,17 @@ import UIKit
 import UserNotifications
 
 protocol RemoteNotificationManagerDelegate: class {
-    func remoteNotificationManager(manager: RemoteNotificationManager, registerDeviceToken: Data)
-    func remoteNotificationManager(manager: RemoteNotificationManager, handleRemoteNotification: [AnyHashable: Any])
+    func remoteNotificationManager(registerDeviceToken: Data)
 }
 
 class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
     var deviceToken: Data?
-    var deviceTokenString = ""
+    lazy var deviceTokenString: String = {
+        [unowned self] in
+        return self.deviceToken?.reduce("", {$0 + String(format: "%02X", $1)})
+        }()!
     
     init(delegate: RemoteNotificationManagerDelegate) {
         super.init()
@@ -66,11 +68,6 @@ class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     func registerDeviceToken(deviceToken: Data) {
         print("REGISTERED DEVICE TOKEN")
         self.deviceToken = deviceToken
-    }
-    
-    func handleRemoteNotification(userInfo: [AnyHashable: Any]) {
-        print("--------- handle remote notification")
-        print(userInfo.description)
     }
     
     // MARK: UNUserNotificationCenter Delegate
