@@ -9,11 +9,18 @@
 import Foundation
 import Alps
 
+let kBeaconFile = "kBeaconFile.Alps"
+
 final class BeaconRepository: AsyncReadable {
     typealias DataType = IBeaconTriple
-    private(set) var items = [IBeaconTriple]()
+    private(set) var items = [IBeaconTriple]() {
+        didSet {
+            _ = PersistenceManager.save(object: self.items.map { $0.encodableIBeaconTriple }, to: kBeaconFile)
+        }
+    }
     
     init() {
+        self.items = PersistenceManager.read(type: [EncodableIBeaconTriple].self, from: kBeaconFile)?.map { $0.object } ?? []
         updateBeaconTriplets()
     }
     
