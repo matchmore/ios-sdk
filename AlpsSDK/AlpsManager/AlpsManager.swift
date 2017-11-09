@@ -16,7 +16,7 @@ public protocol AlpsManagerDelegate: class {
     var onMatch: OnMatchClosure { get set }
 }
 
-public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
+public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     public var delegates = MulticastDelegate<AlpsManagerDelegate>()
     
     let apiKey: String
@@ -30,7 +30,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     
     public lazy var contextManager = ContextManager(delegate: self)
     public lazy var matchMonitor = MatchMonitor(delegate: self)
-    var remoteNotificationManager: RemoteNotificationManager!
+    public let remoteNotificationManager: RemoteNotificationManager = RemoteNotificationManager()
     var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     public lazy var mobileDevices = MobileDeviceRepository()
@@ -47,7 +47,6 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
         if let baseURL = baseURL {
             self.baseURL = baseURL
         }
-        remoteNotificationManager = RemoteNotificationManager(delegate: self)
     }
     
     private func setupAPI() {
@@ -85,15 +84,5 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     
     func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon]) {
         
-    }
-    
-    // MARK: - Remote Notification Manager Delegate
-    
-    public func remoteNotificationManager(registerDeviceToken: Data) {
-        self.remoteNotificationManager.registerDeviceToken(deviceToken: registerDeviceToken)
-    }
-    
-    public func getDeviceToken() -> String {
-        return remoteNotificationManager.deviceToken
     }
 }
