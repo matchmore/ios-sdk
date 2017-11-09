@@ -54,6 +54,7 @@ public class MatchMonitor {
         MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
             guard let matches = matches, matches.count > 0, error == nil else { return }
             self.deliveredMatches = Set(matches)
+            self.delegate?.didFind(matches: matches, for: device)
         }
     }
 }

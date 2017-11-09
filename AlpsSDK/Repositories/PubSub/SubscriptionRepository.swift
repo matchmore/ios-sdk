@@ -9,17 +9,19 @@
 import Foundation
 import Alps
 
+let kSubscriptionFile = "kSubscriptionFile.Alps"
+
 final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
     typealias DataType = Subscription
     
     private(set) var items = [Subscription]() {
         didSet {
-            
+            _ = PersistenceManager.save(object: self.items.map { $0.encodableSubscription }, to: kSubscriptionFile)
         }
     }
     
     init() {
-        
+        self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object } ?? []
     }
     
     func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {

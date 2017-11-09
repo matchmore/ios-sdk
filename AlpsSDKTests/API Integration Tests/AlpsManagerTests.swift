@@ -26,10 +26,14 @@ final class AlpsManagerTests: QuickSpec {
         
         context("Alps Manager") {
             
-            fit ("clear mobile devices") {
+            fit ("clear manager") {
                 alpsManager.mobileDevices.deleteAll()
+                alpsManager.publications.deleteAll()
+                alpsManager.subscriptions.deleteAll()
                 expect(alpsManager.mobileDevices.main).to(beNil())
                 expect(alpsManager.mobileDevices.items).to(beEmpty())
+                expect(alpsManager.publications.items).to(beEmpty())
+                expect(alpsManager.subscriptions.items).to(beEmpty())
             }
             
             beforeEach {
@@ -99,9 +103,10 @@ final class AlpsManagerTests: QuickSpec {
                         self.onMatch = onMatch
                     }
                 }
+                let matchDelegate = MatchDelegate { _, _ in }
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    matchDelegate.onMatch = { _, _ in done() }
                     guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
-                    let matchDelegate = MatchDelegate { _, _ in done() }
                     alpsManager.delegates += matchDelegate
                     alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
                 }
@@ -120,7 +125,6 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.mobileDevices.main).toEventually(beNil())
                 expect(errorResponse?.errorMessage).toEventually(beNil())
             }
-            
         }
         
     }
