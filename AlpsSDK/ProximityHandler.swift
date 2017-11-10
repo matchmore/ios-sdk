@@ -121,7 +121,9 @@ final class ProximityHandler: ProximityHandlerDelegate {
                 }
                 return false
             }
-            result.append(b[0])
+            if !b.isEmpty {
+                result.append(b[0])
+            }
         }
         return result
     }
