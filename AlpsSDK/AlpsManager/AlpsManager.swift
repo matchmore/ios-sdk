@@ -31,10 +31,11 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     public lazy var contextManager = ContextManager(delegate: self)
     public lazy var matchMonitor = MatchMonitor(delegate: self)
     public var remoteNotificationManager: RemoteNotificationManager!
-    var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
+    public var onMatch: ((_ matches: [Match], _ device: Device) -> Void)?
     
     public lazy var mobileDevices = MobileDeviceRepository()
     public lazy var pinDevices = PinDeviceRepository()
+    public lazy var beaconDevices = BeaconRepository()
     
     public lazy var publications = PublicationRepository()
     public lazy var subscriptions = SubscriptionRepository()

@@ -36,15 +36,15 @@ final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncD
         }
     }
     
-    func find(byId: String, completion: @escaping (Result<Publication?>) -> Void) {
+    public func find(byId: String, completion: @escaping (Result<Publication?>) -> Void) {
         completion(.success(items.filter { $0.id == byId }.first))
     }
     
-    func findAll(completion: @escaping (Result<[Publication]>) -> Void) {
+    public func findAll(completion: @escaping (Result<[Publication]>) -> Void) {
         completion(.success(items))
     }
     
-    func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
+    public func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
         self.items = self.items.filter { $0 !== item }
@@ -53,7 +53,7 @@ final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncD
         })
     }
     
-    func deleteAll() {
+    public func deleteAll() {
         items.forEach { self.delete(item: $0, completion: { (_) in }) }
         items = []
     }

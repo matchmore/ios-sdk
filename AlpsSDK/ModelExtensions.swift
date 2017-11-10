@@ -75,7 +75,7 @@ public extension Subscription {
 }
 
 public extension Location {
-    internal convenience init(latitude: Double, longitude: Double, altitude: Double? = nil, horizontalAccuracy: Double? = nil, verticalAccuracy: Double? = nil) {
+    public convenience init(latitude: Double, longitude: Double, altitude: Double? = nil, horizontalAccuracy: Double? = nil, verticalAccuracy: Double? = nil) {
         self.init()
         self.latitude = latitude
         self.longitude = longitude

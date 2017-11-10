@@ -11,9 +11,9 @@ import Alps
 
 let kBeaconFile = "kBeaconFile.Alps"
 
-final class BeaconRepository: AsyncReadable {
+final public class BeaconRepository: AsyncReadable {
     typealias DataType = IBeaconTriple
-    private(set) var items = [IBeaconTriple]() {
+    public var items = [IBeaconTriple]() {
         didSet {
             _ = PersistenceManager.save(object: self.items.map { $0.encodableIBeaconTriple }, to: kBeaconFile)
         }
@@ -24,14 +24,14 @@ final class BeaconRepository: AsyncReadable {
         updateBeaconTriplets()
     }
     
-    func find(byId: String, completion: @escaping (Result<IBeaconTriple?>) -> Void) {
+    public func find(byId: String, completion: @escaping (Result<IBeaconTriple?>) -> Void) {
         completion(.success(items.filter { $0.deviceId == byId }.first))
         updateBeaconTriplets {
             completion(.success(self.items.filter { $0.deviceId == byId }.first))
         }
     }
     
-    func findAll(completion: @escaping (Result<[IBeaconTriple]>) -> Void) {
+    public func findAll(completion: @escaping (Result<[IBeaconTriple]>) -> Void) {
         completion(.success(items))
         updateBeaconTriplets {
             completion(.success(self.items))

@@ -42,7 +42,7 @@ public class ContextManager: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Beacons
     
-    func startRanging(forUuid: UUID, identifier: String) {
+    public func startRanging(forUuid: UUID, identifier: String) {
         let beaconRegion = CLBeaconRegion(proximityUUID: forUuid, identifier: identifier)
         locationManager.startRangingBeacons(in: beaconRegion)
     }
