@@ -39,4 +39,11 @@ extension AlpsManager {
             completion?(result)
         }
     }
+    
+    public func createPinDevice(device: PinDevice, completion: ((Result<PinDevice?>) -> Void)? = nil) {
+        pinDevices.create(item: device) { (result) in
+           completion?(result)
+        }
+    }
+
 }
