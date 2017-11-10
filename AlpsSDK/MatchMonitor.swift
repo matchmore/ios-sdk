@@ -54,12 +54,12 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         guard let deviceId = device.id else { return }
         MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
             guard let matches = matches, matches.count > 0, error == nil else { return }
-            self.deliveredMatches = Set(matches)
+            self.deliveredMatches = Set(matches) // TODO: add union back
             self.delegate?.didFind(matches: matches, for: device)
         }
     }
     
-    // When MatchMonitor receive a notification(push or ws) it will get the matches for the monitored devices.
+    // When MatchMonitor receive a notification (push or ws) it will get the matches for the monitored devices.
     internal func remoteNotificationManager(manager: RemoteNotificationManager, didReceiveNotification: String) {
         monitoredDevices.forEach {
             if $0.id == didReceiveNotification {

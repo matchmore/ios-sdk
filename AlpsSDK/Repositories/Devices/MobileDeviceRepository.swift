@@ -53,6 +53,7 @@ final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, Async
         completion(.success(items))
     }
     
+    // TODO: It requires OK from backend (maybe queue?)
     func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         if self.main?.id == id { self.main = nil }

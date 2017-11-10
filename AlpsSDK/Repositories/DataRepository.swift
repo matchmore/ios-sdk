@@ -34,6 +34,13 @@ protocol AsyncDeleteable: AssociatedDataType {
 public enum Result<T> {
     case success(T)
     case failure(ErrorResponse?)
+    
+//    let responseObject: T? {
+//        
+//    }
+//    let errorMesseage: String {
+//        
+//    }
 }
 
 protocol AssociatedDataType {

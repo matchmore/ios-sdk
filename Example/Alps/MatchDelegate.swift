@@ -8,10 +8,11 @@
 
 import Foundation
 import AlpsSDK
+import Alps
 
 class MatchDelegate: AlpsManagerDelegate {
-    var onMatch: OnMatchClojure
-    init(_ onMatch: @escaping OnMatchClojure) {
+    var onMatch: OnMatchClosure
+    init(_ onMatch: @escaping OnMatchClosure) {
         self.onMatch = onMatch
     }
 }
