@@ -60,7 +60,7 @@ When you initiate an `AlpsManager` , the SDK will automatically register your ap
 But, you have to implement `didRegisterForRemoteNotificationsWithDeviceToken`  appDelegate callback.
 It will allow Alps SDK to receive the push token, and handle the error.
 
-Add these lines of code to your appDelegate.
+Add these lines to your appDelegate.
 ```swift
 // ...
 

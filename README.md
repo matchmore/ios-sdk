@@ -19,7 +19,36 @@ line to your Podfile:
 
 Alps iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
 
-If you need help on [how to setup APNS](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/ApnsSetup.md)
+If you already know how to enable APNS, don't forget to upload the certificate in our portal.
+Also, you need to add these lines to your project `AppDelegate`.
+
+These callbacks allow the SDK to get the device token.
+
+```swift
+// ...
+
+// Called when APNs has assigned the device a unique token
+func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    // Convert token to string
+    let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+
+    // Device token to your console.
+    NSLog("APNs device token: \(deviceTokenString)")
+
+    // Persist it in your backend in case it's new
+    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceToken)
+}
+
+// Called when APNs failed to register the device for push notifications
+func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    // Print the error to console (you should alert the user that registration failed)
+    NSLog("APNs registration failed: \(error)")
+}
+
+// ...
+```
+
+Else, you can find help on [how to setup APNS](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/ApnsSetup.md).
 
 ## Technical overview
 
