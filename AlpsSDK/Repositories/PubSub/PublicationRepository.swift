@@ -12,6 +12,7 @@ import Alps
 let kPublicationFile = "kPublicationFile.Alps"
 
 final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
+    
     typealias DataType = Publication
     
     private(set) var items: [Publication] {
@@ -58,9 +59,15 @@ final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncD
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
         PublicationAPI.deletePublication(deviceId: deviceId, publicationId: id, completion: { (error) in
             if error == nil {
-                self.items = self.items.filter { $0.id != item.id }
+                self.items = self.items.filter { $0.id != id }
             }
             completion(error as? ErrorResponse)
         })
+    }
+}
+
+extension PublicationRepository: DeviceDeleteDelegate {
+    func didDeleteDeviceWith(id: String) {
+        self.items = self.items.filter { $0.deviceId != id }
     }
 }

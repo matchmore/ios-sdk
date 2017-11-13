@@ -58,9 +58,15 @@ final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, Async
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
         SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: id, completion: { (error) in
             if error == nil {
-                self.items = self.items.filter { $0.id != item.id }
+                self.items = self.items.filter { $0.id != id }
             }
             completion(error as? ErrorResponse)
         })
+    }
+}
+
+extension SubscriptionRepository: DeviceDeleteDelegate {
+    func didDeleteDeviceWith(id: String) {
+        self.items = self.items.filter { $0.deviceId != id }
     }
 }

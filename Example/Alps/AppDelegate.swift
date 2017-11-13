@@ -40,16 +40,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
             // Start Monitoring
-            self.matchDelegate = MatchDelegate { matches, _ in print("You've got a match!\n\(matches)") }
+            self.matchDelegate = MatchDelegate { matches, _ in
+                print("You've got a match!\n\(matches)")
+                UIApplication.shared.registerForRemoteNotifications()
+            }
             self.alpsManager.delegates += self.matchDelegate
             self.alpsManager.matchMonitor.startMonitoringFor(device: mainDevice!)
         }
         return true
     }
     
-    register
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Convert token to string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        let alert = UIAlertController(title: "Device token received", message: "\(deviceTokenString)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        
+        let alert = UIAlertController(title: "Push received", message: "\(userInfo)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }

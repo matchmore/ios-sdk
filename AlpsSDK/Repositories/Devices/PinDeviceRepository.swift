@@ -14,6 +14,8 @@ let kPinDevicesFile = "kPinDevicesFile.Alps"
 final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = PinDevice
     
+    internal var delegates = MulticastDelegate<DeviceDeleteDelegate>()
+    
     private(set) var items = [PinDevice]() {
         didSet {
             _ = PersistenceManager.save(object: self.items.map { $0.encodablePinDevice }, to: kPinDevicesFile)
@@ -47,7 +49,8 @@ final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDel
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
             if error == nil {
-                self.items = self.items.filter { $0.id != item.id }
+                self.items = self.items.filter { $0.id != id }
+                self.delegates.invoke { $0.didDeleteDeviceWith(id: id) }
             }
             completion(error as? ErrorResponse)
         }

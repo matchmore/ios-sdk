@@ -28,7 +28,7 @@ class ExpirationTests: QuickSpec {
             fit ("fast") {
                 fastExpiration.name = "fast"
                 fastExpiration.createdAt = Date().nowTimeInterval()
-                fastExpiration.duration = 3
+                fastExpiration.duration = 1
                 expect(fastExpiration.isExpired).to(equal(false))
             }
             let noCreatedAt = ExpiringObject()
@@ -66,7 +66,7 @@ class ExpirationTests: QuickSpec {
             
             fit ("collection after expiration") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         done()
                     }
                 }

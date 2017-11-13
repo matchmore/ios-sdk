@@ -29,6 +29,10 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Need location and basta!</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

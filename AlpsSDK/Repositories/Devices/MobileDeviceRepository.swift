@@ -17,6 +17,8 @@ let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = MobileDevice
     
+    internal var delegates = MulticastDelegate<DeviceDeleteDelegate>()
+    
     private(set) var items = [MobileDevice]() {
         didSet {
             _ = PersistenceManager.save(object: self.items.map { $0.encodableMobileDevice }, to: kMobileDevicesFile)
@@ -58,7 +60,8 @@ final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, Async
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
             if error == nil {
                 if self.main?.id == id { self.main = nil }
-                self.items = self.items.filter { $0.id != item.id }
+                self.items = self.items.filter { $0.id != id }
+                self.delegates.invoke { $0.didDeleteDeviceWith(id: id) }
             }
             completion(error as? ErrorResponse)
         }

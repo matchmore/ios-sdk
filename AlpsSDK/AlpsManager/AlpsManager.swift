@@ -13,7 +13,7 @@ import Alps
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
 public protocol AlpsManagerDelegate: class {
-    var onMatch: OnMatchClosure { get set }
+    var onMatch: OnMatchClosure { get }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
@@ -33,8 +33,18 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     public var remoteNotificationManager: RemoteNotificationManager!
     
-    public lazy var mobileDevices = MobileDeviceRepository()
-    public lazy var pinDevices = PinDeviceRepository()
+    public lazy var mobileDevices: MobileDeviceRepository = {
+        let mobileDevices = MobileDeviceRepository()
+        mobileDevices.delegates += publications
+        mobileDevices.delegates += subscriptions
+        return mobileDevices
+    }()
+    public lazy var pinDevices: PinDeviceRepository = {
+        let pinDevices = PinDeviceRepository()
+        pinDevices.delegates += publications
+        pinDevices.delegates += subscriptions
+        return pinDevices
+    }()
     public lazy var beaconTriples = BeaconTripleRepository()
     
     public lazy var publications = PublicationRepository()

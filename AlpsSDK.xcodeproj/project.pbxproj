@@ -21,8 +21,10 @@
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
 		C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */; };
 		C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75B1FB9DEBF00D71896 /* Expirable.swift */; };
+		C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */; };
 		C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */; };
 		C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */; };
+		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
@@ -67,8 +69,10 @@
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationTests.swift; sourceTree = "<group>"; };
 		C351F75B1FB9DEBF00D71896 /* Expirable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expirable.swift; sourceTree = "<group>"; };
+		C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDeleteDelegate.swift; sourceTree = "<group>"; };
 		C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
+		C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */,
 				C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */,
 				C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */,
 				C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */,
@@ -254,6 +259,7 @@
 				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
 				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
 				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */,
 			);
 			path = "API Integration Tests";
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */,
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
 				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
+				C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
@@ -513,6 +520,7 @@
 				C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */,
 				C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
+				C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */,
 				C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -99,8 +99,8 @@ final class AlpsManagerTests: QuickSpec {
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
+                        done()
                     })
-                    done()
                 }
                 expect(alpsManager.subscriptions.items).toEventuallyNot(beEmpty())
                 expect(errorResponse?.message).toEventually(beNil())

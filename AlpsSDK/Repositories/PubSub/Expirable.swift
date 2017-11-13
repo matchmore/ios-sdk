@@ -10,8 +10,8 @@ import Foundation
 import Alps
 
 protocol Expirable {
-    var duration: Double? { get set }
-    var createdAt: Int64? { get set }
+    var duration: Double? { get }
+    var createdAt: Int64? { get }
     
     var isExpired: Bool { get }
 }
@@ -24,11 +24,9 @@ extension Expirable {
     }
 }
 
-extension Subscription: Expirable {
-}
+extension Subscription: Expirable { }
 
-extension Publication: Expirable {
-}
+extension Publication: Expirable { }
 
 extension Array where Element: Expirable {
     var withoutExpired: [Element] {
