@@ -16,7 +16,6 @@ import Nimble
 
 final class AlpsManagerTests: QuickSpec {
     
-    // swiftlint:disable:next function_body_length
     override func spec() {
         let properties = ["test": "true"]
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
@@ -29,18 +28,6 @@ final class AlpsManagerTests: QuickSpec {
             
             beforeEach {
                 errorResponse = nil
-            }
-            
-            fit ("clear mobile devices") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
-                    alpsManager.mobileDevices.deleteAll { error in
-                        errorResponse = error
-                        done()
-                    }
-                }
-                expect(alpsManager.mobileDevices.main).to(beNil())
-                expect(alpsManager.mobileDevices.items).to(beEmpty())
-                expect(errorResponse?.message).toEventually(beNil())
             }
             
             fit ("clear publications") {
@@ -65,6 +52,18 @@ final class AlpsManagerTests: QuickSpec {
                 expect(errorResponse?.message).toEventually(beNil())
             }
             
+            fit ("clear mobile devices") {
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
+                    alpsManager.mobileDevices.deleteAll { error in
+                        errorResponse = error
+                        done()
+                    }
+                }
+                expect(alpsManager.mobileDevices.main).to(beNil())
+                expect(alpsManager.mobileDevices.items).to(beEmpty())
+                expect(errorResponse?.message).toEventually(beNil())
+            }
+            
             fit ("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createMainDevice { result in
@@ -80,7 +79,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let publication = Publication(topic: "Test Topic", range: 20, duration: 3000, properties: properties)
+                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: properties)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createPublication(publication: publication, completion: { (result) in
                         if case .failure(let error) = result {
@@ -94,7 +93,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a subscription") {
-                let subscription = Subscription(topic: "Test Topic", range: 20, duration: 3000, selector: "test = 'true'")
+                let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100000, selector: "test = 'true'")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createSubscription(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
@@ -137,21 +136,6 @@ final class AlpsManagerTests: QuickSpec {
                 }
                 expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
             }
-            
-            fit ("delete device") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    if let mainDevice = alpsManager.mobileDevices.main {
-                        alpsManager.matchMonitor.stopMonitoringFor(device: mainDevice)
-                        alpsManager.mobileDevices.delete(item: mainDevice, completion: { (error) in
-                            errorResponse = error
-                            done()
-                        })
-                    } else { done() }
-                }
-                expect(alpsManager.mobileDevices.main).toEventually(beNil())
-                expect(errorResponse?.message).toEventually(beNil())
-            }
         }
-        
     }
 }
