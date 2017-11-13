@@ -60,7 +60,8 @@ When you initiate an `AlpsManager` , the SDK will automatically register your ap
 But, you have to implement `didRegisterForRemoteNotificationsWithDeviceToken`  appDelegate callback.
 It will allow Alps SDK to receive the push token, and handle the error.
 
-Add these lines to your appDelegate.
+Add the following lines to your appDelegate.
+
 ```swift
 // ...
 
@@ -68,12 +69,9 @@ Add these lines to your appDelegate.
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-
-    // Device token to your console.
-    NSLog("APNs device token: \(deviceTokenString)")
-
-    // Persist it in your backend in case it's new
-    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceToken)
+    // Pass Device Token to AlpsManager
+    // Note : You need to initiate AlpsManager first.
+    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
 }
 
 // Called when APNs failed to register the device for push notifications

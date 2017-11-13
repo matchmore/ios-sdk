@@ -32,12 +32,9 @@ These callbacks allow the SDK to get the device token.
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-
-    // Device token to your console.
-    NSLog("APNs device token: \(deviceTokenString)")
-
-    // Persist it in your backend in case it's new
-    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceToken)
+    // Pass Device Token to AlpsManager
+    // Note : You need to initiate AlpsManager first.
+    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
 }
 
 // Called when APNs failed to register the device for push notifications

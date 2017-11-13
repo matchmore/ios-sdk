@@ -16,10 +16,7 @@ protocol RemoteNotificationManagerDelegate: class {
 public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
-    var deviceTokenData: Data?
-    public lazy var deviceToken: String = {
-        return self.deviceTokenData?.reduce("", {$0 + String(format: "%02X", $1)})
-        }()!
+    public var deviceToken: String!
     
     init(delegate: RemoteNotificationManagerDelegate) {
         super.init()
@@ -60,9 +57,9 @@ public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelega
     
     // Called when AppDelegate func didRegisterForRemoteNotificationsWithDeviceToken
     //
-    public func registerDeviceToken(deviceToken: Data) {
+    public func registerDeviceToken(deviceToken: String) {
         NSLog("REGISTERED DEVICE TOKEN")
-        self.deviceTokenData = deviceToken
+        self.deviceToken = deviceToken
     }
     
     // MARK: UNUserNotificationCenter Delegate
