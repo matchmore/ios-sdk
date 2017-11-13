@@ -20,7 +20,8 @@ line to your Podfile:
 Alps iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
 
 If you already know how to enable APNS, don't forget to upload the certificate in our portal.
-Also, you need to add these lines to your project `AppDelegate`.
+
+Also, you need to add the following lines to your project `AppDelegate`.
 
 These callbacks allow the SDK to get the device token.
 
