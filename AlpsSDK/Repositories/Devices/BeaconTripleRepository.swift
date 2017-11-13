@@ -11,7 +11,8 @@ import Alps
 
 let kBeaconFile = "kBeaconFile.Alps"
 
-final public class BeaconRepository: AsyncReadable {
+final public class BeaconTripleRepository: AsyncReadable {
+    
     typealias DataType = IBeaconTriple
     public var items = [IBeaconTriple]() {
         didSet {

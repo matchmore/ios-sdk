@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Create New Subscription
             let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
             self.alpsManager.createSubscription(subscription: subscription, completion: { _ in
-                print("Subscription was created")
+                print("Subscription was created \(subscription)")
             })
             
             // Start Monitoring
@@ -45,5 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.alpsManager.matchMonitor.startMonitoringFor(device: mainDevice!)
         }
         return true
+    }
+    
+    register
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
     }
 }

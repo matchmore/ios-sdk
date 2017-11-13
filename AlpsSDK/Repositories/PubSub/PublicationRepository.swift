@@ -11,17 +11,26 @@ import Alps
 
 let kPublicationFile = "kPublicationFile.Alps"
 
-final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = Publication
     
-    private(set) var items = [Publication]() {
+    private(set) var items: [Publication] {
+        get {
+            return _items.withoutExpired
+        }
+        set {
+            _items = newValue
+        }
+    }
+    
+    private var _items = [Publication]() {
         didSet {
-            _ = PersistenceManager.save(object: self.items.map { $0.encodablePublication }, to: kPublicationFile)
+            _ = PersistenceManager.save(object: self._items.withoutExpired.map { $0.encodablePublication }, to: kPublicationFile)
         }
     }
     
     init() {
-        self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object } ?? []
+        self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
     }
     
     func create(item: Publication, completion: @escaping (Result<Publication?>) -> Void) {
@@ -47,14 +56,11 @@ final public class PublicationRepository: AsyncCreateable, AsyncReadable, AsyncD
     public func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
-        self.items = self.items.filter { $0 !== item }
         PublicationAPI.deletePublication(deviceId: deviceId, publicationId: id, completion: { (error) in
+            if error == nil {
+                self.items = self.items.filter { $0.id != item.id }
+            }
             completion(error as? ErrorResponse)
         })
-    }
-    
-    public func deleteAll() {
-        items.forEach { self.delete(item: $0, completion: { (_) in }) }
-        items = []
     }
 }

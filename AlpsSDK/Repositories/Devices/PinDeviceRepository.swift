@@ -11,7 +11,7 @@ import Alps
 
 let kPinDevicesFile = "kPinDevicesFile.Alps"
 
-final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = PinDevice
     
     private(set) var items = [PinDevice]() {
@@ -45,14 +45,11 @@ final public class PinDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDel
     
     func delete(item: PinDevice, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
-        self.items = self.items.filter { $0 !== item }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            if error == nil {
+                self.items = self.items.filter { $0.id != item.id }
+            }
             completion(error as? ErrorResponse)
         }
-    }
-    
-    func deleteAll() {
-        items.forEach { self.delete(item: $0, completion: { (_) in }) }
-        items = []
     }
 }

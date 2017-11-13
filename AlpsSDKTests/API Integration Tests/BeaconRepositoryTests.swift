@@ -18,7 +18,7 @@ class BeaconRepositoryTests: QuickSpec {
     
     override func spec() {
         TestsConfig.setupAPI()
-        let beaconRepository = BeaconRepository()
+        let beaconRepository = BeaconTripleRepository()
         
         context("beacons") {
             fit ("get non existing") {

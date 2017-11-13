@@ -76,7 +76,8 @@ public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelega
     }
     
     @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Called when app is in foreground
         // Assume that the request.content.body contains the device id.
         NSLog("will present function : ")

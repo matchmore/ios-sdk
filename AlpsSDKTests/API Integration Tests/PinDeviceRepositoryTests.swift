@@ -52,7 +52,7 @@ class PinDeviceRepositoryTests: QuickSpec {
                     })
                 }
                 expect(pinDeviceRepository.items.first).toEventuallyNot(beNil())
-                expect(errorResponse?.errorMessage).toEventually(beNil())
+                expect(errorResponse?.message).toEventually(beNil())
             }
             
             var readPinDevice: PinDevice?
@@ -70,12 +70,11 @@ class PinDeviceRepositoryTests: QuickSpec {
                     })
                 }
                 expect(readPinDevice).toEventuallyNot(beNil())
-                expect(errorResponse?.errorMessage).toEventually(beNil())
+                expect(errorResponse?.message).toEventually(beNil())
             }
             
             fit("delete") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    guard let readPinDevice = readPinDevice else { done(); return }
                     pinDeviceRepository.delete(item: readPinDevice,
                                                completion: { (error) in
                         errorResponse = error
@@ -83,7 +82,7 @@ class PinDeviceRepositoryTests: QuickSpec {
                     })
                 }
                 expect(pinDeviceRepository.items.first).toEventually(beNil())
-                expect(errorResponse?.errorMessage).toEventually(beNil())
+                expect(errorResponse?.message).toEventually(beNil())
             }
         }
     }

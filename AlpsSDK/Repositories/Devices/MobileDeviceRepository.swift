@@ -14,7 +14,7 @@ import Alps
 let kMainDeviceFile = "kMainDeviceFile.Alps"
 let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 
-final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = MobileDevice
     
     private(set) var items = [MobileDevice]() {
@@ -53,19 +53,14 @@ final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, Async
         completion(.success(items))
     }
     
-    // TODO: It requires OK from backend (maybe queue?)
     func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
-        if self.main?.id == id { self.main = nil }
-        self.items = self.items.filter { $0 !== item }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
+            if error == nil {
+                if self.main?.id == id { self.main = nil }
+                self.items = self.items.filter { $0.id != item.id }
+            }
             completion(error as? ErrorResponse)
         }
-    }
-    
-    func deleteAll() {
-        items.forEach { self.delete(item: $0, completion: { (_) in }) }
-        items = []
-        main = nil
     }
 }

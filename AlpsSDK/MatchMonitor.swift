@@ -54,8 +54,11 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         guard let deviceId = device.id else { return }
         MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
             guard let matches = matches, matches.count > 0, error == nil else { return }
-            self.deliveredMatches = Set(matches) // TODO: add union back
-            self.delegate?.didFind(matches: matches, for: device)
+            let union = self.deliveredMatches.union(Set(matches))
+            if union != self.deliveredMatches {
+                self.deliveredMatches = union
+                self.delegate?.didFind(matches: matches, for: device)
+            }
         }
     }
     
