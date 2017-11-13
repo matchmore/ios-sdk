@@ -138,13 +138,15 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
             }
             
-            fit ("delete main device") {
+            fit ("delete device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.matchMonitor.stopMonitoringFor(device: mainDevice)
-                    alpsManager.mobileDevices.delete(item: mainDevice, completion: { (error) in
-                        errorResponse = error
-                        done()
-                    })
+                    if let mainDevice = alpsManager.mobileDevices.main {
+                        alpsManager.matchMonitor.stopMonitoringFor(device: mainDevice)
+                        alpsManager.mobileDevices.delete(item: mainDevice, completion: { (error) in
+                            errorResponse = error
+                            done()
+                        })
+                    } else { done() }
                 }
                 expect(alpsManager.mobileDevices.main).toEventually(beNil())
                 expect(errorResponse?.message).toEventually(beNil())

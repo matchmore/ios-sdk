@@ -75,11 +75,13 @@ class PinDeviceRepositoryTests: QuickSpec {
             
             fit("delete") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    pinDeviceRepository.delete(item: readPinDevice,
-                                               completion: { (error) in
-                        errorResponse = error
-                        done()
-                    })
+                    if let readPinDevice = readPinDevice {
+                        pinDeviceRepository.delete(item: readPinDevice,
+                                                   completion: { (error) in
+                            errorResponse = error
+                            done()
+                        })
+                    } else { done () }
                 }
                 expect(pinDeviceRepository.items.first).toEventually(beNil())
                 expect(errorResponse?.message).toEventually(beNil())
