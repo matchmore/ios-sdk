@@ -19,7 +19,7 @@ line to your Podfile:
 
 Alps iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
 
-Some help on [how to setup APNS]()
+If you need help on [how to setup APNS](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/ApnsSetup.md)
 
 ## Technical overview
 
