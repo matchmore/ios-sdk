@@ -45,6 +45,8 @@ Sign in to your account in the **Apple developer center**, and then go to Certif
 
 Go to Identifiers -> App IDs. If you followed previous instructions, you should be able to see the App ID of your application( create it if you don't see it). Click on your application and ensure that the Push Notifications service is enabled.
 
+![apns capabilities switch](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/assets/apns3.png)
+
 Click on the Development or Production certificate button and follow the steps. We recommend you for a Production push certificate. It works for most general cases and is the required certificate for Apple store.
 
 ##### Difference between Development and Production certificate
