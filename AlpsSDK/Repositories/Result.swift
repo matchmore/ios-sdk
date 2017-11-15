@@ -17,7 +17,7 @@ public enum Result<T> {
         guard case let .success(responseObject) = self else { return nil }
         return responseObject
     }
-    public var errorMesseage: String? {
+    public var errorMessage: String? {
         guard case let .failure(error) = self else { return nil }
         return error?.message
     }

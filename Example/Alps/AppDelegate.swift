@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MatchMore.worldId = "00d472b6-51e7-4a50-a1ac-0bc1625358de"
         
         MatchMore.createMainDevice { result in
-            guard case .success(let mainDevice) = result else { print(result.errorMesseage ?? ""); return }
+            guard case .success(let mainDevice) = result else { print(result.errorMessage ?? ""); return }
             print("Device was created \(mainDevice!.encodeToJSON())")
             
             // Start Monitoring Matches
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Create New Publication
             let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test":"true"])
             MatchMore.createPublication(publication: publication, completion: { result in
-                if let error = result.errorMesseage {
+                if let error = result.errorMessage {
                     print(error)
                 } else {
                     print("Publication was created \(result.responseObject!!.encodeToJSON())")
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
             subscription.pushers = ["ws"]
             MatchMore.createSubscription(subscription: subscription, completion: { result in
-                if let error = result.errorMesseage {
+                if let error = result.errorMessage {
                     print(error)
                 } else {
                     print("Subscription was created \(result.responseObject!!.encodeToJSON())")
