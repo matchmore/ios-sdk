@@ -20,15 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiYThiMWIxZTItYjk1Ni00Nzc4LWEzNDgtYTFlM2QzNzA4YjEzIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3NDk5NzUsImlhdCI6MTUxMDc0OTk3NSwianRpIjoiMSJ9.rrCVj3MGHgJleX1QP0UKDEQk2XK9jC_SbyfalOxxeknjR3CSqpsobjby4cqxye7J9w1Sz1rk0QdYl5R4V888fg"
+        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiMDBkNDcyYjYtNTFlNy00YTUwLWExYWMtMGJjMTYyNTM1OGRlIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3NjIwOTEsImlhdCI6MTUxMDc2MjA5MSwianRpIjoiMSJ9.4H89GzySMI8zV8d-xtwADn79G7B3eyKD59qxqySg3VtLAlsnYPvLeY-FHc1fCdr0GlJG8ncFsiS9UaK0IibBQQ"
+        MatchMore.worldId = "00d472b6-51e7-4a50-a1ac-0bc1625358de"
         
         MatchMore.manager.createMainDevice { result in
-            guard case .success(let mainDevice) = result else { return }
-            if let error = result.errorMesseage {
-                print(error)
-            } else {
-                print("Device was created \(mainDevice!.encodeToJSON())")
+            guard case .success(let mainDevice) = result else { print(result.errorMesseage ?? ""); return }
+            print("Device was created \(mainDevice!.encodeToJSON())")
+            
+            // Start Monitoring Matches
+            self.matchDelegate = MatchDelegate { matches, _ in
+                print("You've got a match!\n\(matches.map { $0.encodeToJSON() })")
             }
+            MatchMore.manager.delegates += self.matchDelegate
             
             // Create New Publication
             let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test":"true"])
@@ -40,23 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
             
-            // Create New Subscription
-            let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
-            MatchMore.manager.createSubscription(subscription: subscription, completion: { _ in
-                if let error = result.errorMesseage {
-                    print(error)
-                } else {
-                    print("Subscription was created \(result.responseObject!!.encodeToJSON())")
-                }
-            })
-            
-            // Start Monitoring
-            self.matchDelegate = MatchDelegate { matches, _ in
-                print("You've got a match!\n\(matches.map { $0.encodeToJSON() })")
-            }
-            MatchMore.manager.delegates += self.matchDelegate
+            MatchMore.manager.remoteNotificationManager.registerForPushNotifications()
+            // OR
+            // MatchMore.manager.matchMonitor.openSocketForMatches()
+            // OR
+            // MatchMore.manager.matchMonitor.startPollingMatches()
         }
-        
         return true
     }
     
@@ -64,5 +56,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         MatchMore.manager.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
+        
+        // Create New Subscription
+        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
+        subscription.pushers = ["apns://\(deviceTokenString)", "ws"]
+        MatchMore.manager.createSubscription(subscription: subscription, completion: { result in
+            if let error = result.errorMesseage {
+                print(error)
+            } else {
+                print("Subscription was created \(result.responseObject!!.encodeToJSON())")
+            }
+        })
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        _ = MatchMore.manager.remoteNotificationManager.consume(pushNotification: userInfo)
     }
 }

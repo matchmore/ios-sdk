@@ -13,16 +13,17 @@ extension AlpsManager {
     public func createMainDevice(device: MobileDevice? = nil, completion: ((Result<MobileDevice?>) -> Void)? = nil) {
         if let mainDevice = mobileDevices.main {
             completion?(.success(mainDevice))
+            self.matchMonitor.startMonitoringFor(device: mainDevice)
             return
         }
         let uiDevice = UIDevice.current
-        let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10) // location will be optional in the future
         let mobileDevice = MobileDevice(name: device?.name ?? uiDevice.name,
                                         platform: device?.platform ?? uiDevice.systemName,
                                         deviceToken: device?.deviceToken ?? "",
-                                        location: device?.location ?? location)
+                                        location: device?.location)
         mobileDevices.create(item: mobileDevice) { (result) in
             completion?(result)
+            self.matchMonitor.startMonitoringFor(device: self.mobileDevices.main!)
         }
     }
     
