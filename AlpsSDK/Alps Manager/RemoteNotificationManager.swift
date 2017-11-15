@@ -13,7 +13,7 @@ protocol RemoteNotificationManagerDelegate: class {
     func didReceiveMatchUpdateForDeviceId(deviceId: String)
 }
 
-public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelegate {
+public class RemoteNotificationManager: NSObject {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
     public var deviceToken: String!

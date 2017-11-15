@@ -57,11 +57,19 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         guard let deviceId = monitoredDevices.first?.id else { return }
         
         var request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
+        request.timeoutInterval = -1
         request.setValue("api-key, \(MatchMore.worldId)", forHTTPHeaderField: "Sec-WebSocket-Protocol")
         socket = WebSocket(request: request)
-        socket?.onText = { _ in
+        socket?.onText = { text in
             self.getMatches()
         }
+        socket?.onConnect = {
+            
+        }
+        socket?.onDisconnect = { error in
+            print(error?.localizedDescription ?? "no error on disconnect")
+        }
+        
         socket?.connect()
     }
     

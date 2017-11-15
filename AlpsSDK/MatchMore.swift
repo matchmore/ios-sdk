@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import Alps
 
 public final class MatchMore {
     public static var apiKey = ""
     public static var worldId = ""
-    internal static var baseUrl = "http://api.matchmore.io"
+    private static var prefix = "http://"
+    internal static var baseUrl = "api.matchmore.io"
     internal static var apiVersion = "/v5"
     
     public private(set) static var manager: AlpsManager = {
-        return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.baseUrl + MatchMore.apiVersion)
+        return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)
     }()
+    
+    public static var matchDelegates = MatchMore.manager.delegates
 }

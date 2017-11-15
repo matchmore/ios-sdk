@@ -21,7 +21,6 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         MatchMore.apiKey = TestsConfig.kApiKey
-        MatchMore.baseUrl = TestsConfig.kBaseUrl
         var alpsManager = MatchMore.manager
         
         var errorResponse: ErrorResponse?
@@ -68,7 +67,7 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.createMainDevice { result in
+                    MatchMore.createMainDevice { result in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
@@ -83,7 +82,7 @@ final class AlpsManagerTests: QuickSpec {
             fit ("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: properties)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.createPublication(publication: publication, completion: { (result) in
+                    MatchMore.createPublication(publication: publication, completion: { (result) in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
@@ -97,7 +96,7 @@ final class AlpsManagerTests: QuickSpec {
             fit ("create a subscription") {
                 let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100000, selector: "test = 'true'")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.createSubscription(subscription: subscription, completion: { (result) in
+                    MatchMore.createSubscription(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
