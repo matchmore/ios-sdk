@@ -16,4 +16,8 @@ public extension MatchMore {
     public class func stopUpdatingLocation() {
         MatchMore.manager.contextManager.locationManager.stopUpdatingLocation()
     }
+    
+    public class func startRanging(forUuid: UUID, identifier: String) {
+        MatchMore.manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
+    }
 }
