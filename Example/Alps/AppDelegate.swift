@@ -43,17 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
             
-            // MatchMore.manager.remoteNotificationManager.registerForPushNotifications()
-            // OR
-            MatchMore.manager.matchMonitor.openSocketForMatches()
-            // OR
-            // MatchMore.manager.matchMonitor.startPollingMatches()
             MatchMore.startPollingMatches()
             
             // Create New Subscription
             let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
             subscription.pushers = ["ws"]
-            MatchMore.manager.createSubscription(subscription: subscription, completion: { result in
+            MatchMore.createSubscription(subscription: subscription, completion: { result in
                 if let error = result.errorMesseage {
                     print(error)
                 } else {
