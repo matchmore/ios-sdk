@@ -16,4 +16,12 @@ public extension MatchMore {
     public class func startListeningForNewMatches() {
         MatchMore.manager.matchMonitor.openSocketForMatches()
     }
+    
+    public class func processPushNotification(pushNotification: [AnyHashable: Any]) {
+        MatchMore.manager.remoteNotificationManager.consume(pushNotification: pushNotification)
+    }
+    
+    public class func registerDeviceToken(deviceToken: String) {
+        MatchMore.manager.remoteNotificationManager.registerDeviceToken(deviceToken: deviceToken)
+    }
 }

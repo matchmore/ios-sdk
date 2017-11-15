@@ -27,7 +27,8 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         self.delegate = delegate
     }
     
-    // MARK: - Match Monitoring
+    // MARK: - Device Monitoring
+    
     func startMonitoringFor(device: Device) {
         monitoredDevices.insert(device)
     }
@@ -63,13 +64,10 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         socket?.onText = { text in
             self.getMatches()
         }
-        socket?.onConnect = {
-            
-        }
         socket?.onDisconnect = { error in
-            print(error?.localizedDescription ?? "no error on disconnect")
+            self.closeSocketForMatches()
+            self.openSocketForMatches()
         }
-        
         socket?.connect()
     }
     
@@ -77,6 +75,8 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         socket?.disconnect()
         socket = nil
     }
+    
+    // MARK: - Getting Matches
     
     private func getMatches() {
         self.monitoredDevices.forEach {

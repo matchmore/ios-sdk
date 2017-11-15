@@ -21,4 +21,6 @@ public final class MatchMore {
     }()
     
     public static var matchDelegates = MatchMore.manager.delegates
+    public static var publications = MatchMore.manager.publications
+    public static var subscriptions = MatchMore.manager.subscriptions
 }

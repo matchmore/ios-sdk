@@ -43,7 +43,7 @@ public extension MatchMore {
         }
     }
     
-    public class func createPinDevice(device: PinDevice, completion: ((Result<PinDevice?>) -> Void)? = nil) {
+    private class func createPinDevice(device: PinDevice, completion: ((Result<PinDevice?>) -> Void)? = nil) {
         MatchMore.manager.pinDevices.create(item: device) { (result) in
             completion?(result)
         }

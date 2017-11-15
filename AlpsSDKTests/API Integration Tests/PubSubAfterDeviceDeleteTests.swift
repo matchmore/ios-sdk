@@ -49,7 +49,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             
             fit ("create a subscription") {
-                let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100000, selector: "")
+                let subscription = Subscription(topic: "Test iTopic", range: 20, duration: 100000, selector: "")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createSubscription(subscription: subscription, completion: { (result) in
                         errorMesseage = result.errorMessage

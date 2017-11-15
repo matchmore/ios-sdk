@@ -36,38 +36,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Create New Publication
             let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test":"true"])
             MatchMore.createPublication(publication: publication, completion: { result in
-                if let error = result.errorMessage {
-                    print(error)
-                } else {
-                    print("Publication was created \(result.responseObject!!.encodeToJSON())")
+                switch result {
+                case .success(let publication):
+                    print("Publication was created \(publication?.encodeToJSON() ?? "")")
+                case .failure(let error):
+                    print(error?.localizedDescription ?? "")
                 }
             })
-            
-            MatchMore.startPollingMatches()
             
             // Create New Subscription
-            let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
-            subscription.pushers = ["ws"]
-            MatchMore.createSubscription(subscription: subscription, completion: { result in
-                if let error = result.errorMessage {
-                    print(error)
-                } else {
-                    print("Subscription was created \(result.responseObject!!.encodeToJSON())")
-                }
-            })
+            
+            // Polling
+            MatchMore.startPollingMatches()
+            self.createPollingSubscription()
+            
+            // Socket
+            // MatchMore.startListeningForNewMatches()
+            // self.createSocketSubscription()
+            
+            // APNS (Subscriptions is being created after receiving device token)
+            // PermissionsHelper.registerForPushNotifications()
         }
         return true
     }
     
+    func createSocketSubscription() {
+        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
+        subscription.pushers = ["ws"]
+        MatchMore.createSubscription(subscription: subscription, completion: { result in
+            if let error = result.errorMessage {
+                print(error)
+            } else {
+                print("Socket Subscription was created \(result.responseObject!!.encodeToJSON())")
+            }
+        })
+    }
+    
+    func createPollingSubscription() {
+        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
+        MatchMore.createSubscription(subscription: subscription, completion: { result in
+            if let error = result.errorMessage {
+                print(error)
+            } else {
+                print("Polling Subscription was created \(result.responseObject!!.encodeToJSON())")
+            }
+        })
+    }
+    
+    func createApnsSubscription(deviceToken: String) {
+        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
+        subscription.pushers = ["apns://" + deviceToken]
+        MatchMore.createSubscription(subscription: subscription, completion: { result in
+            if let error = result.errorMessage {
+                print(error)
+            } else {
+                print("APNS Subscription was created \(result.responseObject!!.encodeToJSON())")
+            }
+        })
+    }
+    
+    // MARK: - APNS
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        MatchMore.manager.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
+        MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
         
-
+        createApnsSubscription(deviceToken: deviceTokenString)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        _ = MatchMore.manager.remoteNotificationManager.consume(pushNotification: userInfo)
+        MatchMore.processPushNotification(pushNotification: userInfo)
     }
 }

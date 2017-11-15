@@ -6,8 +6,7 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import UserNotifications
-import UIKit
+import Foundation
 
 protocol RemoteNotificationManagerDelegate: class {
     func didReceiveMatchUpdateForDeviceId(deviceId: String)
@@ -16,31 +15,19 @@ protocol RemoteNotificationManagerDelegate: class {
 public class RemoteNotificationManager: NSObject {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
-    public var deviceToken: String!
+    private var deviceToken: String!
     
     init(delegate: RemoteNotificationManagerDelegate) {
         super.init()
         self.delegate = delegate
     }
     
-    public func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (_, _) in
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-    
-    public func registerDeviceToken(deviceToken: String) {
-        NSLog("DEVICE TOKEN: \(deviceToken)")
+    func registerDeviceToken(deviceToken: String) {
         self.deviceToken = deviceToken
     }
     
-    public func consume(pushNotification: [AnyHashable: Any]) -> Bool {
-        if pushNotification["matchId"] != nil {
-            delegate?.didReceiveMatchUpdateForDeviceId(deviceId: "")
-            return true
-        }
-        return false
+    func consume(pushNotification: [AnyHashable: Any]) {
+        guard pushNotification["matchId"] != nil else { return }
+        delegate?.didReceiveMatchUpdateForDeviceId(deviceId: "")
     }
 }
