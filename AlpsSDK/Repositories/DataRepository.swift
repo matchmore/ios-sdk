@@ -11,6 +11,14 @@ import Alps
 
 /// Together with all protocols below defines full CRUD interface for data type model
 
+typealias CRUD = AsyncCreateable & AsyncReadable & AsyncUpdateable & AsyncDeleteable & AsyncClearable
+typealias CRD = AsyncCreateable & AsyncReadable & AsyncDeleteable & AsyncClearable
+
+protocol AssociatedDataType {
+    associatedtype DataType
+    var items: [DataType] { get }
+}
+
 protocol AsyncCreateable: AssociatedDataType {
     func create(item: DataType, completion: @escaping (Result<DataType?>) -> Void)
 }
@@ -30,60 +38,4 @@ protocol AsyncDeleteable: AssociatedDataType {
 
 protocol AsyncClearable: AssociatedDataType {
     func deleteAll(completion: @escaping (ErrorResponse?) -> Void)
-}
-
-// Default implementation for delete all items
-extension AsyncClearable where Self: AsyncDeleteable {
-    func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
-        var lastError: ErrorResponse?
-        let dispatchGroup = DispatchGroup()
-        items.forEach {
-            dispatchGroup.enter()
-            self.delete(item: $0, completion: { error in
-                if let error = error { lastError = error }
-                dispatchGroup.leave()
-            })
-        }
-        dispatchGroup.notify(queue: .main) {
-            completion(lastError)
-        }
-    }
-}
-
-// MARK: - Helper protocols
-
-public enum Result<T> {
-    case success(T)
-    case failure(ErrorResponse?)
-    
-    var responseObject: T? {
-        guard case let .success(responseObject) = self else { return nil }
-        return responseObject
-    }
-    var messeage: String? {
-        guard case let .failure(error) = self else { return nil }
-        return error?.message
-    }
-}
-
-protocol AssociatedDataType {
-    associatedtype DataType
-    var items: [DataType] { get }
-}
-
-extension ErrorResponse {
-    var message: String? {
-        guard case let .Error(_, data, _) = self, data != nil else { return nil }
-        return String(data: data!, encoding: String.Encoding.utf8)
-    }
-    
-    static var missingId: ErrorResponse {
-        let info = "missing id"
-        let code = 10408
-        return errorWith(info: info, code: code)
-    }
-    
-    static func errorWith(info: String, code: Int) -> ErrorResponse {
-        return .Error(code, info.data(using: .utf8), NSError(domain: "localhost", code: code, userInfo: ["reason": info]))
-    }
 }

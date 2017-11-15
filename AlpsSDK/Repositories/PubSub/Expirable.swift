@@ -18,15 +18,13 @@ protocol Expirable {
 
 extension Expirable {
     var isExpired: Bool {
-        guard let duration = self.duration, let createdAt = self.createdAt else { return true }
+        guard let duration = self.duration,
+              let createdAt = self.createdAt
+              else { return true }
         let nowTimeInterval = Date().nowTimeInterval()
         return Int64(duration * 1000) < (nowTimeInterval - createdAt)
     }
 }
-
-extension Subscription: Expirable { }
-
-extension Publication: Expirable { }
 
 extension Array where Element: Expirable {
     var withoutExpired: [Element] {
@@ -35,3 +33,7 @@ extension Array where Element: Expirable {
         }
     }
 }
+
+extension Subscription: Expirable { }
+
+extension Publication: Expirable { }

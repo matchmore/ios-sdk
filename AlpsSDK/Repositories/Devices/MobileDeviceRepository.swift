@@ -14,12 +14,12 @@ import Alps
 let kMainDeviceFile = "kMainDeviceFile.Alps"
 let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 
-final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
+final public class MobileDeviceRepository: CRD {
     typealias DataType = MobileDevice
     
-    internal var delegates = MulticastDelegate<DeviceDeleteDelegate>()
-    
-    private(set) var items = [MobileDevice]() {
+    internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()
+
+    internal private(set) var items = [MobileDevice]() {
         didSet {
             _ = PersistenceManager.save(object: self.items.map { $0.encodableMobileDevice }, to: kMobileDevicesFile)
         }
@@ -30,12 +30,12 @@ final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, Async
         }
     }
     
-    init() {
+    internal init() {
         self.main = PersistenceManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.object
         self.items = PersistenceManager.read(type: [EncodableMobileDevice].self, from: kMobileDevicesFile)?.map { $0.object } ?? []
     }
     
-    func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
+    public func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
             if let device = device as? MobileDevice, error == nil {
                 self.items.append(device)
@@ -47,15 +47,15 @@ final public class MobileDeviceRepository: AsyncCreateable, AsyncReadable, Async
         }
     }
     
-    func find(byId: String, completion: @escaping (Result<MobileDevice?>) -> Void) {
+    public func find(byId: String, completion: @escaping (Result<MobileDevice?>) -> Void) {
         completion(.success(items.filter { $0.id == byId }.first))
     }
     
-    func findAll(completion: @escaping (Result<[MobileDevice]>) -> Void) {
+    public func findAll(completion: @escaping (Result<[MobileDevice]>) -> Void) {
         completion(.success(items))
     }
     
-    func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
+    public func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         DeviceAPI.deleteDevice(deviceId: id) { (error) in
             if error == nil {

@@ -20,37 +20,20 @@ final class ProximityHandler: ProximityHandlerDelegate {
     lazy var beaconsTriggered: [CLProximity: [String: ProximityEvent]] = [:]
     
     init() {
-        beaconsTriggered[CLProximity.unknown] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.immediate] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.far] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.near] = [String: ProximityEvent]()
+        beaconsTriggered[.unknown] = [String: ProximityEvent]()
+        beaconsTriggered[.immediate] = [String: ProximityEvent]()
+        beaconsTriggered[.far] = [String: ProximityEvent]()
+        beaconsTriggered[.near] = [String: ProximityEvent]()
     }
     
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) {
-        let unknownBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.unknown}
+        let groupedBeacons = beacons.group {
+            return $0.proximity
         }
-        let immediateBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.immediate}
-        }
-        let nearBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.near}
-        }
-        let farBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.far}
-        }
-        
-        // Filter with existing beacons in application
-        beaconsDetected[CLProximity.unknown] = synchronizeBeacons(beacons: unknownBeacons(), knownBeacons: knownBeacons)
-        beaconsDetected[CLProximity.immediate] = synchronizeBeacons(beacons: immediateBeacons(), knownBeacons: knownBeacons)
-        beaconsDetected[CLProximity.near] = synchronizeBeacons(beacons: nearBeacons(), knownBeacons: knownBeacons)
-        beaconsDetected[CLProximity.far] = synchronizeBeacons(beacons: farBeacons(), knownBeacons: knownBeacons)
-        
-        // triggers for proximity event
-        beaconsDetected.forEach { (arg) in
-            let (key, value) = arg
-            // Required conditions(proximity match) are successful
-            actionContextMatch(key: key, value: value)
+        groupedBeacons.keys.forEach {
+            let synchronizedBeacons = synchronizeBeacons(beacons: groupedBeacons[$0]!, knownBeacons: knownBeacons)
+            beaconsDetected[$0] = synchronizedBeacons
+            actionContextMatch(key: $0, value: synchronizedBeacons)
         }
     }
     
@@ -61,10 +44,8 @@ final class ProximityHandler: ProximityHandlerDelegate {
             guard let deviceId = iBeaconTriple.deviceId else {return}
             guard let keys = beaconsTriggered[key]?.keys else {return}
             if keys.contains(deviceId) {
-                // do refresh
                 refreshTriggers(key: key, deviceId: deviceId, distance: distance)
             } else {
-                // do trigger
                 triggers(key: key, deviceId: deviceId, distance: distance)
             }
         }
