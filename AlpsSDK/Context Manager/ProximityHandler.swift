@@ -11,7 +11,7 @@ import CoreLocation
 import Alps
 
 protocol ProximityHandlerDelegate: class {
-    func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple])
+    func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]?)
 }
 
 final class ProximityHandler: ProximityHandlerDelegate {
@@ -26,12 +26,12 @@ final class ProximityHandler: ProximityHandlerDelegate {
         beaconsTriggered[.near] = [String: ProximityEvent]()
     }
     
-    func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) {
+    func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]?) {
         let groupedBeacons = beacons.group {
             return $0.proximity
         }
         groupedBeacons.keys.forEach {
-            let synchronizedBeacons = synchronizeBeacons(beacons: groupedBeacons[$0]!, knownBeacons: knownBeacons)
+            let synchronizedBeacons = synchronizeBeacons(beacons: groupedBeacons[$0]!, knownBeacons: knownBeacons ?? [])
             beaconsDetected[$0] = synchronizedBeacons
             actionContextMatch(key: $0, value: synchronizedBeacons)
         }

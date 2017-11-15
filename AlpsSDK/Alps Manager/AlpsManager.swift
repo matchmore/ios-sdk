@@ -45,7 +45,6 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         pinDevices.delegates += subscriptions
         return pinDevices
     }()
-    public lazy var beaconTriples = BeaconTripleRepository()
     
     public lazy var publications = PublicationRepository()
     public lazy var subscriptions = SubscriptionRepository()
@@ -80,21 +79,14 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     // MARK: - Context Manager Delegate
     
-    func contextManager(manager monitor: ContextManager, didUpdateLocation: CLLocation) {
+    func didUpdateLocation(location: CLLocation) {
         mobileDevices.findAll { (result) in
             guard case let .success(mobileDevices) = result else { return }
             mobileDevices.forEach {
                 guard let deviceId = $0.id else { return }
-                self.locationUpdateManager.tryToSend(location: Location(location: didUpdateLocation), for: deviceId)
+                self.locationUpdateManager.tryToSend(location: Location(location: location), for: deviceId)
             }
         }
     }
-    
-    func contextManager(manager: ContextManager, didRangeClosestBeacon: CLBeacon) {
-        
-    }
-    
-    func contextManager(manager: ContextManager, didDetectBeacons: [CLBeacon]) {
-        
-    }
+
 }

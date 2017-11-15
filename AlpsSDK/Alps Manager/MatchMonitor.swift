@@ -8,6 +8,7 @@
 
 import Alps
 import Foundation
+import Starscream
 
 protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
@@ -20,31 +21,64 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     private(set) var deliveredMatches = Set<Match>()
     
     private var timer: Timer?
+    private var socket: WebSocket?
 
     init(delegate: MatchMonitorDelegate) {
         self.delegate = delegate
-        self.startPollingTimer()
     }
     
     // MARK: - Match Monitoring
-    public func startMonitoringFor(device: Device) {
+    func startMonitoringFor(device: Device) {
         monitoredDevices.insert(device)
     }
     
-    public func stopMonitoringFor(device: Device) {
+    func stopMonitoringFor(device: Device) {
         monitoredDevices.remove(device)
     }
     
-    private func startPollingTimer() {
+    // MARK: - Polling
+    
+    public func startPollingMatches() {
         if timer != nil { return }
-        Timer.scheduledTimer(timeInterval: 5,
-                             target: self,
-                             selector: #selector(getMatches),
-                             userInfo: nil,
-                             repeats: true)
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+            self.getMatches()
+        }
     }
     
-    @objc private func getMatches() {
+    public func stopPollingMatches() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    // MARK: - Socket
+    
+    public func openSocketForMatches() {
+        if socket != nil { return }
+        guard let deviceId = monitoredDevices.first?.id else { return }
+        
+        var request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
+        request.timeoutInterval = -1
+        request.setValue("api-key, \(MatchMore.worldId)", forHTTPHeaderField: "Sec-WebSocket-Protocol")
+        socket = WebSocket(request: request)
+        socket?.onText = { text in
+            self.getMatches()
+        }
+        socket?.onConnect = {
+            
+        }
+        socket?.onDisconnect = { error in
+            print(error?.localizedDescription ?? "no error on disconnect")
+        }
+        
+        socket?.connect()
+    }
+    
+    public func closeSocketForMatches() {
+        socket?.disconnect()
+        socket = nil
+    }
+    
+    private func getMatches() {
         self.monitoredDevices.forEach {
             getMatchesForDevice(device: $0)
         }
@@ -62,12 +96,9 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         }
     }
     
-    // When MatchMonitor receive a notification (push or ws) it will get the matches for the monitored devices.
-    internal func remoteNotificationManager(manager: RemoteNotificationManager, didReceiveNotification: String) {
-        monitoredDevices.forEach {
-            if $0.id == didReceiveNotification {
-                getMatchesForDevice(device: $0)
-            }
-        }
+    // MARK: - Remote Notification Manager Delegate
+    
+    func didReceiveMatchUpdateForDeviceId(deviceId: String) {
+        getMatches()
     }
 }
