@@ -11,17 +11,26 @@ import Alps
 
 let kSubscriptionFile = "kSubscriptionFile.Alps"
 
-final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable {
+final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
     typealias DataType = Subscription
     
-    private(set) var items = [Subscription]() {
+    private(set) var items: [Subscription] {
+        get {
+            return _items.withoutExpired
+        }
+        set {
+            _items = newValue
+        }
+    }
+    
+    private var _items = [Subscription]() {
         didSet {
-            _ = PersistenceManager.save(object: self.items.map { $0.encodableSubscription }, to: kSubscriptionFile)
+            _ = PersistenceManager.save(object: self._items.withoutExpired.map { $0.encodableSubscription }, to: kSubscriptionFile)
         }
     }
     
     init() {
-        self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object } ?? []
+        self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object }.withoutExpired ?? []
     }
     
     func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
@@ -47,14 +56,17 @@ final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, Async
     func delete(item: Subscription, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
-        self.items = self.items.filter { $0 !== item }
         SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: id, completion: { (error) in
+            if error == nil {
+                self.items = self.items.filter { $0.id != id }
+            }
             completion(error as? ErrorResponse)
         })
     }
-    
-    func deleteAll() {
-        items.forEach { self.delete(item: $0, completion: { (_) in }) }
-        items = []
+}
+
+extension SubscriptionRepository: DeviceDeleteDelegate {
+    func didDeleteDeviceWith(id: String) {
+        self.items = self.items.filter { $0.deviceId != id }
     }
 }

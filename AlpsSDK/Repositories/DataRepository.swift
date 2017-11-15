@@ -26,7 +26,28 @@ protocol AsyncUpdateable: AssociatedDataType {
 
 protocol AsyncDeleteable: AssociatedDataType {
     func delete(item: DataType, completion: @escaping (ErrorResponse?) -> Void)
-    func deleteAll()
+}
+
+protocol AsyncClearable: AssociatedDataType {
+    func deleteAll(completion: @escaping (ErrorResponse?) -> Void)
+}
+
+// Default implementation for delete all items
+extension AsyncClearable where Self: AsyncDeleteable {
+    func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
+        var lastError: ErrorResponse?
+        let dispatchGroup = DispatchGroup()
+        items.forEach {
+            dispatchGroup.enter()
+            self.delete(item: $0, completion: { error in
+                if let error = error { lastError = error }
+                dispatchGroup.leave()
+            })
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(lastError)
+        }
+    }
 }
 
 // MARK: - Helper protocols
@@ -34,14 +55,24 @@ protocol AsyncDeleteable: AssociatedDataType {
 public enum Result<T> {
     case success(T)
     case failure(ErrorResponse?)
+    
+    var responseObject: T? {
+        guard case let .success(responseObject) = self else { return nil }
+        return responseObject
+    }
+    var messeage: String? {
+        guard case let .failure(error) = self else { return nil }
+        return error?.message
+    }
 }
 
 protocol AssociatedDataType {
     associatedtype DataType
+    var items: [DataType] { get }
 }
 
 extension ErrorResponse {
-    var errorMessage: String? {
+    var message: String? {
         guard case let .Error(_, data, _) = self, data != nil else { return nil }
         return String(data: data!, encoding: String.Encoding.utf8)
     }

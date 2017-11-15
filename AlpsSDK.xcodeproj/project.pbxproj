@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037DAC63FBA627E33DCAAC85 /* Pods_AlpsSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75D51944867AE95E2AD27AA /* Pods_AlpsSDKTests.framework */; };
 		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
@@ -14,20 +15,25 @@
 		50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */; };
 		8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450CB741FB1B39B00A73484 /* RemoteNotificationManager.swift */; };
 		84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */; };
+		AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
+		C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */; };
+		C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75B1FB9DEBF00D71896 /* Expirable.swift */; };
+		C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */; };
 		C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */; };
 		C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */; };
+		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
-		C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */; };
+		C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
 		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
-		C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */; };
+		C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001E2ABDD561F80564934E32 /* Pods-AlpsSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		502C85891E01BB3F00EF8ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		502C858A1E01BB3F00EF8ECF /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
@@ -52,14 +59,21 @@
 		5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMonitor.swift; sourceTree = "<group>"; };
+		68CDD2A69F26123C8B64B9B6 /* Pods-AlpsSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8450CB741FB1B39B00A73484 /* RemoteNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManager.swift; sourceTree = "<group>"; };
 		84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityHandler.swift; sourceTree = "<group>"; };
+		8C1F227CA722A1F658BB2147 /* Pods-AlpsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK.release.xcconfig"; sourceTree = "<group>"; };
+		B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationTests.swift; sourceTree = "<group>"; };
+		C351F75B1FB9DEBF00D71896 /* Expirable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expirable.swift; sourceTree = "<group>"; };
+		C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDeleteDelegate.swift; sourceTree = "<group>"; };
 		C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
 		C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
-		C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepository.swift; sourceTree = "<group>"; };
+		C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
+		C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
@@ -67,9 +81,11 @@
 		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
-		C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistancyTests.swift; sourceTree = "<group>"; };
+		C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
+		E0850D5E89889C50E110D930 /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		F75D51944867AE95E2AD27AA /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5092AC3D1D93CB0C00EF8ECF /* AlpsSDK.framework in Frameworks */,
+				037DAC63FBA627E33DCAAC85 /* Pods_AlpsSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +134,7 @@
 				C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */,
 				C3E499F31FAA1DBF0048585A /* API Integration Tests */,
 				C3E499F21FAA1DBD0048585A /* Archiving Tests */,
+				C351F7571FB9DB2300D71896 /* Expiration Tests */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
 			);
 			path = AlpsSDKTests;
@@ -127,6 +146,8 @@
 				502C85881E01BB3F00EF8ECF /* AlpsSDK */,
 				502C85971E01BB5F00EF8ECF /* AlpsSDKTests */,
 				5092AC341D93CB0C00EF8ECF /* Products */,
+				BD080083F19AAADE769941D9 /* Pods */,
+				8E5DB81414FFC95CE6160805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +158,26 @@
 				5092AC3C1D93CB0C00EF8ECF /* AlpsSDKTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8E5DB81414FFC95CE6160805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */,
+				F75D51944867AE95E2AD27AA /* Pods_AlpsSDKTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD080083F19AAADE769941D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				001E2ABDD561F80564934E32 /* Pods-AlpsSDK.debug.xcconfig */,
+				8C1F227CA722A1F658BB2147 /* Pods-AlpsSDK.release.xcconfig */,
+				68CDD2A69F26123C8B64B9B6 /* Pods-AlpsSDKTests.debug.xcconfig */,
+				E0850D5E89889C50E110D930 /* Pods-AlpsSDKTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C34512041FB0AA180079026F /* Multicast Delegate */ = {
@@ -165,6 +206,14 @@
 			path = "Persistancy Manager";
 			sourceTree = "<group>";
 		};
+		C351F7571FB9DB2300D71896 /* Expiration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */,
+			);
+			path = "Expiration Tests";
+			sourceTree = "<group>";
+		};
 		C381EE791F977EB90061E7AC /* AlpsManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,9 +226,10 @@
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */,
 				C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */,
 				C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */,
-				C387A64B1FA0C5D500AB0371 /* BeaconRepository.swift */,
+				C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -187,6 +237,7 @@
 		C3C8C1AB1FA73C61002827B6 /* PubSub */ = {
 			isa = PBXGroup;
 			children = (
+				C351F75B1FB9DEBF00D71896 /* Expirable.swift */,
 				C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */,
 				C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */,
 			);
@@ -196,7 +247,7 @@
 		C3E499F21FAA1DBD0048585A /* Archiving Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C3E499F41FAA1DF90048585A /* MobileDevicePersistancyTests.swift */,
+				C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */,
 				C35A63741FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift */,
 			);
 			path = "Archiving Tests";
@@ -208,6 +259,7 @@
 				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
 				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
 				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */,
 			);
 			path = "API Integration Tests";
 			sourceTree = "<group>";
@@ -229,11 +281,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5092AC471D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDK" */;
 			buildPhases = (
+				6E61473F07B18D0320812BF3 /* [CP] Check Pods Manifest.lock */,
 				5092AC2E1D93CB0C00EF8ECF /* Sources */,
 				5092AC2F1D93CB0C00EF8ECF /* Frameworks */,
 				5092AC301D93CB0C00EF8ECF /* Headers */,
 				5092AC311D93CB0C00EF8ECF /* Resources */,
 				C3D80F581F94DB3B004ADC7D /* Swift Lint */,
+				F35C3812E8F96A261F52B640 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,9 +302,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5092AC4A1D93CB0C00EF8ECF /* Build configuration list for PBXNativeTarget "AlpsSDKTests" */;
 			buildPhases = (
+				728C6F3C9B09717E5B780783 /* [CP] Check Pods Manifest.lock */,
 				5092AC381D93CB0C00EF8ECF /* Sources */,
 				5092AC391D93CB0C00EF8ECF /* Frameworks */,
 				5092AC3A1D93CB0C00EF8ECF /* Resources */,
+				CB3D50F6E0ED0A8063ED0EB8 /* [CP] Embed Pods Frameworks */,
+				48EF6EB0D0DE97F853785251 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,6 +378,57 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		48EF6EB0D0DE97F853785251 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E61473F07B18D0320812BF3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AlpsSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		728C6F3C9B09717E5B780783 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AlpsSDKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C3D80F581F94DB3B004ADC7D /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +443,45 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\nfi";
 		};
+		CB3D50F6E0ED0A8063ED0EB8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/Alps/Alps.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alps.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F35C3812E8F96A261F52B640 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDK/Pods-AlpsSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -342,9 +489,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3BF3A331FA1C6D7008754A8 /* BeaconRepository.swift in Sources */,
+				C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */,
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
 				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
+				C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
@@ -353,6 +501,7 @@
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
+				C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */,
 				C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
@@ -365,11 +514,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */,
 				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
-				C3E499F51FAA1DF90048585A /* MobileDevicePersistancyTests.swift in Sources */,
+				C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */,
 				C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
+				C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */,
 				C35A63751FAB56F200BF0DD8 /* MultiplePinDevicePersistancyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +653,7 @@
 		};
 		5092AC481D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 001E2ABDD561F80564934E32 /* Pods-AlpsSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -513,7 +665,7 @@
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.matchmore.-alps.sdk";
+				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -526,6 +678,7 @@
 		};
 		5092AC491D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C1F227CA722A1F658BB2147 /* Pods-AlpsSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -537,7 +690,7 @@
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.matchmore.-alps.sdk";
+				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -549,6 +702,7 @@
 		};
 		5092AC4B1D93CB0C00EF8ECF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68CDD2A69F26123C8B64B9B6 /* Pods-AlpsSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -565,6 +719,7 @@
 		};
 		5092AC4C1D93CB0C00EF8ECF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0850D5E89889C50E110D930 /* Pods-AlpsSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
