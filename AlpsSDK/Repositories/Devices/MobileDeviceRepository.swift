@@ -35,7 +35,7 @@ final public class MobileDeviceRepository: CRD {
         self.items = PersistenceManager.read(type: [EncodableMobileDevice].self, from: kMobileDevicesFile)?.map { $0.object } ?? []
     }
     
-    public func create(item: MobileDevice, completion: @escaping (Result<MobileDevice?>) -> Void) {
+    public func create(item: MobileDevice, completion: @escaping (Result<MobileDevice>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
             if let device = device as? MobileDevice, error == nil {
                 self.items.append(device)
@@ -47,8 +47,13 @@ final public class MobileDeviceRepository: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<MobileDevice?>) -> Void) {
-        completion(.success(items.filter { $0.id == byId }.first))
+    public func find(byId: String, completion: @escaping (Result<MobileDevice>) -> Void) {
+        let item = items.filter { $0.id ?? "" == byId }.first
+        if let item = item {
+            completion(.success(item))
+        } else {
+            completion(.failure(ErrorResponse.itemNotFound))
+        }
     }
     
     public func findAll(completion: @escaping (Result<[MobileDevice]>) -> Void) {

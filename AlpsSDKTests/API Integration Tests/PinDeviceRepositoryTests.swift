@@ -44,7 +44,7 @@ class PinDeviceRepositoryTests: QuickSpec {
                                                completion: { (result) in
                         switch result {
                         case .success(let pinDevice):
-                            createdPinDeviceId = pinDevice?.id ?? ""
+                            createdPinDeviceId = pinDevice.id ?? ""
                         case .failure(let error):
                             errorResponse = error
                         }

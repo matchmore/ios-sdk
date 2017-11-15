@@ -62,7 +62,9 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         request.setValue("api-key, \(MatchMore.worldId)", forHTTPHeaderField: "Sec-WebSocket-Protocol")
         socket = WebSocket(request: request)
         socket?.onText = { text in
-            self.getMatches()
+            if text != "" { // empty string just keeps connection alive
+                self.getMatches()
+            }
         }
         socket?.onDisconnect = { error in
             self.closeSocketForMatches()

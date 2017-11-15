@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         MatchMore.createMainDevice { result in
             guard case .success(let mainDevice) = result else { print(result.errorMessage ?? ""); return }
-            print("Device was created \(mainDevice!.encodeToJSON())")
+            print("Device was created \(mainDevice.encodeToJSON())")
             
             // Start Monitoring Matches
             self.matchDelegate = MatchDelegate { matches, _ in
@@ -38,9 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             MatchMore.createPublication(publication: publication, completion: { result in
                 switch result {
                 case .success(let publication):
-                    print("Publication was created \(publication?.encodeToJSON() ?? "")")
+                    print("Publication was created \(publication.encodeToJSON())")
                 case .failure(let error):
-                    print(error?.localizedDescription ?? "")
+                    print(error?.message ?? "")
                 }
             })
             
@@ -64,10 +64,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
         subscription.pushers = ["ws"]
         MatchMore.createSubscription(subscription: subscription, completion: { result in
-            if let error = result.errorMessage {
-                print(error)
-            } else {
-                print("Socket Subscription was created \(result.responseObject!!.encodeToJSON())")
+            switch result {
+            case .success(let sub):
+                print("Socket sub was created \(sub.encodeToJSON())")
+            case .failure(let error):
+                print(error?.message ?? "")
             }
         })
     }
@@ -75,10 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createPollingSubscription() {
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
         MatchMore.createSubscription(subscription: subscription, completion: { result in
-            if let error = result.errorMessage {
-                print(error)
-            } else {
-                print("Polling Subscription was created \(result.responseObject!!.encodeToJSON())")
+            switch result {
+            case .success(let sub):
+                print("Polling sub was created \(sub.encodeToJSON())")
+            case .failure(let error):
+                print(error?.message ?? "")
             }
         })
     }
@@ -87,10 +89,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
         subscription.pushers = ["apns://" + deviceToken]
         MatchMore.createSubscription(subscription: subscription, completion: { result in
-            if let error = result.errorMessage {
-                print(error)
-            } else {
-                print("APNS Subscription was created \(result.responseObject!!.encodeToJSON())")
+            switch result {
+            case .success(let sub):
+                print("APNS sub was created \(sub.encodeToJSON())")
+            case .failure(let error):
+                print(error?.message ?? "")
             }
         })
     }

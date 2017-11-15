@@ -22,24 +22,22 @@ final public class BeaconTripleRepository: AsyncReadable {
     
     internal init() {
         self.items = PersistenceManager.read(type: [EncodableIBeaconTriple].self, from: kBeaconFile)?.map { $0.object } ?? []
-        updateBeaconTriplets()
     }
     
-    public func find(byId: String, completion: @escaping (Result<IBeaconTriple?>) -> Void) {
-        completion(.success(items.filter { $0.deviceId == byId }.first))
-        updateBeaconTriplets {
-            completion(.success(self.items.filter { $0.deviceId == byId }.first))
+    public func find(byId: String, completion: @escaping (Result<IBeaconTriple>) -> Void) {
+        let item = items.filter { $0.deviceId ?? "" == byId }.first
+        if let item = item {
+            completion(.success(item))
+        } else {
+            completion(.failure(ErrorResponse.itemNotFound))
         }
     }
     
     public func findAll(completion: @escaping (Result<[IBeaconTriple]>) -> Void) {
         completion(.success(items))
-        updateBeaconTriplets {
-            completion(.success(self.items))
-        }
     }
     
-    private func updateBeaconTriplets(completion: (() -> Void)? = nil) {
+    public func updateBeaconTriplets(completion: (() -> Void)? = nil) {
         DeviceAPI.getIBeaconTriples { [weak self] (beaconTriplets, error) in
             if let beaconTriplets = beaconTriplets, error == nil {
                 self?.items = beaconTriplets

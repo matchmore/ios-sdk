@@ -20,16 +20,16 @@ protocol AssociatedDataType {
 }
 
 protocol AsyncCreateable: AssociatedDataType {
-    func create(item: DataType, completion: @escaping (Result<DataType?>) -> Void)
+    func create(item: DataType, completion: @escaping (Result<DataType>) -> Void)
 }
 
 protocol AsyncReadable: AssociatedDataType {
-    func find(byId: String, completion: @escaping (Result<DataType?>) -> Void)
+    func find(byId: String, completion: @escaping (Result<DataType>) -> Void)
     func findAll(completion: @escaping (Result<[DataType]>) -> Void)
 }
 
 protocol AsyncUpdateable: AssociatedDataType {
-    func update(item: DataType, completion: @escaping (Result<DataType?>) -> Void)
+    func update(item: DataType, completion: @escaping (Result<DataType>) -> Void)
 }
 
 protocol AsyncDeleteable: AssociatedDataType {

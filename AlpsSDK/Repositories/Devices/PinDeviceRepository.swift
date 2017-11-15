@@ -26,7 +26,7 @@ final public class PinDeviceRepository: CRD {
         self.items = PersistenceManager.read(type: [EncodablePinDevice].self, from: kPinDevicesFile)?.map { $0.object } ?? []
     }
     
-    public func create(item: PinDevice, completion: @escaping (Result<PinDevice?>) -> Void) {
+    public func create(item: PinDevice, completion: @escaping (Result<PinDevice>) -> Void) {
         DeviceAPI.createDevice(device: item) { (device, error) -> Void in
             if let pinDevice = device as? PinDevice, error == nil {
                 self.items.append(pinDevice)
@@ -37,8 +37,13 @@ final public class PinDeviceRepository: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<PinDevice?>) -> Void) {
-        completion(.success(items.filter { $0.id == byId }.first))
+    public func find(byId: String, completion: @escaping (Result<PinDevice>) -> Void) {
+        let item = items.filter { $0.id ?? "" == byId }.first
+        if let item = item {
+            completion(.success(item))
+        } else {
+            completion(.failure(ErrorResponse.itemNotFound))
+        }
     }
     
     public func findAll(completion: @escaping (Result<[PinDevice]>) -> Void) {

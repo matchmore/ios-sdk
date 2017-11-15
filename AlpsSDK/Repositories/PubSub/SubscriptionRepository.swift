@@ -33,7 +33,7 @@ final public class SubscriptionRepository: CRD {
         self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object }.withoutExpired ?? []
     }
     
-    public func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
+    public func create(item: Subscription, completion: @escaping (Result<Subscription>) -> Void) {
         guard let deviceId = item.deviceId else { return }
         SubscriptionAPI.createSubscription(deviceId: deviceId, subscription: item) { (subscription, error) in
             if let subscription = subscription, error == nil {
@@ -45,8 +45,13 @@ final public class SubscriptionRepository: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<Subscription?>) -> Void) {
-        completion(.success(items.filter { $0.id == byId }.first))
+    public func find(byId: String, completion: @escaping (Result<Subscription>) -> Void) {
+        let item = items.filter { $0.id ?? "" == byId }.first
+        if let item = item {
+            completion(.success(item))
+        } else {
+            completion(.failure(ErrorResponse.itemNotFound))
+        }
     }
     
     public func findAll(completion: @escaping (Result<[Subscription]>) -> Void) {

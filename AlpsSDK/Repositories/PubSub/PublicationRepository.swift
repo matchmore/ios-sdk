@@ -34,7 +34,7 @@ final public class PublicationRepository: CRD {
         self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
     }
     
-    public func create(item: Publication, completion: @escaping (Result<Publication?>) -> Void) {
+    public func create(item: Publication, completion: @escaping (Result<Publication>) -> Void) {
         guard let deviceId = item.deviceId else { return }
         PublicationAPI.createPublication(deviceId: deviceId, publication: item) { (publication, error) in
             if let publication = publication, error == nil {
@@ -46,8 +46,13 @@ final public class PublicationRepository: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<Publication?>) -> Void) {
-        completion(.success(items.filter { $0.id == byId }.first))
+    public func find(byId: String, completion: @escaping (Result<Publication>) -> Void) {
+        let item = items.filter { $0.id ?? "" == byId }.first
+        if let item = item {
+            completion(.success(item))
+        } else {
+            completion(.failure(ErrorResponse.itemNotFound))
+        }
     }
     
     public func findAll(completion: @escaping (Result<[Publication]>) -> Void) {

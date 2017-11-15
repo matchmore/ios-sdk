@@ -16,8 +16,14 @@ public extension ErrorResponse {
     }
     
     static var missingId: ErrorResponse {
-        let info = "missing id"
+        let info = "Missing id."
         let code = 10408
+        return errorWith(info: info, code: code)
+    }
+    
+    static var itemNotFound: ErrorResponse {
+        let info = "Item not found."
+        let code = 10409
         return errorWith(info: info, code: code)
     }
     
