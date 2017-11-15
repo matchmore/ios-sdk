@@ -28,28 +28,28 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         }
     }
     
-    public lazy var contextManager = ContextManager(delegate: self)
-    public lazy var matchMonitor = MatchMonitor(delegate: self)
+    lazy var contextManager = ContextManager(delegate: self)
+    lazy var matchMonitor = MatchMonitor(delegate: self)
     
-    public var remoteNotificationManager: RemoteNotificationManager!
+    var remoteNotificationManager: RemoteNotificationManager!
     
-    public lazy var mobileDevices: MobileDeviceRepository = {
+    lazy var mobileDevices: MobileDeviceRepository = {
         let mobileDevices = MobileDeviceRepository()
         mobileDevices.delegates += publications
         mobileDevices.delegates += subscriptions
         return mobileDevices
     }()
-    public lazy var pinDevices: PinDeviceRepository = {
+    lazy var pinDevices: PinDeviceRepository = {
         let pinDevices = PinDeviceRepository()
         pinDevices.delegates += publications
         pinDevices.delegates += subscriptions
         return pinDevices
     }()
     
-    public lazy var publications = PublicationRepository()
-    public lazy var subscriptions = SubscriptionRepository()
+    lazy var publications = PublicationRepository()
+    lazy var subscriptions = SubscriptionRepository()
     
-    public lazy var locationUpdateManager = LocationUpdateManager()
+    lazy var locationUpdateManager = LocationUpdateManager()
 
     internal init(apiKey: String, baseURL: String? = nil) {
         self.apiKey = apiKey

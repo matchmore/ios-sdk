@@ -14,26 +14,29 @@ protocol ContextManagerDelegate: class {
     func didUpdateLocation(location: CLLocation)
 }
 
-public class ContextManager: NSObject, CLLocationManagerDelegate {
+class ContextManager: NSObject, CLLocationManagerDelegate {
     
     private weak var delegate: ContextManagerDelegate?
     let proximityHandler: ProximityHandlerDelegate? = ProximityHandler()
 
-    let locationManager = CLLocationManager()
+    lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        return locationManager
+    }()
     
     public lazy var beaconTriples = BeaconTripleRepository()
 
     init(delegate: ContextManagerDelegate) {
         super.init()
         self.delegate = delegate
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
     }
 
     // MARK: - Core Location Manager Delegate
 
-    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let lastLocation = locations.last else { return }
         delegate?.didUpdateLocation(location: lastLocation)
     }

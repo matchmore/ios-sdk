@@ -27,6 +27,7 @@
 		C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */; };
 		C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */; };
 		C3673ABD1FBCBC3500A6B90D /* PermissionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */; };
+		C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */; };
 		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
@@ -82,6 +83,7 @@
 		C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Creation.swift"; sourceTree = "<group>"; };
 		C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Matches.swift"; sourceTree = "<group>"; };
 		C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsHelper.swift; sourceTree = "<group>"; };
+		C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Location.swift"; sourceTree = "<group>"; };
 		C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */,
 				C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */,
 				C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */,
+				C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */,
 				C381EE791F977EB90061E7AC /* Alps Manager */,
 				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
 				C34BFC4A1F98BDF200CAB9BB /* Repositories */,
@@ -545,6 +548,7 @@
 				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
 				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
 				C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */,
+				C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

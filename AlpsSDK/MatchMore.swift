@@ -16,7 +16,7 @@ public final class MatchMore {
     internal static var baseUrl = "api.matchmore.io"
     internal static var apiVersion = "/v5"
     
-    public private(set) static var manager: AlpsManager = {
+    private(set) static var manager: AlpsManager = {
         return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)
     }()
     
