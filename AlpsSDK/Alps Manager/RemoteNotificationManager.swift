@@ -26,17 +26,19 @@ public class RemoteNotificationManager: NSObject, UNUserNotificationCenterDelega
     
     private func registerForPushNotifications() {
         // iOS 10 support
-//        if #available(iOS 10, *) {
-//            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (granted, _) in
-//                NSLog("***********************************************")
-//                NSLog("Permission granted: \(granted)")
-//
-//                // If get notification settings is not .authorized, register for remote notification is not called
-//                self.getNotificationSettings()
-//                UNUserNotificationCenter.current().delegate = self
-//                UIApplication.shared.registerForRemoteNotifications()
-//            }
-//        }
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (granted, _) in
+                NSLog("***********************************************")
+                NSLog("Permission granted: \(granted)")
+
+                // If get notification settings is not .authorized, register for remote notification is not called
+                self.getNotificationSettings()
+                UNUserNotificationCenter.current().delegate = self
+                DispatchQueue.main.async {
+                     UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
         
         NSLog("Notification Manager is initialized.")
     }

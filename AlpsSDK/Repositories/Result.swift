@@ -13,11 +13,11 @@ public enum Result<T> {
     case success(T)
     case failure(ErrorResponse?)
     
-    var responseObject: T? {
+    public var responseObject: T? {
         guard case let .success(responseObject) = self else { return nil }
         return responseObject
     }
-    var errorMesseage: String? {
+    public var errorMesseage: String? {
         guard case let .failure(error) = self else { return nil }
         return error?.message
     }
