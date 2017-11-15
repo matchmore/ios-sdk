@@ -52,7 +52,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     public lazy var locationUpdateManager = LocationUpdateManager()
 
-    public init(apiKey: String, baseURL: String? = nil) {
+    internal init(apiKey: String, baseURL: String? = nil) {
         self.apiKey = apiKey
         self.setupAPI()
         if let baseURL = baseURL {

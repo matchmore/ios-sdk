@@ -11,10 +11,10 @@ import Alps
 
 let kSubscriptionFile = "kSubscriptionFile.Alps"
 
-final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, AsyncDeleteable, AsyncClearable {
+final public class SubscriptionRepository: CRD {
     typealias DataType = Subscription
     
-    private(set) var items: [Subscription] {
+    internal private(set) var items: [Subscription] {
         get {
             return _items.withoutExpired
         }
@@ -29,11 +29,11 @@ final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, Async
         }
     }
     
-    init() {
+    internal init() {
         self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object }.withoutExpired ?? []
     }
     
-    func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
+    public func create(item: Subscription, completion: @escaping (Result<Subscription?>) -> Void) {
         guard let deviceId = item.deviceId else { return }
         SubscriptionAPI.createSubscription(deviceId: deviceId, subscription: item) { (subscription, error) in
             if let subscription = subscription, error == nil {
@@ -45,15 +45,15 @@ final public class SubscriptionRepository: AsyncCreateable, AsyncReadable, Async
         }
     }
     
-    func find(byId: String, completion: @escaping (Result<Subscription?>) -> Void) {
+    public func find(byId: String, completion: @escaping (Result<Subscription?>) -> Void) {
         completion(.success(items.filter { $0.id == byId }.first))
     }
     
-    func findAll(completion: @escaping (Result<[Subscription]>) -> Void) {
+    public func findAll(completion: @escaping (Result<[Subscription]>) -> Void) {
         completion(.success(items))
     }
     
-    func delete(item: Subscription, completion: @escaping (ErrorResponse?) -> Void) {
+    public func delete(item: Subscription, completion: @escaping (ErrorResponse?) -> Void) {
         guard let id = item.id else { completion(ErrorResponse.missingId); return }
         guard let deviceId = item.deviceId else { completion(ErrorResponse.missingId); return }
         SubscriptionAPI.deleteSubscription(deviceId: deviceId, subscriptionId: id, completion: { (error) in

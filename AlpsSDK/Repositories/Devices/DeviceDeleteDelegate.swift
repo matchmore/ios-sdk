@@ -11,9 +11,3 @@ import Foundation
 protocol DeviceDeleteDelegate: class {
     func didDeleteDeviceWith(id: String)
 }
-
-extension DeviceDeleteDelegate where Self: AssociatedDataType {
-    func didDeleteDevice(with id: String) {
-        print(id)
-    }
-}

@@ -27,6 +27,7 @@
 		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
+		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
@@ -34,6 +35,10 @@
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */; };
 		C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */; };
+		C3F872EA1FBAF0920093A5A8 /* AsyncClearable+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */; };
+		C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EB1FBAF0C50093A5A8 /* Result.swift */; };
+		C3F872EE1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */; };
+		C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
 /* End PBXBuildFile section */
@@ -76,12 +81,17 @@
 		C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleRepository.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Group.swift"; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
 		C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlpsManager+Convenience.swift"; sourceTree = "<group>"; };
 		C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
+		C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncClearable+Default.swift"; sourceTree = "<group>"; };
+		C3F872EB1FBAF0C50093A5A8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+Convienience.swift"; sourceTree = "<group>"; };
+		C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMore.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
 		E0850D5E89889C50E110D930 /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,16 +124,12 @@
 			children = (
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
 				503487681E01CAF300EF8ECF /* AlpsSDK.h */,
+				C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */,
+				C381EE791F977EB90061E7AC /* Alps Manager */,
+				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
 				C34BFC4A1F98BDF200CAB9BB /* Repositories */,
 				C34CFDAC1FAB11930053C490 /* Persistancy Manager */,
-				C381EE791F977EB90061E7AC /* AlpsManager */,
-				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
-				8450CB741FB1B39B00A73484 /* RemoteNotificationManager.swift */,
-				84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */,
-				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
-				C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */,
-				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
-				C34512041FB0AA180079026F /* Multicast Delegate */,
+				C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */,
 			);
 			path = AlpsSDK;
 			sourceTree = "<group>";
@@ -180,18 +186,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C34512041FB0AA180079026F /* Multicast Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				C34512051FB0AA350079026F /* MulticastDelegate.swift */,
-			);
-			path = "Multicast Delegate";
-			sourceTree = "<group>";
-		};
 		C34BFC4A1F98BDF200CAB9BB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */,
+				C3F872EB1FBAF0C50093A5A8 /* Result.swift */,
+				C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */,
+				C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */,
 				C3BA176C1F9A09BD00EC0F6F /* Devices */,
 				C3C8C1AB1FA73C61002827B6 /* PubSub */,
 			);
@@ -214,13 +215,35 @@
 			path = "Expiration Tests";
 			sourceTree = "<group>";
 		};
-		C381EE791F977EB90061E7AC /* AlpsManager */ = {
+		C381EE791F977EB90061E7AC /* Alps Manager */ = {
 			isa = PBXGroup;
 			children = (
 				502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */,
 				C3C8C1AC1FA73E16002827B6 /* AlpsManager+Convenience.swift */,
+				50D4ED131E658D9400EF8ECF /* MatchMonitor.swift */,
+				8450CB741FB1B39B00A73484 /* RemoteNotificationManager.swift */,
+				C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */,
 			);
-			path = AlpsManager;
+			path = "Alps Manager";
+			sourceTree = "<group>";
+		};
+		C3AB95C71FBC5DF90097A5E2 /* Context Manager */ = {
+			isa = PBXGroup;
+			children = (
+				502C858A1E01BB3F00EF8ECF /* ContextManager.swift */,
+				84C48E881FA228C500BFB4B6 /* ProximityHandler.swift */,
+			);
+			path = "Context Manager";
+			sourceTree = "<group>";
+		};
+		C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */,
+				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
+				C34512051FB0AA350079026F /* MulticastDelegate.swift */,
+			);
+			path = Miscellaneous;
 			sourceTree = "<group>";
 		};
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
@@ -490,13 +513,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */,
+				C3F872EA1FBAF0920093A5A8 /* AsyncClearable+Default.swift in Sources */,
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
 				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
 				C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */,
+				C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
+				C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
 				C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */,
+				C3F872EE1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift in Sources */,
 				C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */,
@@ -504,6 +531,7 @@
 				C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */,
 				C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
+				C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */,
 				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
 				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
 				C3C8C1AD1FA73E16002827B6 /* AlpsManager+Convenience.swift in Sources */,

@@ -27,7 +27,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             fit ("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createMainDevice { result in
-                        errorMesseage = result.messeage
+                        errorMesseage = result.errorMesseage
                         done()
                     }
                 }
@@ -40,7 +40,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
                 let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["": ""])
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createPublication(publication: publication, completion: { (result) in
-                        errorMesseage = result.messeage
+                        errorMesseage = result.errorMesseage
                         done()
                     })
                 }
@@ -52,7 +52,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
                 let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100000, selector: "")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.createSubscription(subscription: subscription, completion: { (result) in
-                        errorMesseage = result.messeage
+                        errorMesseage = result.errorMesseage
                         done()
                     })
                 }
