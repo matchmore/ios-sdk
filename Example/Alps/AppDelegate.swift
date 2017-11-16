@@ -54,8 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              MatchMore.startListeningForNewMatches()
              self.createSocketSubscription()
             
-            // APNS (Subscriptions is being created after receiving device token)
-            // PermissionsHelper.registerForPushNotifications()
+             // APNS (Subscriptions is being created after receiving device token)
+//             PermissionsHelper.registerForPushNotifications()
+            
+            MatchMore.startUpdatingLocation()
         }
         return true
     }

@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.license = 'BSD 3-Clause License'
   s.source_files = 'AlpsSDK/**/*.swift'
   s.dependency 'Alps'
-  s.dependency 'Starscream', '~> 3.0'
+  s.dependency 'SwiftWebSocket', '~> 2.6'
 end

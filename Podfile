@@ -7,7 +7,7 @@ target 'AlpsSDK' do
 #   pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => 'meetup_round_1'
 
     # Socket
-    pod 'Starscream', '~> 3.0'
+    pod 'SwiftWebSocket', '~> 2.6'
 end
 
 target 'AlpsSDKTests' do

@@ -8,7 +8,7 @@
 
 import Alps
 import Foundation
-import Starscream
+import SwiftWebSocket
 
 protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
@@ -61,26 +61,19 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         request.timeoutInterval = -1
         request.setValue("api-key, \(MatchMore.worldId)", forHTTPHeaderField: "Sec-WebSocket-Protocol")
         socket = WebSocket(request: request)
-        socket?.onText = { text in
-            if text != "" { // empty string just keeps connection alive
+        socket?.event.close = { _, _, _ in
+            self.socket?.open()
+        }
+        socket?.event.message = { text in
+            if let messeage = text as? String, messeage != "" { // empty string just keeps connection alive
                 self.getMatches()
             }
         }
-        socket?.onData = { data in
-            print(data)
-        }
-        socket?.onDisconnect = { error in
-            self.closeSocketForMatches()
-            self.openSocketForMatches()
-        }
-        socket?.onPong = { data in
-            
-        }
-        socket?.connect()
+        socket?.open()
     }
     
     public func closeSocketForMatches() {
-        socket?.disconnect()
+        socket?.close()
         socket = nil
     }
     
