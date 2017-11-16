@@ -94,12 +94,15 @@ public extension Location {
     }
     
     public static func == (lhs: Location, rhs: Location?) -> Bool {
-        guard let rhs = rhs else { return false }
-        return lhs.latitude! == rhs.latitude! && lhs.longitude! == rhs.longitude!
+        guard let rhsLatitude = rhs?.latitude else { return false }
+        guard let rhsLongitude = rhs?.longitude else {return false}
+        return lhs.latitude! == rhsLatitude && lhs.longitude! == rhsLongitude
     }
     
-    public var clLocation: CLLocation {
-        let clLocation = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
+    public var clLocation: CLLocation? {
+        guard let latitude = self.latitude else {return nil}
+        guard let longitude = self.longitude else {return nil}
+        let clLocation = CLLocation(latitude: latitude, longitude: longitude)
         return clLocation
     }
 }
