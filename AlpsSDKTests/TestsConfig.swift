@@ -10,8 +10,8 @@ import Alps
 
 class TestsConfig {
     // swiftlint:disable:next line_length
-    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiMDBkNDcyYjYtNTFlNy00YTUwLWExYWMtMGJjMTYyNTM1OGRlIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3Njc0MzgsImlhdCI6MTUxMDc2NzQzOCwianRpIjoiMTAifQ.nt5yC0ceGojh4jSbqfFMA4mciALC1NmrBUcLNlbvI8UL5KekOJFiO0bxUceTOEpqZGRglRz4rIFB40qFwP3aPA"
-    static let kBaseUrl = "http://api.matchmore.io/v5"
+    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiYzY0YmE1NGEtNDg2ZS00MmZmLWIxOGItNzhiNWVjZjdmNTU1IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA4NDA0ODgsImlhdCI6MTUxMDg0MDQ4OCwianRpIjoiMSJ9.xtnq_qrB3GS53HLdWTRKp0by1Cyg4Vdojzgt9nqXG9t72m6I3-gq1_r6x7lOdHE9BJiE-mijOKVtMXIxESCjpg"
+    static let kBaseUrl = "http://api.matchmore.io/v5" // TODO: add SSL
     static let kWaitTimeInterval = 10.0
     
     class func setupAPI() {

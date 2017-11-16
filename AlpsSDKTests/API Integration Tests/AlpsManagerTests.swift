@@ -119,12 +119,13 @@ final class AlpsManagerTests: QuickSpec {
                 if let mainDeviceId = alpsManager.mobileDevices.main?.id {
                     alpsManager.locationUpdateManager.tryToSend(location: location, for: mainDeviceId)
                 }
-                expect(alpsManager.locationUpdateManager.lastLocation).toEventuallyNot(beNil())
+                expect(alpsManager.locationUpdateManager.lastLocation?.longitude).toEventuallyNot(beNil())
+                expect(alpsManager.locationUpdateManager.lastLocation?.latitude).toEventuallyNot(beNil())
             }
             
             fit ("get a match") {
                 class MatchDelegate: AlpsManagerDelegate {
-                    var onMatch: OnMatchClosure
+                    var onMatch: OnMatchClosure?
                     init(_ onMatch: @escaping OnMatchClosure) {
                         self.onMatch = onMatch
                     }
