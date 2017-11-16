@@ -17,14 +17,14 @@ let kTokenKey = "kTokenKey"
 public class RemoteNotificationManager: NSObject {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
-    private var deviceToken: String {
+    var deviceToken: String? {
         didSet {
             KeychainHelper.shared[kTokenKey] = self.deviceToken
         }
     }
     
     init(delegate: RemoteNotificationManagerDelegate) {
-        self.deviceToken = KeychainHelper.shared[kTokenKey] ?? ""
+        self.deviceToken = KeychainHelper.shared[kTokenKey]
         super.init()
         self.delegate = delegate
     }

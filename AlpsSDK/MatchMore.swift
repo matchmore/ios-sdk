@@ -20,7 +20,9 @@ public final class MatchMore {
         return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)
     }()
     
-    public static var matchDelegates = MatchMore.manager.delegates
-    public static var publications = MatchMore.manager.publications
-    public static var subscriptions = MatchMore.manager.subscriptions
+    public static var matchDelegates = manager.delegates
+    public static var publications = manager.publications
+    public static var subscriptions = manager.subscriptions
+    public static var deviceToken = manager.remoteNotificationManager.deviceToken
+    public static var lastLocation = manager.locationUpdateManager.lastLocation
 }
