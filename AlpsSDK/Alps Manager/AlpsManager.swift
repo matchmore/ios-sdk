@@ -13,7 +13,7 @@ import Alps
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
 public protocol AlpsManagerDelegate: class {
-    var onMatch: OnMatchClosure { get }
+    var onMatch: OnMatchClosure? { get }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
@@ -74,7 +74,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     // MARK: - Match Monitor Delegate
     
     func didFind(matches: [Match], for device: Device) {
-        delegates.invoke { $0.onMatch(matches, device) }
+        delegates.invoke { $0.onMatch?(matches, device) }
     }
     
     // MARK: - Context Manager Delegate

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alps
 
 public extension MatchMore {
     public class func startUpdatingLocation() {
@@ -19,5 +20,19 @@ public extension MatchMore {
     
     public class func startRanging(forUuid: UUID, identifier: String) {
         manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
+    }
+    
+    public class func refreshKnownBeacons(completion: @escaping (_ beacons: [IBeaconTriple]?) -> Void) {
+        manager.contextManager.beaconTriples.updateBeaconTriplets {
+            findKnownBeacons(completion: { (beacons) in
+                completion(beacons)
+            })
+        }
+    }
+    
+    public class func findKnownBeacons(completion: @escaping (_ beacons: [IBeaconTriple]?) -> Void) {
+        manager.contextManager.beaconTriples.findAll(completion: { (result) in
+            completion(result.responseObject)
+        })
     }
 }
