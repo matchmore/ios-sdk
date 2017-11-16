@@ -10,11 +10,11 @@ import Foundation
 import Alps
 
 public final class MatchMore {
-    public static var apiKey = ""
-    public static var worldId = ""
-    private static var prefix = "http://"
-    internal static var baseUrl = "api.matchmore.io"
-    internal static var apiVersion = "/v5"
+    public static var apiKey = "" // JWT
+    public static var worldId = "" // for sockets
+    private static var prefix = "http://" // for sockets
+    static var baseUrl = "api.matchmore.io" // TODO: add multiple targets
+    static var apiVersion = "/v5"
     
     private(set) static var manager: AlpsManager = {
         return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)

@@ -10,14 +10,14 @@ import Foundation
 
 public extension MatchMore {
     public class func startUpdatingLocation() {
-        MatchMore.manager.contextManager.locationManager.startUpdatingLocation()
+        manager.contextManager.locationManager.startUpdatingLocation()
     }
     
     public class func stopUpdatingLocation() {
-        MatchMore.manager.contextManager.locationManager.stopUpdatingLocation()
+        manager.contextManager.locationManager.stopUpdatingLocation()
     }
     
     public class func startRanging(forUuid: UUID, identifier: String) {
-        MatchMore.manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
+        manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
     }
 }

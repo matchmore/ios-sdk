@@ -66,9 +66,15 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
                 self.getMatches()
             }
         }
+        socket?.onData = { data in
+            print(data)
+        }
         socket?.onDisconnect = { error in
             self.closeSocketForMatches()
             self.openSocketForMatches()
+        }
+        socket?.onPong = { data in
+            
         }
         socket?.connect()
     }

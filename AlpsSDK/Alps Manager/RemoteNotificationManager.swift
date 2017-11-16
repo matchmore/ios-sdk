@@ -12,12 +12,19 @@ protocol RemoteNotificationManagerDelegate: class {
     func didReceiveMatchUpdateForDeviceId(deviceId: String)
 }
 
+let kTokenKey = "kTokenKey"
+
 public class RemoteNotificationManager: NSObject {
     
     private weak var delegate: RemoteNotificationManagerDelegate?
-    private var deviceToken: String!
+    private var deviceToken: String {
+        didSet {
+            KeychainHelper.shared[kTokenKey] = self.deviceToken
+        }
+    }
     
     init(delegate: RemoteNotificationManagerDelegate) {
+        self.deviceToken = KeychainHelper.shared[kTokenKey] ?? ""
         super.init()
         self.delegate = delegate
     }

@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiMDBkNDcyYjYtNTFlNy00YTUwLWExYWMtMGJjMTYyNTM1OGRlIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3Njc0MzgsImlhdCI6MTUxMDc2NzQzOCwianRpIjoiMTAifQ.nt5yC0ceGojh4jSbqfFMA4mciALC1NmrBUcLNlbvI8UL5KekOJFiO0bxUceTOEpqZGRglRz4rIFB40qFwP3aPA"
-        MatchMore.worldId = "00d472b6-51e7-4a50-a1ac-0bc1625358de"
+        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiNDk4YWQ2ZWMtNjA4Ny00YTdjLThkNzEtZTA4MjhjNzQzZjJkIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3NzY1ODQsImlhdCI6MTUxMDc3NjU4NCwianRpIjoiMSJ9.jd6nQzrB32mR0a_DR2keb6GS6YqHbphYJ5_RczVopaq5D8Y7L4bO29ObHcZD8aYbZQQUooJOC0D6EduXluozHw"
+        MatchMore.worldId = "498ad6ec-6087-4a7c-8d71-e0828c743f2d"
         
         MatchMore.createMainDevice { result in
             guard case .success(let mainDevice) = result else { print(result.errorMessage ?? ""); return }
@@ -47,12 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Create New Subscription
             
             // Polling
-            MatchMore.startPollingMatches()
-            self.createPollingSubscription()
+//            MatchMore.startPollingMatches()
+//            self.createPollingSubscription()
             
             // Socket
-            // MatchMore.startListeningForNewMatches()
-            // self.createSocketSubscription()
+             MatchMore.startListeningForNewMatches()
+             self.createSocketSubscription()
             
             // APNS (Subscriptions is being created after receiving device token)
             // PermissionsHelper.registerForPushNotifications()
