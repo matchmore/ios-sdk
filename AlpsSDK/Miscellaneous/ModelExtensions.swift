@@ -97,6 +97,11 @@ public extension Location {
         guard let rhs = rhs else { return false }
         return lhs.latitude! == rhs.latitude! && lhs.longitude! == rhs.longitude!
     }
+    
+    public var clLocation: CLLocation {
+        let clLocation = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
+        return clLocation
+    }
 }
 
 extension Match: CustomStringConvertible, Hashable {
