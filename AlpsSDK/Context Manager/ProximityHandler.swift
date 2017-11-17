@@ -27,12 +27,26 @@ final class ProximityHandler: ProximityHandlerDelegate {
     }
     
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]?) {
+//        for (key, pe) in beaconsTriggered{
+//            print("************* TRIGGERED")
+//            for (k,p) in pe {
+//                print(k)
+//                print(p.id)
+//                print("device id :")
+//                print(p.deviceId)
+//            }
+//        }
         let groupedBeacons = beacons.group {
             return $0.proximity
         }
         groupedBeacons.keys.forEach {
             let synchronizedBeacons = synchronizeBeacons(beacons: groupedBeacons[$0]!, knownBeacons: knownBeacons ?? [])
             beaconsDetected[$0] = synchronizedBeacons
+//            print("BEACONS DETECTED")
+//            for (p,i) in beaconsDetected {
+//                print(p.rawValueString())
+//                print(i.description)
+//            }
             actionContextMatch(key: $0, value: synchronizedBeacons)
         }
     }
@@ -54,9 +68,24 @@ final class ProximityHandler: ProximityHandlerDelegate {
     // Trigger the proximity event
     private func triggers(key: CLProximity, deviceId: String, distance: Double) {
         let proximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
+        print("***********FIRST PROXIMITY")
+        print("id:")
+        print(proximityEvent.id)
+        print("deviceId:")
+        print(proximityEvent.deviceId)
         sendProximityEvent(deviceId: deviceId, proximityEvent: proximityEvent) {(_ proximityEvent) in
             guard let pe = proximityEvent else {return}
             self.beaconsTriggered[key]?[deviceId] = pe
+            print("***********SECOND AND REAL PROXIMITY")
+            print("id:")
+            print(pe.id)
+            print("deviceId:")
+            print(pe.deviceId)
+//            print("************* TRIGGERED")
+//            print(key)
+//            print(deviceId)
+//            print(pe.deviceId)
+//            print(pe.id)
         }
     }
     
