@@ -26,7 +26,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             fit ("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createMainDevice { result in
+                    MatchMore.startUsingMainDevice { result in
                         errorMesseage = result.errorMessage
                         done()
                     }
