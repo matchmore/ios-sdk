@@ -10,7 +10,7 @@ import Foundation
 import Alps
 
 public extension MatchMore {
-    public class func createMainDevice(device: MobileDevice? = nil, completion: ((Result<MobileDevice>) -> Void)? = nil) {
+    public class func startUsingMainDevice(device: MobileDevice? = nil, completion: ((Result<MobileDevice>) -> Void)? = nil) {
         if let mainDevice = manager.mobileDevices.main {
             manager.matchMonitor.startMonitoringFor(device: mainDevice)
             completion?(.success(mainDevice))

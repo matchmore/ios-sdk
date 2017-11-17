@@ -12,7 +12,7 @@ import Alps
 public final class MatchMore {
     public static var apiKey = "" // JWT
     public static var worldId = "" // for sockets
-    private static var prefix = "http://" // for sockets // TODO: add SSL
+    private static var prefix = "https://" // for sockets // TODO: add SSL
     static var baseUrl = "api.matchmore.io" // TODO: add multiple targets
     static var apiVersion = "/v5"
     

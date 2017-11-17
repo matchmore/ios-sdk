@@ -67,7 +67,7 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createMainDevice { result in
+                    MatchMore.startUsingMainDevice { result in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
