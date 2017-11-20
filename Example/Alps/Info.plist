@@ -45,5 +45,13 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>NSLocationAlwaysAndWhenInUsageDescription</key>
+    <string>Ticketing app needs your location to use Alps SDK.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Ticketing app needs your location to use Alps SDK.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Ticketing app needs your location to use Alps SDK.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Ticketing app needs your location to use Alps SDK.</string>
 </dict>
 </plist>

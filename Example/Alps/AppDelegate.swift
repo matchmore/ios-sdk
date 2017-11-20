@@ -20,47 +20,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiNDk4YWQ2ZWMtNjA4Ny00YTdjLThkNzEtZTA4MjhjNzQzZjJkIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA3NzY1ODQsImlhdCI6MTUxMDc3NjU4NCwianRpIjoiMSJ9.jd6nQzrB32mR0a_DR2keb6GS6YqHbphYJ5_RczVopaq5D8Y7L4bO29ObHcZD8aYbZQQUooJOC0D6EduXluozHw"
-        MatchMore.worldId = "498ad6ec-6087-4a7c-8d71-e0828c743f2d"
+        MatchMore.apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiYzM5MzFhNDgtYmQ4Mi00NDVmLWI2NTYtMTEyN2ZkY2FiYjBlIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTExODMxOTgsImlhdCI6MTUxMTE4MzE5OCwianRpIjoiMSJ9.ZvZ-cWwlUJv_dPpn1pSUoHoRT-7yoH4HjFqofnaDxMk5ZSwh0v9yn2HmnxejixinApGr-P-PAXcbisFuREVgPA"
+        MatchMore.worldId = "c3931a48-bd82-445f-b656-1127fdcabb0e"
         
-        MatchMore.createMainDevice { result in
+        MatchMore.startUsingMainDevice { result in
             guard case .success(let mainDevice) = result else { print(result.errorMessage ?? ""); return }
-            print("Device was created \(mainDevice.encodeToJSON())")
+            print("🏔 Using device: 🏔\n\(mainDevice.encodeToJSON())")
             
             // Start Monitoring Matches
             self.matchDelegate = MatchDelegate { matches, _ in
-                print("You've got a match!\n\(matches.map { $0.encodeToJSON() })")
+                print("🏔 You've got a new match!!! 🏔\n\(matches.map { $0.encodeToJSON() })")
             }
             MatchMore.matchDelegates += self.matchDelegate
             
             // Create New Publication
-            let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test":"true"])
-            MatchMore.createPublication(publication: publication, completion: { result in
+            MatchMore.createPublication(publication: Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test":"true"]), completion: { result in
                 switch result {
                 case .success(let publication):
-                    print("Publication was created \(publication.encodeToJSON())")
+                    print("🏔 Pub was created: 🏔\n\(publication.encodeToJSON())")
                 case .failure(let error):
-                    print(error?.message ?? "")
+                    print("🌋 \(String(describing: error?.message))")
                 }
             })
             
-            // Create New Subscription
-            
             // Polling
-//            MatchMore.startPollingMatches()
-//            self.createPollingSubscription()
+            MatchMore.startPollingMatches()
+            self.createPollingSubscription()
             
-            // Socket
-             MatchMore.startListeningForNewMatches()
-             self.createSocketSubscription()
+            // Socket (requires world_id)
+            // MatchMore.startListeningForNewMatches()
+            // self.createSocketSubscription()
             
-             // APNS (Subscriptions is being created after receiving device token)
-//             PermissionsHelper.registerForPushNotifications()
+            // APNS (Subscriptions is being created after receiving device token)
+            // PermissionsHelper.registerForPushNotifications()
             
             MatchMore.startUpdatingLocation()
         }
         return true
     }
+    
+    // Subscriptions
     
     func createSocketSubscription() {
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
@@ -68,9 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MatchMore.createSubscription(subscription: subscription, completion: { result in
             switch result {
             case .success(let sub):
-                print("Socket sub was created \(sub.encodeToJSON())")
+                print("🏔 Socket Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print(error?.message ?? "")
+                print("🌋 \(String(describing: error?.message))")
             }
         })
     }
@@ -80,22 +79,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MatchMore.createSubscription(subscription: subscription, completion: { result in
             switch result {
             case .success(let sub):
-                print("Polling sub was created \(sub.encodeToJSON())")
+                print("🏔 Polling Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print(error?.message ?? "")
+                print("🌋 \(String(describing: error?.message))")
             }
         })
     }
     
-    func createApnsSubscription(deviceToken: String) {
+    func createApnsSubscription() {
+        guard let deviceToken = MatchMore.deviceToken else { return }
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
         subscription.pushers = ["apns://" + deviceToken]
         MatchMore.createSubscription(subscription: subscription, completion: { result in
             switch result {
             case .success(let sub):
-                print("APNS sub was created \(sub.encodeToJSON())")
+                print("🏔 APNS Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print(error?.message ?? "")
+                print("🌋 \(String(describing: error?.message))")
             }
         })
     }
@@ -106,8 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
-        
-        createApnsSubscription(deviceToken: deviceTokenString)
+        createApnsSubscription()
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {

@@ -26,33 +26,26 @@ Also, you need to add the following lines to your project `AppDelegate`.
 These callbacks allow the SDK to get the device token.
 
 ```swift
-// ...
-
-// Called when APNs has assigned the device a unique token
+// Called when APNS has assigned the device a unique token
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-    // Pass Device Token to AlpsManager
-    // Note : You need to initiate AlpsManager first.
-    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
+    MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
 }
 
-// Called when APNs failed to register the device for push notifications
-func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    // Print the error to console (you should alert the user that registration failed)
-    NSLog("APNs registration failed: \(error)")
+// Called when APNS failed to register the device for push notifications
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    MatchMore.processPushNotification(pushNotification: userInfo)
 }
-
-// ...
 ```
 
-Else, you can find help on [how to setup APNS](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/ApnsSetup.md).
+Else, you can find help on [how to setup APNS](https://github.com/matchmore/alps-ios-sdk/blob/master/ApnsSetup.md).
 
 ## Technical overview
 
-The `AlpsManager` class is built as such that it provides you all the functions you need to use our SDK.
+The `MatchMore` is a static wrapper that provides you all the functions you need to use our SDK.
 
-Features of Alps SDK are divided into two parts: Asynchronous calls and dynamic calls.
+Features of MatchMore iOS SDK is divided into two parts: Asynchronous calls and dynamic calls.
 
 ### Asynchronous calls
 
@@ -66,42 +59,43 @@ Everytime you call an asynchronous function and it succeeds, our SDK stores it. 
 
 Please refer to documentation "tutorial" to get a full explanation on this example:
 
-Setup application API key, get it for free from [http://dev.matchmore.com/](http://dev.matchmore.com/).
+Setup application API key and world, get it for free from [http://matchmore.com/](http://matchmore.com/).
 ```swift
-let alpsManager = AlpsManager(apiKey: "YOUR_API_KEY")
-```
-
-Create first device, publication and subscription.
-```swift
-alpsManager.createMainDevice { _ in
-    let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test": "true"])
-    alpsManager.createPublication(publication: publication, completion: { _ in
-        let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
-        alpsManager.createSubscription(subscription: subscription, completion: { _ in
-            print("We're all good! 🏔")
-        })
-    })                    
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    MatchMore.apiKey = "YOUR_API_KEY"
+    MatchMore.worldId = "YOUR_WORLD_ID"
+    return true
 }
 ```
 
-Create a AlpsManagerDelegate that has `OnMatchClojure`.
+Create first device, publication and subscription. Please note that we're not caring about errors right now.
 ```swift
-class MatchDelegate: AlpsManagerDelegate {
-    var onMatch: OnMatchClojure
+MatchMore.startUsingMainDevice { _ in
+    let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test": "true"])
+    MatchMore.createPublication(publication: publication, completion: { _ in
+        print("🏔 Created Pub")
+    })                    
+    let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
+    MatchMore.createSubscription(subscription: subscription, completion: { _ in
+        print("🏔 Created Sub")
+    })
+}
+```
+
+Define an object that's `AlpsManagerDelegate` implementing `OnMatchClojure`.
+```swift
+class MatchWatcher: AlpsManagerDelegate {
+    var onMatch: OnMatchClojure?
     init(_ onMatch: @escaping OnMatchClojure) {
         self.onMatch = onMatch
     }
 }
-
-let matchDelegate = MatchDelegate { matches, _ in print(matches) }
 ```
 
-Start listening for main device matches.
+Start listening for main device matches changes.
 ```swift
-if let mainDevice = alpsManager.mobileDevices.main {
-    alpsManager.delegates += matchDelegate
-    alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
-}
+let matchWatcher = MatchWatcher { matches, _ in print(matches) }
+MatchMore.delegates += matchWatcher
 ```
 
 ## Example
@@ -110,7 +104,7 @@ in `AlpsSDK/Example/` you will find working simple example.
 
 ## Documentation
 
-See the [http://dev.matchmore.com/documentation/api](http://dev.matchmore.com/documentation/api) or consult our website for further information [http://dev.matchmore.com/](http://dev.matchmore.com/)
+See the [http://matchmore.com/documentation/api](http://matchmore.com/documentation/api) or consult our website for further information [http://matchmore.com/](http://matchmore.com/)
 
 ## Authors
 

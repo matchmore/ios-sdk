@@ -11,7 +11,7 @@ import AlpsSDK
 import Alps
 
 class MatchDelegate: AlpsManagerDelegate {
-    var onMatch: OnMatchClosure
+    var onMatch: OnMatchClosure?
     init(_ onMatch: @escaping OnMatchClosure) {
         self.onMatch = onMatch
     }
