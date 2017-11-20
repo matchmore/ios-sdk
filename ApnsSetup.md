@@ -14,13 +14,13 @@ Right below this, select your development Team. **This must be a paid developer 
 
 After that, you need to create an App ID in your developer account that has the push notification entitlement enabled. Xcode has a simple way to do this. Go to App Settings -> Capabilities and flip the switch for Push Notifications to On.
 
-![apns capabilities switch](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/assets/apns1.png)
+![apns capabilities switch](https://github.com/matchmore/alps-ios-sdk/blob/master/assets/apns1.png)
 
 Note: If any issues occur, visit the Apple Developer Center. You may simply need to agree to a new developer license.
 
 At this point, you should have the App ID created and the push notifications entitlement should be added to your project. You can log into the Apple Developer Center and verify this.
 
-![verification apns activated](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/assets/apns2.png)
+![verification apns activated](https://github.com/matchmore/alps-ios-sdk/blob/master/assets/apns2.png)
 
 #### 2. Enable Remote Push Notifications on your App ID
 
@@ -28,7 +28,7 @@ Sign in to your account in the **Apple developer center**, and then go to Certif
 
 Go to Identifiers -> App IDs. If you followed previous instructions, you should be able to see the App ID of your application( create it if you don't see it). Click on your application and ensure that the Push Notifications service is enabled.
 
-![apns capabilities switch](https://github.com/matchmore/alps-ios-sdk/blob/feature/readmeApns/assets/apns3.png)
+![apns capabilities switch](https://github.com/matchmore/alps-ios-sdk/blob/master/assets/apns3.png)
 
 Click on the Development or Production certificate button and follow the steps. We recommend you for a Production push certificate. It works for most general cases and is the required certificate for Apple store.
 
@@ -56,31 +56,19 @@ Upload the generated certificate to Matchmore Portal.
 
 #### 4. Enable Push Notification in Application
 
-When you initiate an `AlpsManager` , the SDK will automatically register your app for remote push notification.
-But, you have to implement `didRegisterForRemoteNotificationsWithDeviceToken`  appDelegate callback.
-It will allow Alps SDK to receive the push token, and handle the error.
-
 Add the following lines to your appDelegate.
 
 ```swift
-// ...
-
-// Called when APNs has assigned the device a unique token
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-    // Pass Device Token to AlpsManager
-    // Note : You need to initiate AlpsManager first.
-    alps.remoteNotificationManager.registerDeviceToken(deviceToken: deviceTokenString)
+    MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
+    createApnsSubscription()
 }
 
-// Called when APNs failed to register the device for push notifications
-func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    // Print the error to console (you should alert the user that registration failed)
-    NSLog("APNs registration failed: \(error)")
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    MatchMore.processPushNotification(pushNotification: userInfo)
 }
-
-// ...
 ```
 
-You can now start sending notifications to your users using Alps SDK.
+You can now start sending notifications to your users using MatchMore SDK.

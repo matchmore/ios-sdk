@@ -10,7 +10,7 @@ import Alps
 
 class TestsConfig {
     // swiftlint:disable:next line_length
-    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiYzY0YmE1NGEtNDg2ZS00MmZmLWIxOGItNzhiNWVjZjdmNTU1IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTA4NDA0ODgsImlhdCI6MTUxMDg0MDQ4OCwianRpIjoiMSJ9.xtnq_qrB3GS53HLdWTRKp0by1Cyg4Vdojzgt9nqXG9t72m6I3-gq1_r6x7lOdHE9BJiE-mijOKVtMXIxESCjpg"
+    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiOTYzMjE5N2YtMDdjOC00Yzg0LWE4NzUtZGVjOGJmNDM3Mjg1IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTExODI3MzQsImlhdCI6MTUxMTE4MjczNCwianRpIjoiMSJ9.JW8GFVI5NO2AQXjIAVefcJ14DtOkjL7S_R9ewZtlg7PAsHX0wrne8bV_tRpJD75JgE3Dt-tSeDakV-UlYZFSPA"
     static let kBaseUrl = "https://api.matchmore.io/v5"
     static let kWaitTimeInterval = 10.0
     

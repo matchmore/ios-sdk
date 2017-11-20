@@ -25,11 +25,5 @@
 	</dict>
 	<key>NSPrincipalClass</key>
 	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to match you with the world.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to match you with the world.</string>
-	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-	<string>We need your location to match you with the world.</string>
 </dict>
 </plist>

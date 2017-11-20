@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   s.version = '0.5.0'
   s.authors = 'Matchmore Alps SDK Team'
   s.license = 'Apache License, Version 2.0'
-  s.homepage = 'http://matchmore.io/alps'
+  s.homepage = 'http://matchmore.io'
   s.summary = 'Alps iOS SDK in Swift'
-  s.source = { :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => s.version }
-  s.license = 'BSD 3-Clause License'
+  s.source = { :git => 'https://github.com/MatchMore/alps-ios-sdk.git' }
+  s.license = 'MIT license'
   s.source_files = 'AlpsSDK/**/*.swift'
-  s.dependency 'Alps'
+  s.dependency 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git'
   s.dependency 'SwiftWebSocket', '~> 2.6'
 end
