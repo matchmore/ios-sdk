@@ -59,7 +59,7 @@ Everytime you call an asynchronous function and it succeeds, our SDK stores it. 
 
 Please refer to documentation "tutorial" to get a full explanation on this example:
 
-Setup application API key and world, get it for free from [http://matchmore.com/](http://matchmore.com/).
+Setup application API key and world, get it for free from [http://matchmore.io/](http://matchmore.io/).
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     MatchMore.apiKey = "YOUR_API_KEY"
@@ -104,7 +104,7 @@ in `AlpsSDK/Example/` you will find working simple example.
 
 ## Documentation
 
-See the [http://matchmore.com/documentation/api](http://matchmore.com/documentation/api) or consult our website for further information [http://matchmore.com/](http://matchmore.com/)
+See the [http://matchmore.io/documentation/api](http://matchmore.io/documentation/api) or consult our website for further information [http://matchmore.io/](http://matchmore.io/)
 
 ## Authors
 
@@ -115,4 +115,4 @@ See the [http://matchmore.com/documentation/api](http://matchmore.com/documentat
 
 ## License
 
-Alps is available under the MIT license. See the LICENSE file for more info.
+`AlpsSDK` is available under the MIT license. See the LICENSE file for more info.
