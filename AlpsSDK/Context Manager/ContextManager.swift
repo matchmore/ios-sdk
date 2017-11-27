@@ -17,7 +17,8 @@ protocol ContextManagerDelegate: class {
 class ContextManager: NSObject, CLLocationManagerDelegate {
     
     private weak var delegate: ContextManagerDelegate?
-    let proximityHandler: ProximityHandlerDelegate? = ProximityHandler()
+    
+    let proximityHandler = ProximityHandler()
 
     lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
@@ -28,7 +29,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         return locationManager
     }()
     
-    lazy var beaconTriples = BeaconTripleRepository()
+    lazy var beaconTriples = BeaconTripleStore()
 
     init(delegate: ContextManagerDelegate) {
         super.init()
@@ -48,10 +49,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         let beaconRegion = CLBeaconRegion(proximityUUID: forUuid, identifier: identifier)
         locationManager.startRangingBeacons(in: beaconRegion)
     }
+    
+    // MARK: - Proximity Handler Delegate
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         beaconTriples.findAll { result in
-            self.proximityHandler?.didRangeBeacons(manager: self, beacons: beacons, knownBeacons: result.responseObject!)
+            self.proximityHandler.rangeBeacons(beacons: beacons, knownBeacons: result.responseObject!)
         }
     }
 }

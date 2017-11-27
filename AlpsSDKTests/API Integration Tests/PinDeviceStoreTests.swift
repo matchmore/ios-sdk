@@ -1,5 +1,5 @@
 //
-//  PinDeviceRepositoryTests.swift
+//  PinDeviceStoreTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 18/10/2017.
@@ -14,12 +14,12 @@ import Quick
 @testable import AlpsSDK
 @testable import Alps
 
-class PinDeviceRepositoryTests: QuickSpec {
+class PinDeviceStoreTests: QuickSpec {
     
     override func spec() {
         TestsConfig.setupAPI()
         
-        let pinDeviceRepository = PinDeviceRepository()
+        let pinDeviceRepository = PinDeviceStore()
         var createdPinDeviceId: String = ""
         
         var errorResponse: ErrorResponse?

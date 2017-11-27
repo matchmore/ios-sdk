@@ -1,5 +1,5 @@
 //
-//  BeaconRepositoryTests.swift
+//  BeaconStoreTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 26/10/2017.
@@ -14,11 +14,11 @@ import Nimble
 @testable import Alps
 @testable import AlpsSDK
 
-class BeaconRepositoryTests: QuickSpec {
+class BeaconStoreTests: QuickSpec {
     
     override func spec() {
         TestsConfig.setupAPI()
-        let beaconRepository = BeaconTripleRepository()
+        let beaconRepository = BeaconTripleStore()
         
         context("beacons") {
             fit ("get non existing") {

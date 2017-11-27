@@ -11,7 +11,7 @@ import Alps
 
 let kPublicationFile = "kPublicationFile.Alps"
 
-final public class PublicationRepository: CRD {
+final public class PublicationStore: CRD {
     
     typealias DataType = Publication
     
@@ -71,7 +71,7 @@ final public class PublicationRepository: CRD {
     }
 }
 
-extension PublicationRepository: DeviceDeleteDelegate {
+extension PublicationStore: DeviceDeleteDelegate {
     func didDeleteDeviceWith(id: String) {
         self.items = self.items.filter { $0.deviceId != id }
     }

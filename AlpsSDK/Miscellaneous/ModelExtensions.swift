@@ -139,6 +139,22 @@ extension CLProximity {
         case .far: return "far"
         }
     }
+    
+    var distance: Double {
+        switch self {
+        case .immediate: return 0.5
+        case .near: return 3.0
+        case .far: return 50.0
+        case .unknown: return 200.0
+        }
+    }
+}
+
+extension CLBeacon {
+    static func == (lhs: CLBeacon, rhs: IBeaconTriple) -> Bool {
+        guard let proximityUUID = rhs.proximityUUID, let major = rhs.major, let minor = rhs.minor else { return false }
+        return lhs.proximityUUID.uuidString.caseInsensitiveCompare(proximityUUID) == ComparisonResult.orderedSame && (lhs.major as? Int32) == major && (lhs.minor as? Int32) == minor
+    }
 }
 
 extension Date {

@@ -25,8 +25,8 @@ public extension MatchMore {
         let uiDevice = UIDevice.current
         let mobileDevice = MobileDevice(name: device?.name ?? uiDevice.name,
                                         platform: device?.platform ?? uiDevice.systemName,
-                                        deviceToken: device?.deviceToken ?? "",
-                                        location: device?.location)
+                                        deviceToken: device?.deviceToken ?? deviceToken ?? "",
+                                        location: device?.location ?? lastLocation)
         manager.mobileDevices.create(item: mobileDevice) { (result) in
             if let mainDevice = result.responseObject {
                 manager.matchMonitor.startMonitoringFor(device: mainDevice)

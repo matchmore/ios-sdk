@@ -11,7 +11,7 @@ import Alps
 
 let kSubscriptionFile = "kSubscriptionFile.Alps"
 
-final public class SubscriptionRepository: CRD {
+final public class SubscriptionStore: CRD {
     typealias DataType = Subscription
     
     internal private(set) var items: [Subscription] {
@@ -70,7 +70,7 @@ final public class SubscriptionRepository: CRD {
     }
 }
 
-extension SubscriptionRepository: DeviceDeleteDelegate {
+extension SubscriptionStore: DeviceDeleteDelegate {
     func didDeleteDeviceWith(id: String) {
         self.items = self.items.filter { $0.deviceId != id }
     }
