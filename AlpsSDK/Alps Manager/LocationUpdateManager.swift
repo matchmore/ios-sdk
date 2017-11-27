@@ -14,12 +14,9 @@ final public class LocationUpdateManager {
     private(set) var lastLocation: Location?
     
     func tryToSend(location: Location, for deviceId: String) {
-        if location == lastLocation {return}
+        if location == lastLocation { return }
         LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { (_, error) in
-            if error == nil {
-                // TODO: createdLocation is nil here.
-                self.lastLocation = location
-            }
+            if error == nil { self.lastLocation = location }
         })
     }
 }

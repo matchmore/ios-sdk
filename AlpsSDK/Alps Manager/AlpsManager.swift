@@ -12,12 +12,12 @@ import Alps
 
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
-public protocol AlpsManagerDelegate: class {
+public protocol AlpsDelegate: class {
     var onMatch: OnMatchClosure? { get }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
-    public var delegates = MulticastDelegate<AlpsManagerDelegate>()
+    public var delegates = MulticastDelegate<AlpsDelegate>()
     
     let apiKey: String
     var baseURL: String {

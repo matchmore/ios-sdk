@@ -124,7 +124,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("get a match") {
-                class MatchDelegate: AlpsManagerDelegate {
+                class MatchDelegate: AlpsDelegate {
                     var onMatch: OnMatchClosure?
                     init(_ onMatch: @escaping OnMatchClosure) {
                         self.onMatch = onMatch

@@ -39,21 +39,21 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     
     // MARK: - Polling
     
-    public func startPollingMatches() {
+    func startPollingMatches() {
         if timer != nil { return }
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
             self.getMatches()
         }
     }
     
-    public func stopPollingMatches() {
+    func stopPollingMatches() {
         timer?.invalidate()
         timer = nil
     }
     
     // MARK: - Socket
     
-    public func openSocketForMatches() {
+    func openSocketForMatches() {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
         
@@ -72,7 +72,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         socket?.open()
     }
     
-    public func closeSocketForMatches() {
+    func closeSocketForMatches() {
         socket?.close()
         socket = nil
     }

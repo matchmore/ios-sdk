@@ -33,7 +33,7 @@ public class RemoteNotificationManager: NSObject {
         self.deviceToken = deviceToken
     }
     
-    func consume(pushNotification: [AnyHashable: Any]) {
+    func process(pushNotification: [AnyHashable: Any]) {
         guard pushNotification["matchId"] != nil else { return }
         delegate?.didReceiveMatchUpdateForDeviceId(deviceId: "")
     }

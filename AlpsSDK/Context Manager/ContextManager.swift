@@ -28,7 +28,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         return locationManager
     }()
     
-    public lazy var beaconTriples = BeaconTripleRepository()
+    lazy var beaconTriples = BeaconTripleRepository()
 
     init(delegate: ContextManagerDelegate) {
         super.init()
@@ -44,12 +44,12 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Beacons
     
-    public func startRanging(forUuid: UUID, identifier: String) {
+    func startRanging(forUuid: UUID, identifier: String) {
         let beaconRegion = CLBeaconRegion(proximityUUID: forUuid, identifier: identifier)
         locationManager.startRangingBeacons(in: beaconRegion)
     }
 
-    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         beaconTriples.findAll { result in
             self.proximityHandler?.didRangeBeacons(manager: self, beacons: beacons, knownBeacons: result.responseObject!)
         }

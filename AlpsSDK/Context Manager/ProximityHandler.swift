@@ -15,29 +15,30 @@ protocol ProximityHandlerDelegate: class {
 }
 
 final class ProximityHandler: ProximityHandlerDelegate {
+    
     var refreshTimer: Int = 5 * 1000 // timer is in milliseconds
     lazy var beaconsDetected: [CLProximity: [IBeaconTriple]] = [:]
     lazy var beaconsTriggered: [CLProximity: [String: ProximityEvent]] = [:]
     
     init() {
-        beaconsTriggered[CLProximity.unknown] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.immediate] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.far] = [String: ProximityEvent]()
-        beaconsTriggered[CLProximity.near] = [String: ProximityEvent]()
+        beaconsTriggered[.unknown] = [String: ProximityEvent]()
+        beaconsTriggered[.immediate] = [String: ProximityEvent]()
+        beaconsTriggered[.far] = [String: ProximityEvent]()
+        beaconsTriggered[.near] = [String: ProximityEvent]()
     }
     
     func didRangeBeacons(manager: ContextManager, beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) {
         let unknownBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.unknown}
+            return beacons.filter {$0.proximity == .unknown}
         }
         let immediateBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.immediate}
+            return beacons.filter {$0.proximity == .immediate}
         }
         let nearBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.near}
+            return beacons.filter {$0.proximity == .near}
         }
         let farBeacons = {
-            return beacons.filter {$0.proximity == CLProximity.far}
+            return beacons.filter {$0.proximity == .far}
         }
         
         // Filter with existing beacons in application
@@ -58,13 +59,11 @@ final class ProximityHandler: ProximityHandlerDelegate {
     private func actionContextMatch(key: CLProximity, value: [IBeaconTriple]) {
         let distance = setUp(key: key)
         value.forEach { (iBeaconTriple) in
-            guard let deviceId = iBeaconTriple.deviceId else {return}
-            guard let keys = beaconsTriggered[key]?.keys else {return}
+            guard let deviceId = iBeaconTriple.deviceId else { return }
+            guard let keys = beaconsTriggered[key]?.keys else { return }
             if keys.contains(deviceId) {
-                // do refresh
                 refreshTriggers(key: key, deviceId: deviceId, distance: distance)
             } else {
-                // do trigger
                 triggers(key: key, deviceId: deviceId, distance: distance)
             }
         }
