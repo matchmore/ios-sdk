@@ -9,6 +9,5 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/MatchMore/alps-ios-sdk.git' }
   s.license = 'MIT license'
   s.source_files = 'AlpsSDK/**/*.swift'
-  s.dependency 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git'
   s.dependency 'SwiftWebSocket', '~> 2.6'
 end
