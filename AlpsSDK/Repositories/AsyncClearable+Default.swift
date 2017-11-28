@@ -9,7 +9,7 @@
 import Foundation
 import Alps
 
-extension AsyncClearable where Self: AsyncDeleteable {
+extension AssociatedDataType where Self: AsyncDeleteable {
     func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
         var lastError: ErrorResponse?
         let dispatchGroup = DispatchGroup()
