@@ -41,7 +41,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     
     func startPollingMatches() {
         if timer != nil { return }
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getMatches), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getMatches), userInfo: nil, repeats: true)
     }
     
     func stopPollingMatches() {

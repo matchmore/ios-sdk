@@ -21,6 +21,7 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         MatchMore.apiKey = TestsConfig.kApiKey
+        MatchMore.worldId = TestsConfig.kWorldId
         var alpsManager = MatchMore.manager
         
         var errorResponse: ErrorResponse?
@@ -123,23 +124,50 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.locationUpdateManager.lastLocation?.latitude).toEventuallyNot(beNil())
             }
             
-            fit ("get a match") {
-                class MatchDelegate: AlpsDelegate {
-                    var onMatch: OnMatchClosure?
-                    init(_ onMatch: @escaping OnMatchClosure) {
-                        self.onMatch = onMatch
-                    }
-                }
+            fit ("get polling match") {
                 alpsManager.matchMonitor.startPollingMatches()
-                let matchDelegate = MatchDelegate { _, _ in }
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 2) { done in
-                    matchDelegate.onMatch = { _, _ in done() }
-                    guard let mainDevice = alpsManager.mobileDevices.main else { done(); return }
-                    alpsManager.delegates += matchDelegate
-                    alpsManager.matchMonitor.startMonitoringFor(device: mainDevice)
+                let matchDelegate = MatchDelegate()
+                alpsManager.delegates += matchDelegate
+                alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
+                
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    matchDelegate.onMatch = { _, _ in
+                        alpsManager.matchMonitor.stopPollingMatches()
+                        done()
+                    }
                 }
                 expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
             }
+            
+            fit ("get socket match") {
+                var deliveredMatches: [Match]?
+                alpsManager.matchMonitor.openSocketForMatches()
+                let matchDelegate = MatchDelegate()
+                alpsManager.delegates += matchDelegate
+                
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    matchDelegate.onMatch = { matches, _ in
+                        deliveredMatches = matches
+                        alpsManager.matchMonitor.closeSocketForMatches()
+                        done()
+                    }
+                    let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100000, selector: "test = 'true'")
+                    subscription.pushers?.append("ws")
+                    MatchMore.createSubscription(subscription: subscription, completion: { (result) in
+                        if case .failure(let error) = result {
+                            errorResponse = error
+                        }
+                    })
+                }
+                expect(deliveredMatches).toEventuallyNot(beEmpty())
+            }
+        }
+    }
+    
+    class MatchDelegate: AlpsDelegate {
+        var onMatch: OnMatchClosure?
+        init(_ onMatch: OnMatchClosure? = nil) {
+            self.onMatch = onMatch
         }
     }
 }
