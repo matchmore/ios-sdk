@@ -41,9 +41,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     
     func startPollingMatches() {
         if timer != nil { return }
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-            self.getMatches()
-        }
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getMatches), userInfo: nil, repeats: true)
     }
     
     func stopPollingMatches() {
@@ -79,7 +77,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     
     // MARK: - Getting Matches
     
-    private func getMatches() {
+    @objc private func getMatches() {
         self.monitoredDevices.forEach {
             getMatchesForDevice(device: $0)
         }

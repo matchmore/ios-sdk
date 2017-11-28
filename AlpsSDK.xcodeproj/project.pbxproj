@@ -27,7 +27,6 @@
 		C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */; };
 		C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */; };
 		C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */; };
-		C3673ABD1FBCBC3500A6B90D /* PermissionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */; };
 		C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */; };
 		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
@@ -84,7 +83,6 @@
 		C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
 		C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Creation.swift"; sourceTree = "<group>"; };
 		C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Matches.swift"; sourceTree = "<group>"; };
-		C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsHelper.swift; sourceTree = "<group>"; };
 		C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Location.swift"; sourceTree = "<group>"; };
 		C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleStore.swift; sourceTree = "<group>"; };
@@ -138,7 +136,7 @@
 				C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */,
 				C381EE791F977EB90061E7AC /* Alps Manager */,
 				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
-				C34BFC4A1F98BDF200CAB9BB /* Repositories */,
+				C34BFC4A1F98BDF200CAB9BB /* Stores */,
 				C34CFDAC1FAB11930053C490 /* Persistancy Manager */,
 				C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */,
 			);
@@ -197,7 +195,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C34BFC4A1F98BDF200CAB9BB /* Repositories */ = {
+		C34BFC4A1F98BDF200CAB9BB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
 				C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */,
@@ -207,7 +205,7 @@
 				C3BA176C1F9A09BD00EC0F6F /* Devices */,
 				C3C8C1AB1FA73C61002827B6 /* PubSub */,
 			);
-			path = Repositories;
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		C34CFDAC1FAB11930053C490 /* Persistancy Manager */ = {
@@ -249,7 +247,6 @@
 		C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */,
 				C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 				C34512051FB0AA350079026F /* MulticastDelegate.swift */,
@@ -532,7 +529,6 @@
 				C3BF3A391FA3100B008754A8 /* SubscriptionStore.swift in Sources */,
 				C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */,
 				C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */,
-				C3673ABD1FBCBC3500A6B90D /* PermissionsHelper.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
 				C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
@@ -715,7 +711,7 @@
 				);
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +742,7 @@
 				);
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
