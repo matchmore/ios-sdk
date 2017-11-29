@@ -18,12 +18,12 @@ class BeaconStoreTests: QuickSpec {
     
     override func spec() {
         TestsConfig.setupAPI()
-        let beaconRepository = BeaconTripleStore()
+        let beaconStore = BeaconTripleStore()
         
         context("beacons") {
             fit ("get non existing") {
                 var nonExistringBeacon: IBeaconTriple?
-                beaconRepository.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
+                beaconStore.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
                     if case let .success(iBeacon) = result {
                         nonExistringBeacon = iBeacon
                     }

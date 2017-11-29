@@ -125,18 +125,20 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("get polling match") {
+                var deliveredMatches: [Match]?
                 alpsManager.matchMonitor.startPollingMatches()
                 let matchDelegate = MatchDelegate()
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
                 
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    matchDelegate.onMatch = { _, _ in
+                    matchDelegate.onMatch = { matches, _ in
+                        deliveredMatches = matches
                         alpsManager.matchMonitor.stopPollingMatches()
                         done()
                     }
                 }
-                expect(alpsManager.matchMonitor.deliveredMatches).toEventuallyNot(beEmpty())
+                expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
             
             fit ("get socket match") {

@@ -9,6 +9,7 @@
 import Foundation
 import Alps
 
+/// Default implementation of delete all method
 extension AssociatedDataType where Self: AsyncDeleteable {
     func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
         var lastError: ErrorResponse?

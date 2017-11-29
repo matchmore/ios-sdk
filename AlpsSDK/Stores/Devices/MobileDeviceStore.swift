@@ -1,5 +1,5 @@
 //
-//  MobileDeviceRepository.swift
+//  MobileDeviceStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 27/10/2017.

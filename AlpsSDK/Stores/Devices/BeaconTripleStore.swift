@@ -1,5 +1,5 @@
 //
-//  BeaconRepository.swift
+//  BeaconStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 25/10/2017.

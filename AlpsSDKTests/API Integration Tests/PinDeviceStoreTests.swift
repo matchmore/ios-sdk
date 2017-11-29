@@ -19,7 +19,7 @@ class PinDeviceStoreTests: QuickSpec {
     override func spec() {
         TestsConfig.setupAPI()
         
-        let pinDeviceRepository = PinDeviceStore()
+        let pinDeviceStore = PinDeviceStore()
         var createdPinDeviceId: String = ""
         
         var errorResponse: ErrorResponse?
@@ -40,7 +40,7 @@ class PinDeviceStoreTests: QuickSpec {
                             verticalAccuracy: 10
                         )
                     )
-                    pinDeviceRepository.create(item: pinDevice, 
+                    pinDeviceStore.create(item: pinDevice, 
                                                completion: { (result) in
                         switch result {
                         case .success(let pinDevice):
@@ -51,14 +51,14 @@ class PinDeviceStoreTests: QuickSpec {
                         done()
                     })
                 }
-                expect(pinDeviceRepository.items.first).toEventuallyNot(beNil())
+                expect(pinDeviceStore.items.first).toEventuallyNot(beNil())
                 expect(errorResponse?.message).toEventually(beNil())
             }
             
             var readPinDevice: PinDevice?
             fit("read") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    pinDeviceRepository.find(byId: createdPinDeviceId,
+                    pinDeviceStore.find(byId: createdPinDeviceId,
                                              completion: { (result) in
                         switch result {
                         case .success(let pinDevice):
@@ -76,14 +76,14 @@ class PinDeviceStoreTests: QuickSpec {
             fit("delete") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     if let readPinDevice = readPinDevice {
-                        pinDeviceRepository.delete(item: readPinDevice,
+                        pinDeviceStore.delete(item: readPinDevice,
                                                    completion: { (error) in
                             errorResponse = error
                             done()
                         })
                     } else { done () }
                 }
-                expect(pinDeviceRepository.items.first).toEventually(beNil())
+                expect(pinDeviceStore.items.first).toEventually(beNil())
                 expect(errorResponse?.message).toEventually(beNil())
             }
         }

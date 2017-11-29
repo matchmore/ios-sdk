@@ -3,8 +3,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'AlpsSDK' do
-    
-    pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => '0.5.1'
+    # Alps API
+    pod 'Alps', '~> 0.5.1'
 
     # Socket
     pod 'SwiftWebSocket', '~> 2.6'

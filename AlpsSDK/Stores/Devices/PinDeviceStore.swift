@@ -1,5 +1,5 @@
 //
-//  PinDeviceRepository.swift
+//  PinDeviceStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 20/10/2017.
