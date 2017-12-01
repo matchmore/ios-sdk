@@ -9,4 +9,5 @@ Pod::Spec.new do |s|
   s.license = 'MIT license'
   s.source_files = 'AlpsSDK/**/*.swift'
   s.dependency 'SwiftWebSocket', '~> 2.6'
+  s.dependency 'Alps', '~> 0.5'
 end

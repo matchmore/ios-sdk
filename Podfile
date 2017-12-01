@@ -14,7 +14,16 @@ target 'AlpsSDKTests' do
     # Testing description and matching
     pod 'Nimble', '~> 7.0'
     pod 'Quick', '~> 1.2'
+end
 
-    # Networking
-    pod 'Alamofire', '~> 4.5'
+post_install do |installer|
+    myTargets = ['SwiftWebSocket']
+    
+    installer.pods_project.targets.each do |target|
+        if myTargets.include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.2'
+            end
+        end
+    end
 end
