@@ -5,7 +5,6 @@ use_frameworks!
 target 'AlpsSDK' do
     # Alps API
     pod 'Alps', '~> 0.5.1'
-
     # Socket
     pod 'SwiftWebSocket', '~> 2.6'
 end
