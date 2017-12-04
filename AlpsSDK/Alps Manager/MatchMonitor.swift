@@ -8,7 +8,7 @@
 
 import Alps
 import Foundation
-import SwiftWebSocket
+import Starscream
 
 protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
@@ -55,23 +55,25 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
         
-        var request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
-        request.timeoutInterval = -1
-        request.setValue("api-key, \(MatchMore.worldId)", forHTTPHeaderField: "Sec-WebSocket-Protocol")
-        socket = WebSocket(request: request)
-        socket?.event.close = { _, _, _ in
-            self.socket?.open()
-        }
-        socket?.event.message = { text in
-            if let messeage = text as? String, messeage != "" { // empty string just keeps connection alive
+        let request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
+        socket = WebSocket(request: request, protocols: ["api-key", MatchMore.worldId])
+        socket?.disableSSLCertValidation = true
+        socket?.onText = { text in
+            if text != "" { // empty string just keeps connection alive
                 self.getMatches()
             }
         }
-        socket?.open()
+        socket?.onDisconnect = { _ in
+            self.socket?.connect()
+        }
+        socket?.onPong = { _ in
+            self.socket?.write(ping: "ping".data(using: .utf8)!)
+        }
+        socket?.connect()
     }
     
     func closeSocketForMatches() {
-        socket?.close()
+        socket?.disconnect()
         socket = nil
     }
     

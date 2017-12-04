@@ -9,7 +9,6 @@
 import Foundation
 import Alps
 
-
 /// Result represents async response from the server. It can be either success or failure using internal enum values to represent response data.
 public enum Result<T> {
     case success(T)
