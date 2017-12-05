@@ -36,6 +36,9 @@ public final class MatchMore {
     /// Async store of all created subscriptions.
     public static var subscriptions = manager.subscriptions
     
+    /// Async store of all known iBeacon Triples.
+    public static var knownBeacons = manager.contextManager.beaconTriples
+    
     /// APNS device token. To save token SDK uses KeyChain technology.
     public static var deviceToken = manager.remoteNotificationManager.deviceToken
     

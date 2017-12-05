@@ -31,7 +31,7 @@ public extension MatchMore {
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
-    public class func refreshKnownBeacons() {
-        manager.contextManager.beaconTriples.updateBeaconTriplets()
+    public class func refreshKnownBeacons(_ completion: (() -> Void)? = nil) {
+        manager.contextManager.beaconTriples.updateBeaconTriplets(completion: completion)
     }
 }
