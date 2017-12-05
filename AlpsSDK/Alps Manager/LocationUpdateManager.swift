@@ -18,21 +18,19 @@ final public class LocationUpdateManager {
         if validateLocation(location: location) == false { return }
         LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { (_, error) in
             if error == nil { self.lastLocation = location }
-            print("GO!")
         })
     }
     
     let kMaxLocationTimeInterval = 10.0
     let kMaxLocationDistance = 20.0
+    // validates given location by comparing to last known location
     func validateLocation(location: Location) -> Bool {
         guard let lastClLocation = lastLocation?.clLocation,
               let currentClLocation = location.clLocation
         else { return true }
         
         let distance = currentClLocation.distance(from: lastClLocation)
-        print("distance \(distance)")
         let timeInterval = currentClLocation.timestamp.timeIntervalSince(lastClLocation.timestamp)
-        print("timeInterval \(timeInterval)")
         
         return (distance > kMaxLocationDistance) && (timeInterval > kMaxLocationTimeInterval)
     }

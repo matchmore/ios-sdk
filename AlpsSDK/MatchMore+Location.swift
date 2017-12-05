@@ -21,13 +21,9 @@ public extension MatchMore {
         manager.contextManager.locationManager.stopUpdatingLocation()
     }
     
-    /// Allows manual registration of iBecaon devices.
-    ///
-    /// - Parameters:
-    ///   - forUuid: uuid of a iBeacon device.
-    ///   - identifier: identifier of a iBeacon device.
-    public class func manualyStartRangingBeacon(forUuid: UUID, identifier: String) {
-        manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
+    /// Starts ranging beacons registered on MatchMore portal.
+    public class func startRangingKnownBeacons() {
+        manager.contextManager.startRanging()
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
