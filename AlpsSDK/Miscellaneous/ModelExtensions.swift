@@ -91,6 +91,7 @@ public extension Location {
         self.altitude = location.altitude
         self.horizontalAccuracy = location.horizontalAccuracy
         self.verticalAccuracy = location.verticalAccuracy
+        self.createdAt = Int64(location.timestamp.timeIntervalSince1970 * 1000)
     }
     
     public static func == (lhs: Location, rhs: Location?) -> Bool {
@@ -100,9 +101,20 @@ public extension Location {
     }
     
     public var clLocation: CLLocation? {
-        guard let latitude = self.latitude else {return nil}
-        guard let longitude = self.longitude else {return nil}
-        let clLocation = CLLocation(latitude: latitude, longitude: longitude)
+        guard
+            let latitude = latitude,
+            let longitude = longitude,
+            let altitude = altitude,
+            let horizontalAccuracy = horizontalAccuracy,
+            let verticalAccuracy = verticalAccuracy,
+            let createdAt = createdAt
+        else { return nil }
+        let timestamp = Date(timeIntervalSince1970: TimeInterval(createdAt)/1000.0)
+        let clLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                                       altitude: altitude,
+                                       horizontalAccuracy: horizontalAccuracy,
+                                       verticalAccuracy: verticalAccuracy,
+                                       timestamp: timestamp)
         return clLocation
     }
 }
