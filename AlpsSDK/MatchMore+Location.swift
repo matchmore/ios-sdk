@@ -21,13 +21,10 @@ public extension MatchMore {
         manager.contextManager.locationManager.stopUpdatingLocation()
     }
     
-    /// Starts ranging beacons registered on MatchMore portal.
-    public class func startRangingKnownBeacons() {
-        manager.contextManager.startRanging()
-    }
-    
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
-    public class func refreshKnownBeacons(_ completion: (() -> Void)? = nil) {
-        manager.contextManager.beaconTriples.updateBeaconTriplets(completion: completion)
+    public class func refreshKnownBeacons() {
+        manager.contextManager.beaconTriples.updateBeaconTriplets {
+            manager.contextManager.startRanging()
+        }
     }
 }
