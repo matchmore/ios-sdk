@@ -1,5 +1,5 @@
 //
-//  BeaconRepositoryTests.swift
+//  BeaconStoreTests.swift
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 26/10/2017.
@@ -14,16 +14,16 @@ import Nimble
 @testable import Alps
 @testable import AlpsSDK
 
-class BeaconRepositoryTests: QuickSpec {
+class BeaconStoreTests: QuickSpec {
     
     override func spec() {
         TestsConfig.setupAPI()
-        let beaconRepository = BeaconTripleRepository()
+        let beaconStore = BeaconTripleStore()
         
         context("beacons") {
             fit ("get non existing") {
                 var nonExistringBeacon: IBeaconTriple?
-                beaconRepository.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
+                beaconStore.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
                     if case let .success(iBeacon) = result {
                         nonExistringBeacon = iBeacon
                     }

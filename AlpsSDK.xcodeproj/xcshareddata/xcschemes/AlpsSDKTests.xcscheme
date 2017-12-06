@@ -38,6 +38,18 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "JWT"
+            value = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiOTYzMjE5N2YtMDdjOC00Yzg0LWE4NzUtZGVjOGJmNDM3Mjg1IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTExODI3MzQsImlhdCI6MTUxMTE4MjczNCwianRpIjoiMSJ9.JW8GFVI5NO2AQXjIAVefcJ14DtOkjL7S_R9ewZtlg7PAsHX0wrne8bV_tRpJD75JgE3Dt-tSeDakV-UlYZFSPA"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "BASE_URL"
+            value = "https://api.matchmore.io/v5"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

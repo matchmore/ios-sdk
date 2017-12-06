@@ -91,6 +91,7 @@ public extension Location {
         self.altitude = location.altitude
         self.horizontalAccuracy = location.horizontalAccuracy
         self.verticalAccuracy = location.verticalAccuracy
+        self.createdAt = Int64(location.timestamp.timeIntervalSince1970 * 1000)
     }
     
     public static func == (lhs: Location, rhs: Location?) -> Bool {
@@ -100,9 +101,20 @@ public extension Location {
     }
     
     public var clLocation: CLLocation? {
-        guard let latitude = self.latitude else {return nil}
-        guard let longitude = self.longitude else {return nil}
-        let clLocation = CLLocation(latitude: latitude, longitude: longitude)
+        guard
+            let latitude = latitude,
+            let longitude = longitude,
+            let altitude = altitude,
+            let horizontalAccuracy = horizontalAccuracy,
+            let verticalAccuracy = verticalAccuracy,
+            let createdAt = createdAt
+        else { return nil }
+        let timestamp = Date(timeIntervalSince1970: TimeInterval(createdAt)/1000.0)
+        let clLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                                       altitude: altitude,
+                                       horizontalAccuracy: horizontalAccuracy,
+                                       verticalAccuracy: verticalAccuracy,
+                                       timestamp: timestamp)
         return clLocation
     }
 }
@@ -138,6 +150,22 @@ extension CLProximity {
         case .near: return "near"
         case .far: return "far"
         }
+    }
+    
+    var distance: Double {
+        switch self {
+        case .immediate: return 0.5
+        case .near: return 3.0
+        case .far: return 50.0
+        case .unknown: return 200.0
+        }
+    }
+}
+
+extension CLBeacon {
+    static func == (lhs: CLBeacon, rhs: IBeaconTriple) -> Bool {
+        guard let proximityUUID = rhs.proximityUUID, let major = rhs.major, let minor = rhs.minor else { return false }
+        return lhs.proximityUUID.uuidString.caseInsensitiveCompare(proximityUUID) == ComparisonResult.orderedSame && (lhs.major as? Int32) == major && (lhs.minor as? Int32) == minor
     }
 }
 

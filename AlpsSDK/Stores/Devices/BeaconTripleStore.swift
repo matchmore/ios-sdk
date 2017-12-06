@@ -1,5 +1,5 @@
 //
-//  BeaconRepository.swift
+//  BeaconStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 25/10/2017.
@@ -11,7 +11,7 @@ import Alps
 
 let kBeaconFile = "kBeaconFile.Alps"
 
-final public class BeaconTripleRepository: AsyncReadable {
+final public class BeaconTripleStore: AsyncReadable {
     
     typealias DataType = IBeaconTriple
     internal private(set) var items = [IBeaconTriple]() {
