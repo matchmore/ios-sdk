@@ -9,5 +9,5 @@ before_install:
 xcode_sdk: iphonesimulator11.0
 
 script:
-- xcodebuild clean build test -workspace AlpsSDK.xcworkspace -scheme AlpsSDKTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- pod lib lint
+- xcodebuild -workspace AlpsSDK.xcworkspace -scheme AlpsSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.0' test
+- pod lib lint --allow-warnings
