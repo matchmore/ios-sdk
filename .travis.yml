@@ -6,8 +6,8 @@ before_install:
 - pod repo update
 - pod install
 
-xcode_sdk: iphonesimulator11.0
+xcode_sdk: iphonesimulator11.1
 
 script:
-- xcodebuild -workspace AlpsSDK.xcworkspace -scheme AlpsSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.0' test
+- xcodebuild -workspace AlpsSDK.xcworkspace -scheme AlpsSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.1' test
 - pod lib lint --allow-warnings
