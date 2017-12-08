@@ -33,7 +33,6 @@ public extension MatchMore {
         manager.remoteNotificationManager.process(pushNotification: pushNotification)
     }
     
-    // TODO: Check deviceToken sending.
     /// Saves APNS deviceToken to keychain. Device token can be later used to create APNS notification trigger.
     ///
     /// - Parameter deviceToken: APNS device token represented as a `String`.
