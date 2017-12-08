@@ -1,5 +1,5 @@
 //
-//  PinDeviceRepository.swift
+//  PinDeviceStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 20/10/2017.
@@ -11,7 +11,7 @@ import Alps
 
 let kPinDevicesFile = "kPinDevicesFile.Alps"
 
-final public class PinDeviceRepository: CRD {
+final public class PinDeviceStore: CRD {
     typealias DataType = PinDevice
     
     internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()

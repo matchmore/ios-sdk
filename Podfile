@@ -3,18 +3,26 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'AlpsSDK' do
-    pod 'Alps', :path => '../alps-ios-api/'
-#   pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => 'meetup_round_1'
-
+    # Alps API
+    pod 'Alps', '~> 0.5.1'
     # Socket
-    pod 'SwiftWebSocket', '~> 2.6'
+    pod 'Starscream', '~> 3.0'
 end
 
 target 'AlpsSDKTests' do
     # Testing description and matching
     pod 'Nimble', '~> 7.0'
     pod 'Quick', '~> 1.2'
+end
 
-    # Networking
-    pod 'Alamofire', '~> 4.5'
+post_install do |installer|
+    myTargets = ['SwiftWebSocket']
+    
+    installer.pods_project.targets.each do |target|
+        if myTargets.include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.2'
+            end
+        end
+    end
 end

@@ -10,29 +10,21 @@ import Foundation
 import Alps
 
 public extension MatchMore {
+    
+    /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
         manager.contextManager.locationManager.startUpdatingLocation()
     }
     
+    /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
         manager.contextManager.locationManager.stopUpdatingLocation()
     }
     
-    public class func startRanging(forUuid: UUID, identifier: String) {
-        manager.contextManager.startRanging(forUuid: forUuid, identifier: identifier)
-    }
-    
-    public class func refreshKnownBeacons(completion: @escaping (_ beacons: [IBeaconTriple]?) -> Void) {
+    /// Forces refreshing known iBecaon devices from MatchMore cloud.
+    public class func refreshKnownBeacons() {
         manager.contextManager.beaconTriples.updateBeaconTriplets {
-            findKnownBeacons(completion: { (beacons) in
-                completion(beacons)
-            })
+            manager.contextManager.startRanging()
         }
-    }
-    
-    public class func findKnownBeacons(completion: @escaping (_ beacons: [IBeaconTriple]?) -> Void) {
-        manager.contextManager.beaconTriples.findAll(completion: { (result) in
-            completion(result.responseObject)
-        })
     }
 }

@@ -2,5 +2,5 @@ use_frameworks!
 
 target 'AlpsExample' do
   pod 'AlpsSDK', :path => '../'
-  pod 'Alps', :git => 'https://github.com/MatchMore/alps-ios-api.git', :tag => 'meetup_round_1'
+  pod 'Alps', '~> 0.5'
 end

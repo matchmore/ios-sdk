@@ -18,7 +18,7 @@
 		AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */; };
 		C32C7E6C1FBD89FE0038D513 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
-		C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */; };
+		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
 		C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */; };
 		C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75B1FB9DEBF00D71896 /* Expirable.swift */; };
@@ -27,16 +27,15 @@
 		C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */; };
 		C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */; };
 		C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */; };
-		C3673ABD1FBCBC3500A6B90D /* PermissionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */; };
 		C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */; };
 		C36D430C1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */; };
-		C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */; };
-		C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */; };
+		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
+		C3A7F6171F978ED7007CC20B /* PinDeviceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceStoreTests.swift */; };
 		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
-		C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */; };
-		C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */; };
-		C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */; };
-		C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */; };
+		C3BF3A301FA1C534008754A8 /* BeaconStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconStoreTests.swift */; };
+		C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */; };
+		C3BF3A391FA3100B008754A8 /* SubscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */; };
+		C3BF3A3B1FA31018008754A8 /* PublicationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3A1FA31018008754A8 /* PublicationStore.swift */; };
 		C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */; };
 		C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */; };
 		C3F872EA1FBAF0920093A5A8 /* AsyncClearable+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */; };
@@ -44,7 +43,7 @@
 		C3F872EE1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */; };
 		C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */; };
 		C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */; };
-		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */; };
+		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +74,7 @@
 		B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
-		C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		C351F7581FB9DB3F00D71896 /* ExpirationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationTests.swift; sourceTree = "<group>"; };
 		C351F75B1FB9DEBF00D71896 /* Expirable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expirable.swift; sourceTree = "<group>"; };
@@ -84,16 +83,15 @@
 		C35F16D31FB1A39400F8BDC9 /* TestsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
 		C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Creation.swift"; sourceTree = "<group>"; };
 		C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Matches.swift"; sourceTree = "<group>"; };
-		C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsHelper.swift; sourceTree = "<group>"; };
 		C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Location.swift"; sourceTree = "<group>"; };
 		C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
-		C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleRepository.swift; sourceTree = "<group>"; };
-		C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepository.swift; sourceTree = "<group>"; };
-		C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceRepositoryTests.swift; sourceTree = "<group>"; };
+		C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleStore.swift; sourceTree = "<group>"; };
+		C3A197A91F99E5230095E07E /* PinDeviceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceStore.swift; sourceTree = "<group>"; };
+		C3A7F6161F978ED7007CC20B /* PinDeviceStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceStoreTests.swift; sourceTree = "<group>"; };
 		C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Group.swift"; sourceTree = "<group>"; };
-		C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRepositoryTests.swift; sourceTree = "<group>"; };
-		C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
-		C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
+		C3BF3A2F1FA1C534008754A8 /* BeaconStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconStoreTests.swift; sourceTree = "<group>"; };
+		C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStore.swift; sourceTree = "<group>"; };
+		C3BF3A3A1FA31018008754A8 /* PublicationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationStore.swift; sourceTree = "<group>"; };
 		C3BF3A3D1FA349A0008754A8 /* LocationUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdateManager.swift; sourceTree = "<group>"; };
 		C3E499F41FAA1DF90048585A /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
 		C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncClearable+Default.swift"; sourceTree = "<group>"; };
@@ -101,7 +99,7 @@
 		C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+Convienience.swift"; sourceTree = "<group>"; };
 		C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMore.swift; sourceTree = "<group>"; };
 		C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
-		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceRepository.swift; sourceTree = "<group>"; };
+		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceStore.swift; sourceTree = "<group>"; };
 		E0850D5E89889C50E110D930 /* Pods-AlpsSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpsSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		F75D51944867AE95E2AD27AA /* Pods_AlpsSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpsSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,7 +136,7 @@
 				C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */,
 				C381EE791F977EB90061E7AC /* Alps Manager */,
 				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
-				C34BFC4A1F98BDF200CAB9BB /* Repositories */,
+				C34BFC4A1F98BDF200CAB9BB /* Stores */,
 				C34CFDAC1FAB11930053C490 /* Persistancy Manager */,
 				C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */,
 			);
@@ -197,17 +195,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C34BFC4A1F98BDF200CAB9BB /* Repositories */ = {
+		C34BFC4A1F98BDF200CAB9BB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				C34BFC4B1F98BE0900CAB9BB /* DataRepository.swift */,
+				C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */,
 				C3F872EB1FBAF0C50093A5A8 /* Result.swift */,
 				C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */,
 				C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */,
 				C3BA176C1F9A09BD00EC0F6F /* Devices */,
 				C3C8C1AB1FA73C61002827B6 /* PubSub */,
 			);
-			path = Repositories;
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		C34CFDAC1FAB11930053C490 /* Persistancy Manager */ = {
@@ -249,7 +247,6 @@
 		C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				C3673ABC1FBCBC3500A6B90D /* PermissionsHelper.swift */,
 				C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */,
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 				C34512051FB0AA350079026F /* MulticastDelegate.swift */,
@@ -261,10 +258,10 @@
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				C3FC57CD1FA38D3600A8C2DA /* MobileDeviceStore.swift */,
+				C3A197A91F99E5230095E07E /* PinDeviceStore.swift */,
+				C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */,
 				C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */,
-				C3FC57CD1FA38D3600A8C2DA /* MobileDeviceRepository.swift */,
-				C3A197A91F99E5230095E07E /* PinDeviceRepository.swift */,
-				C387A64B1FA0C5D500AB0371 /* BeaconTripleRepository.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -273,8 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				C351F75B1FB9DEBF00D71896 /* Expirable.swift */,
-				C3BF3A381FA3100B008754A8 /* SubscriptionRepository.swift */,
-				C3BF3A3A1FA31018008754A8 /* PublicationRepository.swift */,
+				C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */,
+				C3BF3A3A1FA31018008754A8 /* PublicationStore.swift */,
 			);
 			path = PubSub;
 			sourceTree = "<group>";
@@ -292,8 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				C3FC57CB1FA3841500A8C2DA /* AlpsManagerTests.swift */,
-				C3A7F6161F978ED7007CC20B /* PinDeviceRepositoryTests.swift */,
-				C3BF3A2F1FA1C534008754A8 /* BeaconRepositoryTests.swift */,
+				C3A7F6161F978ED7007CC20B /* PinDeviceStoreTests.swift */,
+				C3BF3A2F1FA1C534008754A8 /* BeaconStoreTests.swift */,
 				C36D430B1FBA0B1B00420E58 /* PubSubAfterDeviceDeleteTests.swift */,
 			);
 			path = "API Integration Tests";
@@ -485,19 +482,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AlpsSDKTests/Pods-AlpsSDKTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alps/Alps.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftWebSocket/SwiftWebSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,31 +523,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3BF3A331FA1C6D7008754A8 /* BeaconTripleRepository.swift in Sources */,
+				C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */,
 				C3F872EA1FBAF0920093A5A8 /* AsyncClearable+Default.swift in Sources */,
 				84C48E891FA228C500BFB4B6 /* ProximityHandler.swift in Sources */,
-				C3BF3A391FA3100B008754A8 /* SubscriptionRepository.swift in Sources */,
+				C3BF3A391FA3100B008754A8 /* SubscriptionStore.swift in Sources */,
 				C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */,
 				C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */,
-				C3673ABD1FBCBC3500A6B90D /* PermissionsHelper.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
 				C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
 				C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */,
-				C3BF3A3B1FA31018008754A8 /* PublicationRepository.swift in Sources */,
+				C3BF3A3B1FA31018008754A8 /* PublicationStore.swift in Sources */,
 				C3F872EE1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift in Sources */,
 				C3BF3A3E1FA349A0008754A8 /* LocationUpdateManager.swift in Sources */,
 				502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */,
 				C32C7E6C1FBD89FE0038D513 /* KeychainHelper.swift in Sources */,
-				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceRepository.swift in Sources */,
+				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceStore.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */,
 				C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */,
 				502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */,
 				C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */,
-				C3A197AA1F99E5230095E07E /* PinDeviceRepository.swift in Sources */,
-				C34BFC4C1F98BE0900CAB9BB /* DataRepository.swift in Sources */,
+				C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */,
+				C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */,
 				C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */,
 				C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */,
 			);
@@ -561,8 +557,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */,
-				C3A7F6171F978ED7007CC20B /* PinDeviceRepositoryTests.swift in Sources */,
-				C3BF3A301FA1C534008754A8 /* BeaconRepositoryTests.swift in Sources */,
+				C3A7F6171F978ED7007CC20B /* PinDeviceStoreTests.swift in Sources */,
+				C3BF3A301FA1C534008754A8 /* BeaconStoreTests.swift in Sources */,
 				C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */,
 				C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
@@ -715,7 +711,7 @@
 				);
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +742,7 @@
 				);
 				INFOPLIST_FILE = AlpsSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";

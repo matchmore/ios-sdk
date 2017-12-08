@@ -5,7 +5,7 @@ excluded: # paths to ignore during linting.
   - Pods
   - Example
 # parameterized rules can be customized from this configuration file
-function_body_length: 80
+function_body_length: 100
 line_length: 200
 file_length: 600
 type_body_length: 350

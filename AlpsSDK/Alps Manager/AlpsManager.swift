@@ -12,12 +12,12 @@ import Alps
 
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 
-public protocol AlpsManagerDelegate: class {
+public protocol AlpsDelegate: class {
     var onMatch: OnMatchClosure? { get }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
-    public var delegates = MulticastDelegate<AlpsManagerDelegate>()
+    public var delegates = MulticastDelegate<AlpsDelegate>()
     
     let apiKey: String
     var baseURL: String {
@@ -33,21 +33,21 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     var remoteNotificationManager: RemoteNotificationManager!
     
-    lazy var mobileDevices: MobileDeviceRepository = {
-        let mobileDevices = MobileDeviceRepository()
+    lazy var mobileDevices: MobileDeviceStore = {
+        let mobileDevices = MobileDeviceStore()
         mobileDevices.delegates += publications
         mobileDevices.delegates += subscriptions
         return mobileDevices
     }()
-    lazy var pinDevices: PinDeviceRepository = {
-        let pinDevices = PinDeviceRepository()
+    lazy var pinDevices: PinDeviceStore = {
+        let pinDevices = PinDeviceStore()
         pinDevices.delegates += publications
         pinDevices.delegates += subscriptions
         return pinDevices
     }()
     
-    lazy var publications = PublicationRepository()
-    lazy var subscriptions = SubscriptionRepository()
+    lazy var publications = PublicationStore()
+    lazy var subscriptions = SubscriptionStore()
     
     lazy var locationUpdateManager = LocationUpdateManager()
 

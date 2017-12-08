@@ -1,5 +1,5 @@
 //
-//  MobileDeviceRepository.swift
+//  MobileDeviceStore.swift
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 27/10/2017.
@@ -14,7 +14,7 @@ import Alps
 let kMainDeviceFile = "kMainDeviceFile.Alps"
 let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 
-final public class MobileDeviceRepository: CRD {
+final public class MobileDeviceStore: CRD {
     typealias DataType = MobileDevice
     
     internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()
