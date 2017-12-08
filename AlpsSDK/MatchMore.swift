@@ -11,14 +11,8 @@ import Alps
 
 /// `MatchMore` is a static facade for all public methods and properties available in the SDK.
 public final class MatchMore {
-    
-    // MARK: - Private
-    internal static var prefix = "https://"
-    internal static var baseUrl = "api.matchmore.io"
-    internal static var apiVersion = "/v5"
-    
     // MARK: - Public
-    
+
     /// Static instance of `AlpsManager` the main SDK object. Right now you can only use one instance of alps manager through this static accessor.
     public private(set) static var manager: AlpsManager = {
         return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)
@@ -44,4 +38,9 @@ public final class MatchMore {
     
     /// Last location that was successfuly uploaded to MatchMore cloud.
     public static var lastLocation = manager.locationUpdateManager.lastLocation
+    
+    // MARK: - Private
+    internal static var prefix = "https://"
+    internal static var baseUrl = "api.matchmore.io"
+    internal static var apiVersion = "/v5"
 }
