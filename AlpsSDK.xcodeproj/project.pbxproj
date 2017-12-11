@@ -32,6 +32,7 @@
 		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
 		C3A7F6171F978ED7007CC20B /* PinDeviceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7F6161F978ED7007CC20B /* PinDeviceStoreTests.swift */; };
 		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
+		C3B236821FDAD1D7006B58D1 /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B236811FDAD1D7006B58D1 /* ProxmityTests.swift */; };
 		C3BF3A301FA1C534008754A8 /* BeaconStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A2F1FA1C534008754A8 /* BeaconStoreTests.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */; };
@@ -89,6 +90,7 @@
 		C3A197A91F99E5230095E07E /* PinDeviceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceStore.swift; sourceTree = "<group>"; };
 		C3A7F6161F978ED7007CC20B /* PinDeviceStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceStoreTests.swift; sourceTree = "<group>"; };
 		C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Group.swift"; sourceTree = "<group>"; };
+		C3B236811FDAD1D7006B58D1 /* ProxmityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxmityTests.swift; sourceTree = "<group>"; };
 		C3BF3A2F1FA1C534008754A8 /* BeaconStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconStoreTests.swift; sourceTree = "<group>"; };
 		C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStore.swift; sourceTree = "<group>"; };
 		C3BF3A3A1FA31018008754A8 /* PublicationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationStore.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				C3E499F31FAA1DBF0048585A /* API Integration Tests */,
 				C3E499F21FAA1DBD0048585A /* Archiving Tests */,
 				C351F7571FB9DB2300D71896 /* Expiration Tests */,
+				C3B236801FDAD1B1006B58D1 /* Proxmity Tests */,
 				502C85981E01BB5F00EF8ECF /* Info.plist */,
 			);
 			path = AlpsSDKTests;
@@ -253,6 +256,14 @@
 				C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */,
 			);
 			path = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		C3B236801FDAD1B1006B58D1 /* Proxmity Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3B236811FDAD1D7006B58D1 /* ProxmityTests.swift */,
+			);
+			path = "Proxmity Tests";
 			sourceTree = "<group>";
 		};
 		C3BA176C1F9A09BD00EC0F6F /* Devices */ = {
@@ -559,6 +570,7 @@
 				C351F7591FB9DB3F00D71896 /* ExpirationTests.swift in Sources */,
 				C3A7F6171F978ED7007CC20B /* PinDeviceStoreTests.swift in Sources */,
 				C3BF3A301FA1C534008754A8 /* BeaconStoreTests.swift in Sources */,
+				C3B236821FDAD1D7006B58D1 /* ProxmityTests.swift in Sources */,
 				C3E499F51FAA1DF90048585A /* MobileDevicePersistenceTests.swift in Sources */,
 				C35F16D41FB1A39400F8BDC9 /* TestsConfig.swift in Sources */,
 				C3FC57CC1FA3841500A8C2DA /* AlpsManagerTests.swift in Sources */,
