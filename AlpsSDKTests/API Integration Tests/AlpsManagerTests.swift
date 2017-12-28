@@ -127,7 +127,9 @@ final class AlpsManagerTests: QuickSpec {
             fit ("get polling match") {
                 var deliveredMatches: [Match]?
                 let matchDelegate = MatchDelegate()
+                
                 alpsManager.delegates += matchDelegate
+                
                 alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
                 alpsManager.matchMonitor.startPollingMatches()
                 
@@ -141,31 +143,31 @@ final class AlpsManagerTests: QuickSpec {
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
             
-//            fit ("get socket match") {
-//                var deliveredMatches: [Match]?
-//                let matchDelegate = MatchDelegate()
-//                alpsManager.delegates += matchDelegate
-//                alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
-//                alpsManager.matchMonitor.openSocketForMatches()
-//
-//                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                        let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true' or test = 'socket'")
-//                        subscription.pushers?.append("ws")
-//                        MatchMore.createSubscription(subscription: subscription, completion: { (result) in
-//                            if case .failure(let error) = result {
-//                                errorResponse = error
-//                            }
-//                        })
-//                    }
-//                    matchDelegate.onMatch = { matches, _ in
-//                        deliveredMatches = matches
-//                        alpsManager.matchMonitor.closeSocketForMatches()
-//                        done()
-//                    }
-//                }
-//                expect(deliveredMatches).toEventuallyNot(beEmpty())
-//            }
+            fit ("get socket match") {
+                var deliveredMatches: [Match]?
+                let matchDelegate = MatchDelegate()
+                alpsManager.delegates += matchDelegate
+                alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
+                alpsManager.matchMonitor.openSocketForMatches()
+
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true' or test = 'socket'")
+                        subscription.pushers?.append("ws")
+                        MatchMore.createSubscription(subscription: subscription, completion: { (result) in
+                            if case .failure(let error) = result {
+                                errorResponse = error
+                            }
+                        })
+                    }
+                    matchDelegate.onMatch = { matches, _ in
+                        deliveredMatches = matches
+                        alpsManager.matchMonitor.closeSocketForMatches()
+                        done()
+                    }
+                }
+                expect(deliveredMatches).toEventuallyNot(beEmpty())
+            }
         }
     }
     

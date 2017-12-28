@@ -40,7 +40,7 @@ public final class MatchMore {
     public static var lastLocation = manager.locationUpdateManager.lastLocation
     
     // MARK: - Private
-    internal static var prefix = "https://"
-    internal static var baseUrl = "api.matchmore.io"
+    internal static var prefix = "http://"
+    internal static var baseUrl = "35.201.116.232"
     internal static var apiVersion = "/v5"
 }

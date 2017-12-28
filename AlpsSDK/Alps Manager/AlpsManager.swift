@@ -29,7 +29,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     }
     
     lazy var contextManager = ContextManager(delegate: self)
-    lazy var matchMonitor = MatchMonitor(delegate: self)
+    lazy var matchMonitor = MatchMonitor(delegate: self) // move delegates
     
     var remoteNotificationManager: RemoteNotificationManager!
     
@@ -39,6 +39,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         mobileDevices.delegates += subscriptions
         return mobileDevices
     }()
+    
     lazy var pinDevices: PinDeviceStore = {
         let pinDevices = PinDeviceStore()
         pinDevices.delegates += publications
