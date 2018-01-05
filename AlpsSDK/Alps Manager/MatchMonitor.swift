@@ -59,11 +59,11 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         socket = WebSocket(request: request, protocols: ["api-key", MatchMore.worldId])
         socket?.disableSSLCertValidation = true
         socket?.onText = { text in
-            if text != "" { // empty string just keeps connection alive
+            if text != "ping" && text != "" && text != "pong" { // empty string or "ping" just keeps connection alive
                 self.getMatches()
             }
         }
-        socket?.onDisconnect = { _ in
+        socket?.onDisconnect = { error in
             self.socket?.connect()
         }
         socket?.onPong = { _ in
