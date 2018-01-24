@@ -88,6 +88,10 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     private func getMatchesForDevice(device: Device) {
         guard let deviceId = device.id else { return }
         MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
+            print("MATCHES")
+            print(matches)
+            print(error)
+            print("================")
             guard let matches = matches, matches.count > 0, error == nil else { return }
             let union = self.deliveredMatches.union(Set(matches))
             if union != self.deliveredMatches {

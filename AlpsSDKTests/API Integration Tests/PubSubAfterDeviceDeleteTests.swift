@@ -37,7 +37,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["": ""])
+                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["a": "b"])
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createPublication(publication: publication, completion: { (result) in
                         errorMesseage = result.errorMessage

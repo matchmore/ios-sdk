@@ -71,4 +71,19 @@ final public class MobileDeviceStore: CRD {
             completion(error as? ErrorResponse)
         }
     }
+    
+    func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
+        var lastError: ErrorResponse?
+        let dispatchGroup = DispatchGroup()
+        items.forEach {
+            dispatchGroup.enter()
+            self.delete(item: $0, completion: { error in
+                if error != nil { lastError = error }
+                dispatchGroup.leave()
+            })
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(lastError)
+        }
+    }
 }
