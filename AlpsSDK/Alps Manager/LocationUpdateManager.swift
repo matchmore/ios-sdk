@@ -15,7 +15,8 @@ final public class LocationUpdateManager {
     
     func tryToSend(location: Location, for deviceId: String) {
         if location == lastLocation { return }
-        if validateLocation(location: location) == false { return }
+        //TODO: proper validation
+//        if validateLocation(location: location) == false { return }
         LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { _, _ in
             self.lastLocation = location
         })

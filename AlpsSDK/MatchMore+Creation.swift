@@ -69,7 +69,7 @@ public extension MatchMore {
     public class func createPinDevice(pinDevice: PinDevice, completion: @escaping ((Result<PinDevice>) -> Void)) {
         manager.pinDevices.create(item: pinDevice) { (result) in
             if let pinDevice = result.responseObject {
-                manager.matchMonitor.startMonitoringFor(device: pinDevice)
+                // manager.matchMonitor.startMonitoringFor(device: pinDevice)
             }
             completion(result)
         }
