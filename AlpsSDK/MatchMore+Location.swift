@@ -13,18 +13,18 @@ public extension MatchMore {
     
     /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
-        manager.contextManager.locationManager.startUpdatingLocation()
+        instance.contextManager.locationManager.startUpdatingLocation()
     }
     
     /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
-        manager.contextManager.locationManager.stopUpdatingLocation()
+        instance.contextManager.locationManager.stopUpdatingLocation()
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
     public class func refreshKnownBeacons() {
-        manager.contextManager.beaconTriples.updateBeaconTriplets {
-            manager.contextManager.startRanging()
+        instance.contextManager.beaconTriples.updateBeaconTriplets {
+            instance.contextManager.startRanging()
         }
     }
 }

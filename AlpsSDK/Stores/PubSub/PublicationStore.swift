@@ -46,17 +46,12 @@ final public class PublicationStore: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<Publication>) -> Void) {
-        let item = items.filter { $0.id ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (Publication?) -> Void) {
+        completion(items.filter { $0.id ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[Publication]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([Publication]) -> Void) {
+        completion(items)
     }
     
     public func delete(item: Publication, completion: @escaping (ErrorResponse?) -> Void) {
@@ -68,6 +63,21 @@ final public class PublicationStore: CRD {
             }
             completion(error as? ErrorResponse)
         })
+    }
+    
+    func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
+        var lastError: ErrorResponse?
+        let dispatchGroup = DispatchGroup()
+        items.forEach {
+            dispatchGroup.enter()
+            self.delete(item: $0, completion: { error in
+                if error != nil { lastError = error }
+                dispatchGroup.leave()
+            })
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(lastError)
+        }
     }
 }
 

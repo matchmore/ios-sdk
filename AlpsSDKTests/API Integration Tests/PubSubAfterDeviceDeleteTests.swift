@@ -16,8 +16,8 @@ import Nimble
 final class PubSubAfterDeviceDeleteTests: QuickSpec {
     
     override func spec() {
-        let alpsManager = AlpsManager(apiKey: TestsConfig.kApiKey,
-                                      baseURL: TestsConfig.kBaseUrl)
+        TestsConfig.configure()
+        let alpsManager = MatchMore.instance
         var errorMesseage: String?
         
         context("pub/sub delete with device") {
@@ -37,9 +37,9 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["": ""])
+                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["a": "b"])
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createPublication(publication: publication, completion: { (result) in
+                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { (result) in
                         errorMesseage = result.errorMessage
                         done()
                     })
@@ -51,7 +51,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             fit ("create a subscription") {
                 let subscription = Subscription(topic: "Test iTopic", range: 20, duration: 100000, selector: "")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createSubscription(subscription: subscription, completion: { (result) in
+                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         errorMesseage = result.errorMessage
                         done()
                     })

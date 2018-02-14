@@ -16,7 +16,7 @@ let kTokenKey = "kTokenKey"
 
 public class RemoteNotificationManager: NSObject {
     
-    private weak var delegate: RemoteNotificationManagerDelegate?
+    private(set) weak var delegate: RemoteNotificationManagerDelegate?
     var deviceToken: String? {
         didSet {
             KeychainHelper.shared[kTokenKey] = self.deviceToken
@@ -30,7 +30,10 @@ public class RemoteNotificationManager: NSObject {
     }
     
     func registerDeviceToken(deviceToken: String) {
-        self.deviceToken = deviceToken
+        if self.deviceToken != deviceToken {
+            self.deviceToken = deviceToken
+            // TODO: Update mobile devices with device Token
+        }
     }
     
     func process(pushNotification: [AnyHashable: Any]) {

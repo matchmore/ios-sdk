@@ -17,11 +17,10 @@ import Quick
 class PinDeviceStoreTests: QuickSpec {
     
     override func spec() {
-        TestsConfig.setupAPI()
+        TestsConfig.configure()
         
-        let pinDeviceStore = PinDeviceStore()
+        let pinDeviceStore = MatchMore.pinDevices
         var createdPinDeviceId: String = ""
-        
         var errorResponse: ErrorResponse?
         
         context("pin device") {
@@ -60,17 +59,11 @@ class PinDeviceStoreTests: QuickSpec {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     pinDeviceStore.find(byId: createdPinDeviceId,
                                              completion: { (result) in
-                        switch result {
-                        case .success(let pinDevice):
-                            readPinDevice = pinDevice
-                        case .failure(let error):
-                            errorResponse = error
-                        }
+                        readPinDevice = result
                         done()
                     })
                 }
                 expect(readPinDevice).toEventuallyNot(beNil())
-                expect(errorResponse?.message).toEventually(beNil())
             }
             
             fit("delete") {

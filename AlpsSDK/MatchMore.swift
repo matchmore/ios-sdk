@@ -9,38 +9,70 @@
 import Foundation
 import Alps
 
+/// `MatchMoreConfig` is a structure that defines all variables needed to configure MatchMore SDK.
+public struct MatchMoreConfig {
+    let apiKey: String
+    let serverUrl: String
+    let debugLog: Bool
+    
+    init(apiKey: String, serverUrl: String = "https://api.matchmore.io/v5", debugLog: Bool = false) {
+        self.apiKey = apiKey
+        self.serverUrl = serverUrl
+        self.debugLog = debugLog
+    }
+}
+
 /// `MatchMore` is a static facade for all public methods and properties available in the SDK.
 public final class MatchMore {
-    // MARK: - Public
-
-    /// Static instance of `AlpsManager` the main SDK object. Right now you can only use one instance of alps manager through this static accessor.
-    public private(set) static var manager: AlpsManager = {
-        return AlpsManager(apiKey: MatchMore.apiKey, baseURL: MatchMore.prefix + MatchMore.baseUrl + MatchMore.apiVersion)
+    static var config: MatchMoreConfig?
+    
+    static var instance: AlpsManager = {
+        assert(config != nil, "Please configure first.")
+        return AlpsManager(apiKey: config!.apiKey, baseURL: config!.serverUrl)
     }()
     
-    /// JSON Web Token used to sign requests sent to MatchMore cloud.
-    public static var apiKey = ""
+    /// Configuration method
+    public class func  configure(_ config: MatchMoreConfig) {
+        MatchMore.config = config
+    }
     
-    /// Unique identifier of created world. Right now it's used only for socket communication.
-    public static var worldId = ""
+    /// Main mobile device created by `startUsingMainDevice()`
+    public static var mainDevice: MobileDevice? {
+        return instance.mobileDevices.main
+    }
     
     /// Async store of all created publications.
-    public static var publications = manager.publications
+    public static var publications: PublicationStore {
+        return instance.publications
+    }
     
     /// Async store of all created subscriptions.
-    public static var subscriptions = manager.subscriptions
+    public static var subscriptions: SubscriptionStore {
+        return instance.subscriptions
+    }
+    
+    /// Async store of all create mobile devices
+    public static var mobileDevices: MobileDeviceStore {
+        return instance.mobileDevices
+    }
+    
+    /// Async store of all create pin devices.
+    public static var pinDevices: PinDeviceStore {
+        return instance.pinDevices
+    }
     
     /// Async store of all known iBeacon Triples.
-    public static var knownBeacons = manager.contextManager.beaconTriples
+    public static var knownBeacons: BeaconTripleStore {
+        return instance.contextManager.beaconTriples
+    }
     
     /// APNS device token. To save token SDK uses KeyChain technology.
-    public static var deviceToken = manager.remoteNotificationManager.deviceToken
+    public static var deviceToken: String? {
+        return instance.remoteNotificationManager.deviceToken
+    }
     
     /// Last location that was successfuly uploaded to MatchMore cloud.
-    public static var lastLocation = manager.locationUpdateManager.lastLocation
-    
-    // MARK: - Private
-    internal static var prefix = "https://"
-    internal static var baseUrl = "api.matchmore.io"
-    internal static var apiVersion = "/v5"
+    public static var lastLocation: Location? {
+        return instance.locationUpdateManager.lastLocation
+    }
 }

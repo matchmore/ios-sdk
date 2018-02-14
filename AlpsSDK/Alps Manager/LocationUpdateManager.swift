@@ -15,14 +15,14 @@ final public class LocationUpdateManager {
     
     func tryToSend(location: Location, for deviceId: String) {
         if location == lastLocation { return }
-        if validateLocation(location: location) == false { return }
         LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { _, _ in
             self.lastLocation = location
         })
     }
     
-    let kMaxLocationTimeInterval = 10.0
-    let kMaxLocationDistance = 20.0
+    //TODO: add location update configuration
+    let kMaxLocationTimeInterval = 1.0
+    let kMaxLocationDistance = 1.0
     // validates given location by comparing to last known location
     func validateLocation(location: Location) -> Bool {
         guard let lastClLocation = lastLocation?.clLocation,
