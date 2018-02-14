@@ -47,7 +47,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     func startRanging() {
         beaconTriples.findAll { result in
-            result.responseObject!.forEach {
+            result.forEach {
                 let beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: $0.proximityUUID!)!, identifier: $0.deviceId!)
                 self.locationManager.startRangingBeacons(in: beaconRegion)
             }
@@ -58,7 +58,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         beaconTriples.findAll { result in
-            self.proximityHandler.rangeBeacons(beacons: beacons, knownBeacons: result.responseObject!)
+            self.proximityHandler.rangeBeacons(beacons: beacons, knownBeacons: result)
         }
     }
 }

@@ -169,7 +169,7 @@ final class AlpsManagerTests: QuickSpec {
         }
     }
     
-    class MatchDelegate: AlpsDelegate {
+    class MatchDelegate: MatchDelegate {
         var onMatch: OnMatchClosure?
         init(_ onMatch: OnMatchClosure? = nil) {
             self.onMatch = onMatch

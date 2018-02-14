@@ -56,21 +56,22 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
         
-        let request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
-        socket = WebSocket(request: request, protocols: ["api-key", MatchMore.worldId])
-        socket?.disableSSLCertValidation = true
-        socket?.onText = { text in
-            if text != "ping" && text != "" && text != "pong" { // empty string or "ping" just keeps connection alive
-                self.getMatches()
-            }
-        }
-        socket?.onDisconnect = { error in
-            self.socket?.connect()
-        }
-        socket?.onPong = { _ in
-            self.socket?.write(ping: "ping".data(using: .utf8)!)
-        }
-        socket?.connect()
+        //TODO: Create ws request
+//        let request = URLRequest(url: URL(string: "ws://\(MatchMore.baseUrl)/pusher/v5/ws/\(deviceId)")!)
+//        socket = WebSocket(request: request, protocols: ["api-key", MatchMore.worldId])
+//        socket?.disableSSLCertValidation = true
+//        socket?.onText = { text in
+//            if text != "ping" && text != "" && text != "pong" { // empty string or "ping" just keeps connection alive
+//                self.getMatches()
+//            }
+//        }
+//        socket?.onDisconnect = { error in
+//            self.socket?.connect()
+//        }
+//        socket?.onPong = { _ in
+//            self.socket?.write(ping: "ping".data(using: .utf8)!)
+//        }
+//        socket?.connect()
     }
     
     func closeSocketForMatches() {

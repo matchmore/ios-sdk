@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import CoreLocation
 import Alps
+import CoreLocation
 
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
-
-public protocol AlpsDelegate: class {
+public protocol MatchDelegate: class {
     var onMatch: OnMatchClosure? { get }
 }
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
-    public var delegates = MulticastDelegate<AlpsDelegate>()
+    public var delegates = MulticastDelegate<MatchDelegate>()
     
     let apiKey: String
     var baseURL: String {
@@ -82,8 +81,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     
     func didUpdateLocation(location: CLLocation) {
         mobileDevices.findAll { (result) in
-            guard case let .success(mobileDevices) = result else { return }
-            mobileDevices.forEach {
+            result.forEach {
                 guard let deviceId = $0.id else { return }
                 self.locationUpdateManager.tryToSend(location: Location(location: location), for: deviceId)
             }

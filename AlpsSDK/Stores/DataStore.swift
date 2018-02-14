@@ -24,8 +24,8 @@ protocol AsyncCreateable: AssociatedDataType {
 }
 
 protocol AsyncReadable: AssociatedDataType {
-    func find(byId: String, completion: @escaping (Result<DataType>) -> Void)
-    func findAll(completion: @escaping (Result<[DataType]>) -> Void)
+    func find(byId: String, completion: @escaping (DataType?) -> Void)
+    func findAll(completion: @escaping ([DataType]) -> Void)
 }
 
 protocol AsyncUpdateable: AssociatedDataType {

@@ -47,17 +47,12 @@ final public class MobileDeviceStore: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<MobileDevice>) -> Void) {
-        let item = items.filter { $0.id ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (MobileDevice?) -> Void) {
+        completion(items.filter { $0.id ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[MobileDevice]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([MobileDevice]) -> Void) {
+        completion(items)
     }
     
     public func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {

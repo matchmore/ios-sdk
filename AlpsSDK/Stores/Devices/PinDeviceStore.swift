@@ -37,17 +37,12 @@ final public class PinDeviceStore: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<PinDevice>) -> Void) {
-        let item = items.filter { $0.id ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (PinDevice?) -> Void) {
+        completion(items.filter { $0.id ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[PinDevice]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([PinDevice]) -> Void) {
+        completion(items)
     }
     
     public func delete(item: PinDevice, completion: @escaping (ErrorResponse?) -> Void) {

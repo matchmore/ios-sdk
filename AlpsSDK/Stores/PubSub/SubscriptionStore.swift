@@ -45,17 +45,12 @@ final public class SubscriptionStore: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<Subscription>) -> Void) {
-        let item = items.filter { $0.id ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (Subscription?) -> Void) {
+        completion(items.filter { $0.id ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[Subscription]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([Subscription]) -> Void) {
+        completion(items)
     }
     
     public func delete(item: Subscription, completion: @escaping (ErrorResponse?) -> Void) {
