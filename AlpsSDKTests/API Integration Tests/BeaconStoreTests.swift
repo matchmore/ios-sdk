@@ -17,16 +17,14 @@ import Nimble
 class BeaconStoreTests: QuickSpec {
     
     override func spec() {
-        TestsConfig.setupAPI()
-        let beaconStore = BeaconTripleStore()
+        TestsConfig.configure()
+        let beaconStore = MatchMore.knownBeacons
         
         context("beacons") {
             fit ("get non existing") {
                 var nonExistringBeacon: IBeaconTriple?
                 beaconStore.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
-                    if case let .success(iBeacon) = result {
-                        nonExistringBeacon = iBeacon
-                    }
+                    nonExistringBeacon = result
                 })
                 expect(nonExistringBeacon).toEventually(beNil())
             }

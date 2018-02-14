@@ -15,7 +15,7 @@ public struct MatchMoreConfig {
     let serverUrl: String
     let debugLog: Bool
     
-    init(apiKey: String, serverUrl: String = "http://api.matchmore.io/v5", debugLog: Bool = false) {
+    init(apiKey: String, serverUrl: String = "https://api.matchmore.io/v5", debugLog: Bool = false) {
         self.apiKey = apiKey
         self.serverUrl = serverUrl
         self.debugLog = debugLog
@@ -27,7 +27,7 @@ public final class MatchMore {
     static var config: MatchMoreConfig?
     
     static var instance: AlpsManager = {
-        assert(config == nil, "Please configure first.")
+        assert(config != nil, "Please configure first.")
         return AlpsManager(apiKey: config!.apiKey, baseURL: config!.serverUrl)
     }()
     
@@ -49,6 +49,16 @@ public final class MatchMore {
     /// Async store of all created subscriptions.
     public static var subscriptions: SubscriptionStore {
         return instance.subscriptions
+    }
+    
+    /// Async store of all create mobile devices
+    public static var mobileDevices: MobileDeviceStore {
+        return instance.mobileDevices
+    }
+    
+    /// Async store of all create pin devices.
+    public static var pinDevices: PinDeviceStore {
+        return instance.pinDevices
     }
     
     /// Async store of all known iBeacon Triples.

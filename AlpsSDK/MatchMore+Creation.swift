@@ -57,8 +57,8 @@ public extension MatchMore {
     ///   - publication: Publication object that will be created on MatchMore's cloud.
     ///   - deviceWithId: (Optional) Unique id of the device on which publication is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
     ///   - completion: Callback that returns response from the MatchMore cloud.
-    public class func createPublication(publication: Publication, forDeviceWithId: String, completion: @escaping ((Result<Publication>) -> Void)) {
-        publication.deviceId = forDeviceWithId
+    public class func createPublication(publication: Publication, forDevice: Device, completion: @escaping ((Result<Publication>) -> Void)) {
+        publication.deviceId = forDevice.id
         instance.publications.create(item: publication) { (result) in
             completion(result)
         }
@@ -77,27 +77,44 @@ public extension MatchMore {
         }
     }
     
-    /// Creates new publication attached to either main device or given device.
+    /// Creates new subscription attached to device with given id.
     ///
     /// - Parameters:
     ///   - subscription: Subscription object that will be created on MatchMore's cloud.
     ///   - deviceWithId: (Optional) Unique id of the device on which subscriptions is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
     ///   - completion: Callback that returns response from the MatchMore cloud.
-    public class func createSubscription(subscription: Subscription, for deviceWithId: String? = nil, completion: @escaping ((Result<Subscription>) -> Void)) {
-        subscription.deviceId = deviceWithId ?? instance.mobileDevices.main?.id
+    public class func createSubscription(subscription: Subscription, forDevice: Device, completion: @escaping ((Result<Subscription>) -> Void)) {
+        subscription.deviceId = forDevice.id
         instance.subscriptions.create(item: subscription) { (result) in
             completion(result)
         }
     }
     
-    /// Start monitoring matches for given device. In order to receive matches implement `MatchDelegate`
+    /// Creates new subscription attached to device with given id.
     ///
     /// - Parameters:
     ///   - subscription: Subscription object that will be created on MatchMore's cloud.
+    ///   - deviceWithId: (Optional) Unique id of the device on which subscriptions is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
+    ///   - completion: Callback that returns response from the MatchMore cloud.
+    public class func createSubscriptionForMainDevice(subscription: Subscription, completion: @escaping ((Result<Subscription>) -> Void)) {
+        subscription.deviceId = instance.mobileDevices.main?.id
+        instance.subscriptions.create(item: subscription) { (result) in
+            completion(result)
+        }
+    }
+    
+    /// Start monitoring matches for given device. In order to receive matches implement `MatchDelegate`.
+    ///
+    /// - Parameters:
+    ///   - device: Device object that will be monitored.
     public class func startMonitoringMatches(forDevice: Device) {
         instance.matchMonitor.startMonitoringFor(device: forDevice)
     }
     
+    /// Stop monitoring matches for given device. In order to receive matches implement `MatchDelegate`.
+    ///
+    /// - Parameters:
+    ///   - device: Device object that will not be monitored anymore.
     public class func stopMonitoringMatches(forDevice: Device) {
         instance.matchMonitor.stopMonitoringFor(device: forDevice)
     }

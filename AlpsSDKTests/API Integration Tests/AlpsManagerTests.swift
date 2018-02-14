@@ -20,9 +20,8 @@ final class AlpsManagerTests: QuickSpec {
         let properties = ["test": "true"]
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
-        MatchMore.apiKey = TestsConfig.kApiKey
-        MatchMore.worldId = TestsConfig.kWorldId
-        var alpsManager = MatchMore.manager
+        TestsConfig.configure()
+        var alpsManager = MatchMore.instance
         
         var errorResponse: ErrorResponse?
         
@@ -83,7 +82,7 @@ final class AlpsManagerTests: QuickSpec {
             fit ("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 4000, duration: 100000, properties: properties)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createPublication(publication: publication, completion: { (result) in
+                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { (result) in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
@@ -97,7 +96,7 @@ final class AlpsManagerTests: QuickSpec {
             fit ("create a subscription") {
                 let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true'")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createSubscription(subscription: subscription, completion: { (result) in
+                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
@@ -110,8 +109,7 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("recover state") {
                 // simulates turning app off and on again
-                alpsManager = AlpsManager(apiKey: TestsConfig.kApiKey,
-                                          baseURL: TestsConfig.kBaseUrl)
+                alpsManager = MatchMore.instance
                 expect(alpsManager.mobileDevices.main).toNot(beNil())
                 expect(alpsManager.mobileDevices.items).toNot(beEmpty())
             }
@@ -126,11 +124,9 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("get polling match") {
                 var deliveredMatches: [Match]?
-                let matchDelegate = MatchDelegate()
+                let matchDelegate = TestMatchDelegate()
                 
                 alpsManager.delegates += matchDelegate
-                
-                alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
                 alpsManager.matchMonitor.startPollingMatches()
                 
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
@@ -145,9 +141,8 @@ final class AlpsManagerTests: QuickSpec {
             
             fit ("get socket match") {
                 var deliveredMatches: [Match]?
-                let matchDelegate = MatchDelegate()
+                let matchDelegate = TestMatchDelegate()
                 alpsManager.delegates += matchDelegate
-                alpsManager.matchMonitor.startMonitoringFor(device: alpsManager.mobileDevices.main!)
                 alpsManager.matchMonitor.openSocketForMatches()
 
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
@@ -158,7 +153,7 @@ final class AlpsManagerTests: QuickSpec {
                     }
                     let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true'")
                     subscription.pushers = ["ws"]
-                    MatchMore.createSubscription(subscription: subscription, completion: { (result) in
+                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
                             errorResponse = error
                         }
@@ -169,7 +164,7 @@ final class AlpsManagerTests: QuickSpec {
         }
     }
     
-    class MatchDelegate: MatchDelegate {
+    class TestMatchDelegate: MatchDelegate {
         var onMatch: OnMatchClosure?
         init(_ onMatch: OnMatchClosure? = nil) {
             self.onMatch = onMatch
