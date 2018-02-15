@@ -53,7 +53,7 @@ extension Device: Hashable {
 }
 
 public extension Publication {
-    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
+    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: Any]) {
         self.init()
         self.deviceId = deviceId
         self.topic = topic
