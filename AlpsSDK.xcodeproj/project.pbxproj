@@ -19,8 +19,6 @@
 		AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */; };
 		C32C7E6C1FBD89FE0038D513 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */; };
 		C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchMoreConfig.swift */; };
-		C3378963203D960F0054B974 /* swagger-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378961203D960F0054B974 /* swagger-generate.sh */; };
-		C3378964203D960F0054B974 /* sourcery-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378962203D960F0054B974 /* sourcery-generate.sh */; };
 		C3378986203D992E0054B974 /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897A203D992D0054B974 /* ProxmityTests.swift */; };
 		C3378987203D992E0054B974 /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */; };
 		C3378988203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897D203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift */; };
@@ -170,8 +168,6 @@
 		C31CB1A2203D87C100FDAE7A /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		C337895E203D948F0054B974 /* MatchMoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMoreConfig.swift; sourceTree = "<group>"; };
-		C3378961203D960F0054B974 /* swagger-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "swagger-generate.sh"; sourceTree = "<group>"; };
-		C3378962203D960F0054B974 /* sourcery-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "sourcery-generate.sh"; sourceTree = "<group>"; };
 		C337897A203D992D0054B974 /* ProxmityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxmityTests.swift; sourceTree = "<group>"; };
 		C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
 		C337897D203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
@@ -317,21 +313,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C31CB181203D87C100FDAE7A /* Swaggers */ = {
-			isa = PBXGroup;
-			children = (
-				C31CB182203D87C100FDAE7A /* APIHelper.swift */,
-				C31CB183203D87C100FDAE7A /* AlamofireImplementations.swift */,
-				C31CB184203D87C100FDAE7A /* APIs */,
-				C31CB18A203D87C100FDAE7A /* APIs.swift */,
-				C31CB18B203D87C100FDAE7A /* Models */,
-				C31CB1A0203D87C100FDAE7A /* Extensions.swift */,
-				C31CB1A1203D87C100FDAE7A /* Models.swift */,
-				C31CB1A2203D87C100FDAE7A /* Configuration.swift */,
-			);
-			path = Swaggers;
-			sourceTree = "<group>";
-		};
 		C31CB184203D87C100FDAE7A /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,9 +355,14 @@
 		C3378960203D94AF0054B974 /* GeneratedAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C3378962203D960F0054B974 /* sourcery-generate.sh */,
-				C3378961203D960F0054B974 /* swagger-generate.sh */,
-				C31CB181203D87C100FDAE7A /* Swaggers */,
+				C31CB182203D87C100FDAE7A /* APIHelper.swift */,
+				C31CB183203D87C100FDAE7A /* AlamofireImplementations.swift */,
+				C31CB184203D87C100FDAE7A /* APIs */,
+				C31CB18A203D87C100FDAE7A /* APIs.swift */,
+				C31CB18B203D87C100FDAE7A /* Models */,
+				C31CB1A0203D87C100FDAE7A /* Extensions.swift */,
+				C31CB1A1203D87C100FDAE7A /* Models.swift */,
+				C31CB1A2203D87C100FDAE7A /* Configuration.swift */,
 			);
 			path = GeneratedAPI;
 			sourceTree = "<group>";
@@ -398,7 +384,7 @@
 			path = "Archiving Tests";
 			sourceTree = "<group>";
 		};
-		C337897F203D992E0054B974 /* API Integration Tests */ = {
+		C337897F203D992E0054B974 /* Integration Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C3378980203D992E0054B974 /* PinDeviceStoreTests.swift */,
@@ -406,7 +392,7 @@
 				C3378982203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift */,
 				C3378983203D992E0054B974 /* BeaconStoreTests.swift */,
 			);
-			path = "API Integration Tests";
+			path = "Integration Tests";
 			sourceTree = "<group>";
 		};
 		C3378984203D992E0054B974 /* Expiration Tests */ = {
@@ -455,7 +441,7 @@
 			children = (
 				C3807CF2203D920300561974 /* Info.plist */,
 				C337897E203D992E0054B974 /* TestsConfig.swift */,
-				C337897F203D992E0054B974 /* API Integration Tests */,
+				C337897F203D992E0054B974 /* Integration Tests */,
 				C337897B203D992E0054B974 /* Archiving Tests */,
 				C3378984203D992E0054B974 /* Expiration Tests */,
 				C3378979203D992D0054B974 /* Proxmity Tests */,
@@ -655,8 +641,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3378963203D960F0054B974 /* swagger-generate.sh in Resources */,
-				C3378964203D960F0054B974 /* sourcery-generate.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
