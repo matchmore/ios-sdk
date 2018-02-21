@@ -27,7 +27,6 @@ public class MatchMonitor {
     // MARK: - Device Monitoring
     
     func startMonitoringFor(device: Device) {
-        // TODO: start new socket after adding new device ?
         monitoredDevices.insert(device)
     }
     
@@ -49,6 +48,7 @@ public class MatchMonitor {
     
     // MARK: - Socket
     
+    // TODO: start new socket after adding new device ?
     func openSocketForMatches() {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
@@ -103,24 +103,5 @@ public class MatchMonitor {
     
     func refreshMatchesFor(deviceId: String) {
         getMatches()
-    }
-}
-
-extension String {
-    func getWorldIdFromToken() -> String {
-        var segments = self.components(separatedBy: ".")
-        var base64String = segments[1]
-        let requiredLength = Int(4 * ceil(Float(base64String.count) / 4.0))
-        let nbrPaddings = requiredLength - base64String.count
-        if nbrPaddings > 0 {
-            let padding = String().padding(toLength: nbrPaddings, withPad: "=", startingAt: 0)
-            base64String = base64String.appending(padding)
-        }
-        base64String = base64String.replacingOccurrences(of: "-", with: "+")
-        base64String = base64String.replacingOccurrences(of: "_", with: "/")
-        let decodedData = Data(base64Encoded: base64String, options: Data.Base64DecodingOptions(rawValue: UInt(0)))!
-        let json = try? JSONSerialization.jsonObject(with: decodedData, options: .mutableContainers) as? [String: Any]
-        let worldId = json??["sub"] as? String
-        return worldId ?? ""
     }
 }

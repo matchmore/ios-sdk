@@ -19,6 +19,8 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     public var delegates = MulticastDelegate<MatchDelegate>()
     
     let apiKey: String
+    let worldId: String
+    
     var baseURL: String {
         set {
             AlpsAPI.basePath = newValue
@@ -27,22 +29,22 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
         }
     }
     
-    lazy var contextManager = ContextManager(delegate: self, locationManager: locationManager)
+    lazy var contextManager = ContextManager(id: worldId, delegate: self, locationManager: locationManager)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     lazy var remoteNotificationManager = RemoteNotificationManager(delegate: self)
     
-    lazy var publications = PublicationStore()
-    lazy var subscriptions = SubscriptionStore()
+    lazy var publications = PublicationStore(id: worldId)
+    lazy var subscriptions = SubscriptionStore(id: worldId)
     
     lazy var mobileDevices: MobileDeviceStore = {
-        let mobileDevices = MobileDeviceStore()
+        let mobileDevices = MobileDeviceStore(id: worldId)
         mobileDevices.delegates += publications
         mobileDevices.delegates += subscriptions
         return mobileDevices
     }()
     
     lazy var pinDevices: PinDeviceStore = {
-        let pinDevices = PinDeviceStore()
+        let pinDevices = PinDeviceStore(id: worldId)
         pinDevices.delegates += publications
         pinDevices.delegates += subscriptions
         return pinDevices
@@ -53,6 +55,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
 
     internal init(apiKey: String, baseURL: String? = nil, customLocationManager: CLLocationManager?) {
         self.apiKey = apiKey
+        self.worldId = apiKey.getWorldIdFromToken()
         if let customLocationManager = customLocationManager {
             self.locationManager = customLocationManager
         } else {

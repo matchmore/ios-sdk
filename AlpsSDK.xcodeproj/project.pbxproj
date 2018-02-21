@@ -35,6 +35,7 @@
 		C33789A9203D9B510054B974 /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C33789AA203D9B510054B974 /* AlpsSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C33789AF203D9BD60054B974 /* ExampleMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33789AE203D9BD60054B974 /* ExampleMatchDelegate.swift */; };
+		C33789B7203DC8420054B974 /* String+JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33789B6203DC8420054B974 /* String+JWT.swift */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
@@ -187,6 +188,7 @@
 		C33789AE203D9BD60054B974 /* ExampleMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMatchDelegate.swift; sourceTree = "<group>"; };
 		C33789B0203D9D8B0054B974 /* AlpsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlpsExample.entitlements; sourceTree = "<group>"; };
 		C33789B5203D9E810054B974 /* Pods_AlpsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_AlpsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33789B6203DC8420054B974 /* String+JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+JWT.swift"; sourceTree = "<group>"; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */,
 				C34512051FB0AA350079026F /* MulticastDelegate.swift */,
 				C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */,
+				C33789B6203DC8420054B974 /* String+JWT.swift */,
 			);
 			path = Miscellaneous;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 				C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C3807CD0203D91CA00561974 /* MatchesAPI.swift in Sources */,
+				C33789B7203DC8420054B974 /* String+JWT.swift in Sources */,
 				C3807CE7203D91D500561974 /* Matches.swift in Sources */,
 				C3807CD1203D91CA00561974 /* DeviceAPI.swift in Sources */,
 				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,

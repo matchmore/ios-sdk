@@ -8,9 +8,10 @@
 
 import Foundation
 
-let kSubscriptionFile = "kSubscriptionFile.Alps"
-
 final public class SubscriptionStore: CRD {
+    var kSubscriptionFile: String {
+        return "kSubscriptionFile.Alps_" + id
+    }
     typealias DataType = Subscription
     
     internal private(set) var items: [Subscription] {
@@ -28,7 +29,9 @@ final public class SubscriptionStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object }.withoutExpired ?? []
     }
     

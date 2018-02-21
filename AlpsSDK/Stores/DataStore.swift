@@ -12,6 +12,7 @@ typealias CRUD = AsyncCreateable & AsyncReadable & AsyncUpdateable & AsyncDelete
 typealias CRD = AsyncCreateable & AsyncReadable & AsyncDeleteable & AsyncClearable
 
 protocol AssociatedDataType {
+    var id: String { get }
     associatedtype DataType
     var items: [DataType] { get }
 }

@@ -8,9 +8,10 @@
 
 import Foundation
 
-let kPinDevicesFile = "kPinDevicesFile.Alps"
-
 final public class PinDeviceStore: CRD {
+    var kPinDevicesFile: String {
+        return  "kPinDevicesFile.Alps_" + id
+    }
     typealias DataType = PinDevice
     
     internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()
@@ -21,7 +22,9 @@ final public class PinDeviceStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodablePinDevice].self, from: kPinDevicesFile)?.map { $0.object } ?? []
     }
     

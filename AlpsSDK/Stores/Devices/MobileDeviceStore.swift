@@ -8,10 +8,15 @@
 
 import Foundation
 
-let kMainDeviceFile = "kMainDeviceFile.Alps"
-let kMobileDevicesFile = "kMobileDevicesFile.Alps"
-
 final public class MobileDeviceStore: CRD {
+    
+    var kMainDeviceFile: String {
+        return "kMainDeviceFile.Alps_" + id
+    }
+    var kMobileDevicesFile: String {
+        return "kMobileDevicesFile.Alps_" + id
+    }
+    
     typealias DataType = MobileDevice
     
     internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()
@@ -27,7 +32,9 @@ final public class MobileDeviceStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.main = PersistenceManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.object
         self.items = PersistenceManager.read(type: [EncodableMobileDevice].self, from: kMobileDevicesFile)?.map { $0.object } ?? []
     }

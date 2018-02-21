@@ -8,9 +8,10 @@
 
 import Foundation
 
-let kPublicationFile = "kPublicationFile.Alps"
-
 final public class PublicationStore: CRD {
+    var kPublicationFile: String {
+        return "kPublicationFile.Alps_" + id
+    }
     
     typealias DataType = Publication
     
@@ -29,7 +30,9 @@ final public class PublicationStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
     }
     

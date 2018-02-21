@@ -21,9 +21,10 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     private weak var locationManager: CLLocationManager?
     
-    lazy var beaconTriples = BeaconTripleStore()
+    let beaconTriples: BeaconTripleStore
 
-    init(delegate: ContextManagerDelegate, locationManager: CLLocationManager) {
+    init(id: String, delegate: ContextManagerDelegate, locationManager: CLLocationManager) {
+        self.beaconTriples = BeaconTripleStore(id: id)
         super.init()
         self.delegate = delegate
         self.locationManager = locationManager

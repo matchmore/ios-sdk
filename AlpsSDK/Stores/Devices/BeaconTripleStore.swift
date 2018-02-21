@@ -6,9 +6,10 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-let kBeaconFile = "kBeaconFile.Alps"
-
 final public class BeaconTripleStore: AsyncReadable {
+    var kBeaconFile: String {
+        return "kBeaconFile.Alps_" + id
+    }
     
     typealias DataType = IBeaconTriple
     internal private(set) var items = [IBeaconTriple]() {
@@ -17,7 +18,9 @@ final public class BeaconTripleStore: AsyncReadable {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodableIBeaconTriple].self, from: kBeaconFile)?.map { $0.object } ?? []
     }
     
