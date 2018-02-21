@@ -1,0 +1,6 @@
+framework module Alps {
+  umbrella header "Alps-umbrella.h"
+
+  export *
+  module * { export * }
+}

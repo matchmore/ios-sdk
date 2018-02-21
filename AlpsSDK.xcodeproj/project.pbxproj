@@ -59,15 +59,6 @@
 		C3807CE8203D91D500561974 /* DeviceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CB19E203D87C100FDAE7A /* DeviceUpdate.swift */; };
 		C3807CE9203D91D500561974 /* Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CB19F203D87C100FDAE7A /* Subscriptions.swift */; };
 		C3807CF3203D920300561974 /* AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* AlpsSDK.framework */; };
-		C3807D06203D932E00561974 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807CF9203D932D00561974 /* TestsConfig.swift */; };
-		C3807D07203D932E00561974 /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807CFB203D932D00561974 /* MobileDevicePersistenceTests.swift */; };
-		C3807D08203D932E00561974 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807CFC203D932D00561974 /* MultiplePinDevicePersistancyTests.swift */; };
-		C3807D09203D932E00561974 /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807CFE203D932D00561974 /* ExpirationTests.swift */; };
-		C3807D0A203D932E00561974 /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807D00203D932D00561974 /* ProxmityTests.swift */; };
-		C3807D0B203D932E00561974 /* PinDeviceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807D02203D932E00561974 /* PinDeviceStoreTests.swift */; };
-		C3807D0C203D932E00561974 /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807D03203D932E00561974 /* AlpsManagerTests.swift */; };
-		C3807D0D203D932E00561974 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807D04203D932E00561974 /* PubSubAfterDeviceDeleteTests.swift */; };
-		C3807D0E203D932E00561974 /* BeaconStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3807D05203D932E00561974 /* BeaconStoreTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
 		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */; };
@@ -151,15 +142,6 @@
 		C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Location.swift"; sourceTree = "<group>"; };
 		C3807CEE203D920300561974 /* AlpsSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpsSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3807CF2203D920300561974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3807CF9203D932D00561974 /* TestsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
-		C3807CFB203D932D00561974 /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
-		C3807CFC203D932D00561974 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
-		C3807CFE203D932D00561974 /* ExpirationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationTests.swift; sourceTree = "<group>"; };
-		C3807D00203D932D00561974 /* ProxmityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxmityTests.swift; sourceTree = "<group>"; };
-		C3807D02203D932E00561974 /* PinDeviceStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinDeviceStoreTests.swift; sourceTree = "<group>"; };
-		C3807D03203D932E00561974 /* AlpsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
-		C3807D04203D932E00561974 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
-		C3807D05203D932E00561974 /* BeaconStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconStoreTests.swift; sourceTree = "<group>"; };
 		C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTripleStore.swift; sourceTree = "<group>"; };
 		C3A197A91F99E5230095E07E /* PinDeviceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDeviceStore.swift; sourceTree = "<group>"; };
 		C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Group.swift"; sourceTree = "<group>"; };
@@ -350,53 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				C3807CF2203D920300561974 /* Info.plist */,
-				C3807CF9203D932D00561974 /* TestsConfig.swift */,
-				C3807D01203D932E00561974 /* API Integration Tests */,
-				C3807CFA203D932D00561974 /* Archiving Tests */,
-				C3807CFD203D932D00561974 /* Expiration Tests */,
-				C3807CFF203D932D00561974 /* Proxmity Tests */,
 			);
 			path = AlpsSDKTests;
-			sourceTree = "<group>";
-		};
-		C3807CFA203D932D00561974 /* Archiving Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C3807CFB203D932D00561974 /* MobileDevicePersistenceTests.swift */,
-				C3807CFC203D932D00561974 /* MultiplePinDevicePersistancyTests.swift */,
-			);
-			name = "Archiving Tests";
-			path = "../../../../Desktop/untitled folder/Archiving Tests";
-			sourceTree = "<group>";
-		};
-		C3807CFD203D932D00561974 /* Expiration Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C3807CFE203D932D00561974 /* ExpirationTests.swift */,
-			);
-			name = "Expiration Tests";
-			path = "../../../../Desktop/untitled folder/Expiration Tests";
-			sourceTree = "<group>";
-		};
-		C3807CFF203D932D00561974 /* Proxmity Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C3807D00203D932D00561974 /* ProxmityTests.swift */,
-			);
-			name = "Proxmity Tests";
-			path = "../../../../Desktop/untitled folder/Proxmity Tests";
-			sourceTree = "<group>";
-		};
-		C3807D01203D932E00561974 /* API Integration Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C3807D02203D932E00561974 /* PinDeviceStoreTests.swift */,
-				C3807D03203D932E00561974 /* AlpsManagerTests.swift */,
-				C3807D04203D932E00561974 /* PubSubAfterDeviceDeleteTests.swift */,
-				C3807D05203D932E00561974 /* BeaconStoreTests.swift */,
-			);
-			name = "API Integration Tests";
-			path = "../../../../Desktop/untitled folder/API Integration Tests";
 			sourceTree = "<group>";
 		};
 		C381EE791F977EB90061E7AC /* Alps Manager */ = {
@@ -742,15 +679,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3807D0E203D932E00561974 /* BeaconStoreTests.swift in Sources */,
-				C3807D0B203D932E00561974 /* PinDeviceStoreTests.swift in Sources */,
-				C3807D09203D932E00561974 /* ExpirationTests.swift in Sources */,
-				C3807D08203D932E00561974 /* MultiplePinDevicePersistancyTests.swift in Sources */,
-				C3807D0A203D932E00561974 /* ProxmityTests.swift in Sources */,
-				C3807D07203D932E00561974 /* MobileDevicePersistenceTests.swift in Sources */,
-				C3807D06203D932E00561974 /* TestsConfig.swift in Sources */,
-				C3807D0D203D932E00561974 /* PubSubAfterDeviceDeleteTests.swift in Sources */,
-				C3807D0C203D932E00561974 /* AlpsManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

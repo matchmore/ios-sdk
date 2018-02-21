@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.5.1)
+  - Alps (0.5.1):
+    - Alamofire (~> 4.0)
+  - AlpsSDK (0.5.1):
+    - Alps (~> 0.5)
+    - SwiftWebSocket (~> 2.6)
+  - SwiftWebSocket (2.6.5)
+
+DEPENDENCIES:
+  - Alps (~> 0.5)
+  - AlpsSDK (from `../`)
+
+EXTERNAL SOURCES:
+  AlpsSDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alps: ff944227436c06b0826bd30eca7eb10394c7a6e2
+  AlpsSDK: 5131df38fe064df19199d7f9b358bdc652e44ac6
+  SwiftWebSocket: 1ef8a0efb023544643bdf480c1ec4a62b204f293
+
+PODFILE CHECKSUM: e68f5bcb85631efee3dd3dbe10ee747498653b0f
+
+COCOAPODS: 1.3.1
