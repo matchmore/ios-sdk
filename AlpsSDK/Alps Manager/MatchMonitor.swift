@@ -27,7 +27,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     // MARK: - Device Monitoring
     
     func startMonitoringFor(device: Device) {
-        // TODO: start socket after adding new device
+        // TODO: start socket after adding new device ?
         monitoredDevices.insert(device)
     }
     

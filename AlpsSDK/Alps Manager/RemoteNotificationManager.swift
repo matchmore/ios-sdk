@@ -32,6 +32,7 @@ public class RemoteNotificationManager: NSObject {
     func registerDeviceToken(deviceToken: String) {
         if self.deviceToken != deviceToken {
             self.deviceToken = deviceToken
+            
             // TODO: Update mobile devices with device Token
         }
     }

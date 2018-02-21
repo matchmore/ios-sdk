@@ -16,7 +16,8 @@ import Nimble
 final class AlpsManagerTests: QuickSpec {
     
     override func spec() {
-        let properties = ["test": "true"]
+        let properties: [String: Any] = ["string": "test", "number": 1, "boolean": true]
+        let selector: String =  "string = 'test' and number = 1 and boolean = true"
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         TestsConfig.configure()
@@ -93,7 +94,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a subscription") {
-                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true'")
+                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: selector)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
@@ -150,7 +151,7 @@ final class AlpsManagerTests: QuickSpec {
                         alpsManager.matchMonitor.closeSocketForMatches()
                         done()
                     }
-                    let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: "test = 'true'")
+                    let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: selector)
                     subscription.pushers = ["ws"]
                     MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {

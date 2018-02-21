@@ -68,7 +68,6 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - publication: Publication object that will be created on MatchMore's cloud.
-    ///   - deviceWithId: (Optional) Unique id of the device on which publication is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPublicationForMainDevice(publication: Publication, completion: @escaping ((Result<Publication>) -> Void)) {
         publication.deviceId = instance.mobileDevices.main?.id
@@ -81,7 +80,7 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - subscription: Subscription object that will be created on MatchMore's cloud.
-    ///   - deviceWithId: (Optional) Unique id of the device on which subscriptions is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
+    ///   - forDevice: (Optional) Unique id of the device on which subscriptions is supposed to be created. When set to `nil` it will used main mobile device that represents the smartphone.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createSubscription(subscription: Subscription, forDevice: Device, completion: @escaping ((Result<Subscription>) -> Void)) {
         subscription.deviceId = forDevice.id
