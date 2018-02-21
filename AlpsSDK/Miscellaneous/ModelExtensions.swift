@@ -3,7 +3,7 @@
 //  Alps
 //
 //  Created by Rafal Kowalski on 04/10/2016
-//  Copyright © 2016 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation

@@ -3,7 +3,7 @@
 //  AlpsSDKTests
 //
 //  Created by Maciej Burda on 07/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 @testable import AlpsSDK
@@ -19,7 +19,7 @@ class TestsConfig {
     
     static let kWaitTimeInterval = 10.0
     
-    static let shouldTestStaging = false
+    static let shouldTestStaging = true
     static func configure() {
         let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl

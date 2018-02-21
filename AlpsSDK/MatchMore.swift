@@ -3,7 +3,7 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 14/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ public struct MatchMoreConfig {
     let serverUrl: String
     let debugLog: Bool
     
-    init(apiKey: String, serverUrl: String = "https://api.matchmore.io/v5", debugLog: Bool = false) {
+    public init(apiKey: String, serverUrl: String = "https://api.matchmore.io/v5", debugLog: Bool = false) {
         self.apiKey = apiKey
         self.serverUrl = serverUrl
         self.debugLog = debugLog

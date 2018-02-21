@@ -3,7 +3,7 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 02/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
