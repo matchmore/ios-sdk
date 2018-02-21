@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case .success(let publication):
                     print("🏔 Pub was created: 🏔\n\(publication.encodeToJSON())")
                 case .failure(let error):
-                    print("🌋 \(String(describing: error?.message))")
+                    print("🌋 \(String(describing: error?.message)) 🌋")
                 }
             })
             
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .success(let sub):
                 print("🏔 Socket Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print("🌋 \(String(describing: error?.message))")
+                print("🌋 \(String(describing: error?.message)) 🌋")
             }
         })
     }
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .success(let sub):
                 print("🏔 Polling Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print("🌋 \(String(describing: error?.message))")
+                print("🌋 \(String(describing: error?.message)) 🌋")
             }
         })
     }
@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .success(let sub):
                 print("🏔 APNS Sub was created 🏔\n\(sub.encodeToJSON())")
             case .failure(let error):
-                print("🌋 \(String(describing: error?.message))")
+                print("🌋 \(String(describing: error?.message)) 🌋")
             }
         })
     }
