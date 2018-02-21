@@ -127,7 +127,7 @@ final class AlpsManagerTests: QuickSpec {
                 let matchDelegate = TestMatchDelegate()
                 
                 alpsManager.delegates += matchDelegate
-                alpsManager.matchMonitor.startPollingMatches()
+                alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 1)
                 
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
