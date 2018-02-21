@@ -16,19 +16,4 @@ final public class LocationUpdateManager {
             self.lastLocation = location
         })
     }
-    
-    //TODO: add location update configuration
-    let kMaxLocationTimeInterval = 1.0
-    let kMaxLocationDistance = 1.0
-    // validates given location by comparing to last known location
-    func validateLocation(location: Location) -> Bool {
-        guard let lastClLocation = lastLocation?.clLocation,
-              let currentClLocation = location.clLocation
-        else { return true }
-        
-        let distance = currentClLocation.distance(from: lastClLocation)
-        let timeInterval = currentClLocation.timestamp.timeIntervalSince(lastClLocation.timestamp)
-        
-        return (distance > kMaxLocationDistance) && (timeInterval > kMaxLocationTimeInterval)
-    }
 }

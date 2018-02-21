@@ -12,7 +12,7 @@ protocol MatchMonitorDelegate: class {
     func didFind(matches: [Match], for device: Device)
 }
 
-public class MatchMonitor: RemoteNotificationManagerDelegate {
+public class MatchMonitor {
     private(set) weak var delegate: MatchMonitorDelegate?
     private(set) var monitoredDevices = Set<Device>()
     private(set) var deliveredMatches = Set<Match>()
@@ -27,7 +27,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     // MARK: - Device Monitoring
     
     func startMonitoringFor(device: Device) {
-        // TODO: start socket after adding new device ?
+        // TODO: start new socket after adding new device ?
         monitoredDevices.insert(device)
     }
     
@@ -102,7 +102,7 @@ public class MatchMonitor: RemoteNotificationManagerDelegate {
     
     // MARK: - Remote Notification Manager Delegate
     
-    func didReceiveMatchUpdateForDeviceId(deviceId: String) {
+    func refreshMatchesFor(deviceId: String) {
         getMatches()
     }
     

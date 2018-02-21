@@ -15,7 +15,7 @@ public protocol MatchDelegate: class {
     var onMatch: OnMatchClosure? { get }
 }
 
-public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
+public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
     public var delegates = MulticastDelegate<MatchDelegate>()
     
     let apiKey: String
@@ -28,9 +28,11 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
     }
     
     lazy var contextManager = ContextManager(delegate: self)
-    lazy var matchMonitor = MatchMonitor(delegate: self) // move delegates
+    lazy var matchMonitor = MatchMonitor(delegate: self)
+    lazy var remoteNotificationManager = RemoteNotificationManager(delegate: self)
     
-    var remoteNotificationManager: RemoteNotificationManager!
+    lazy var publications = PublicationStore()
+    lazy var subscriptions = SubscriptionStore()
     
     lazy var mobileDevices: MobileDeviceStore = {
         let mobileDevices = MobileDeviceStore()
@@ -46,9 +48,6 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         return pinDevices
     }()
     
-    lazy var publications = PublicationStore()
-    lazy var subscriptions = SubscriptionStore()
-    
     lazy var locationUpdateManager = LocationUpdateManager()
 
     internal init(apiKey: String, baseURL: String? = nil) {
@@ -57,7 +56,6 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
         if let baseURL = baseURL {
             self.baseURL = baseURL
         }
-        remoteNotificationManager = RemoteNotificationManager(delegate: matchMonitor)
     }
     
     private func setupAPI() {
@@ -84,6 +82,23 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate {
             result.forEach {
                 guard let deviceId = $0.id else { return }
                 self.locationUpdateManager.tryToSend(location: Location(location: location), for: deviceId)
+            }
+        }
+    }
+    
+    // MARK: - Remote Notification Manager Delegate
+    
+    func didReceiveMatchUpdateForDeviceId(deviceId: String) {
+        matchMonitor.refreshMatchesFor(deviceId: deviceId)
+    }
+    
+    func didReceiveDeviceTokenUpdate(deviceToken: String) {
+        mobileDevices.findAll { (result) in
+            result.forEach {
+                guard let deviceId = $0.id else { return }
+                let deviceUpdate = DeviceUpdate()
+                deviceUpdate.deviceToken = deviceToken
+                DeviceAPI.updateDevice(deviceId: deviceId, device: deviceUpdate, completion: { (_, _) in })
             }
         }
     }

@@ -19,6 +19,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     let proximityHandler = ProximityHandler()
 
+    // TODO: This requires configuration
     lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
