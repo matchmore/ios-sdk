@@ -19,6 +19,15 @@
 		C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchMoreConfig.swift */; };
 		C3378963203D960F0054B974 /* swagger-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378961203D960F0054B974 /* swagger-generate.sh */; };
 		C3378964203D960F0054B974 /* sourcery-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378962203D960F0054B974 /* sourcery-generate.sh */; };
+		C3378986203D992E0054B974 /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897A203D992D0054B974 /* ProxmityTests.swift */; };
+		C3378987203D992E0054B974 /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */; };
+		C3378988203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897D203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift */; };
+		C3378989203D992E0054B974 /* TestsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897E203D992E0054B974 /* TestsConfig.swift */; };
+		C337898A203D992E0054B974 /* PinDeviceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3378980203D992E0054B974 /* PinDeviceStoreTests.swift */; };
+		C337898B203D992E0054B974 /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3378981203D992E0054B974 /* AlpsManagerTests.swift */; };
+		C337898C203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3378982203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift */; };
+		C337898D203D992E0054B974 /* BeaconStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3378983203D992E0054B974 /* BeaconStoreTests.swift */; };
+		C337898E203D992E0054B974 /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3378985203D992E0054B974 /* ExpirationTests.swift */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
@@ -132,6 +141,15 @@
 		C337895E203D948F0054B974 /* MatchMoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMoreConfig.swift; sourceTree = "<group>"; };
 		C3378961203D960F0054B974 /* swagger-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "swagger-generate.sh"; sourceTree = "<group>"; };
 		C3378962203D960F0054B974 /* sourcery-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "sourcery-generate.sh"; sourceTree = "<group>"; };
+		C337897A203D992D0054B974 /* ProxmityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxmityTests.swift; sourceTree = "<group>"; };
+		C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
+		C337897D203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplePinDevicePersistancyTests.swift; sourceTree = "<group>"; };
+		C337897E203D992E0054B974 /* TestsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsConfig.swift; sourceTree = "<group>"; };
+		C3378980203D992E0054B974 /* PinDeviceStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinDeviceStoreTests.swift; sourceTree = "<group>"; };
+		C3378981203D992E0054B974 /* AlpsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlpsManagerTests.swift; sourceTree = "<group>"; };
+		C3378982203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubSubAfterDeviceDeleteTests.swift; sourceTree = "<group>"; };
+		C3378983203D992E0054B974 /* BeaconStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconStoreTests.swift; sourceTree = "<group>"; };
+		C3378985203D992E0054B974 /* ExpirationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationTests.swift; sourceTree = "<group>"; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -307,6 +325,42 @@
 			path = GeneratedAPI;
 			sourceTree = "<group>";
 		};
+		C3378979203D992D0054B974 /* Proxmity Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C337897A203D992D0054B974 /* ProxmityTests.swift */,
+			);
+			path = "Proxmity Tests";
+			sourceTree = "<group>";
+		};
+		C337897B203D992E0054B974 /* Archiving Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */,
+				C337897D203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift */,
+			);
+			path = "Archiving Tests";
+			sourceTree = "<group>";
+		};
+		C337897F203D992E0054B974 /* API Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3378980203D992E0054B974 /* PinDeviceStoreTests.swift */,
+				C3378981203D992E0054B974 /* AlpsManagerTests.swift */,
+				C3378982203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift */,
+				C3378983203D992E0054B974 /* BeaconStoreTests.swift */,
+			);
+			path = "API Integration Tests";
+			sourceTree = "<group>";
+		};
+		C3378984203D992E0054B974 /* Expiration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C3378985203D992E0054B974 /* ExpirationTests.swift */,
+			);
+			path = "Expiration Tests";
+			sourceTree = "<group>";
+		};
 		C34BFC4A1F98BDF200CAB9BB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +386,11 @@
 			isa = PBXGroup;
 			children = (
 				C3807CF2203D920300561974 /* Info.plist */,
+				C337897E203D992E0054B974 /* TestsConfig.swift */,
+				C337897F203D992E0054B974 /* API Integration Tests */,
+				C337897B203D992E0054B974 /* Archiving Tests */,
+				C3378984203D992E0054B974 /* Expiration Tests */,
+				C3378979203D992D0054B974 /* Proxmity Tests */,
 			);
 			path = AlpsSDKTests;
 			sourceTree = "<group>";
@@ -461,6 +520,7 @@
 					C3807CED203D920300561974 = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = PAYVP3AFKX;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -679,6 +739,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C337898A203D992E0054B974 /* PinDeviceStoreTests.swift in Sources */,
+				C337898E203D992E0054B974 /* ExpirationTests.swift in Sources */,
+				C337898D203D992E0054B974 /* BeaconStoreTests.swift in Sources */,
+				C337898B203D992E0054B974 /* AlpsManagerTests.swift in Sources */,
+				C3378986203D992E0054B974 /* ProxmityTests.swift in Sources */,
+				C3378989203D992E0054B974 /* TestsConfig.swift in Sources */,
+				C3378987203D992E0054B974 /* MobileDevicePersistenceTests.swift in Sources */,
+				C3378988203D992E0054B974 /* MultiplePinDevicePersistancyTests.swift in Sources */,
+				C337898C203D992E0054B974 /* PubSubAfterDeviceDeleteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +945,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -886,6 +956,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.matchmore.AlpsSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -897,6 +968,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
