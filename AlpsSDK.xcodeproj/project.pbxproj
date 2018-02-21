@@ -17,6 +17,8 @@
 		AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */; };
 		C32C7E6C1FBD89FE0038D513 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */; };
 		C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchMoreConfig.swift */; };
+		C3378963203D960F0054B974 /* swagger-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378961203D960F0054B974 /* swagger-generate.sh */; };
+		C3378964203D960F0054B974 /* sourcery-generate.sh in Resources */ = {isa = PBXBuildFile; fileRef = C3378962203D960F0054B974 /* sourcery-generate.sh */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
 		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
@@ -137,6 +139,8 @@
 		C31CB1A2203D87C100FDAE7A /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		C337895E203D948F0054B974 /* MatchMoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMoreConfig.swift; sourceTree = "<group>"; };
+		C3378961203D960F0054B974 /* swagger-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "swagger-generate.sh"; sourceTree = "<group>"; };
+		C3378962203D960F0054B974 /* sourcery-generate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "sourcery-generate.sh"; sourceTree = "<group>"; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		C3378960203D94AF0054B974 /* GeneratedAPI */ = {
 			isa = PBXGroup;
 			children = (
+				C3378962203D960F0054B974 /* sourcery-generate.sh */,
+				C3378961203D960F0054B974 /* swagger-generate.sh */,
 				C31CB181203D87C100FDAE7A /* Swaggers */,
 			);
 			path = GeneratedAPI;
@@ -545,6 +551,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3378963203D960F0054B974 /* swagger-generate.sh in Resources */,
+				C3378964203D960F0054B974 /* sourcery-generate.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

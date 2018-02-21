@@ -1,0 +1,58 @@
+{% for type in types.implementing.AutoCodable %}
+
+public extension {{type.name}} {
+    var encodable{{type.name}}: Encodable{{ type.name }} {
+        return Encodable{{ type.name }}(object: self)
+    }
+}
+
+open class Encodable{{ type.name }}: NSObject, NSCoding {
+    public let object: {{ type.name }}!
+    
+    public init(object: {{ type.name }}?) {
+        self.object = object
+    }
+    
+    required public init?(coder decoder: NSCoder) {
+        self.object = {{ type.name }}()
+        {% for variable in type.allVariables %}
+        {% if variable.typeName.name|hasPrefix:"DeviceType" %}
+        self.object?.{{ variable.name }} = DeviceType(rawValue: decoder.decodeObject(forKey: "{{ variable.name }}") as! String)
+        {% elif variable.typeName.name|hasPrefix:"[String]?" or variable.typeName.name|hasPrefix:"[String:String]?" %}
+        self.object?.{{ variable.name }} = decoder.decodeObject(forKey: "{{ variable.name }}") as? {{ variable.unwrappedTypeName }}
+        {% elif variable.typeName.name|hasPrefix:"[" %}
+        guard let encodable_{{ variable.name }} = decoder.decodeObject(forKey: "{{ variable.name }}") as? [Encodable{{ variable.typeName.name|replace:"[",""|replace:"]","" }}] else { return nil }
+        self.object?.{{ variable.name }} = encodable_{{ variable.name }}.flatMap({ $0.{{ variable.typeName.name|replace:"[",""|replace:"]",""| lowerFirstWord}} })
+        {% elif variable.isOptional and variable.type.implements.AutoCodable %}
+        let encodable_{{ variable.name }} = decoder.decodeObject(forKey: "{{ variable.name }}") as? Encodable{{ variable.unwrappedTypeName }}
+        self.object?.{{ variable.name }} = encodable_{{variable.name}}?.object
+        {% elif variable.isOptional and not variable.type.implements.AutoCodable %}
+        self.object?.{{ variable.name }} = decoder.decodeObject(forKey: "{{ variable.name }}") as? {{ variable.unwrappedTypeName }}
+        {% elif variable.type.implements.AutoCodable %}
+        guard let encodable_{{ variable.name }} = decoder.decodeObject(forKey: "{{ variable.name }}") as? Encodable{{ variable.typeName }},
+        self.object?.{{ variable.name }} = encodable_{{ variable.name }}.object else { return nil }
+        {% else %}
+        guard let {{ variable.name }} = decoder!!.decodeObject(forKey: "{{ variable.name }}") as? {{ variable.typeName }} else { return nil }
+        {% endif %}
+        {% endfor %}
+    }      
+            
+    public func encode(with encoder: NSCoder) {
+        {% for variable in type.allVariables %}
+        {% if variable.typeName.name|hasPrefix:"DeviceType" %}
+        encoder.encode(object?.{{ variable.name }}?.rawValue, forKey: "{{ variable.name }}")
+        {% elif variable.typeName.name|hasPrefix:"[String]?" or variable.typeName.name|hasPrefix:"[String:String]?"%}
+        encoder.encode(object?.{{ variable.name }}, forKey: "{{ variable.name }}")
+        {% elif variable.typeName.name|hasPrefix:"[" %}
+        let encoded_{{ variable.name }} = object?.{{ variable.name }}.map({ return Encodable{{ variable.typeName.name|replace:"[",""|replace:"]","" }}({{ variable.typeName.name|replace:"[",""|replace:"]",""| lowerFirstWord }}: $0) })
+        encoder.encode(encoded_{{ variable.name }}, forKey: "{{ variable.name }}")
+        {% elif variable.type.implements.AutoCodable %}
+        encoder.encode(Encodable{{ variable.unwrappedTypeName }}(object: object?.{{ variable.name }}), forKey: "{{ variable.name }}")
+        {% else %}
+        encoder.encode(object?.{{ variable.name }}, forKey: "{{ variable.name }}")
+        {% endif %}
+        {% endfor %}
+    }
+}
+
+{% endfor %}
