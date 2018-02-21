@@ -3,15 +3,15 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 27/10/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
-import Alps
-
-let kPublicationFile = "kPublicationFile.Alps"
 
 final public class PublicationStore: CRD {
+    var kPublicationFile: String {
+        return "kPublicationFile.Alps_" + id
+    }
     
     typealias DataType = Publication
     
@@ -30,7 +30,9 @@ final public class PublicationStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
     }
     

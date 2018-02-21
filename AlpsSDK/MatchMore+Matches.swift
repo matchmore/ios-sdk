@@ -3,25 +3,24 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 15/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
-import Alps
 
 public extension MatchMore {
     
     /// List of all delivered Matches.
-    public static var matches: Set<Match> {
+    public static var allMatches: Set<Match> {
         return instance.matchMonitor.deliveredMatches
     }
     
     /// List of all match delivery delegates. The delegate has to conform to `AlpsDelegate`. Adding new delegate can be achieved either by `+=` or `add()`.
     public static var matchDelegates = instance.delegates
     
-    /// Starts polling matches every 10 seconds. All `matchDelegates` are notified about the change.
-    public class func startPollingMatches() {
-        instance.matchMonitor.startPollingMatches()
+    /// Starts polling matches every X seconds. All `matchDelegates` are notified about the change.
+    public class func startPollingMatches(pollingTimeInterval: TimeInterval) {
+        instance.matchMonitor.startPollingMatches(pollingTimeInterval: pollingTimeInterval)
     }
     
     /// Opens socket listening for new matches notifications. All `matchDelegates` are notified about the change.

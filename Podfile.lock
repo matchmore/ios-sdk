@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.6.0)
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+  - Starscream (3.0.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - Nimble (~> 7.0)
+  - Quick (~> 1.2)
+  - Starscream (~> 3.0)
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
+
+PODFILE CHECKSUM: 9b42f40536c9656c4646aa418e67ef531a8344c9
+
+COCOAPODS: 1.4.0

@@ -3,15 +3,15 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 27/10/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
-import Alps
-
-let kSubscriptionFile = "kSubscriptionFile.Alps"
 
 final public class SubscriptionStore: CRD {
+    var kSubscriptionFile: String {
+        return "kSubscriptionFile.Alps_" + id
+    }
     typealias DataType = Subscription
     
     internal private(set) var items: [Subscription] {
@@ -29,7 +29,9 @@ final public class SubscriptionStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodableSubscription].self, from: kSubscriptionFile)?.map { $0.object }.withoutExpired ?? []
     }
     

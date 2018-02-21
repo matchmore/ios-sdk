@@ -3,22 +3,21 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 15/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
-import Alps
 
 public extension MatchMore {
     
     /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
-        instance.contextManager.locationManager.startUpdatingLocation()
+        instance.locationManager.startUpdatingLocation()
     }
     
     /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
-        instance.contextManager.locationManager.stopUpdatingLocation()
+        instance.locationManager.stopUpdatingLocation()
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.

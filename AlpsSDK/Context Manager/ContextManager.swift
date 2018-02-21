@@ -3,12 +3,11 @@
 //  Alps
 //
 //  Created by Rafal Kowalski on 28.09.16.
-//  Copyright © 2016 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
 import CoreLocation
-import Alps
 
 protocol ContextManagerDelegate: class {
     func didUpdateLocation(location: CLLocation)
@@ -20,20 +19,16 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     let proximityHandler = ProximityHandler()
 
-    lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        return locationManager
-    }()
+    private weak var locationManager: CLLocationManager?
     
-    lazy var beaconTriples = BeaconTripleStore()
+    let beaconTriples: BeaconTripleStore
 
-    init(delegate: ContextManagerDelegate) {
+    init(id: String, delegate: ContextManagerDelegate, locationManager: CLLocationManager) {
+        self.beaconTriples = BeaconTripleStore(id: id)
         super.init()
         self.delegate = delegate
+        self.locationManager = locationManager
+        self.locationManager?.delegate = self
     }
 
     // MARK: - Core Location Manager Delegate
@@ -49,7 +44,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         beaconTriples.findAll { result in
             result.forEach {
                 let beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: $0.proximityUUID!)!, identifier: $0.deviceId!)
-                self.locationManager.startRangingBeacons(in: beaconRegion)
+                self.locationManager?.startRangingBeacons(in: beaconRegion)
             }
         }
     }
