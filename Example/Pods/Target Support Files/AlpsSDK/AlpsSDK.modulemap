@@ -1,6 +1,0 @@
-framework module AlpsSDK {
-  umbrella header "AlpsSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

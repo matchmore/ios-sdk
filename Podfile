@@ -9,6 +9,13 @@ target 'AlpsSDK' do
     pod 'Alamofire', '~> 4.6'
 end
 
+target 'AlpsExample' do
+    # Socket
+    pod 'Starscream', '~> 3.0'
+    # Network
+    pod 'Alamofire', '~> 4.6'
+end
+
 target 'AlpsSDKTests' do
     # Testing description and matching
     pod 'Nimble', '~> 7.0'
