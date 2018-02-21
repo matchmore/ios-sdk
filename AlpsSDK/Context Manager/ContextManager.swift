@@ -19,21 +19,15 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     let proximityHandler = ProximityHandler()
 
-    // TODO: This requires configuration
-    lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        return locationManager
-    }()
+    private weak var locationManager: CLLocationManager?
     
     lazy var beaconTriples = BeaconTripleStore()
 
-    init(delegate: ContextManagerDelegate) {
+    init(delegate: ContextManagerDelegate, locationManager: CLLocationManager) {
         super.init()
         self.delegate = delegate
+        self.locationManager = locationManager
+        self.locationManager?.delegate = self
     }
 
     // MARK: - Core Location Manager Delegate
@@ -49,7 +43,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
         beaconTriples.findAll { result in
             result.forEach {
                 let beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: $0.proximityUUID!)!, identifier: $0.deviceId!)
-                self.locationManager.startRangingBeacons(in: beaconRegion)
+                self.locationManager?.startRangingBeacons(in: beaconRegion)
             }
         }
     }

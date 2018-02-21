@@ -12,7 +12,8 @@ public final class MatchMore {
     
     static var instance: AlpsManager = {
         assert(config != nil, "Please configure first.")
-        return AlpsManager(apiKey: config!.apiKey, baseURL: config!.serverUrl)
+        let alpsManager = AlpsManager(apiKey: config!.apiKey, baseURL: config!.serverUrl, customLocationManager: config?.customLocationManager)
+        return alpsManager
     }()
     
     /// Configuration method

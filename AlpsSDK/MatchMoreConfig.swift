@@ -7,16 +7,19 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// `MatchMoreConfig` is a structure that defines all variables needed to configure MatchMore SDK.
 public struct MatchMoreConfig {
     let apiKey: String
     let serverUrl: String
-    let debugLog: Bool
+    let customLocationManager: CLLocationManager?
     
-    public init(apiKey: String, serverUrl: String = "https://api.matchmore.io/v5", debugLog: Bool = false) {
+    public init(apiKey: String,
+                serverUrl: String = "https://api.matchmore.io/v5",
+                customLocationManager: CLLocationManager? = nil) {
         self.apiKey = apiKey
         self.serverUrl = serverUrl
-        self.debugLog = debugLog
+        self.customLocationManager = customLocationManager
     }
 }

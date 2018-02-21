@@ -27,7 +27,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
         }
     }
     
-    lazy var contextManager = ContextManager(delegate: self)
+    lazy var contextManager = ContextManager(delegate: self, locationManager: locationManager)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     lazy var remoteNotificationManager = RemoteNotificationManager(delegate: self)
     
@@ -49,9 +49,18 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     }()
     
     lazy var locationUpdateManager = LocationUpdateManager()
+    let locationManager: CLLocationManager
 
-    internal init(apiKey: String, baseURL: String? = nil) {
+    internal init(apiKey: String, baseURL: String? = nil, customLocationManager: CLLocationManager?) {
         self.apiKey = apiKey
+        if let customLocationManager = customLocationManager {
+            self.locationManager = customLocationManager
+        } else {
+            self.locationManager = CLLocationManager()
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.requestAlwaysAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
+        }
         self.setupAPI()
         if let baseURL = baseURL {
             self.baseURL = baseURL

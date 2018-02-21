@@ -23,7 +23,7 @@ class TestsConfig {
     static func configure() {
         let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl
-        let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl, debugLog: false)
+        let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl)
         MatchMore.configure(config)
     }
 }

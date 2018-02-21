@@ -12,12 +12,12 @@ public extension MatchMore {
     
     /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
-        instance.contextManager.locationManager.startUpdatingLocation()
+        instance.locationManager.startUpdatingLocation()
     }
     
     /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
-        instance.contextManager.locationManager.stopUpdatingLocation()
+        instance.locationManager.stopUpdatingLocation()
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
