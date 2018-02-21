@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
             // Polling
-            MatchMore.startPollingMatches()
+            MatchMore.startPollingMatches(pollingTimeInterval: 5)
             self.createPollingSubscription()
             
             // Socket (requires world_id)
@@ -85,8 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
     
-    func createApnsSubscription() {
-        guard let deviceToken = MatchMore.deviceToken else { return }
+    func createApnsSubscription(_ deviceToken: String) {
         let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = true")
         subscription.pushers = ["apns://" + deviceToken]
         MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
@@ -106,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
         
-        createApnsSubscription()
+        createApnsSubscription(deviceTokenString)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
