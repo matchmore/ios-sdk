@@ -8,9 +8,6 @@
 
 import Foundation
 
-import Foundation
-import Alps
-
 let kMainDeviceFile = "kMainDeviceFile.Alps"
 let kMobileDevicesFile = "kMobileDevicesFile.Alps"
 

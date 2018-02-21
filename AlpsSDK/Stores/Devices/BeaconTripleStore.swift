@@ -6,9 +6,6 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
-
 let kBeaconFile = "kBeaconFile.Alps"
 
 final public class BeaconTripleStore: AsyncReadable {

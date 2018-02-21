@@ -4,9 +4,9 @@ use_frameworks!
 
 target 'AlpsSDK' do
     # Socket
-    pod 'Alps', :path => '../alps-ios-api'
-
     pod 'Starscream', '~> 3.0'
+    # Network
+    pod 'Alamofire', '~> 4.6'
 end
 
 target 'AlpsSDKTests' do
@@ -15,6 +15,7 @@ target 'AlpsSDKTests' do
     pod 'Quick', '~> 1.2'
 end
 
+# Overrides default target setup in order to improve build time
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|

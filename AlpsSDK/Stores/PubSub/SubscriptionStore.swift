@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alps
 
 let kSubscriptionFile = "kSubscriptionFile.Alps"
 

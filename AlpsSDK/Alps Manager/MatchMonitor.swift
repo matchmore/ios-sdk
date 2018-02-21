@@ -6,8 +6,6 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Alps
-import Foundation
 import Starscream
 
 protocol MatchMonitorDelegate: class {

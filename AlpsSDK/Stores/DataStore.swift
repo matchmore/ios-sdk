@@ -6,9 +6,6 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
-
 /// Together with all protocols below defines full CRUD interface for data type model
 
 typealias CRUD = AsyncCreateable & AsyncReadable & AsyncUpdateable & AsyncDeleteable & AsyncClearable

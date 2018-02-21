@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreLocation
-import Alps
 
 protocol ContextManagerDelegate: class {
     func didUpdateLocation(location: CLLocation)

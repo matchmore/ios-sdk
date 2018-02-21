@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alps
 
 public extension ErrorResponse {
     public var message: String? {

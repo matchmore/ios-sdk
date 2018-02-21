@@ -7,6 +7,7 @@
 //
 
 @testable import AlpsSDK
+@testable import Alps
 
 class TestsConfig {
     // swiftlint:disable:next line_length

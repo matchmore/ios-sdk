@@ -6,9 +6,6 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
-
 public extension MatchMore {
     
     /// List of all delivered Matches.

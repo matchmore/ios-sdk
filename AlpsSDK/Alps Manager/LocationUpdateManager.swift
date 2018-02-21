@@ -6,9 +6,6 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
-
 /// filters location data update
 final public class LocationUpdateManager {
     private(set) var lastLocation: Location?

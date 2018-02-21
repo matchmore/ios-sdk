@@ -6,9 +6,9 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
 import CoreLocation
+import Foundation
+import UIKit
 
 public typealias OnMatchClosure = (_ matches: [Match], _ device: Device) -> Void
 public protocol MatchDelegate: class {
