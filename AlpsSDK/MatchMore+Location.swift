@@ -9,15 +9,19 @@
 import Foundation
 
 public extension MatchMore {
+    /// Last location gathered by SDK.
+    public static var lastLocation: Location? {
+        return instance.locationUpdateManager.lastLocation
+    }
     
     /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
-        instance.locationManager.startUpdatingLocation()
+        instance.contextManager.locationManager?.startUpdatingLocation()
     }
     
     /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
-        instance.locationManager.stopUpdatingLocation()
+        instance.contextManager.locationManager?.stopUpdatingLocation()
     }
     
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
