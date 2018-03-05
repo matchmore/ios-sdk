@@ -6,7 +6,7 @@
 
 SDK is written using Swift 4.
 
-Alps SDK requires iOS 10+.
+Alps SDK requires iOS 9+.
 
 ## Installation
 
