@@ -19,7 +19,7 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
     
     let proximityHandler = ProximityHandler()
 
-    private weak var locationManager: CLLocationManager?
+    var locationManager: CLLocationManager?
     
     let beaconTriples: BeaconTripleStore
 

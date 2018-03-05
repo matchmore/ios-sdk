@@ -51,7 +51,7 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
     }()
     
     lazy var locationUpdateManager = LocationUpdateManager()
-    let locationManager: CLLocationManager
+    private let locationManager: CLLocationManager
 
     internal init(apiKey: String, baseURL: String? = nil, customLocationManager: CLLocationManager?) {
         self.apiKey = apiKey

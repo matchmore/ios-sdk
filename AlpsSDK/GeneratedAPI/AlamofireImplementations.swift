@@ -116,6 +116,11 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         }
 
         let validatedRequest = request.validate()
+        
+        if APIHelper.verboseLogging {
+            print(validatedRequest)
+            print(validatedRequest.debugDescription)
+        }
 
         switch T.self {
         case is String.Type:
@@ -198,6 +203,9 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                     return
                 }
                 if let json: Any = response.result.value {
+                    if APIHelper.verboseLogging {
+                        print(json)
+                    }
                     let body = Decoders.decode(clazz: T.self, source: json as AnyObject, instance: nil)
                     completion(Response(response: response.response!, body: body), nil)
                     return
