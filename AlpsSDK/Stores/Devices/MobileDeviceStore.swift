@@ -3,18 +3,20 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 27/10/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
 
-import Foundation
-import Alps
-
-let kMainDeviceFile = "kMainDeviceFile.Alps"
-let kMobileDevicesFile = "kMobileDevicesFile.Alps"
-
 final public class MobileDeviceStore: CRD {
+    
+    var kMainDeviceFile: String {
+        return "kMainDeviceFile.Alps_" + id
+    }
+    var kMobileDevicesFile: String {
+        return "kMobileDevicesFile.Alps_" + id
+    }
+    
     typealias DataType = MobileDevice
     
     internal private(set) var delegates = MulticastDelegate<DeviceDeleteDelegate>()
@@ -30,7 +32,9 @@ final public class MobileDeviceStore: CRD {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.main = PersistenceManager.read(type: EncodableMobileDevice.self, from: kMainDeviceFile)?.object
         self.items = PersistenceManager.read(type: [EncodableMobileDevice].self, from: kMobileDevicesFile)?.map { $0.object } ?? []
     }
@@ -47,17 +51,12 @@ final public class MobileDeviceStore: CRD {
         }
     }
     
-    public func find(byId: String, completion: @escaping (Result<MobileDevice>) -> Void) {
-        let item = items.filter { $0.id ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (MobileDevice?) -> Void) {
+        completion(items.filter { $0.id ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[MobileDevice]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([MobileDevice]) -> Void) {
+        completion(items)
     }
     
     public func delete(item: MobileDevice, completion: @escaping (ErrorResponse?) -> Void) {
@@ -69,6 +68,21 @@ final public class MobileDeviceStore: CRD {
                 self.delegates.invoke { $0.didDeleteDeviceWith(id: id) }
             }
             completion(error as? ErrorResponse)
+        }
+    }
+    
+    func deleteAll(completion: @escaping (ErrorResponse?) -> Void) {
+        var lastError: ErrorResponse?
+        let dispatchGroup = DispatchGroup()
+        items.forEach {
+            dispatchGroup.enter()
+            self.delete(item: $0, completion: { error in
+                if error != nil { lastError = error }
+                dispatchGroup.leave()
+            })
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(lastError)
         }
     }
 }

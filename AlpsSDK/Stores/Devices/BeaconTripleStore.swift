@@ -3,15 +3,13 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 25/10/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import Alps
-
-let kBeaconFile = "kBeaconFile.Alps"
-
 final public class BeaconTripleStore: AsyncReadable {
+    var kBeaconFile: String {
+        return "kBeaconFile.Alps_" + id
+    }
     
     typealias DataType = IBeaconTriple
     internal private(set) var items = [IBeaconTriple]() {
@@ -20,21 +18,18 @@ final public class BeaconTripleStore: AsyncReadable {
         }
     }
     
-    internal init() {
+    let id: String
+    internal init(id: String) {
+        self.id = id
         self.items = PersistenceManager.read(type: [EncodableIBeaconTriple].self, from: kBeaconFile)?.map { $0.object } ?? []
     }
     
-    public func find(byId: String, completion: @escaping (Result<IBeaconTriple>) -> Void) {
-        let item = items.filter { $0.deviceId ?? "" == byId }.first
-        if let item = item {
-            completion(.success(item))
-        } else {
-            completion(.failure(ErrorResponse.itemNotFound))
-        }
+    public func find(byId: String, completion: @escaping (IBeaconTriple?) -> Void) {
+        completion(items.filter { $0.deviceId ?? "" == byId }.first)
     }
     
-    public func findAll(completion: @escaping (Result<[IBeaconTriple]>) -> Void) {
-        completion(.success(items))
+    public func findAll(completion: @escaping ([IBeaconTriple]) -> Void) {
+        completion(items)
     }
     
     public func updateBeaconTriplets(completion: (() -> Void)? = nil) {

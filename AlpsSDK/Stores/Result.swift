@@ -3,11 +3,8 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 14/11/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
-
-import Foundation
-import Alps
 
 /// Result represents async response from the server. It can be either success or failure using internal enum values to represent response data.
 public enum Result<T> {

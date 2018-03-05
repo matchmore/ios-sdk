@@ -3,12 +3,9 @@
 //  Alps
 //
 //  Created by Rafal Kowalski on 04/10/2016
-//  Copyright © 2016 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
-import CoreLocation
-import Alps
 import CoreLocation
 
 extension IBeaconDevice {
@@ -53,7 +50,7 @@ extension Device: Hashable {
 }
 
 public extension Publication {
-    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: String]) {
+    public convenience init(deviceId: String? = nil, topic: String, range: Double, duration: Double, properties: [String: Any]) {
         self.init()
         self.deviceId = deviceId
         self.topic = topic
@@ -75,7 +72,7 @@ public extension Subscription {
 }
 
 public extension Location {
-    public convenience init(latitude: Double, longitude: Double, altitude: Double? = nil, horizontalAccuracy: Double? = nil, verticalAccuracy: Double? = nil) {
+    public convenience init(latitude: Double, longitude: Double, altitude: Double? = 0, horizontalAccuracy: Double? = nil, verticalAccuracy: Double? = nil) {
         self.init()
         self.latitude = latitude
         self.longitude = longitude

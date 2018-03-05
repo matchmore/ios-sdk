@@ -3,11 +3,8 @@
 //  AlpsSDK
 //
 //  Created by Maciej Burda on 19/10/2017.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
-
-import Foundation
-import Alps
 
 /// Together with all protocols below defines full CRUD interface for data type model
 
@@ -15,6 +12,7 @@ typealias CRUD = AsyncCreateable & AsyncReadable & AsyncUpdateable & AsyncDelete
 typealias CRD = AsyncCreateable & AsyncReadable & AsyncDeleteable & AsyncClearable
 
 protocol AssociatedDataType {
+    var id: String { get }
     associatedtype DataType
     var items: [DataType] { get }
 }
@@ -24,8 +22,8 @@ protocol AsyncCreateable: AssociatedDataType {
 }
 
 protocol AsyncReadable: AssociatedDataType {
-    func find(byId: String, completion: @escaping (Result<DataType>) -> Void)
-    func findAll(completion: @escaping (Result<[DataType]>) -> Void)
+    func find(byId: String, completion: @escaping (DataType?) -> Void)
+    func findAll(completion: @escaping ([DataType]) -> Void)
 }
 
 protocol AsyncUpdateable: AssociatedDataType {

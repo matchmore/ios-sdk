@@ -10,7 +10,6 @@ import Foundation
 import Quick
 import Nimble
 
-@testable import Alps
 @testable import AlpsSDK
 
 class MobileDevicePersistenceTests: QuickSpec {

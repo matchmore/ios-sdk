@@ -3,20 +3,20 @@
 //  AlpsSDK
 //
 //  Created by Wen on 07.11.17.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
 import Foundation
 
 protocol RemoteNotificationManagerDelegate: class {
     func didReceiveMatchUpdateForDeviceId(deviceId: String)
+    func didReceiveDeviceTokenUpdate(deviceToken: String)
 }
 
 let kTokenKey = "kTokenKey"
-
-public class RemoteNotificationManager: NSObject {
+public class RemoteNotificationManager {
     
-    private weak var delegate: RemoteNotificationManagerDelegate?
+    private(set) weak var delegate: RemoteNotificationManagerDelegate?
     var deviceToken: String? {
         didSet {
             KeychainHelper.shared[kTokenKey] = self.deviceToken
@@ -25,12 +25,14 @@ public class RemoteNotificationManager: NSObject {
     
     init(delegate: RemoteNotificationManagerDelegate) {
         self.deviceToken = KeychainHelper.shared[kTokenKey]
-        super.init()
         self.delegate = delegate
     }
     
     func registerDeviceToken(deviceToken: String) {
-        self.deviceToken = deviceToken
+        if self.deviceToken != deviceToken {
+            self.deviceToken = deviceToken
+            self.delegate?.didReceiveDeviceTokenUpdate(deviceToken: deviceToken)
+        }
     }
     
     func process(pushNotification: [AnyHashable: Any]) {

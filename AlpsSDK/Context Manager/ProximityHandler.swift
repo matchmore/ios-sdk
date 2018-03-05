@@ -3,18 +3,12 @@
 //  AlpsSDK
 //
 //  Created by Wen on 26.10.17.
-//  Copyright © 2017 Alps. All rights reserved.
+//  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
-import Alps
 
-protocol ProximityHandlerDelegate: class {
-    
-}
-
-final class ProximityHandler: ProximityHandlerDelegate {
+final class ProximityHandler {
     
     var refreshTimer: Int = 5 * 1000 // timer is in milliseconds
     lazy var beaconsDetected: [CLProximity: [IBeaconTriple]] = [:]
@@ -50,7 +44,7 @@ final class ProximityHandler: ProximityHandlerDelegate {
     
     // Trigger the proximity event
     private func triggers(key: CLProximity, deviceId: String, distance: Double) {
-        guard let mainDeviceId = MatchMore.manager.mobileDevices.main?.id else { return }
+        guard let mainDeviceId = MatchMore.instance.mobileDevices.main?.id else { return }
         let proximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
         DeviceAPI.triggerProximityEvents(deviceId: mainDeviceId, proximityEvent: proximityEvent) {(proximityEvent, _) -> Void in
             guard let proximityEvent = proximityEvent else { return }
@@ -62,7 +56,7 @@ final class ProximityHandler: ProximityHandlerDelegate {
     private func refreshTriggers(key: CLProximity, deviceId: String, distance: Double) {
         guard let proximityEvent = beaconsTriggered[key]?[deviceId],
         let proximityEventCreatedAt = proximityEvent.createdAt,
-        let mainDeviceId = MatchMore.manager.mobileDevices.main?.id else { return }
+        let mainDeviceId = MatchMore.instance.mobileDevices.main?.id else { return }
         
         let now = Date().nowTimeInterval()
         let gap = now - proximityEventCreatedAt

@@ -6,21 +6,24 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Alps
+@testable import AlpsSDK
 
 class TestsConfig {
     // swiftlint:disable:next line_length
-    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiOTYzMjE5N2YtMDdjOC00Yzg0LWE4NzUtZGVjOGJmNDM3Mjg1IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTE4NjMzNDUsImlhdCI6MTUxMTg2MzM0NSwianRpIjoiNCJ9.IXEclo2C_4IWh2V1F6B95O-Xo9LSQ_rcVhr9_Fg428z4gLhPLnMeXdnVy6f_RJObPC3in5J2ca7y19H2BNMWyg"
-    static let kWorldId = "9632197f-07c8-4c84-a875-dec8bf437285"
+    static let kApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiYWYwOGExMDktNGY4Ni00NTEyLThhMTQtNzcwZjIzZDllY2YxIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTg2MjIyODgsImlhdCI6MTUxODYyMjI4OCwianRpIjoiMSJ9.IgS_9CJguACM7YtREYHgcYmb58yeGpW8UQaghJoWeQ6C5E_rrKUNiwrxVQbU-l2TIzBpl5cgedJLhX4H-hUtzw"
     static let kBaseUrl = "https://api.matchmore.io/v5"
-    static let kWaitTimeInterval = 30.0
     
-    class func setupAPI() {
-        let headers = [
-            "api-key": kApiKey,
-            "Content-Type": "application/json"
-        ]
-        AlpsAPI.customHeaders = headers
-        AlpsAPI.basePath = kBaseUrl
+    // swiftlint:disable:next line_length
+    static let kStagingApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiM2I1NTcxODEtMmVjMC00MWRhLTk5NTItMzFkNTVkZDBlYzNjIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTg2MjE1MjcsImlhdCI6MTUxODYyMTUyNywianRpIjoiMSJ9.xgPMU0mm0_7jKWdC7di-rCOU6PA7pld4pU0o5TrGwFPEO04DYttHy5MF_zw9Zw1AANbDgKMYbRQT4Lj9v011Cg"
+    static let kStagingBaseUrl = "http://35.201.116.232/v5"
+    
+    static let kWaitTimeInterval = 10.0
+    
+    static let shouldTestStaging = false
+    static func configure() {
+        let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
+        let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl
+        let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl)
+        MatchMore.configure(config)
     }
 }

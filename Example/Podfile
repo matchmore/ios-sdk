@@ -1,6 +1,0 @@
-use_frameworks!
-
-target 'AlpsExample' do
-  pod 'AlpsSDK', :path => '../'
-  pod 'Alps', '~> 0.5'
-end
