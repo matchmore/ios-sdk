@@ -18,6 +18,10 @@
 		925EF4B1767C2C1AC794C2D3 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33789B5203D9E810054B974 /* Pods_AlpsSDK.framework */; };
 		AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6932889E33D93F8FC040EBE /* Pods_AlpsSDK.framework */; };
 		C32C7E6C1FBD89FE0038D513 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */; };
+		C3315500204D8873006D0117 /* ApnsSetup.md in Resources */ = {isa = PBXBuildFile; fileRef = C33154FC204D8872006D0117 /* ApnsSetup.md */; };
+		C3315501204D8873006D0117 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C33154FD204D8872006D0117 /* LICENSE */; };
+		C3315502204D8873006D0117 /* AlpsSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C33154FE204D8873006D0117 /* AlpsSDK.podspec */; };
+		C3315503204D8873006D0117 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C33154FF204D8873006D0117 /* README.md */; };
 		C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchMoreConfig.swift */; };
 		C3378986203D992E0054B974 /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897A203D992D0054B974 /* ProxmityTests.swift */; };
 		C3378987203D992E0054B974 /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */; };
@@ -167,6 +171,10 @@
 		C31CB1A1203D87C100FDAE7A /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		C31CB1A2203D87C100FDAE7A /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C32C7E6B1FBD89FE0038D513 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		C33154FC204D8872006D0117 /* ApnsSetup.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ApnsSetup.md; sourceTree = "<group>"; };
+		C33154FD204D8872006D0117 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C33154FE204D8873006D0117 /* AlpsSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AlpsSDK.podspec; sourceTree = "<group>"; };
+		C33154FF204D8873006D0117 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C337895E203D948F0054B974 /* MatchMoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMoreConfig.swift; sourceTree = "<group>"; };
 		C337897A203D992D0054B974 /* ProxmityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxmityTests.swift; sourceTree = "<group>"; };
 		C337897C203D992E0054B974 /* MobileDevicePersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileDevicePersistenceTests.swift; sourceTree = "<group>"; };
@@ -267,6 +275,10 @@
 		5092AC291D93CB0C00EF8ECF = {
 			isa = PBXGroup;
 			children = (
+				C33154FF204D8873006D0117 /* README.md */,
+				C33154FC204D8872006D0117 /* ApnsSetup.md */,
+				C33154FE204D8873006D0117 /* AlpsSDK.podspec */,
+				C33154FD204D8872006D0117 /* LICENSE */,
 				502C85881E01BB3F00EF8ECF /* AlpsSDK */,
 				C3807CEF203D920300561974 /* AlpsSDKTests */,
 				C3378994203D9A8B0054B974 /* AlpsExample */,
@@ -641,6 +653,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3315502204D8873006D0117 /* AlpsSDK.podspec in Resources */,
+				C3315501204D8873006D0117 /* LICENSE in Resources */,
+				C3315503204D8873006D0117 /* README.md in Resources */,
+				C3315500204D8873006D0117 /* ApnsSetup.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

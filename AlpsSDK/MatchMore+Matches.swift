@@ -18,7 +18,7 @@ public extension MatchMore {
     /// List of all match delivery delegates. The delegate has to conform to `AlpsDelegate`. Adding new delegate can be achieved either by `+=` or `add()`.
     public static var matchDelegates = instance.delegates
     
-    /// Starts polling matches every X seconds. All `matchDelegates` are notified about the change.
+    /// Starts polling matches every `pollingTimeInterval` seconds. All `matchDelegates` are notified about the change.
     public class func startPollingMatches(pollingTimeInterval: TimeInterval) {
         instance.matchMonitor.startPollingMatches(pollingTimeInterval: pollingTimeInterval)
     }

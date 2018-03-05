@@ -43,7 +43,7 @@ public final class MatchMore {
         return instance.contextManager.beaconTriples
     }
     
-    /// Last ANPS token used by SDK
+    /// Last ANPS token used by SDK.
     public static var deviceToken: String? {
         return instance.remoteNotificationManager.deviceToken
     }

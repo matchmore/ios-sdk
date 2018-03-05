@@ -14,7 +14,7 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - device: (Optional) Device object that will be created on MatchMore's cloud. When device is `nil` this function will use `UIDevice.current` properties to create new Mobile Device.
-    ///   - shouldStartMonitoring: flag that determines if created device should monitored for matches immediately after creating.
+    ///   - shouldStartMonitoring: (Optional) flag that determines if created device should monitored for matches immediately after creating.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func startUsingMainDevice(device: MobileDevice? = nil, shouldStartMonitoring: Bool = true, completion: @escaping ((Result<MobileDevice>) -> Void)) {
         if let mainDevice = instance.mobileDevices.main, device == nil {
@@ -39,7 +39,7 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - device: Pin device object that will be created on MatchMore's cloud.
-    ///   - shouldStartMonitoring: flag that determines if created device should monitored for matches immediately after creating.
+    ///   - shouldStartMonitoring: (Optional) flag that determines if created device should monitored for matches immediately after creating.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPinDevice(pinDevice: PinDevice, shouldStartMonitoring: Bool = true, completion: @escaping ((Result<PinDevice>) -> Void)) {
         instance.pinDevices.create(item: pinDevice) { (result) in
@@ -92,7 +92,7 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - subscription: Subscription object that will be created on MatchMore's cloud.
-    ///   - forDevice: (Optional) device on which subscriptions is supposed to be created.
+    ///   - forDevice: device on which subscriptions is supposed to be created.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createSubscription(subscription: Subscription, forDevice: Device, completion: @escaping ((Result<Subscription>) -> Void)) {
         subscription.deviceId = forDevice.id
