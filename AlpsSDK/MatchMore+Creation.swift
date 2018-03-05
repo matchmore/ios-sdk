@@ -54,10 +54,23 @@ public extension MatchMore {
     ///
     /// - Parameters:
     ///   - publication: Publication object that will be created on MatchMore's cloud.
-    ///   - forDevice: (Optional) device on which publication is supposed to be created.
+    ///   - forDevice: device on which publication is supposed to be created.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPublication(publication: Publication, forDevice: Device, completion: @escaping ((Result<Publication>) -> Void)) {
         publication.deviceId = forDevice.id
+        instance.publications.create(item: publication) { (result) in
+            completion(result)
+        }
+    }
+    
+    /// Creates new publication attached to beacon.
+    ///
+    /// - Parameters:
+    ///   - publication: Publication object that will be created on MatchMore's cloud.
+    ///   - forBeacon: beacon on which publication is supposed to be created.
+    ///   - completion: Callback that returns response from the MatchMore cloud.
+    public class func createPublication(publication: Publication, forBeacon: IBeaconTriple, completion: @escaping ((Result<Publication>) -> Void)) {
+        publication.deviceId = forBeacon.deviceId
         instance.publications.create(item: publication) { (result) in
             completion(result)
         }

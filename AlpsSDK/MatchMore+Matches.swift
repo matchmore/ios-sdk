@@ -11,8 +11,8 @@ import Foundation
 public extension MatchMore {
     
     /// List of all delivered Matches.
-    public static var allMatches: Set<Match> {
-        return instance.matchMonitor.deliveredMatches
+    public static var allMatches: [Match] {
+        return Array(instance.matchMonitor.deliveredMatches)
     }
     
     /// List of all match delivery delegates. The delegate has to conform to `AlpsDelegate`. Adding new delegate can be achieved either by `+=` or `add()`.
