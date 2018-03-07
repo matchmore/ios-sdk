@@ -11,6 +11,7 @@ import Foundation
 extension String {
     func getWorldIdFromToken() -> String {
         var segments: [String] = self.components(separatedBy: ".")
+        if segments.count < 2 { return "" }
         var base64String: String = segments[1]
         let requiredLength: Int = Int(4 * ceil(Float(base64String.count) / 4.0))
         let nbrPaddings: Int = requiredLength - base64String.count
@@ -22,7 +23,7 @@ extension String {
         base64String = base64String.replacingOccurrences(of: "_", with: "/")
         let decodedData: Data = Data(base64Encoded: base64String, options: Data.Base64DecodingOptions(rawValue: UInt(0)))!
         if let json = try? JSONSerialization.jsonObject(with: decodedData, options: .mutableContainers) as? [String: Any],
-            let worldId = json?["sub"] as? String {
+            let worldId: String = json?["sub"] as? String {
             return worldId
         } else {
             return ""

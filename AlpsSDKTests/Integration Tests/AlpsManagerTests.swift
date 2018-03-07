@@ -16,8 +16,12 @@ import Nimble
 final class AlpsManagerTests: QuickSpec {
     
     override func spec() {
-        let properties: [String: Any] = ["string": "test", "number": 1, "boolean": true]
-        let selector: String =  "string = 'test' and number = 1 and boolean = true"
+        let properties: [String: Any] = [
+            "string": "test",
+            "number": 100,
+            "boolean": true
+        ]
+        let selector: String =  "string = 'test' and number >= 1 and boolean = true"
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         TestsConfig.configure()

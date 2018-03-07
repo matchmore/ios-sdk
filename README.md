@@ -14,6 +14,10 @@ Alps is available through [CocoaPods](http://cocoapods.org), simply add the foll
 line to your Podfile:
 
     pod 'AlpsSDK'
+    
+In case of any problems with cocoapods try
+
+    pod repo update
 
 ## Usage
 
@@ -88,7 +92,9 @@ Else, you can find help on [how to setup APNS](https://github.com/matchmore/alps
 
 ## Example
 
-in `AlpsSDK/Example/` you will find working simple example.
+In `AlpsExample/` you will find working simple example.
+
+For more complex solution please check [Ticketing App](https://github.com/matchmore/alps-ios-TicketingApp):
 
 ## Documentation
 
