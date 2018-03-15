@@ -144,7 +144,7 @@ final class AlpsManagerTests: QuickSpec {
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.openSocketForMatches()
 
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
                     matchDelegate.onMatch = { matches, _ in
                         deliveredMatches = matches
                         done()
@@ -160,6 +160,7 @@ final class AlpsManagerTests: QuickSpec {
                 alpsManager.delegates -= matchDelegate
                 alpsManager.matchMonitor.closeSocketForMatches()
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
+                expect(errorResponse?.message).toEventually(beNil())
             }
         }
     }
