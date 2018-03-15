@@ -25,7 +25,7 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
         
         TestsConfig.configure()
-        var alpsManager = MatchMore.instance
+        let alpsManager = MatchMore.instance
         
         var errorResponse: ErrorResponse?
         
@@ -111,13 +111,6 @@ final class AlpsManagerTests: QuickSpec {
                 expect(errorResponse?.message).toEventually(beNil())
             }
             
-            fit ("recover state") {
-                // simulates turning app off and on again
-                alpsManager = MatchMore.instance
-                expect(alpsManager.mobileDevices.main).toNot(beNil())
-                expect(alpsManager.mobileDevices.items).toNot(beEmpty())
-            }
-            
             fit ("update location") {
                 if let mainDeviceId = alpsManager.mobileDevices.main?.id {
                     alpsManager.locationUpdateManager.tryToSend(location: location, for: mainDeviceId)
@@ -136,23 +129,24 @@ final class AlpsManagerTests: QuickSpec {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
                         deliveredMatches = matches
-                        alpsManager.matchMonitor.stopPollingMatches()
                         done()
                     }
                 }
+                alpsManager.delegates -= matchDelegate
+                alpsManager.matchMonitor.stopPollingMatches()
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
             
             fit ("get socket match") {
                 var deliveredMatches: [Match]?
                 let matchDelegate = TestMatchDelegate()
+                
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.openSocketForMatches()
 
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
                         deliveredMatches = matches
-                        alpsManager.matchMonitor.closeSocketForMatches()
                         done()
                     }
                     let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: selector)
@@ -163,6 +157,8 @@ final class AlpsManagerTests: QuickSpec {
                         }
                     })
                 }
+                alpsManager.delegates -= matchDelegate
+                alpsManager.matchMonitor.closeSocketForMatches()
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
         }

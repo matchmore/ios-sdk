@@ -35,8 +35,8 @@ public class MatchMonitor {
     }
     
     // MARK: - Polling
-    
-    func startPollingMatches(pollingTimeInterval: TimeInterval) {
+    static let kDefaultPollingTimeInterval = 5.0
+    func startPollingMatches(pollingTimeInterval: TimeInterval = kDefaultPollingTimeInterval) {
         if timer != nil { return }
         timer = Timer.scheduledTimer(timeInterval: pollingTimeInterval, target: self, selector: #selector(getMatches), userInfo: nil, repeats: true)
     }
