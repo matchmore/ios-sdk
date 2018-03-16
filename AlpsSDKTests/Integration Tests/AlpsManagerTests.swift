@@ -36,7 +36,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("clear publications") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.publications.deleteAll { error in
                         errorResponse = error
                         done()
@@ -47,7 +47,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("clear subscriptions") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.subscriptions.deleteAll { error in
                         errorResponse = error
                         done()
@@ -58,7 +58,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("clear mobile devices") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.mobileDevices.deleteAll { error in
                         errorResponse = error
                         done()
@@ -84,7 +84,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let publication = Publication(topic: "Test Topic", range: 4000, duration: 100000, properties: properties)
+                let publication = Publication(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createPublicationForMainDevice(publication: publication, completion: { (result) in
                         if case .failure(let error) = result {
@@ -98,7 +98,7 @@ final class AlpsManagerTests: QuickSpec {
             }
             
             fit ("create a subscription") {
-                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: selector)
+                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {
@@ -144,12 +144,19 @@ final class AlpsManagerTests: QuickSpec {
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.openSocketForMatches()
 
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval * 4) { done in
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
                         deliveredMatches = matches
                         done()
                     }
-                    let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 100000, selector: selector)
+                    let topic = UUID().uuidString
+                    let publication = Publication(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
+                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { (result) in
+                        if case .failure(let error) = result {
+                            errorResponse = error
+                        }
+                    })
+                    let subscription = Subscription(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
                     subscription.pushers = ["ws"]
                     MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         if case .failure(let error) = result {

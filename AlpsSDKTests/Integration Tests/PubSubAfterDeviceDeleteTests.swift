@@ -36,7 +36,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             
             fit ("create a publication") {
-                let publication = Publication(topic: "Test Topic", range: 20, duration: 100000, properties: ["a": "b"])
+                let publication = Publication(topic: "Test Topic", range: 20, duration: TestsConfig.kWaitTimeInterval, properties: ["a": "b"])
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createPublicationForMainDevice(publication: publication, completion: { (result) in
                         errorMesseage = result.errorMessage
@@ -48,7 +48,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             
             fit ("create a subscription") {
-                let subscription = Subscription(topic: "Test iTopic", range: 20, duration: 100000, selector: "")
+                let subscription = Subscription(topic: "Test iTopic", range: 20, duration: TestsConfig.kWaitTimeInterval, selector: "")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { (result) in
                         errorMesseage = result.errorMessage
