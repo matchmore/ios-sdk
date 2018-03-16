@@ -25,10 +25,6 @@ class TestsConfig {
         let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl
         
-        
-        let locationManager = CLLocationManager()
-        locationManager.l
-        
         let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl)
         MatchMore.configure(config)
     }
