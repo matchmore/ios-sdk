@@ -81,7 +81,7 @@ public class MatchMonitor {
     
     // MARK: - Getting Matches
     
-    @objc private func getMatches() {
+    @objc func getMatches() {
         self.monitoredDevices.forEach {
             getMatchesForDevice(device: $0)
         }

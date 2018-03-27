@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5092AC3B1D93CB0C00EF8ECF"
+               BlueprintIdentifier = "C3807CED203D920300561974"
                BuildableName = "AlpsSDKTests.xctest"
                BlueprintName = "AlpsSDKTests"
                ReferencedContainer = "container:AlpsSDK.xcodeproj">

@@ -56,4 +56,8 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             self.proximityHandler.rangeBeacons(beacons: beacons, knownBeacons: result)
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
 }
