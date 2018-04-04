@@ -1,6 +1,6 @@
 ### Set up APNS: Certificates for push notifications
 
-Alps iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
+Matchmore iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
 
 In order to get the certificates and upload them to our portal.
 

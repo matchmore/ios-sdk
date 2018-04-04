@@ -1,0 +1,1349 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/AlpsManager.swift",
+      "line": 13,
+      "symbol": "OnMatchClosure",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/AlpsManager.swift",
+      "line": 14,
+      "symbol": "MatchDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/AlpsManager.swift",
+      "line": 15,
+      "symbol": "MatchDelegate.onMatch",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/AlpsManager.swift",
+      "line": 18,
+      "symbol": "AlpsManager",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/AlpsManager.swift",
+      "line": 19,
+      "symbol": "AlpsManager.delegates",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/MatchMonitor.swift",
+      "line": 15,
+      "symbol": "MatchMonitor",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Alps Manager/RemoteNotificationManager.swift",
+      "line": 17,
+      "symbol": "RemoteNotificationManager",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs/DeviceAPI.swift",
+      "line": 11,
+      "symbol": "DeviceAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs/LocationAPI.swift",
+      "line": 11,
+      "symbol": "LocationAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs/MatchesAPI.swift",
+      "line": 11,
+      "symbol": "MatchesAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs/PublicationAPI.swift",
+      "line": 11,
+      "symbol": "PublicationAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs/SubscriptionAPI.swift",
+      "line": 11,
+      "symbol": "SubscriptionAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 9,
+      "symbol": "AlpsAPI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 10,
+      "symbol": "AlpsAPI.basePath",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 11,
+      "symbol": "AlpsAPI.credential",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 12,
+      "symbol": "AlpsAPI.customHeaders",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 13,
+      "symbol": "AlpsAPI.requestBuilderFactory",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 16,
+      "symbol": "APIBase",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 32,
+      "symbol": "RequestBuilder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 43,
+      "symbol": "RequestBuilder.init(method:URLString:parameters:isBody:headers:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 53,
+      "symbol": "RequestBuilder.addHeaders(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 59,
+      "symbol": "RequestBuilder.execute(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 61,
+      "symbol": "RequestBuilder.addHeader(name:value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 68,
+      "symbol": "RequestBuilder.addCredential()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 74,
+      "symbol": "RequestBuilderFactory",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/APIs.swift",
+      "line": 75,
+      "symbol": "RequestBuilderFactory.getBuilder()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/AlamofireImplementations.swift",
+      "line": 19,
+      "symbol": "AlamofireRequestBuilder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/AlamofireImplementations.swift",
+      "line": 20,
+      "symbol": "AlamofireRequestBuilder.init(method:URLString:parameters:isBody:headers:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/AlamofireImplementations.swift",
+      "line": 53,
+      "symbol": "AlamofireRequestBuilder.execute(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/AlamofireImplementations.swift",
+      "line": 222,
+      "symbol": "AlamofireRequestBuilder.buildHeaders()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Configuration.swift",
+      "line": 9,
+      "symbol": "Configuration",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Configuration.swift",
+      "line": 12,
+      "symbol": "Configuration.dateFormat",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/APIError.swift",
+      "line": 10,
+      "symbol": "APIError",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/APIError.swift",
+      "line": 11,
+      "symbol": "APIError.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/APIError.swift",
+      "line": 12,
+      "symbol": "APIError.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/APIError.swift",
+      "line": 14,
+      "symbol": "APIError.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/APIError.swift",
+      "line": 18,
+      "symbol": "APIError.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 7,
+      "symbol": "Device.encodableDevice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 12,
+      "symbol": "EncodableDevice",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 13,
+      "symbol": "EncodableDevice.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 14,
+      "symbol": "EncodableDevice.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 18,
+      "symbol": "EncodableDevice.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 28,
+      "symbol": "EncodableDevice.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 39,
+      "symbol": "IBeaconDevice.encodableIBeaconDevice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 44,
+      "symbol": "EncodableIBeaconDevice",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 45,
+      "symbol": "EncodableIBeaconDevice.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 46,
+      "symbol": "EncodableIBeaconDevice.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 50,
+      "symbol": "EncodableIBeaconDevice.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 63,
+      "symbol": "EncodableIBeaconDevice.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 77,
+      "symbol": "IBeaconTriple.encodableIBeaconTriple",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 82,
+      "symbol": "EncodableIBeaconTriple",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 83,
+      "symbol": "EncodableIBeaconTriple.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 84,
+      "symbol": "EncodableIBeaconTriple.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 88,
+      "symbol": "EncodableIBeaconTriple.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 96,
+      "symbol": "EncodableIBeaconTriple.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 105,
+      "symbol": "Location.encodableLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 110,
+      "symbol": "EncodableLocation",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 111,
+      "symbol": "EncodableLocation.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 112,
+      "symbol": "EncodableLocation.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 116,
+      "symbol": "EncodableLocation.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 126,
+      "symbol": "EncodableLocation.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 137,
+      "symbol": "Match.encodableMatch",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 142,
+      "symbol": "EncodableMatch",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 143,
+      "symbol": "EncodableMatch.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 144,
+      "symbol": "EncodableMatch.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 148,
+      "symbol": "EncodableMatch.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 158,
+      "symbol": "EncodableMatch.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 167,
+      "symbol": "MobileDevice.encodableMobileDevice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 172,
+      "symbol": "EncodableMobileDevice",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 173,
+      "symbol": "EncodableMobileDevice.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 174,
+      "symbol": "EncodableMobileDevice.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 178,
+      "symbol": "EncodableMobileDevice.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 192,
+      "symbol": "EncodableMobileDevice.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 206,
+      "symbol": "PinDevice.encodablePinDevice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 211,
+      "symbol": "EncodablePinDevice",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 212,
+      "symbol": "EncodablePinDevice.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 213,
+      "symbol": "EncodablePinDevice.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 217,
+      "symbol": "EncodablePinDevice.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 229,
+      "symbol": "EncodablePinDevice.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 241,
+      "symbol": "Publication.encodablePublication",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 246,
+      "symbol": "EncodablePublication",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 247,
+      "symbol": "EncodablePublication.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 248,
+      "symbol": "EncodablePublication.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 252,
+      "symbol": "EncodablePublication.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 266,
+      "symbol": "EncodablePublication.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 280,
+      "symbol": "Subscription.encodableSubscription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 285,
+      "symbol": "EncodableSubscription",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 286,
+      "symbol": "EncodableSubscription.object",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 287,
+      "symbol": "EncodableSubscription.init(object:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 291,
+      "symbol": "EncodableSubscription.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Codable.generated.swift",
+      "line": 307,
+      "symbol": "EncodableSubscription.encode(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Device.swift",
+      "line": 22,
+      "symbol": "Device.deviceType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Device.swift",
+      "line": 24,
+      "symbol": "Device.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Device.swift",
+      "line": 28,
+      "symbol": "Device.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/DeviceType.swift",
+      "line": 12,
+      "symbol": "DeviceType.mobileDevice",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/DeviceType.swift",
+      "line": 13,
+      "symbol": "DeviceType.pinDevice",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/DeviceType.swift",
+      "line": 14,
+      "symbol": "DeviceType.ibeacondevice",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/DeviceUpdate.swift",
+      "line": 17,
+      "symbol": "DeviceUpdate.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/DeviceUpdate.swift",
+      "line": 21,
+      "symbol": "DeviceUpdate.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Devices.swift",
+      "line": 10,
+      "symbol": "Devices",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconDevice.swift",
+      "line": 21,
+      "symbol": "IBeaconDevice.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconTriple.swift",
+      "line": null,
+      "symbol": "IBeaconTriple",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconTriple.swift",
+      "line": 10,
+      "symbol": "IBeaconTriple",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconTriple.swift",
+      "line": 20,
+      "symbol": "IBeaconTriple.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconTriple.swift",
+      "line": 24,
+      "symbol": "IBeaconTriple.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/IBeaconTriples.swift",
+      "line": 10,
+      "symbol": "IBeaconTriples",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Location.swift",
+      "line": null,
+      "symbol": "Location",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Location.swift",
+      "line": null,
+      "symbol": "Location",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Location.swift",
+      "line": 10,
+      "symbol": "Location",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Location.swift",
+      "line": 24,
+      "symbol": "Location.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Location.swift",
+      "line": 28,
+      "symbol": "Location.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Match.swift",
+      "line": 16,
+      "symbol": "Match.publication",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Match.swift",
+      "line": 17,
+      "symbol": "Match.subscription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Match.swift",
+      "line": 19,
+      "symbol": "Match.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Match.swift",
+      "line": 23,
+      "symbol": "Match.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Matches.swift",
+      "line": 10,
+      "symbol": "Matches",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/MobileDevice.swift",
+      "line": 16,
+      "symbol": "MobileDevice.location",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/MobileDevice.swift",
+      "line": 20,
+      "symbol": "MobileDevice.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/PinDevice.swift",
+      "line": 12,
+      "symbol": "PinDevice.location",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/PinDevice.swift",
+      "line": 16,
+      "symbol": "PinDevice.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/ProximityEvent.swift",
+      "line": 21,
+      "symbol": "ProximityEvent.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/ProximityEvent.swift",
+      "line": 25,
+      "symbol": "ProximityEvent.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Publication.swift",
+      "line": 31,
+      "symbol": "Publication.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Publication.swift",
+      "line": 35,
+      "symbol": "Publication.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Publications.swift",
+      "line": 10,
+      "symbol": "Publications",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Subscription.swift",
+      "line": 35,
+      "symbol": "Subscription.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Subscription.swift",
+      "line": 39,
+      "symbol": "Subscription.encodeToJSON()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models/Subscriptions.swift",
+      "line": 10,
+      "symbol": "Subscriptions",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": null,
+      "symbol": "ErrorResponse",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 13,
+      "symbol": "ErrorResponse",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 14,
+      "symbol": "ErrorResponse.Error",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 17,
+      "symbol": "Response",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 18,
+      "symbol": "Response.statusCode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 19,
+      "symbol": "Response.header",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 20,
+      "symbol": "Response.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 22,
+      "symbol": "Response.init(statusCode:header:body:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/GeneratedAPI/Models.swift",
+      "line": 28,
+      "symbol": "Response.init(response:body:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/MatchMoreConfig.swift",
+      "line": 18,
+      "symbol": "MatchMoreConfig.init(apiKey:serverUrl:customLocationManager:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/KeychainHelper.swift",
+      "line": 11,
+      "symbol": "KeychainHelper",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/KeychainHelper.swift",
+      "line": 12,
+      "symbol": "KeychainHelper.loggingEnabled",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/KeychainHelper.swift",
+      "line": 17,
+      "symbol": "KeychainHelper.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/KeychainHelper.swift",
+      "line": 28,
+      "symbol": "KeychainHelper.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 12,
+      "symbol": "IBeaconDevice.init(name:proximityUUID:major:minor:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 23,
+      "symbol": "MobileDevice.init(name:platform:deviceToken:location:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 34,
+      "symbol": "PinDevice.init(name:location:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 53,
+      "symbol": "Publication.init(deviceId:topic:range:duration:properties:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 64,
+      "symbol": "Subscription.init(deviceId:topic:range:duration:selector:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 75,
+      "symbol": "Location.init(latitude:longitude:altitude:horizontalAccuracy:verticalAccuracy:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 94,
+      "symbol": "Location.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/ModelExtensions.swift",
+      "line": 100,
+      "symbol": "Location.clLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 11,
+      "symbol": "MulticastDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 14,
+      "symbol": "MulticastDelegate.isEmpty",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 18,
+      "symbol": "MulticastDelegate.add(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 22,
+      "symbol": "MulticastDelegate.remove(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 26,
+      "symbol": "MulticastDelegate.invoke(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 34,
+      "symbol": "+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/MulticastDelegate.swift",
+      "line": 38,
+      "symbol": "-=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Miscellaneous/Sequence+Group.swift",
+      "line": 12,
+      "symbol": "Sequence.group(by:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/BeaconTripleStore.swift",
+      "line": 9,
+      "symbol": "BeaconTripleStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/BeaconTripleStore.swift",
+      "line": 27,
+      "symbol": "BeaconTripleStore.find(byId:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/BeaconTripleStore.swift",
+      "line": 31,
+      "symbol": "BeaconTripleStore.findAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/BeaconTripleStore.swift",
+      "line": 35,
+      "symbol": "BeaconTripleStore.updateBeaconTriplets(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 11,
+      "symbol": "MobileDeviceStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 30,
+      "symbol": "MobileDeviceStore.main",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 43,
+      "symbol": "MobileDeviceStore.create(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 55,
+      "symbol": "MobileDeviceStore.find(byId:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 59,
+      "symbol": "MobileDeviceStore.findAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/MobileDeviceStore.swift",
+      "line": 63,
+      "symbol": "MobileDeviceStore.delete(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/PinDeviceStore.swift",
+      "line": 11,
+      "symbol": "PinDeviceStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/PinDeviceStore.swift",
+      "line": 32,
+      "symbol": "PinDeviceStore.create(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/PinDeviceStore.swift",
+      "line": 43,
+      "symbol": "PinDeviceStore.find(byId:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/PinDeviceStore.swift",
+      "line": 47,
+      "symbol": "PinDeviceStore.findAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Devices/PinDeviceStore.swift",
+      "line": 51,
+      "symbol": "PinDeviceStore.delete(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/ErrorResponse+Convienience.swift",
+      "line": 12,
+      "symbol": "ErrorResponse.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/ErrorResponse+Convienience.swift",
+      "line": 17,
+      "symbol": "ErrorResponse.missingId",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/ErrorResponse+Convienience.swift",
+      "line": 23,
+      "symbol": "ErrorResponse.itemNotFound",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/ErrorResponse+Convienience.swift",
+      "line": 29,
+      "symbol": "ErrorResponse.errorWith(info:code:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/Expirable.swift",
+      "line": null,
+      "symbol": "Expirable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 11,
+      "symbol": "PublicationStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 39,
+      "symbol": "PublicationStore.create(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 51,
+      "symbol": "PublicationStore.find(byId:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 55,
+      "symbol": "PublicationStore.findAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 59,
+      "symbol": "PublicationStore.delete(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/PublicationStore.swift",
+      "line": 70,
+      "symbol": "PublicationStore.deleteAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 11,
+      "symbol": "SubscriptionStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 39,
+      "symbol": "SubscriptionStore.create(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 51,
+      "symbol": "SubscriptionStore.find(byId:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 55,
+      "symbol": "SubscriptionStore.findAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 59,
+      "symbol": "SubscriptionStore.delete(item:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/PubSub/SubscriptionStore.swift",
+      "line": 70,
+      "symbol": "SubscriptionStore.deleteAll(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Result.swift",
+      "line": 11,
+      "symbol": "Result.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk/Matchmore/Stores/Result.swift",
+      "line": 12,
+      "symbol": "Result.failure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/maciejburda/Developer/matchmore/alps-ios-sdk"
+}

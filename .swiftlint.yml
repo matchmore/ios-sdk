@@ -4,7 +4,7 @@ excluded: # paths to ignore during linting.
   - Carthage
   - Pods
   - Example
-  - AlpsSDK/GeneratedAPI
+  - Matchmore/GeneratedAPI
 # parameterized rules can be customized from this configuration file
 function_body_length: 100
 line_length: 200

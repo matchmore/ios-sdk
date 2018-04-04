@@ -1,19 +1,19 @@
-# Alps iOS SDK
+# Matchmore iOS SDK
 
-`AlpsSDK` is a contextualized publish/subscribe model which can be used to model any geolocated or proximity based mobile application. Save time and make development easier by using our SDK. We are built on Apple Core Location technologies and we also provide iBeacons compatibility.
+`Matchmore` is a contextualized publish/subscribe model which can be used to model any geolocated or proximity based mobile application. Save time and make development easier by using our SDK. We are built on Apple Core Location technologies and we also provide iBeacons compatibility.
 
 ## Versioning
 
-SDK is written using Swift 4.
+SDK is written using Swift 4.1.
 
-Alps SDK requires iOS 9+.
+Matchmore SDK requires iOS 9+.
 
 ## Installation
 
-Alps is available through [CocoaPods](http://cocoapods.org), simply add the following
+Matchmore is available through [CocoaPods](http://cocoapods.org), simply add the following
 line to your Podfile:
 
-    pod 'AlpsSDK'
+    pod 'Matchmore'
     
 In case of any problems with cocoapods try
 
@@ -66,7 +66,7 @@ MatchMore.matchDelegates += exampleMatchHandler
 
 ## Set up APNS: Certificates for push notifications
 
-Alps iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
+Matchmore iOS SDK uses Apple Push Notification Service (APNS) to deliver notifications to your iOS users.
 
 If you already know how to enable APNS, don't forget to upload the certificate in our portal.
 
@@ -92,7 +92,7 @@ Else, you can find help on [how to setup APNS](https://github.com/matchmore/alps
 
 ## Example
 
-In `AlpsExample/` you will find working simple example.
+In `MatchmoreExample/` you will find working simple example.
 
 For more complex solution please check [Ticketing App](https://github.com/matchmore/alps-ios-TicketingApp):
 
@@ -109,4 +109,4 @@ See the [http://matchmore.io/documentation/api](http://matchmore.io/documentatio
 
 ## License
 
-`AlpsSDK` is available under the MIT license. See the LICENSE file for more info.
+`Matchmore` is available under the MIT license. See the LICENSE file for more info.

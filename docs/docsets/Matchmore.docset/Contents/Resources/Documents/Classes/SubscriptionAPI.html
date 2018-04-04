@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SubscriptionAPI Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/SubscriptionAPI" class="dashAnchor"></a>
+    <a title="SubscriptionAPI Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Matchmore Docs</a> (47% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Matchmore Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SubscriptionAPI Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlamofireRequestBuilder.html">AlamofireRequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsAPI.html">AlpsAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsManager.html">AlpsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BeaconTripleStore.html">BeaconTripleStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Device.html">Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceAPI.html">DeviceAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceUpdate.html">DeviceUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableDevice.html">EncodableDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconDevice.html">EncodableIBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconTriple.html">EncodableIBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableLocation.html">EncodableLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMatch.html">EncodableMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMobileDevice.html">EncodableMobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePinDevice.html">EncodablePinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePublication.html">EncodablePublication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableSubscription.html">EncodableSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconDevice.html">IBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconTriple.html">IBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainHelper.html">KeychainHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Location.html">Location</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LocationAPI.html">LocationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore21LocationUpdateManagerC">LocationUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore12MatchMonitorC">MatchMonitor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchMore.html">MatchMore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchesAPI.html">MatchesAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDevice.html">MobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDeviceStore.html">MobileDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MulticastDelegate.html">MulticastDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDevice.html">PinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDeviceStore.html">PinDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProximityEvent.html">ProximityEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Publication.html">Publication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationAPI.html">PublicationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationStore.html">PublicationStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore25RemoteNotificationManagerC">RemoteNotificationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestBuilder.html">RequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Subscription.html">Subscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionAPI.html">SubscriptionAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionStore.html">SubscriptionStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/DeviceType.html">DeviceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ErrorResponse.html">ErrorResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2peoiyAA17MulticastDelegateCyxG_xtlF">+=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2seoiyAA17MulticastDelegateCyxG_xtlF">-=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MatchDelegate.html">MatchDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestBuilderFactory.html">RequestBuilderFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MatchMoreConfig.html">MatchMoreConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Devicesa">Devices</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14OnMatchClosurea">OnMatchClosure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SubscriptionAPI</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SubscriptionAPI</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC06createB0ySS8deviceId_AA0B0C12subscriptionyAGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createSubscription(deviceId:subscription:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC06createB0ySS8deviceId_AA0B0C12subscriptionyAGSg_s5Error_pSgtc10completiontFZ">createSubscription(deviceId:subscription:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a subscription for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscription</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Subscription to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC06createB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_AH12subscriptiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createSubscriptionWithRequestBuilder(deviceId:subscription:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC06createB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_AH12subscriptiontFZ">createSubscriptionWithRequestBuilder(deviceId:subscription:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a subscription for a device</p>
+
+<ul>
+<li>POST /devices/{deviceId}/subscriptions</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>matchTTL</q> : 2.027123023002322,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>selector</q> : <q>aeiou</q>,
+<q>pushers</q> : [ <q>aeiou</q> ],
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscription</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Subscription to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscription></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC06deleteB0ySS8deviceId_SS012subscriptionF0ys5Error_pSgc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteSubscription(deviceId:subscriptionId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC06deleteB0ySS8deviceId_SS012subscriptionF0ys5Error_pSgc10completiontFZ">deleteSubscription(deviceId:subscriptionId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Subscription</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC06deleteB18WithRequestBuilderAA0fG0CyytGSS8deviceId_SS012subscriptionI0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteSubscriptionWithRequestBuilder(deviceId:subscriptionId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC06deleteB18WithRequestBuilderAA0fG0CyytGSS8deviceId_SS012subscriptionI0tFZ">deleteSubscriptionWithRequestBuilder(deviceId:subscriptionId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Subscription</p>
+<h2 id='delete-devices-deviceid-subscriptions-subscriptionid' class='heading'>- DELETE /devices/{deviceId}/subscriptions/{subscriptionId}</h2>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Void></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC03getB0ySS8deviceId_SS012subscriptionF0yAA0B0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscription(deviceId:subscriptionId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC03getB0ySS8deviceId_SS012subscriptionF0yAA0B0CSg_s5Error_pSgtc10completiontFZ">getSubscription(deviceId:subscriptionId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a subscription on a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC03getB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_SS012subscriptionI0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptionWithRequestBuilder(deviceId:subscriptionId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC03getB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_SS012subscriptionI0tFZ">getSubscriptionWithRequestBuilder(deviceId:subscriptionId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a subscription on a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/subscriptions/{subscriptionId}</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>matchTTL</q> : 2.027123023002322,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>selector</q> : <q>aeiou</q>,
+<q>pushers</q> : [ <q>aeiou</q> ],
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscription></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC16getSubscriptionsySS8deviceId_ySayAA0B0CGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptions(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC16getSubscriptionsySS8deviceId_ySayAA0B0CGSg_s5Error_pSgtc10completiontFZ">getSubscriptions(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all subscriptions for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptions</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore15SubscriptionAPIC34getSubscriptionsWithRequestBuilderAA0gH0CySayAA0B0CGGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptionsWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore15SubscriptionAPIC34getSubscriptionsWithRequestBuilderAA0gH0CySayAA0B0CGGSS8deviceId_tFZ">getSubscriptionsWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all subscriptions for a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/subscriptions</li>
+<li><p>examples: [{contentType=application/json, example=&ldquo;&rdquo;}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptionsWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscriptions></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://matchmore.io" target="_blank" rel="external">Matchmore SDK Team</a>. All rights reserved. (Last updated: 2018-04-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RequestBuilderFactory Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/RequestBuilderFactory" class="dashAnchor"></a>
+    <a title="RequestBuilderFactory Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Matchmore Docs</a> (47% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Matchmore Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RequestBuilderFactory Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlamofireRequestBuilder.html">AlamofireRequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsAPI.html">AlpsAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsManager.html">AlpsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BeaconTripleStore.html">BeaconTripleStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Device.html">Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceAPI.html">DeviceAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceUpdate.html">DeviceUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableDevice.html">EncodableDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconDevice.html">EncodableIBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconTriple.html">EncodableIBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableLocation.html">EncodableLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMatch.html">EncodableMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMobileDevice.html">EncodableMobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePinDevice.html">EncodablePinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePublication.html">EncodablePublication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableSubscription.html">EncodableSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconDevice.html">IBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconTriple.html">IBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainHelper.html">KeychainHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Location.html">Location</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LocationAPI.html">LocationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore21LocationUpdateManagerC">LocationUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore12MatchMonitorC">MatchMonitor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchMore.html">MatchMore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchesAPI.html">MatchesAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDevice.html">MobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDeviceStore.html">MobileDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MulticastDelegate.html">MulticastDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDevice.html">PinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDeviceStore.html">PinDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProximityEvent.html">ProximityEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Publication.html">Publication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationAPI.html">PublicationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationStore.html">PublicationStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore25RemoteNotificationManagerC">RemoteNotificationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestBuilder.html">RequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Subscription.html">Subscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionAPI.html">SubscriptionAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionStore.html">SubscriptionStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/DeviceType.html">DeviceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ErrorResponse.html">ErrorResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2peoiyAA17MulticastDelegateCyxG_xtlF">+=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2seoiyAA17MulticastDelegateCyxG_xtlF">-=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MatchDelegate.html">MatchDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestBuilderFactory.html">RequestBuilderFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MatchMoreConfig.html">MatchMoreConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Devicesa">Devices</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14OnMatchClosurea">OnMatchClosure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RequestBuilderFactory</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RequestBuilderFactory</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore21RequestBuilderFactoryP03getC0AA0bC0Cyqd__GmylF"></a>
+                    <a name="//apple_ref/swift/Method/getBuilder()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore21RequestBuilderFactoryP03getC0AA0bC0Cyqd__GmylF">getBuilder()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">getBuilder</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;.</span><span class="k">Type</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://matchmore.io" target="_blank" rel="external">Matchmore SDK Team</a>. All rights reserved. (Last updated: 2018-04-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

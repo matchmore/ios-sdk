@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Location Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Location" class="dashAnchor"></a>
+    <a title="Location Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Matchmore Docs</a> (47% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Matchmore Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Location Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlamofireRequestBuilder.html">AlamofireRequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsAPI.html">AlpsAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsManager.html">AlpsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BeaconTripleStore.html">BeaconTripleStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Device.html">Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceAPI.html">DeviceAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceUpdate.html">DeviceUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableDevice.html">EncodableDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconDevice.html">EncodableIBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconTriple.html">EncodableIBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableLocation.html">EncodableLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMatch.html">EncodableMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMobileDevice.html">EncodableMobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePinDevice.html">EncodablePinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePublication.html">EncodablePublication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableSubscription.html">EncodableSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconDevice.html">IBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconTriple.html">IBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainHelper.html">KeychainHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Location.html">Location</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LocationAPI.html">LocationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore21LocationUpdateManagerC">LocationUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore12MatchMonitorC">MatchMonitor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchMore.html">MatchMore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchesAPI.html">MatchesAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDevice.html">MobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDeviceStore.html">MobileDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MulticastDelegate.html">MulticastDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDevice.html">PinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDeviceStore.html">PinDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProximityEvent.html">ProximityEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Publication.html">Publication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationAPI.html">PublicationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationStore.html">PublicationStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore25RemoteNotificationManagerC">RemoteNotificationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestBuilder.html">RequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Subscription.html">Subscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionAPI.html">SubscriptionAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionStore.html">SubscriptionStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/DeviceType.html">DeviceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ErrorResponse.html">ErrorResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2peoiyAA17MulticastDelegateCyxG_xtlF">+=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2seoiyAA17MulticastDelegateCyxG_xtlF">-=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MatchDelegate.html">MatchDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestBuilderFactory.html">RequestBuilderFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MatchMoreConfig.html">MatchMoreConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Devicesa">Devices</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14OnMatchClosurea">OnMatchClosure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Location</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Location</span><span class="p">:</span> <span class="kt">JSONEncodable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC9createdAts5Int64VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/createdAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC9createdAts5Int64VSgvp">createdAt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The timestamp of the location creation in seconds since Jan 01 1970 (UTC).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">createdAt</span><span class="p">:</span> <span class="kt">Int64</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC8latitudeSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/latitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC8latitudeSdSgvp">latitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The latitude of the device in degrees, for instance &lsquo;46.5333&rsquo; (Lausanne, Switzerland).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">latitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC9longitudeSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/longitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC9longitudeSdSgvp">longitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The longitude of the device in degrees, for instance &lsquo;6.6667&rsquo; (Lausanne, Switzerland).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">longitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC8altitudeSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/altitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC8altitudeSdSgvp">altitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The altitude of the device in meters, for instance &lsquo;495.0&rsquo; (Lausanne, Switzerland).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">altitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC18horizontalAccuracySdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/horizontalAccuracy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC18horizontalAccuracySdSgvp">horizontalAccuracy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The horizontal accuracy of the location, measured on a scale from &lsquo;0.0&rsquo; to &lsquo;1.0&rsquo;, &lsquo;1.0&rsquo; being the most accurate. If this value is not specified then the default value of &lsquo;1.0&rsquo; is used.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">horizontalAccuracy</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC16verticalAccuracySdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/verticalAccuracy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC16verticalAccuracySdSgvp">verticalAccuracy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical accuracy of the location, measured on a scale from &lsquo;0.0&rsquo; to &lsquo;1.0&rsquo;, &lsquo;1.0&rsquo; being the most accurate. If this value is not specified then the default value of &lsquo;1.0&rsquo; is used.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">verticalAccuracy</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationCACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationCACycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/JSONEncodable"></a>
+                <a name="//apple_ref/swift/Section/JSONEncodable" class="dashAnchor"></a>
+                <a href="#/JSONEncodable">
+                  <h3 class="section-name">JSONEncodable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC12encodeToJSONypyF"></a>
+                    <a name="//apple_ref/swift/Method/encodeToJSON()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC12encodeToJSONypyF">encodeToJSON()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">encodeToJSON</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC09encodableB0AA09EncodableB0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/encodableLocation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC09encodableB0AA09EncodableB0Cvp">encodableLocation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">encodableLocation</span><span class="p">:</span> <span class="kt"><a href="../Classes/EncodableLocation.html">EncodableLocation</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationCACSd8latitude_Sd9longitudeSdSg8altitudeAF18horizontalAccuracyAF08verticalG0tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(latitude:longitude:altitude:horizontalAccuracy:verticalAccuracy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationCACSd8latitude_Sd9longitudeSdSg8altitudeAF18horizontalAccuracyAF08verticalG0tcfc">init(latitude:longitude:altitude:horizontalAccuracy:verticalAccuracy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">latitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">longitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">altitude</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">horizontalAccuracy</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">verticalAccuracy</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC2eeoiSbAC_ACSgtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC2eeoiSbAC_ACSgtFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">Location</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">Location</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore8LocationC02clB0So10CLLocationCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/clLocation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore8LocationC02clB0So10CLLocationCSgvp">clLocation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">clLocation</span><span class="p">:</span> <span class="kt">CLLocation</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://matchmore.io" target="_blank" rel="external">Matchmore SDK Team</a>. All rights reserved. (Last updated: 2018-04-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
