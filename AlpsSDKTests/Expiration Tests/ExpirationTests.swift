@@ -6,64 +6,61 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Foundation
-
-import Quick
-import Nimble
-
 @testable import AlpsSDK
+import Foundation
+import Nimble
+import Quick
 
 class ExpirationTests: QuickSpec {
-    
     class ExpiringObject: Expirable {
         var name: String?
         var duration: Double?
         var createdAt: Int64?
     }
-    
+
     override func spec() {
-        context ("expiration") {
+        context("expiration") {
             let fastExpiration = ExpiringObject()
-            fit ("fast") {
+            fit("fast") {
                 fastExpiration.name = "fast"
                 fastExpiration.createdAt = Date().nowTimeInterval()
                 fastExpiration.duration = 1
                 expect(fastExpiration.isExpired).to(equal(false))
             }
             let noCreatedAt = ExpiringObject()
-            fit ("no created at") {
+            fit("no created at") {
                 noCreatedAt.duration = 10
                 expect(noCreatedAt.isExpired).to(equal(true))
             }
-            
+
             let noDuration = ExpiringObject()
-            fit ("no duration") {
+            fit("no duration") {
                 noDuration.createdAt = Date().nowTimeInterval()
                 expect(noDuration.isExpired).to(equal(true))
             }
-            
+
             let empty = ExpiringObject()
-            fit ("empty") {
+            fit("empty") {
                 expect(empty.isExpired).to(equal(true))
             }
-            
+
             let longExpiration = ExpiringObject()
-            fit ("long") {
+            fit("long") {
                 longExpiration.name = "long"
                 longExpiration.createdAt = Date().nowTimeInterval()
                 longExpiration.duration = 1000
                 expect(longExpiration.isExpired).to(equal(false))
             }
-            
+
             let objects: [ExpiringObject] = [fastExpiration, noCreatedAt, noDuration, empty, longExpiration]
-            fit ("collection") {
+            fit("collection") {
                 let withoutExpired = objects.withoutExpired
                 expect(withoutExpired.count).to(equal(2))
                 expect(withoutExpired.first?.name).to(equal("fast"))
                 expect(withoutExpired.last?.name).to(equal("long"))
             }
-            
-            fit ("collection after expiration") {
+
+            fit("collection after expiration") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                         done()

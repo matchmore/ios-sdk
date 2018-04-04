@@ -7,5 +7,4 @@
 
 import Foundation
 
-
 public typealias Matches = [Match]

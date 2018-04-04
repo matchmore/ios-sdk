@@ -6,8 +6,8 @@
 //  Copyright © 2018 Alps. All rights reserved.
 //
 
-import Foundation
 import AlpsSDK
+import Foundation
 
 class ExampleMatchHandler: MatchDelegate {
     var onMatch: OnMatchClosure?

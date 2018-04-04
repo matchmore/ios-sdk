@@ -13,17 +13,17 @@ public extension MatchMore {
     public static var lastLocation: Location? {
         return instance.locationUpdateManager.lastLocation
     }
-    
+
     /// Starts location updating and sending to MatchMore's cloud.
     public class func startUpdatingLocation() {
         instance.contextManager.locationManager?.startUpdatingLocation()
     }
-    
+
     /// Stops location updating and sending to MatchMore's cloud.
     public class func stopUpdatingLocation() {
         instance.contextManager.locationManager?.stopUpdatingLocation()
     }
-    
+
     /// Forces refreshing known iBecaon devices from MatchMore cloud.
     public class func refreshKnownBeacons() {
         instance.contextManager.beaconTriples.updateBeaconTriplets {

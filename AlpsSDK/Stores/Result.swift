@@ -10,13 +10,13 @@
 public enum Result<T> {
     case success(T)
     case failure(ErrorResponse?)
-    
+
     /// Convenience accessor to succesful response object.
     public var responseObject: T? {
         guard case let .success(responseObject) = self else { return nil }
         return responseObject
     }
-    
+
     /// Convenience accessor to failure error messeage.
     public var errorMessage: String? {
         guard case let .failure(error) = self else { return nil }

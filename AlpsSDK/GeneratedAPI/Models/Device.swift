@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** A device might be either virtual like a pin device or physical like a mobile phone or iBeacon device.  */
 open class Device: JSONEncodable {
-
     /** The id (UUID) of the device. */
     public var id: String?
     /** The timestamp of the device&#39;s creation in seconds since Jan 01 1970 (UTC).  */
@@ -26,16 +24,17 @@ open class Device: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    open func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        nillableDictionary["id"] = self.id
-        nillableDictionary["createdAt"] = self.createdAt?.encodeToJSON()
-        nillableDictionary["updatedAt"] = self.updatedAt?.encodeToJSON()
-        nillableDictionary["group"] = self.group?.encodeToJSON()
-        nillableDictionary["name"] = self.name
-        nillableDictionary["deviceType"] = self.deviceType?.encodeToJSON()
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open func encodeToJSON() -> Any {
+        var nillableDictionary = [String: Any?]()
+        nillableDictionary["id"] = id
+        nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
+        nillableDictionary["updatedAt"] = updatedAt?.encodeToJSON()
+        nillableDictionary["group"] = group?.encodeToJSON()
+        nillableDictionary["name"] = name
+        nillableDictionary["deviceType"] = deviceType?.encodeToJSON()
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

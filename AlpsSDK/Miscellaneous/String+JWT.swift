@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func getWorldIdFromToken() -> String {
-        var segments: [String] = self.components(separatedBy: ".")
+        var segments: [String] = components(separatedBy: ".")
         if segments.count < 2 { return "" }
         var base64String: String = segments[1]
         let requiredLength: Int = Int(4 * ceil(Float(base64String.count) / 4.0))

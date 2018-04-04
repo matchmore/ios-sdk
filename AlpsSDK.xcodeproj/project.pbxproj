@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13A76A8EDB9F2DED53DEDEB1 /* Pods_AlpsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33789B5203D9E810054B974 /* Pods_AlpsSDK.framework */; };
 		20B92C12EF206AEFF0F578FE /* Pods_AlpsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403F2E697EE619B8F8DA37A9 /* Pods_AlpsExample.framework */; };
 		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
@@ -226,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC236A71A7A6F4293943AE31 /* Pods_AlpsSDK.framework in Frameworks */,
+				13A76A8EDB9F2DED53DEDEB1 /* Pods_AlpsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +538,7 @@
 				5092AC311D93CB0C00EF8ECF /* Resources */,
 				C3D80F581F94DB3B004ADC7D /* Swift Lint */,
 				F35C3812E8F96A261F52B640 /* [CP] Copy Pods Resources */,
+				C385ADB32074B819001C3DFA /* Swift Format */,
 			);
 			buildRules = (
 			);
@@ -785,6 +788,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpsExample/Pods-AlpsExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C385ADB32074B819001C3DFA /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --commas inline \"${SRCROOT}/AlpsSDK\"\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --commas inline \"${SRCROOT}/AlpsSDKTests\"\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --commas inline \"${SRCROOT}/AlpsExample\"";
 		};
 		C3D80F581F94DB3B004ADC7D /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1064,7 +1081,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

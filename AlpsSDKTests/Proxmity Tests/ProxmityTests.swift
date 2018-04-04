@@ -6,12 +6,10 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Foundation
-
-import Quick
-import Nimble
-
 @testable import AlpsSDK
+import Foundation
+import Nimble
+import Quick
 
 class ProxmityTests: QuickSpec {
     override func spec() {

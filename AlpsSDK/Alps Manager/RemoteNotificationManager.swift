@@ -15,26 +15,25 @@ protocol RemoteNotificationManagerDelegate: class {
 
 let kTokenKey = "kTokenKey"
 public class RemoteNotificationManager {
-    
     private(set) weak var delegate: RemoteNotificationManagerDelegate?
     var deviceToken: String? {
         didSet {
-            KeychainHelper.shared[kTokenKey] = self.deviceToken
+            KeychainHelper.shared[kTokenKey] = deviceToken
         }
     }
-    
+
     init(delegate: RemoteNotificationManagerDelegate) {
-        self.deviceToken = KeychainHelper.shared[kTokenKey]
+        deviceToken = KeychainHelper.shared[kTokenKey]
         self.delegate = delegate
     }
-    
+
     func registerDeviceToken(deviceToken: String) {
         if self.deviceToken != deviceToken {
             self.deviceToken = deviceToken
-            self.delegate?.didReceiveDeviceTokenUpdate(deviceToken: deviceToken)
+            delegate?.didReceiveDeviceTokenUpdate(deviceToken: deviceToken)
         }
     }
-    
+
     func process(pushNotification: [AnyHashable: Any]) {
         guard pushNotification["matchId"] != nil else { return }
         delegate?.didReceiveMatchUpdateForDeviceId(deviceId: "")

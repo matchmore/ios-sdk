@@ -6,25 +6,24 @@
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 protocol ContextManagerDelegate: class {
     func didUpdateLocation(location: CLLocation)
 }
 
 class ContextManager: NSObject, CLLocationManagerDelegate {
-    
     private weak var delegate: ContextManagerDelegate?
-    
+
     let proximityHandler = ProximityHandler()
 
     var locationManager: CLLocationManager?
-    
+
     let beaconTriples: BeaconTripleStore
 
     init(id: String, delegate: ContextManagerDelegate, locationManager: CLLocationManager) {
-        self.beaconTriples = BeaconTripleStore(id: id)
+        beaconTriples = BeaconTripleStore(id: id)
         super.init()
         self.delegate = delegate
         self.locationManager = locationManager
@@ -33,13 +32,13 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Core Location Manager Delegate
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let lastLocation = locations.last else { return }
         delegate?.didUpdateLocation(location: lastLocation)
     }
 
     // MARK: - Beacons
-    
+
     func startRanging() {
         beaconTriples.findAll { result in
             result.forEach {
@@ -48,16 +47,16 @@ class ContextManager: NSObject, CLLocationManagerDelegate {
             }
         }
     }
-    
+
     // MARK: - Proximity Handler Delegate
 
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+    func locationManager(_: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in _: CLBeaconRegion) {
         beaconTriples.findAll { result in
             self.proximityHandler.rangeBeacons(beacons: beacons, knownBeacons: result)
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+
+    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
 }

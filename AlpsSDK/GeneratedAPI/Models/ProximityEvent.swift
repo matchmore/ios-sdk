@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** A proximity event is triggered to the core when a mobile device detects an iBeacon device in his Bluetooth Low Energy(BLE) range.  */
 open class ProximityEvent: JSONEncodable {
-
     /** The id (UUID) of the proximity event. */
     public var id: String?
     /** The timestamp of the proximity event in seconds since Jan 01 1970 (UTC).  */
@@ -23,14 +21,15 @@ open class ProximityEvent: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    open func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        nillableDictionary["id"] = self.id
-        nillableDictionary["createdAt"] = self.createdAt?.encodeToJSON()
-        nillableDictionary["deviceId"] = self.deviceId
-        nillableDictionary["distance"] = self.distance
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open func encodeToJSON() -> Any {
+        var nillableDictionary = [String: Any?]()
+        nillableDictionary["id"] = id
+        nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
+        nillableDictionary["deviceId"] = deviceId
+        nillableDictionary["distance"] = distance
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

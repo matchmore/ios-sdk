@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** A publication can be seen as a JavaMessagingService (JMS) publication extended with the notion of a geographical zone. The zone is defined as circle with a center at the given location and a range around that location.  */
 open class Publication: JSONEncodable {
-
     /** The id (UUID) of the publication. */
     public var id: String?
     /** The timestamp of the publication creation in seconds since Jan 01 1970 (UTC).  */
@@ -33,19 +31,20 @@ open class Publication: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    open func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        nillableDictionary["id"] = self.id
-        nillableDictionary["createdAt"] = self.createdAt?.encodeToJSON()
-        nillableDictionary["worldId"] = self.worldId
-        nillableDictionary["deviceId"] = self.deviceId
-        nillableDictionary["topic"] = self.topic
-        nillableDictionary["location"] = self.location?.encodeToJSON()
-        nillableDictionary["range"] = self.range
-        nillableDictionary["duration"] = self.duration
-        nillableDictionary["properties"] = self.properties
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open func encodeToJSON() -> Any {
+        var nillableDictionary = [String: Any?]()
+        nillableDictionary["id"] = id
+        nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
+        nillableDictionary["worldId"] = worldId
+        nillableDictionary["deviceId"] = deviceId
+        nillableDictionary["topic"] = topic
+        nillableDictionary["location"] = location?.encodeToJSON()
+        nillableDictionary["range"] = range
+        nillableDictionary["duration"] = duration
+        nillableDictionary["properties"] = properties
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

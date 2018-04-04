@@ -4,8 +4,8 @@
 // https://github.com/swagger-api/swagger-codegen
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 extension Bool: JSONEncodable {
     func encodeToJSON() -> Any { return self as Any }
@@ -45,7 +45,7 @@ private func encodeIfPossible<T>(_ object: T) -> Any {
 
 extension Array: JSONEncodable {
     func encodeToJSON() -> Any {
-        return self.map(encodeIfPossible)
+        return map(encodeIfPossible)
     }
 }
 
@@ -61,7 +61,7 @@ extension Dictionary: JSONEncodable {
 
 extension Data: JSONEncodable {
     func encodeToJSON() -> Any {
-        return self.base64EncodedString(options: Data.Base64EncodingOptions())
+        return base64EncodedString(options: Data.Base64EncodingOptions())
     }
 }
 
@@ -80,8 +80,6 @@ extension Date: JSONEncodable {
 
 extension UUID: JSONEncodable {
     func encodeToJSON() -> Any {
-        return self.uuidString
+        return uuidString
     }
 }
-
-

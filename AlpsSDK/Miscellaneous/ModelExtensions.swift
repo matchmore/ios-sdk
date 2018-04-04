@@ -12,7 +12,7 @@ extension IBeaconDevice {
     public convenience init(name: String, proximityUUID: String, major: NSNumber, minor: NSNumber) {
         self.init()
         self.name = name
-        self.deviceType = DeviceType.ibeacondevice
+        deviceType = DeviceType.ibeacondevice
         self.proximityUUID = proximityUUID
         self.major = major as? Int32
         self.minor = minor as? Int32
@@ -23,7 +23,7 @@ extension MobileDevice {
     public convenience init(name: String, platform: String, deviceToken: String, location: Location?) {
         self.init()
         self.name = name
-        self.deviceType = DeviceType.mobileDevice
+        deviceType = DeviceType.mobileDevice
         self.platform = platform
         self.deviceToken = deviceToken
         self.location = location
@@ -34,7 +34,7 @@ extension PinDevice {
     public convenience init(name: String, location: Location) {
         self.init()
         self.name = name
-        self.deviceType = DeviceType.pinDevice
+        deviceType = DeviceType.pinDevice
         self.location = location
     }
 }
@@ -43,7 +43,7 @@ extension Device: Hashable {
     public var hashValue: Int {
         return id!.hashValue
     }
-    
+
     public static func == (lhs: Device, rhs: Device) -> Bool {
         return lhs.id! == rhs.id!
     }
@@ -80,23 +80,23 @@ public extension Location {
         self.horizontalAccuracy = horizontalAccuracy
         self.verticalAccuracy = verticalAccuracy
     }
-    
+
     internal convenience init(location: CLLocation) {
         self.init()
-        self.latitude = location.coordinate.latitude
-        self.longitude = location.coordinate.longitude
-        self.altitude = location.altitude
-        self.horizontalAccuracy = location.horizontalAccuracy
-        self.verticalAccuracy = location.verticalAccuracy
-        self.createdAt = Int64(location.timestamp.timeIntervalSince1970 * 1000)
+        latitude = location.coordinate.latitude
+        longitude = location.coordinate.longitude
+        altitude = location.altitude
+        horizontalAccuracy = location.horizontalAccuracy
+        verticalAccuracy = location.verticalAccuracy
+        createdAt = Int64(location.timestamp.timeIntervalSince1970 * 1000)
     }
-    
+
     public static func == (lhs: Location, rhs: Location?) -> Bool {
         guard let rhsLatitude = rhs?.latitude else { return false }
-        guard let rhsLongitude = rhs?.longitude else {return false}
+        guard let rhsLongitude = rhs?.longitude else { return false }
         return lhs.latitude! == rhsLatitude && lhs.longitude! == rhsLongitude
     }
-    
+
     public var clLocation: CLLocation? {
         guard
             let latitude = latitude,
@@ -106,18 +106,17 @@ public extension Location {
             let verticalAccuracy = verticalAccuracy,
             let createdAt = createdAt
         else { return nil }
-        let timestamp = Date(timeIntervalSince1970: TimeInterval(createdAt)/1000.0)
+        let timestamp = Date(timeIntervalSince1970: TimeInterval(createdAt) / 1000.0)
         let clLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
-                                       altitude: altitude,
-                                       horizontalAccuracy: horizontalAccuracy,
-                                       verticalAccuracy: verticalAccuracy,
-                                       timestamp: timestamp)
+                                    altitude: altitude,
+                                    horizontalAccuracy: horizontalAccuracy,
+                                    verticalAccuracy: verticalAccuracy,
+                                    timestamp: timestamp)
         return clLocation
     }
 }
 
 extension Match: CustomStringConvertible, Hashable {
-    
     public var hashValue: Int {
         return id!.hashValue
     }
@@ -148,7 +147,7 @@ extension CLProximity {
         case .far: return "far"
         }
     }
-    
+
     var distance: Double {
         switch self {
         case .immediate: return 0.5

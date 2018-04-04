@@ -7,9 +7,9 @@
 //
 
 /// filters location data update
-final public class LocationUpdateManager {
+public final class LocationUpdateManager {
     private(set) var lastLocation: Location?
-    
+
     func tryToSend(location: Location, for deviceId: String) {
         if location == lastLocation { return }
         LocationAPI.createLocation(deviceId: deviceId, location: location, completion: { _, _ in

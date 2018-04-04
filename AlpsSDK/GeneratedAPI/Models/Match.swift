@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** An object representing a match between a subscription and a publication. */
 open class Match: JSONEncodable {
-
     /** The id (UUID) of the match. */
     public var id: String?
     /** The timestamp of the match in seconds since Jan 01 1970 (UTC). */
@@ -21,14 +19,15 @@ open class Match: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    open func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        nillableDictionary["id"] = self.id
-        nillableDictionary["createdAt"] = self.createdAt?.encodeToJSON()
-        nillableDictionary["publication"] = self.publication?.encodeToJSON()
-        nillableDictionary["subscription"] = self.subscription?.encodeToJSON()
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open func encodeToJSON() -> Any {
+        var nillableDictionary = [String: Any?]()
+        nillableDictionary["id"] = id
+        nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
+        nillableDictionary["publication"] = publication?.encodeToJSON()
+        nillableDictionary["subscription"] = subscription?.encodeToJSON()
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

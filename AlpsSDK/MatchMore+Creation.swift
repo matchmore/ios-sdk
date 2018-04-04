@@ -27,14 +27,14 @@ public extension MatchMore {
                                         platform: device?.platform ?? uiDevice.systemName,
                                         deviceToken: device?.deviceToken ?? instance.remoteNotificationManager.deviceToken ?? "",
                                         location: device?.location ?? instance.locationUpdateManager.lastLocation)
-        instance.mobileDevices.create(item: mobileDevice) { (result) in
+        instance.mobileDevices.create(item: mobileDevice) { result in
             if let mainDevice = result.responseObject, shouldStartMonitoring {
                 instance.matchMonitor.startMonitoringFor(device: mainDevice)
             }
             completion(result)
         }
     }
-    
+
     /// Creates new pin device. Device created this way can be accessed via pin devices store: `MatchMore.pinDevices` or through callback's `Result`.
     ///
     /// - Parameters:
@@ -42,14 +42,14 @@ public extension MatchMore {
     ///   - shouldStartMonitoring: (Optional) flag that determines if created device should monitored for matches immediately after creating.
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPinDevice(pinDevice: PinDevice, shouldStartMonitoring: Bool = true, completion: @escaping ((Result<PinDevice>) -> Void)) {
-        instance.pinDevices.create(item: pinDevice) { (result) in
+        instance.pinDevices.create(item: pinDevice) { result in
             if let pinDevice = result.responseObject, shouldStartMonitoring {
                 instance.matchMonitor.startMonitoringFor(device: pinDevice)
             }
             completion(result)
         }
     }
-    
+
     /// Creates new publication attached to given device.
     ///
     /// - Parameters:
@@ -58,11 +58,11 @@ public extension MatchMore {
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPublication(publication: Publication, forDevice: Device, completion: @escaping ((Result<Publication>) -> Void)) {
         publication.deviceId = forDevice.id
-        instance.publications.create(item: publication) { (result) in
+        instance.publications.create(item: publication) { result in
             completion(result)
         }
     }
-    
+
     /// Creates new publication attached to beacon.
     ///
     /// - Parameters:
@@ -71,11 +71,11 @@ public extension MatchMore {
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPublication(publication: Publication, forBeacon: IBeaconTriple, completion: @escaping ((Result<Publication>) -> Void)) {
         publication.deviceId = forBeacon.deviceId
-        instance.publications.create(item: publication) { (result) in
+        instance.publications.create(item: publication) { result in
             completion(result)
         }
     }
-    
+
     /// Creates new publication attached to main device.
     ///
     /// - Parameters:
@@ -83,11 +83,11 @@ public extension MatchMore {
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createPublicationForMainDevice(publication: Publication, completion: @escaping ((Result<Publication>) -> Void)) {
         publication.deviceId = instance.mobileDevices.main?.id
-        instance.publications.create(item: publication) { (result) in
+        instance.publications.create(item: publication) { result in
             completion(result)
         }
     }
-    
+
     /// Creates new subscription attached to device with given id.
     ///
     /// - Parameters:
@@ -96,11 +96,11 @@ public extension MatchMore {
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createSubscription(subscription: Subscription, forDevice: Device, completion: @escaping ((Result<Subscription>) -> Void)) {
         subscription.deviceId = forDevice.id
-        instance.subscriptions.create(item: subscription) { (result) in
+        instance.subscriptions.create(item: subscription) { result in
             completion(result)
         }
     }
-    
+
     /// Creates new subscription attached to device with given id.
     ///
     /// - Parameters:
@@ -108,11 +108,11 @@ public extension MatchMore {
     ///   - completion: Callback that returns response from the MatchMore cloud.
     public class func createSubscriptionForMainDevice(subscription: Subscription, completion: @escaping ((Result<Subscription>) -> Void)) {
         subscription.deviceId = instance.mobileDevices.main?.id
-        instance.subscriptions.create(item: subscription) { (result) in
+        instance.subscriptions.create(item: subscription) { result in
             completion(result)
         }
     }
-    
+
     /// Start monitoring matches for given device. In order to receive matches implement `MatchDelegate`.
     ///
     /// - Parameters:
@@ -120,7 +120,7 @@ public extension MatchMore {
     public class func startMonitoringMatches(forDevice: Device) {
         instance.matchMonitor.startMonitoringFor(device: forDevice)
     }
-    
+
     /// Stop monitoring matches for given device. In order to receive matches implement `MatchDelegate`.
     ///
     /// - Parameters:

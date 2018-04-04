@@ -6,14 +6,12 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Foundation
-import Quick
-import Nimble
-
 @testable import AlpsSDK
+import Foundation
+import Nimble
+import Quick
 
 class MobileDevicePersistenceTests: QuickSpec {
-
     override func spec() {
         let fileName = "TestMobileDeviceFile"
         let archiver = NSKeyedArchiver(forWritingWith: NSMutableData())
@@ -21,22 +19,22 @@ class MobileDevicePersistenceTests: QuickSpec {
         let encodableMobileDevice = mobileDevice.encodableMobileDevice
         var decodedMobileDevice: EncodableMobileDevice?
         context("mobile device saving") {
-            fit ("encoding") {
+            fit("encoding") {
                 archiver.encode(encodableMobileDevice, forKey: "mobileDevice")
                 expect(archiver.encodedData.count).to(beGreaterThan(0))
             }
-            
-            fit ("saving") {
+
+            fit("saving") {
                 let success = PersistenceManager.save(object: encodableMobileDevice, to: fileName)
                 expect(success).to(beTrue())
             }
-            
-            fit ("reading") {
+
+            fit("reading") {
                 decodedMobileDevice = PersistenceManager.read(type: EncodableMobileDevice.self, from: fileName)
                 expect(decodedMobileDevice).toNot(beNil())
             }
-            
-            fit ("decoding") {
+
+            fit("decoding") {
                 let mobileDevice = decodedMobileDevice?.object
                 expect(mobileDevice?.name).to(equal("Test Archived Device"))
                 expect(mobileDevice?.platform).to(equal("Test iOS"))

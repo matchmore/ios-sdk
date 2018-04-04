@@ -16,38 +16,39 @@ public class MatchMonitor {
     private(set) weak var delegate: MatchMonitorDelegate?
     private(set) var monitoredDevices = Set<Device>()
     private(set) var deliveredMatches = Set<Match>()
-    
+
     private var timer: Timer?
     private var socket: WebSocket?
 
     init(delegate: MatchMonitorDelegate) {
         self.delegate = delegate
     }
-    
+
     // MARK: - Device Monitoring
-    
+
     func startMonitoringFor(device: Device) {
         monitoredDevices.insert(device)
     }
-    
+
     func stopMonitoringFor(device: Device) {
         monitoredDevices.remove(device)
     }
-    
+
     // MARK: - Polling
+
     static let kDefaultPollingTimeInterval = 5.0
     func startPollingMatches(pollingTimeInterval: TimeInterval = kDefaultPollingTimeInterval) {
         if timer != nil { return }
         timer = Timer.scheduledTimer(timeInterval: pollingTimeInterval, target: self, selector: #selector(getMatches), userInfo: nil, repeats: true)
     }
-    
+
     func stopPollingMatches() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     // MARK: - Socket
-    
+
     // TODO: start new socket after adding new device ?
     func openSocketForMatches() {
         if socket != nil { return }
@@ -65,7 +66,7 @@ public class MatchMonitor {
                 self.getMatches()
             }
         }
-        socket?.onDisconnect = { error in
+        socket?.onDisconnect = { _ in
             self.socket?.connect()
         }
         socket?.onPong = { _ in
@@ -73,23 +74,23 @@ public class MatchMonitor {
         }
         socket?.connect()
     }
-    
+
     func closeSocketForMatches() {
         socket?.disconnect()
         socket = nil
     }
-    
+
     // MARK: - Getting Matches
-    
+
     @objc func getMatches() {
-        self.monitoredDevices.forEach {
+        monitoredDevices.forEach {
             getMatchesForDevice(device: $0)
         }
     }
-    
+
     private func getMatchesForDevice(device: Device) {
         guard let deviceId = device.id else { return }
-        MatchesAPI.getMatches(deviceId: deviceId) { (matches, error) in
+        MatchesAPI.getMatches(deviceId: deviceId) { matches, error in
             guard let matches = matches, matches.count > 0, error == nil else { return }
             let union = self.deliveredMatches.union(Set(matches))
             if union != self.deliveredMatches {
@@ -98,10 +99,10 @@ public class MatchMonitor {
             }
         }
     }
-    
+
     // MARK: - Remote Notification Manager Delegate
-    
-    func refreshMatchesFor(deviceId: String) {
+
+    func refreshMatchesFor(deviceId _: String) {
         getMatches()
     }
 }

@@ -17,10 +17,10 @@ public protocol MatchDelegate: class {
 
 public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNotificationManagerDelegate {
     public var delegates = MulticastDelegate<MatchDelegate>()
-    
+
     let apiKey: String
     let worldId: String
-    
+
     var baseURL: String {
         set {
             AlpsAPI.basePath = newValue
@@ -28,48 +28,48 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
             return AlpsAPI.basePath
         }
     }
-    
+
     lazy var contextManager = ContextManager(id: worldId, delegate: self, locationManager: locationManager)
     lazy var matchMonitor = MatchMonitor(delegate: self)
     lazy var remoteNotificationManager = RemoteNotificationManager(delegate: self)
-    
+
     lazy var publications = PublicationStore(id: worldId)
     lazy var subscriptions = SubscriptionStore(id: worldId)
-    
+
     lazy var mobileDevices: MobileDeviceStore = {
         let mobileDevices = MobileDeviceStore(id: worldId)
         mobileDevices.delegates += publications
         mobileDevices.delegates += subscriptions
         return mobileDevices
     }()
-    
+
     lazy var pinDevices: PinDeviceStore = {
         let pinDevices = PinDeviceStore(id: worldId)
         pinDevices.delegates += publications
         pinDevices.delegates += subscriptions
         return pinDevices
     }()
-    
+
     lazy var locationUpdateManager = LocationUpdateManager()
     private let locationManager: CLLocationManager
 
     internal init(apiKey: String, baseURL: String? = nil, customLocationManager: CLLocationManager?) {
         self.apiKey = apiKey
-        self.worldId = apiKey.getWorldIdFromToken()
+        worldId = apiKey.getWorldIdFromToken()
         if let customLocationManager = customLocationManager {
-            self.locationManager = customLocationManager
+            locationManager = customLocationManager
         } else {
-            self.locationManager = CLLocationManager()
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestAlwaysAuthorization()
-            self.locationManager.requestWhenInUseAuthorization()
+            locationManager = CLLocationManager()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
-        self.setupAPI()
+        setupAPI()
         if let baseURL = baseURL {
             self.baseURL = baseURL
         }
     }
-    
+
     private func setupAPI() {
         let device = UIDevice.current
         let headers = [
@@ -80,39 +80,38 @@ public class AlpsManager: MatchMonitorDelegate, ContextManagerDelegate, RemoteNo
         ]
         AlpsAPI.customHeaders = headers
     }
-    
+
     // MARK: - Match Monitor Delegate
-    
+
     func didFind(matches: [Match], for device: Device) {
         delegates.invoke { $0.onMatch?(matches, device) }
     }
-    
+
     // MARK: - Context Manager Delegate
-    
+
     func didUpdateLocation(location: CLLocation) {
-        mobileDevices.findAll { (result) in
+        mobileDevices.findAll { result in
             result.forEach {
                 guard let deviceId = $0.id else { return }
                 self.locationUpdateManager.tryToSend(location: Location(location: location), for: deviceId)
             }
         }
     }
-    
+
     // MARK: - Remote Notification Manager Delegate
-    
+
     func didReceiveMatchUpdateForDeviceId(deviceId: String) {
         matchMonitor.refreshMatchesFor(deviceId: deviceId)
     }
-    
+
     func didReceiveDeviceTokenUpdate(deviceToken: String) {
-        mobileDevices.findAll { (result) in
+        mobileDevices.findAll { result in
             result.forEach {
                 guard let deviceId = $0.id else { return }
                 let deviceUpdate = DeviceUpdate()
                 deviceUpdate.deviceToken = deviceToken
-                DeviceAPI.updateDevice(deviceId: deviceId, device: deviceUpdate, completion: { (_, _) in })
+                DeviceAPI.updateDevice(deviceId: deviceId, device: deviceUpdate, completion: { _, _ in })
             }
         }
     }
-
 }

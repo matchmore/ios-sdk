@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** An iBeacon device represents an Apple conform iBeacon announcing its presence via Bluetooth advertising packets.  */
 open class IBeaconDevice: Device {
-
     /** The UUID of the beacon, the purpose is to distinguish iBeacons in your network, from all other beacons in networks outside your control.  */
     public var proximityUUID: String?
     /** Major values are intended to identify and distinguish a group.  */
@@ -18,16 +16,15 @@ open class IBeaconDevice: Device {
     /** Minor values are intended to identify and distinguish an individual.  */
     public var minor: Int32?
 
-    
-
     // MARK: JSONEncodable
-    override open func encodeToJSON() -> Any {
-        var nillableDictionary = super.encodeToJSON() as? [String:Any?] ?? [String:Any?]()
-        nillableDictionary["proximityUUID"] = self.proximityUUID
-        nillableDictionary["major"] = self.major?.encodeToJSON()
-        nillableDictionary["minor"] = self.minor?.encodeToJSON()
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open override func encodeToJSON() -> Any {
+        var nillableDictionary = super.encodeToJSON() as? [String: Any?] ?? [String: Any?]()
+        nillableDictionary["proximityUUID"] = proximityUUID
+        nillableDictionary["major"] = major?.encodeToJSON()
+        nillableDictionary["minor"] = minor?.encodeToJSON()
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

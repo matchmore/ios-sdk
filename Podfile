@@ -2,11 +2,16 @@
 platform :ios, '9.0'
 use_frameworks!
 
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
 target 'AlpsSDK' do
     # Socket
     pod 'Starscream', '~> 3.0'
     # Network
     pod 'Alamofire', '~> 4.6'
+    # Autoformatting
+    pod 'SwiftFormat/CLI'
 end
 
 target 'AlpsExample' do

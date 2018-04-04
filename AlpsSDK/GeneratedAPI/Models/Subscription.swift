@@ -7,10 +7,8 @@
 
 import Foundation
 
-
 /** A subscription can be seen as a JMS subscription extended with the notion of geographical zone. The zone again being defined as circle with a center at the given location and a range around that location.  */
 open class Subscription: JSONEncodable {
-
     /** The id (UUID) of the subscription. */
     public var id: String?
     /** The timestamp of the subscription creation in seconds since Jan 01 1970 (UTC).  */
@@ -37,21 +35,22 @@ open class Subscription: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    open func encodeToJSON() -> Any {
-        var nillableDictionary = [String:Any?]()
-        nillableDictionary["id"] = self.id
-        nillableDictionary["createdAt"] = self.createdAt?.encodeToJSON()
-        nillableDictionary["worldId"] = self.worldId
-        nillableDictionary["deviceId"] = self.deviceId
-        nillableDictionary["topic"] = self.topic
-        nillableDictionary["location"] = self.location?.encodeToJSON()
-        nillableDictionary["selector"] = self.selector
-        nillableDictionary["range"] = self.range
-        nillableDictionary["duration"] = self.duration
-        nillableDictionary["matchTTL"] = self.matchTTL
-        nillableDictionary["pushers"] = self.pushers?.encodeToJSON()
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open func encodeToJSON() -> Any {
+        var nillableDictionary = [String: Any?]()
+        nillableDictionary["id"] = id
+        nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
+        nillableDictionary["worldId"] = worldId
+        nillableDictionary["deviceId"] = deviceId
+        nillableDictionary["topic"] = topic
+        nillableDictionary["location"] = location?.encodeToJSON()
+        nillableDictionary["selector"] = selector
+        nillableDictionary["range"] = range
+        nillableDictionary["duration"] = duration
+        nillableDictionary["matchTTL"] = matchTTL
+        nillableDictionary["pushers"] = pushers?.encodeToJSON()
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }

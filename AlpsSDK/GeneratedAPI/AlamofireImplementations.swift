@@ -4,8 +4,8 @@
 // https://github.com/swagger-api/swagger-codegen
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class AlamofireRequestBuilderFactory: RequestBuilderFactory {
     func getBuilder<T>() -> RequestBuilder<T>.Type {
@@ -17,7 +17,7 @@ class AlamofireRequestBuilderFactory: RequestBuilderFactory {
 private var managerStore: [String: Alamofire.SessionManager] = [:]
 
 open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
-    required public init(method: String, URLString: String, parameters: [String : Any]?, isBody: Bool, headers: [String : String] = [:]) {
+    public required init(method: String, URLString: String, parameters: [String: Any]?, isBody: Bool, headers: [String: String] = [:]) {
         super.init(method: method, URLString: URLString, parameters: parameters, isBody: isBody, headers: headers)
     }
 
@@ -38,7 +38,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
      Return nil to use the default behavior (inferring the Content-Type from
      the file extension).  Return the desired Content-Type otherwise.
      */
-    open func contentTypeForFormPart(fileURL: URL) -> String? {
+    open func contentTypeForFormPart(fileURL _: URL) -> String? {
         return nil
     }
 
@@ -46,21 +46,21 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
      May be overridden by a subclass if you want to control the request
      configuration (e.g. to override the cache policy).
      */
-    open func makeRequest(manager: SessionManager, method: HTTPMethod, encoding: ParameterEncoding, headers: [String:String]) -> DataRequest {
+    open func makeRequest(manager: SessionManager, method: HTTPMethod, encoding: ParameterEncoding, headers: [String: String]) -> DataRequest {
         return manager.request(URLString, method: method, parameters: parameters, encoding: encoding, headers: headers)
     }
 
-    override open func execute(_ completion: @escaping (_ response: Response<T>?, _ error: Error?) -> Void) {
-        let managerId:String = UUID().uuidString
+    open override func execute(_ completion: @escaping (_ response: Response<T>?, _ error: Error?) -> Void) {
+        let managerId: String = UUID().uuidString
         // Create a new manager for each request to customize its request header
         let manager = createSessionManager()
         managerStore[managerId] = manager
 
-        let encoding:ParameterEncoding = isBody ? JSONEncoding() : URLEncoding()
+        let encoding: ParameterEncoding = isBody ? JSONEncoding() : URLEncoding()
 
         let xMethod = Alamofire.HTTPMethod(rawValue: method)
         let fileKeys = parameters == nil ? [] : parameters!.filter { $1 is NSURL }
-                                                           .map { $0.0 }
+            .map { $0.0 }
 
         if fileKeys.count > 0 {
             manager.upload(multipartFormData: { mpForm in
@@ -69,8 +69,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                     case let fileURL as URL:
                         if let mimeType = self.contentTypeForFormPart(fileURL: fileURL) {
                             mpForm.append(fileURL, withName: k, fileName: fileURL.lastPathComponent, mimeType: mimeType)
-                        }
-                        else {
+                        } else {
                             mpForm.append(fileURL, withName: k)
                         }
                         break
@@ -85,14 +84,14 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                         break
                     }
                 }
-                }, to: URLString, method: xMethod!, headers: nil, encodingCompletion: { encodingResult in
+            }, to: URLString, method: xMethod!, headers: nil, encodingCompletion: { encodingResult in
                 switch encodingResult {
-                case .success(let upload, _, _):
+                case let .success(upload, _, _):
                     if let onProgressReady = self.onProgressReady {
                         onProgressReady(upload.uploadProgress)
                     }
                     self.processRequest(request: upload, managerId, completion)
-                case .failure(let encodingError):
+                case let .failure(encodingError):
                     completion(nil, ErrorResponse.Error(415, nil, encodingError))
                 }
             })
@@ -103,7 +102,6 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
             }
             processRequest(request: request, managerId, completion)
         }
-
     }
 
     private func processRequest(request: DataRequest, _ managerId: String, _ completion: @escaping (_ response: Response<T>?, _ error: Error?) -> Void) {
@@ -116,7 +114,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         }
 
         let validatedRequest = request.validate()
-        
+
         if APIHelper.verboseLogging {
             print(validatedRequest)
             print(validatedRequest.debugDescription)
@@ -124,13 +122,13 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
 
         switch T.self {
         case is String.Type:
-            validatedRequest.responseString(completionHandler: { (stringResponse) in
+            validatedRequest.responseString(completionHandler: { stringResponse in
                 cleanupRequest()
 
                 if stringResponse.result.isFailure {
                     completion(
                         nil,
-                        ErrorResponse.Error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error as Error!)
+                        ErrorResponse.Error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error!)
                     )
                     return
                 }
@@ -144,7 +142,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                 )
             })
         case is Void.Type:
-            validatedRequest.responseData(completionHandler: { (voidResponse) in
+            validatedRequest.responseData(completionHandler: { voidResponse in
                 cleanupRequest()
 
                 if voidResponse.result.isFailure {
@@ -163,10 +161,10 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                 )
             })
         case is Data.Type:
-            validatedRequest.responseData(completionHandler: { (dataResponse) in
+            validatedRequest.responseData(completionHandler: { dataResponse in
                 cleanupRequest()
 
-                if (dataResponse.result.isFailure) {
+                if dataResponse.result.isFailure {
                     completion(
                         nil,
                         ErrorResponse.Error(dataResponse.response?.statusCode ?? 500, dataResponse.data, dataResponse.result.error!)
@@ -193,9 +191,9 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
 
                 // handle HTTP 204 No Content
                 // NSNull would crash decoders
-                if response.response?.statusCode == 204 && response.result.value is NSNull{
+                if response.response?.statusCode == 204 && response.result.value is NSNull {
                     completion(nil, nil)
-                    return;
+                    return
                 }
 
                 if () is T {
@@ -223,7 +221,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
 
     open func buildHeaders() -> [String: String] {
         var httpHeaders = SessionManager.defaultHTTPHeaders
-        for (key, value) in self.headers {
+        for (key, value) in headers {
             httpHeaders[key] = value
         }
         return httpHeaders

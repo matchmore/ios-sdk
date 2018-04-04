@@ -6,27 +6,24 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
+@testable import AlpsSDK
 import Foundation
-
 import Nimble
 import Quick
 
-@testable import AlpsSDK
-
 class PinDeviceStoreTests: QuickSpec {
-    
     override func spec() {
         TestsConfig.configure()
-        
+
         let pinDeviceStore = MatchMore.pinDevices
         var createdPinDeviceId: String = ""
         var errorResponse: ErrorResponse?
-        
+
         context("pin device") {
             beforeEach {
                 errorResponse = nil
             }
-            fit ("create") {
+            fit("create") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     let pinDevice = PinDevice(
                         name: "Test Pin",
@@ -38,42 +35,42 @@ class PinDeviceStoreTests: QuickSpec {
                             verticalAccuracy: 10
                         )
                     )
-                    pinDeviceStore.create(item: pinDevice, 
-                                               completion: { (result) in
-                        switch result {
-                        case .success(let pinDevice):
-                            createdPinDeviceId = pinDevice.id ?? ""
-                        case .failure(let error):
-                            errorResponse = error
-                        }
-                        done()
+                    pinDeviceStore.create(item: pinDevice,
+                                          completion: { result in
+                                              switch result {
+                                              case let .success(pinDevice):
+                                                  createdPinDeviceId = pinDevice.id ?? ""
+                                              case let .failure(error):
+                                                  errorResponse = error
+                                              }
+                                              done()
                     })
                 }
                 expect(pinDeviceStore.items.first).toEventuallyNot(beNil())
                 expect(errorResponse?.message).toEventually(beNil())
             }
-            
+
             var readPinDevice: PinDevice?
             fit("read") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     pinDeviceStore.find(byId: createdPinDeviceId,
-                                             completion: { (result) in
-                        readPinDevice = result
-                        done()
+                                        completion: { result in
+                                            readPinDevice = result
+                                            done()
                     })
                 }
                 expect(readPinDevice).toEventuallyNot(beNil())
             }
-            
+
             fit("delete") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     if let readPinDevice = readPinDevice {
                         pinDeviceStore.delete(item: readPinDevice,
-                                                   completion: { (error) in
-                            errorResponse = error
-                            done()
+                                              completion: { error in
+                                                  errorResponse = error
+                                                  done()
                         })
-                    } else { done () }
+                    } else { done() }
                 }
                 expect(pinDeviceStore.items.first).toEventually(beNil())
                 expect(errorResponse?.message).toEventually(beNil())

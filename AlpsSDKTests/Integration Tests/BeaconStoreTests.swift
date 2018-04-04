@@ -6,21 +6,18 @@
 //  Copyright © 2017 Alps. All rights reserved.
 //
 
-import Foundation
-
-import Quick
-import Nimble
-
 @testable import AlpsSDK
+import Foundation
+import Nimble
+import Quick
 
 class BeaconStoreTests: QuickSpec {
-    
     override func spec() {
         TestsConfig.configure()
         let beaconStore = MatchMore.knownBeacons
-        
+
         context("beacons") {
-            fit ("update triplets") {
+            fit("update triplets") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     beaconStore.updateBeaconTriplets(completion: {
                         done()
@@ -28,20 +25,20 @@ class BeaconStoreTests: QuickSpec {
                 }
                 expect(beaconStore.items).toEventuallyNot(beEmpty())
             }
-            fit ("get non existing") {
+            fit("get non existing") {
                 var nonExistringBeacon: IBeaconTriple?
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    beaconStore.find(byId: "NONEXISTING_TEST_ID", completion: { (result) in
+                    beaconStore.find(byId: "NONEXISTING_TEST_ID", completion: { result in
                         nonExistringBeacon = result
                         done()
                     })
                 }
                 expect(nonExistringBeacon).toEventually(beNil())
             }
-            fit ("get existing") {
+            fit("get existing") {
                 var nonExistringBeacon: IBeaconTriple?
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    beaconStore.find(byId: "fe349acd-ee44-4428-8bd8-294558635ffe", completion: { (result) in
+                    beaconStore.find(byId: "fe349acd-ee44-4428-8bd8-294558635ffe", completion: { result in
                         nonExistringBeacon = result
                         done()
                     })

@@ -7,20 +7,17 @@
 
 import Foundation
 
-
 /** A pin device is one that has geographical location associated with it but is not represented by any object in the physical world.  */
 open class PinDevice: Device {
-
     public var location: Location?
 
-    
-
     // MARK: JSONEncodable
-    override open func encodeToJSON() -> Any {
-        var nillableDictionary = super.encodeToJSON() as? [String:Any?] ?? [String:Any?]()
-        nillableDictionary["location"] = self.location?.encodeToJSON()
 
-        let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
+    open override func encodeToJSON() -> Any {
+        var nillableDictionary = super.encodeToJSON() as? [String: Any?] ?? [String: Any?]()
+        nillableDictionary["location"] = location?.encodeToJSON()
+
+        let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
 }
