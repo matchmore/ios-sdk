@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23894444F0E7598F1BBD9E40 /* Pods_MatchmoreSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5060D3E106AED8A9E359E708 /* Pods_MatchmoreSDK.framework */; };
 		502C85911E01BB3F00EF8ECF /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858A1E01BB3F00EF8ECF /* ContextManager.swift */; };
 		502C85921E01BB3F00EF8ECF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858B1E01BB3F00EF8ECF /* ModelExtensions.swift */; };
 		502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C858E1E01BB3F00EF8ECF /* AlpsManager.swift */; };
@@ -67,7 +66,6 @@
 		C385ADBB2075063E001C3DFA /* ExampleMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADB52075063D001C3DFA /* ExampleMatchDelegate.swift */; };
 		C385ADBC2075063E001C3DFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C385ADB62075063D001C3DFA /* Main.storyboard */; };
 		C385ADBD2075063E001C3DFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADB82075063D001C3DFA /* AppDelegate.swift */; };
-		C385ADBE2075063E001C3DFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C385ADB92075063D001C3DFA /* Info.plist */; };
 		C385ADCE20750655001C3DFA /* ExpirationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADC120750655001C3DFA /* ExpirationTests.swift */; };
 		C385ADCF20750655001C3DFA /* PinDeviceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADC320750655001C3DFA /* PinDeviceStoreTests.swift */; };
 		C385ADD020750655001C3DFA /* AlpsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADC420750655001C3DFA /* AlpsManagerTests.swift */; };
@@ -77,7 +75,6 @@
 		C385ADD420750655001C3DFA /* ProxmityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADC920750655001C3DFA /* ProxmityTests.swift */; };
 		C385ADD520750655001C3DFA /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADCB20750655001C3DFA /* MobileDevicePersistenceTests.swift */; };
 		C385ADD620750655001C3DFA /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADCC20750655001C3DFA /* MultiplePinDevicePersistancyTests.swift */; };
-		C385ADD720750655001C3DFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C385ADCD20750655001C3DFA /* Info.plist */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
 		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */; };
@@ -101,7 +98,7 @@
 			remoteGlobalIDString = 5092AC321D93CB0C00EF8ECF;
 			remoteInfo = Matchmore;
 		};
-		C3807CF4203D920300561974 /* PBXContainerItemProxy */ = {
+		C3A69BE3207B9951000B7B9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5092AC2A1D93CB0C00EF8ECF /* Project object */;
 			proxyType = 1;
@@ -226,7 +223,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23894444F0E7598F1BBD9E40 /* Pods_MatchmoreSDK.framework in Frameworks */,
 				94331CC7B74092A706C7951C /* Pods_Matchmore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +260,7 @@
 				C381EE791F977EB90061E7AC /* Alps Manager */,
 				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
 				C34BFC4A1F98BDF200CAB9BB /* Stores */,
-				C34CFDAC1FAB11930053C490 /* Persistancy Manager */,
+				C34CFDAC1FAB11930053C490 /* Persistence Manager */,
 				C3AB95C81FBC5E2F0097A5E2 /* Miscellaneous */,
 				C3378960203D94AF0054B974 /* GeneratedAPI */,
 			);
@@ -390,12 +386,12 @@
 			path = Stores;
 			sourceTree = "<group>";
 		};
-		C34CFDAC1FAB11930053C490 /* Persistancy Manager */ = {
+		C34CFDAC1FAB11930053C490 /* Persistence Manager */ = {
 			isa = PBXGroup;
 			children = (
 				C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */,
 			);
-			path = "Persistancy Manager";
+			path = "Persistence Manager";
 			sourceTree = "<group>";
 		};
 		C381EE791F977EB90061E7AC /* Alps Manager */ = {
@@ -523,9 +519,9 @@
 				5092AC2E1D93CB0C00EF8ECF /* Sources */,
 				5092AC2F1D93CB0C00EF8ECF /* Frameworks */,
 				5092AC311D93CB0C00EF8ECF /* Resources */,
+				4301A509910E0409E6A2D458 /* [CP] Copy Pods Resources */,
 				C385ADB32074B819001C3DFA /* Swift Format */,
 				C3D80F581F94DB3B004ADC7D /* Swift Lint */,
-				4301A509910E0409E6A2D458 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -572,7 +568,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C3807CF5203D920300561974 /* PBXTargetDependency */,
+				C3A69BE4207B9951000B7B9A /* PBXTargetDependency */,
 			);
 			name = MatchmoreTests;
 			productName = MatchmoreTests;
@@ -652,7 +648,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C385ADBE2075063E001C3DFA /* Info.plist in Resources */,
 				C385ADBC2075063E001C3DFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +656,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C385ADD720750655001C3DFA /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,10 +935,10 @@
 			target = 5092AC321D93CB0C00EF8ECF /* Matchmore */;
 			targetProxy = C33789AB203D9B510054B974 /* PBXContainerItemProxy */;
 		};
-		C3807CF5203D920300561974 /* PBXTargetDependency */ = {
+		C3A69BE4207B9951000B7B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5092AC321D93CB0C00EF8ECF /* Matchmore */;
-			targetProxy = C3807CF4203D920300561974 /* PBXContainerItemProxy */;
+			targetProxy = C3A69BE3207B9951000B7B9A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

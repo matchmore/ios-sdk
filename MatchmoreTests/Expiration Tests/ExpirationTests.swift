@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import MatchmoreSDK
+@testable import Matchmore
 import Nimble
 import Quick
 
