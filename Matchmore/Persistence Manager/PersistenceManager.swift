@@ -10,8 +10,8 @@ import Foundation
 
 class PersistenceManager {
     private class func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+        // swiftlint:disable:next force_try
+        return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     }
 
     class func save<T>(object: T?, to file: String) -> Bool {
