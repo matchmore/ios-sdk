@@ -9,7 +9,7 @@
 import CoreLocation
 import Foundation
 
-/// `MatchMoreConfig` is a structure that defines all variables needed to configure MatchMore SDK.
+/// `MatchMoreConfig` is a structure that defines all variables needed to configure Matchmore SDK.
 public struct MatchMoreConfig {
     let apiKey: String
     let serverUrl: String

@@ -43,7 +43,7 @@ final class ProximityHandler {
 
     // Trigger the proximity event
     private func triggers(key: CLProximity, deviceId: String, distance: Double) {
-        guard let mainDeviceId = MatchMore.instance.mobileDevices.main?.id else { return }
+        guard let mainDeviceId = Matchmore.instance.mobileDevices.main?.id else { return }
         let proximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
         DeviceAPI.triggerProximityEvents(deviceId: mainDeviceId, proximityEvent: proximityEvent) { (proximityEvent, _) -> Void in
             guard let proximityEvent = proximityEvent else { return }
@@ -55,7 +55,7 @@ final class ProximityHandler {
     private func refreshTriggers(key: CLProximity, deviceId: String, distance: Double) {
         guard let proximityEvent = beaconsTriggered[key]?[deviceId],
             let proximityEventCreatedAt = proximityEvent.createdAt,
-            let mainDeviceId = MatchMore.instance.mobileDevices.main?.id else { return }
+            let mainDeviceId = Matchmore.instance.mobileDevices.main?.id else { return }
 
         let now = Date().nowTimeInterval()
         let gap = now - proximityEventCreatedAt

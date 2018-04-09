@@ -1,5 +1,5 @@
 //
-//  MatchMore+Location.swift
+//  Matchmore+Location.swift
 //  Matchmore
 //
 //  Created by Maciej Burda on 15/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension MatchMore {
+public extension Matchmore {
     /// Last location gathered by SDK.
     public static var lastLocation: Location? {
         return instance.locationUpdateManager.lastLocation
@@ -24,7 +24,7 @@ public extension MatchMore {
         instance.contextManager.locationManager?.stopUpdatingLocation()
     }
 
-    /// Forces refreshing known iBecaon devices from MatchMore cloud.
+    /// Forces refreshing known iBecaon devices from Matchmore cloud.
     public class func refreshKnownBeacons() {
         instance.contextManager.beaconTriples.updateBeaconTriplets {
             instance.contextManager.startRanging()

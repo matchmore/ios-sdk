@@ -22,7 +22,7 @@ final class AlpsManagerTests: QuickSpec {
         let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
 
         TestsConfig.configure()
-        let alpsManager = MatchMore.instance
+        let alpsManager = Matchmore.instance
 
         var errorResponse: ErrorResponse?
 
@@ -67,7 +67,7 @@ final class AlpsManagerTests: QuickSpec {
 
             fit("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.startUsingMainDevice { result in
+                    Matchmore.startUsingMainDevice { result in
                         if case let .failure(error) = result {
                             errorResponse = error
                         }
@@ -82,7 +82,7 @@ final class AlpsManagerTests: QuickSpec {
             fit("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { result in
+                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
                         if case let .failure(error) = result {
                             errorResponse = error
                         }
@@ -96,7 +96,7 @@ final class AlpsManagerTests: QuickSpec {
             fit("create a subscription") {
                 let subscription = Subscription(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
+                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         if case let .failure(error) = result {
                             errorResponse = error
                         }
@@ -147,14 +147,14 @@ final class AlpsManagerTests: QuickSpec {
                     }
                     let topic = UUID().uuidString
                     let publication = Publication(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
-                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { result in
+                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
                         if case let .failure(error) = result {
                             errorResponse = error
                         }
                     })
                     let subscription = Subscription(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
                     subscription.pushers = ["ws"]
-                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
+                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         if case let .failure(error) = result {
                             errorResponse = error
                         }

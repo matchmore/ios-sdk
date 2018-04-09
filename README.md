@@ -27,20 +27,20 @@ Setup application API key and world, get it for free from [http://matchmore.io/]
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     let config = MatchMoreConfig(apiKey: "YOUR_API_KEY")
-    MatchMore.configure(config)
+    Matchmore.configure(config)
     return true
 }
 ```
 
 Create first device, publication and subscription. Please note that we're not caring about errors right now.
 ```swift
-MatchMore.startUsingMainDevice { _ in
+Matchmore.startUsingMainDevice { _ in
     let publication = Publication(topic: "Test Topic", range: 20, duration: 100, properties: ["test": "true"])
-    MatchMore.createPublicationForMainDevice(publication: publication, completion: { _ in
+    Matchmore.createPublicationForMainDevice(publication: publication, completion: { _ in
         print("🏔 Created Pub")
     })
     let subscription = Subscription(topic: "Test Topic", range: 20, duration: 100, selector: "test = 'true'")
-    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { _ in
+    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { _ in
         print("🏔 Created Sub")
     })
 }
@@ -61,7 +61,7 @@ Start listening for main device matches changes.
 let exampleMatchHandler = ExampleMatchHandler { matches, _ in
     print(matches)
 }
-MatchMore.matchDelegates += exampleMatchHandler
+Matchmore.matchDelegates += exampleMatchHandler
 ```
 
 ## Set up APNS: Certificates for push notifications
@@ -79,12 +79,12 @@ These callbacks allow the SDK to get the device token.
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-    MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
+    Matchmore.registerDeviceToken(deviceToken: deviceTokenString)
 }
 
 // Called when APNS failed to register the device for push notifications
 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-    MatchMore.processPushNotification(pushNotification: userInfo)
+    Matchmore.processPushNotification(pushNotification: userInfo)
 }
 ```
 

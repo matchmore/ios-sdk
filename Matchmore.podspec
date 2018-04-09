@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.authors = 'Matchmore SDK Team'
   s.homepage = 'https://matchmore.io'
   s.summary = 'Matchmore iOS SDK in Swift'
-  s.source = { :git => 'https://github.com/MatchMore/alps-ios-sdk.git', :tag => '0.6.0' }
+  s.source = { :git => 'https://github.com/Matchmore/alps-ios-sdk.git', :tag => '0.6.0' }
   s.license = 'MIT license'
   s.source_files = 'Matchmore/**/*.swift'
   s.dependency 'Starscream', '~> 3.0'

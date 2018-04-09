@@ -19,7 +19,7 @@
 		C3315501204D8873006D0117 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C33154FD204D8872006D0117 /* LICENSE */; };
 		C3315502204D8873006D0117 /* Matchmore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C33154FE204D8873006D0117 /* Matchmore.podspec */; };
 		C3315503204D8873006D0117 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C33154FF204D8873006D0117 /* README.md */; };
-		C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchMoreConfig.swift */; };
+		C337895F203D948F0054B974 /* MatchmoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C337895E203D948F0054B974 /* MatchmoreConfig.swift */; };
 		C33789A9203D9B510054B974 /* Matchmore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* Matchmore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C33789AA203D9B510054B974 /* Matchmore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5092AC331D93CB0C00EF8ECF /* Matchmore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C33789B7203DC8420054B974 /* String+JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33789B6203DC8420054B974 /* String+JWT.swift */; };
@@ -27,9 +27,9 @@
 		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
 		C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75B1FB9DEBF00D71896 /* Expirable.swift */; };
 		C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */; };
-		C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */; };
-		C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */; };
-		C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */; };
+		C3673AB91FBCB30C00A6B90D /* Matchmore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* Matchmore+Creation.swift */; };
+		C3673ABB1FBCB46900A6B90D /* Matchmore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABA1FBCB46900A6B90D /* Matchmore+Matches.swift */; };
+		C3673ABF1FBCC65D00A6B90D /* Matchmore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673ABE1FBCC65D00A6B90D /* Matchmore+Location.swift */; };
 		C3807CCB203D91C200561974 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CB182203D87C100FDAE7A /* APIHelper.swift */; };
 		C3807CCC203D91C400561974 /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CB183203D87C100FDAE7A /* AlamofireImplementations.swift */; };
 		C3807CCD203D91CA00561974 /* LocationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CB185203D87C100FDAE7A /* LocationAPI.swift */; };
@@ -84,7 +84,7 @@
 		C3F872EA1FBAF0920093A5A8 /* AsyncClearable+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */; };
 		C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EB1FBAF0C50093A5A8 /* Result.swift */; };
 		C3F872EE1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */; };
-		C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */; };
+		C3F872F01FBB3C940093A5A8 /* Matchmore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F872EF1FBB3C940093A5A8 /* Matchmore.swift */; };
 		C3FC57CE1FA38D3600A8C2DA /* MobileDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC57CD1FA38D3600A8C2DA /* MobileDeviceStore.swift */; };
 		CBACFAC972F9DDEC7285045A /* Pods_MatchmoreExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB57C284B71C02630C97BEF /* Pods_MatchmoreExample.framework */; };
 		F6CB77843C07D3C33CBDC728 /* Pods_MatchmoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CFA28C038BA04DA4138956 /* Pods_MatchmoreTests.framework */; };
@@ -175,7 +175,7 @@
 		C33154FD204D8872006D0117 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C33154FE204D8873006D0117 /* Matchmore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Matchmore.podspec; sourceTree = "<group>"; };
 		C33154FF204D8873006D0117 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C337895E203D948F0054B974 /* MatchMoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMoreConfig.swift; sourceTree = "<group>"; };
+		C337895E203D948F0054B974 /* MatchmoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchmoreConfig.swift; sourceTree = "<group>"; };
 		C3378993203D9A8B0054B974 /* MatchmoreExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchmoreExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33789B6203DC8420054B974 /* String+JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+JWT.swift"; sourceTree = "<group>"; };
 		C34512051FB0AA350079026F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
@@ -183,9 +183,9 @@
 		C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		C351F75B1FB9DEBF00D71896 /* Expirable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expirable.swift; sourceTree = "<group>"; };
 		C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDeleteDelegate.swift; sourceTree = "<group>"; };
-		C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Creation.swift"; sourceTree = "<group>"; };
-		C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Matches.swift"; sourceTree = "<group>"; };
-		C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchMore+Location.swift"; sourceTree = "<group>"; };
+		C3673AB81FBCB30C00A6B90D /* Matchmore+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matchmore+Creation.swift"; sourceTree = "<group>"; };
+		C3673ABA1FBCB46900A6B90D /* Matchmore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matchmore+Matches.swift"; sourceTree = "<group>"; };
+		C3673ABE1FBCC65D00A6B90D /* Matchmore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matchmore+Location.swift"; sourceTree = "<group>"; };
 		C3807CEE203D920300561974 /* MatchmoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchmoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C385ADB52075063D001C3DFA /* ExampleMatchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMatchDelegate.swift; sourceTree = "<group>"; };
 		C385ADB72075063D001C3DFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		C3F872E91FBAF0920093A5A8 /* AsyncClearable+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncClearable+Default.swift"; sourceTree = "<group>"; };
 		C3F872EB1FBAF0C50093A5A8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C3F872ED1FBAF1080093A5A8 /* ErrorResponse+Convienience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+Convienience.swift"; sourceTree = "<group>"; };
-		C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMore.swift; sourceTree = "<group>"; };
+		C3F872EF1FBB3C940093A5A8 /* Matchmore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matchmore.swift; sourceTree = "<group>"; };
 		C3FC57CD1FA38D3600A8C2DA /* MobileDeviceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceStore.swift; sourceTree = "<group>"; };
 		D44973A2A1DA149A0240436D /* Pods_Matchmore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Matchmore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CFA28C038BA04DA4138956 /* Pods_MatchmoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchmoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,11 +252,11 @@
 			isa = PBXGroup;
 			children = (
 				502C85891E01BB3F00EF8ECF /* Info.plist */,
-				C3F872EF1FBB3C940093A5A8 /* MatchMore.swift */,
-				C337895E203D948F0054B974 /* MatchMoreConfig.swift */,
-				C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */,
-				C3673ABA1FBCB46900A6B90D /* MatchMore+Matches.swift */,
-				C3673ABE1FBCC65D00A6B90D /* MatchMore+Location.swift */,
+				C3F872EF1FBB3C940093A5A8 /* Matchmore.swift */,
+				C337895E203D948F0054B974 /* MatchmoreConfig.swift */,
+				C3673AB81FBCB30C00A6B90D /* Matchmore+Creation.swift */,
+				C3673ABA1FBCB46900A6B90D /* Matchmore+Matches.swift */,
+				C3673ABE1FBCC65D00A6B90D /* Matchmore+Location.swift */,
 				C381EE791F977EB90061E7AC /* Alps Manager */,
 				C3AB95C71FBC5DF90097A5E2 /* Context Manager */,
 				C34BFC4A1F98BDF200CAB9BB /* Stores */,
@@ -852,7 +852,7 @@
 				C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */,
 				8450CB751FB1B39B00A73484 /* RemoteNotificationManager.swift in Sources */,
 				C3F872EC1FBAF0C50093A5A8 /* Result.swift in Sources */,
-				C337895F203D948F0054B974 /* MatchMoreConfig.swift in Sources */,
+				C337895F203D948F0054B974 /* MatchmoreConfig.swift in Sources */,
 				50D4ED141E658D9400EF8ECF /* MatchMonitor.swift in Sources */,
 				C3807CD0203D91CA00561974 /* MatchesAPI.swift in Sources */,
 				C33789B7203DC8420054B974 /* String+JWT.swift in Sources */,
@@ -860,7 +860,7 @@
 				C3807CD1203D91CA00561974 /* DeviceAPI.swift in Sources */,
 				C3807CE6203D91D500561974 /* PinDevice.swift in Sources */,
 				C3807CD8203D91D500561974 /* APIError.swift in Sources */,
-				C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */,
+				C3673ABB1FBCB46900A6B90D /* Matchmore+Matches.swift in Sources */,
 				C3807CD6203D91D500561974 /* Location.swift in Sources */,
 				C3807CD7203D91D500561974 /* Publication.swift in Sources */,
 				C3BF3A3B1FA31018008754A8 /* PublicationStore.swift in Sources */,
@@ -888,16 +888,16 @@
 				C3807CE4203D91D500561974 /* Device.swift in Sources */,
 				C3807CCD203D91CA00561974 /* LocationAPI.swift in Sources */,
 				C3807CCC203D91C400561974 /* AlamofireImplementations.swift in Sources */,
-				C3F872F01FBB3C940093A5A8 /* MatchMore.swift in Sources */,
+				C3F872F01FBB3C940093A5A8 /* Matchmore.swift in Sources */,
 				C3807CCE203D91CA00561974 /* PublicationAPI.swift in Sources */,
 				C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */,
 				C3807CE1203D91D500561974 /* IBeaconTriples.swift in Sources */,
 				C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */,
-				C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */,
+				C3673AB91FBCB30C00A6B90D /* Matchmore+Creation.swift in Sources */,
 				C3807CE5203D91D500561974 /* DeviceType.swift in Sources */,
 				C3807CD2203D91CD00561974 /* APIs.swift in Sources */,
 				C3807CDB203D91D500561974 /* MobileDevice.swift in Sources */,
-				C3673ABF1FBCC65D00A6B90D /* MatchMore+Location.swift in Sources */,
+				C3673ABF1FBCC65D00A6B90D /* Matchmore+Location.swift in Sources */,
 				C3807CE0203D91D500561974 /* IBeaconTriple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

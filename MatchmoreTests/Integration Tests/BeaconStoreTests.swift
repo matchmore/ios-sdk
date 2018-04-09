@@ -14,7 +14,7 @@ import Quick
 class BeaconStoreTests: QuickSpec {
     override func spec() {
         TestsConfig.configure()
-        let beaconStore = MatchMore.knownBeacons
+        let beaconStore = Matchmore.knownBeacons
 
         context("beacons") {
             fit("update triplets") {

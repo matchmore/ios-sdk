@@ -1,5 +1,5 @@
 //
-//  MatchMore+Matches.swift
+//  Matchmore+Matches.swift
 //  Matchmore
 //
 //  Created by Maciej Burda on 15/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension MatchMore {
+public extension Matchmore {
     /// List of all delivered Matches.
     public static var allMatches: [Match] {
         return Array(instance.matchMonitor.deliveredMatches)

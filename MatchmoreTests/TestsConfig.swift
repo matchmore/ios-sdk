@@ -26,6 +26,6 @@ class TestsConfig {
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl
 
         let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl)
-        MatchMore.configure(config)
+        Matchmore.configure(config)
     }
 }

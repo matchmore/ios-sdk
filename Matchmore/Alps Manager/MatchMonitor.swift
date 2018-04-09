@@ -53,8 +53,8 @@ public class MatchMonitor {
     func openSocketForMatches() {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
-        let worldId = MatchMore.config.apiKey.getWorldIdFromToken()
-        var url = MatchMore.config.serverUrl
+        let worldId = Matchmore.config.apiKey.getWorldIdFromToken()
+        var url = Matchmore.config.serverUrl
         url = url.replacingOccurrences(of: "https://", with: "")
         url = url.replacingOccurrences(of: "http://", with: "")
         url = url.replacingOccurrences(of: "/v5", with: "")

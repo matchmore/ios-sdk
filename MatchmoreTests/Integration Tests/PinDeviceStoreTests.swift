@@ -15,7 +15,7 @@ class PinDeviceStoreTests: QuickSpec {
     override func spec() {
         TestsConfig.configure()
 
-        let pinDeviceStore = MatchMore.pinDevices
+        let pinDeviceStore = Matchmore.pinDevices
         var createdPinDeviceId: String = ""
         var errorResponse: ErrorResponse?
 

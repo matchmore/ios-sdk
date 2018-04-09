@@ -1,16 +1,16 @@
 //
-//  MatchMore.swift
+//  Matchmore.swift
 //  Matchmore
 //
 //  Created by Maciej Burda on 14/11/2017.
 //  Copyright © 2018 Matchmore SA. All rights reserved.
 //
 
-/// `MatchMore` is a static facade for all public methods and properties available in the SDK.
-public final class MatchMore {
+/// `Matchmore` is a static facade for all public methods and properties available in the SDK.
+public final class Matchmore {
     /// Configuration method.
     public class func configure(_ config: MatchMoreConfig) {
-        MatchMore.config = config
+        Matchmore.config = config
     }
 
     /// Main mobile device created by `startUsingMainDevice()`

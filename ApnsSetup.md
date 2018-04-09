@@ -62,13 +62,13 @@ Add the following lines to your appDelegate.
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Convert token to string
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-    MatchMore.registerDeviceToken(deviceToken: deviceTokenString)
+    Matchmore.registerDeviceToken(deviceToken: deviceTokenString)
     createApnsSubscription()
 }
 
 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-    MatchMore.processPushNotification(pushNotification: userInfo)
+    Matchmore.processPushNotification(pushNotification: userInfo)
 }
 ```
 
-You can now start sending notifications to your users using MatchMore SDK.
+You can now start sending notifications to your users using Matchmore SDK.

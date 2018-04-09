@@ -14,7 +14,7 @@ import Quick
 final class PubSubAfterDeviceDeleteTests: QuickSpec {
     override func spec() {
         TestsConfig.configure()
-        let alpsManager = MatchMore.instance
+        let alpsManager = Matchmore.instance
         var errorMesseage: String?
 
         context("pub/sub delete with device") {
@@ -23,7 +23,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             }
             fit("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.startUsingMainDevice { result in
+                    Matchmore.startUsingMainDevice { result in
                         errorMesseage = result.errorMessage
                         done()
                     }
@@ -36,7 +36,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             fit("create a publication") {
                 let publication = Publication(topic: "Test Topic", range: 20, duration: TestsConfig.kWaitTimeInterval, properties: ["a": "b"])
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createPublicationForMainDevice(publication: publication, completion: { result in
+                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
                         errorMesseage = result.errorMessage
                         done()
                     })
@@ -48,7 +48,7 @@ final class PubSubAfterDeviceDeleteTests: QuickSpec {
             fit("create a subscription") {
                 let subscription = Subscription(topic: "Test iTopic", range: 20, duration: TestsConfig.kWaitTimeInterval, selector: "")
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    MatchMore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
+                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         errorMesseage = result.errorMessage
                         done()
                     })
