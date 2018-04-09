@@ -25,7 +25,6 @@
 		C33789B7203DC8420054B974 /* String+JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33789B6203DC8420054B974 /* String+JWT.swift */; };
 		C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34512051FB0AA350079026F /* MulticastDelegate.swift */; };
 		C34BFC4C1F98BE0900CAB9BB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BFC4B1F98BE0900CAB9BB /* DataStore.swift */; };
-		C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
 		C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75B1FB9DEBF00D71896 /* Expirable.swift */; };
 		C351F75E1FB9F89800D71896 /* DeviceDeleteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C351F75D1FB9F89800D71896 /* DeviceDeleteDelegate.swift */; };
 		C3673AB91FBCB30C00A6B90D /* MatchMore+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3673AB81FBCB30C00A6B90D /* MatchMore+Creation.swift */; };
@@ -76,6 +75,7 @@
 		C385ADD520750655001C3DFA /* MobileDevicePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADCB20750655001C3DFA /* MobileDevicePersistenceTests.swift */; };
 		C385ADD620750655001C3DFA /* MultiplePinDevicePersistancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385ADCC20750655001C3DFA /* MultiplePinDevicePersistancyTests.swift */; };
 		C3A197AA1F99E5230095E07E /* PinDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A197A91F99E5230095E07E /* PinDeviceStore.swift */; };
+		C3A69BE5207B9D12000B7B9A /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CFDAD1FAB11CF0053C490 /* PersistenceManager.swift */; };
 		C3AB95CA1FBC60B00097A5E2 /* Sequence+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB95C91FBC60B00097A5E2 /* Sequence+Group.swift */; };
 		C3BF3A331FA1C6D7008754A8 /* BeaconTripleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C387A64B1FA0C5D500AB0371 /* BeaconTripleStore.swift */; };
 		C3BF3A391FA3100B008754A8 /* SubscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF3A381FA3100B008754A8 /* SubscriptionStore.swift */; };
@@ -858,7 +858,6 @@
 				C33789B7203DC8420054B974 /* String+JWT.swift in Sources */,
 				C3807CE7203D91D500561974 /* Matches.swift in Sources */,
 				C3807CD1203D91CA00561974 /* DeviceAPI.swift in Sources */,
-				C34CFDAE1FAB11CF0053C490 /* PersistenceManager.swift in Sources */,
 				C3807CE6203D91D500561974 /* PinDevice.swift in Sources */,
 				C3807CD8203D91D500561974 /* APIError.swift in Sources */,
 				C3673ABB1FBCB46900A6B90D /* MatchMore+Matches.swift in Sources */,
@@ -879,6 +878,7 @@
 				C3FC57CE1FA38D3600A8C2DA /* MobileDeviceStore.swift in Sources */,
 				C3807CD3203D91D000561974 /* Extensions.swift in Sources */,
 				C3807CE3203D91D500561974 /* Devices.swift in Sources */,
+				C3A69BE5207B9D12000B7B9A /* PersistenceManager.swift in Sources */,
 				502C85951E01BB3F00EF8ECF /* AlpsManager.swift in Sources */,
 				C351F75C1FB9DEBF00D71896 /* Expirable.swift in Sources */,
 				C34512061FB0AA350079026F /* MulticastDelegate.swift in Sources */,
