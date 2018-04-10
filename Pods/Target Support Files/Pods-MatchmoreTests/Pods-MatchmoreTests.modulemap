@@ -1,0 +1,6 @@
+framework module Pods_MatchmoreTests {
+  umbrella header "Pods-MatchmoreTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

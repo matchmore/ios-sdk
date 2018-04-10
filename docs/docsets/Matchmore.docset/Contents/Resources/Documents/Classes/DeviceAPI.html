@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DeviceAPI Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/DeviceAPI" class="dashAnchor"></a>
+    <a title="DeviceAPI Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Matchmore Docs</a> (47% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Matchmore Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        DeviceAPI Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlamofireRequestBuilder.html">AlamofireRequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsAPI.html">AlpsAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlpsManager.html">AlpsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BeaconTripleStore.html">BeaconTripleStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Device.html">Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceAPI.html">DeviceAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DeviceUpdate.html">DeviceUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableDevice.html">EncodableDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconDevice.html">EncodableIBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableIBeaconTriple.html">EncodableIBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableLocation.html">EncodableLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMatch.html">EncodableMatch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableMobileDevice.html">EncodableMobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePinDevice.html">EncodablePinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodablePublication.html">EncodablePublication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EncodableSubscription.html">EncodableSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconDevice.html">IBeaconDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IBeaconTriple.html">IBeaconTriple</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainHelper.html">KeychainHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Location.html">Location</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LocationAPI.html">LocationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore21LocationUpdateManagerC">LocationUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Match.html">Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore12MatchMonitorC">MatchMonitor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchMore.html">MatchMore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MatchesAPI.html">MatchesAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDevice.html">MobileDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MobileDeviceStore.html">MobileDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MulticastDelegate.html">MulticastDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDevice.html">PinDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PinDeviceStore.html">PinDeviceStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProximityEvent.html">ProximityEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Publication.html">Publication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationAPI.html">PublicationAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PublicationStore.html">PublicationStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:9Matchmore25RemoteNotificationManagerC">RemoteNotificationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestBuilder.html">RequestBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Response.html">Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Subscription.html">Subscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionAPI.html">SubscriptionAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SubscriptionStore.html">SubscriptionStore</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/DeviceType.html">DeviceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ErrorResponse.html">ErrorResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2peoiyAA17MulticastDelegateCyxG_xtlF">+=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:9Matchmore2seoiyAA17MulticastDelegateCyxG_xtlF">-=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/MatchDelegate.html">MatchDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestBuilderFactory.html">RequestBuilderFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/MatchMoreConfig.html">MatchMoreConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Devicesa">Devices</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore14OnMatchClosurea">OnMatchClosure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DeviceAPI</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">DeviceAPI</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:9Matchmore7APIBaseC">APIBase</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06createB0yAA0B0C6device_yAFSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createDevice(device:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06createB0yAA0B0C6device_yAFSg_s5Error_pSgtc10completiontFZ">createDevice(device:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createDevice</span><span class="p">(</span><span class="nv">device</span><span class="p">:</span> <span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>device</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The device to be created.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06createB18WithRequestBuilderAA0fG0CyAA0B0CGAH6device_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/createDeviceWithRequestBuilder(device:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06createB18WithRequestBuilderAA0fG0CyAA0B0CGAH6device_tFZ">createDeviceWithRequestBuilder(device:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a device</p>
+
+<ul>
+<li>POST /devices</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>deviceType</q> : { },
+<q>createdAt</q> : 0,
+<q>name</q> : <q>aeiou</q>,
+<q>id</q> : <q>aeiou</q>,
+<q>updatedAt</q> : 6,
+<q>group</q> : [ <q>first_group</q>, <q>SecondGroup</q>, <q>thirdGroup</q> ]
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createDeviceWithRequestBuilder</span><span class="p">(</span><span class="nv">device</span><span class="p">:</span> <span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>device</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The device to be created.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Device></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC14createLocationySS8deviceId_AA0E0C8locationyAGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createLocation(deviceId:location:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC14createLocationySS8deviceId_AA0E0C8locationyAGSg_s5Error_pSgtc10completiontFZ">createLocation(deviceId:location:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new location for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createLocation</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">location</span><span class="p">:</span> <span class="kt"><a href="../Classes/Location.html">Location</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Location.html">Location</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>location</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Location to create for a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC32createLocationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH8locationtFZ"></a>
+                    <a name="//apple_ref/swift/Method/createLocationWithRequestBuilder(deviceId:location:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC32createLocationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH8locationtFZ">createLocationWithRequestBuilder(deviceId:location:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new location for a device</p>
+
+<ul>
+<li>POST /devices/{deviceId}/locations</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>createdAt</q> : 0,
+<q>altitude</q> : 5.962133916683182,
+<q>verticalAccuracy</q> : 2.3021358869347655,
+<q>latitude</q> : 6.027456183070403,
+<q>horizontalAccuracy</q> : 5.637376656633329,
+<q>longitude</q> : 1.4658129805029452
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createLocationWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">location</span><span class="p">:</span> <span class="kt"><a href="../Classes/Location.html">Location</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Location.html">Location</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>location</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Location to create for a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Location></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC17createPublicationySS8deviceId_AA0E0C11publicationyAGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createPublication(deviceId:publication:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC17createPublicationySS8deviceId_AA0E0C11publicationyAGSg_s5Error_pSgtc10completiontFZ">createPublication(deviceId:publication:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a publication for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createPublication</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publication</span><span class="p">:</span> <span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publication</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Publication to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC35createPublicationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH11publicationtFZ"></a>
+                    <a name="//apple_ref/swift/Method/createPublicationWithRequestBuilder(deviceId:publication:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC35createPublicationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH11publicationtFZ">createPublicationWithRequestBuilder(deviceId:publication:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a publication for a device</p>
+
+<ul>
+<li>POST /devices/{deviceId}/publications</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>,
+<q>properties</q> : &ldquo;&rdquo;
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createPublicationWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publication</span><span class="p">:</span> <span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publication</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Publication to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Publication></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC18createSubscriptionySS8deviceId_AA0E0C12subscriptionyAGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createSubscription(deviceId:subscription:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC18createSubscriptionySS8deviceId_AA0E0C12subscriptionyAGSg_s5Error_pSgtc10completiontFZ">createSubscription(deviceId:subscription:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a subscription for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscription</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Subscription to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC36createSubscriptionWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH12subscriptiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/createSubscriptionWithRequestBuilder(deviceId:subscription:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC36createSubscriptionWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_AH12subscriptiontFZ">createSubscriptionWithRequestBuilder(deviceId:subscription:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a subscription for a device</p>
+
+<ul>
+<li>POST /devices/{deviceId}/subscriptions</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>matchTTL</q> : 2.027123023002322,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>selector</q> : <q>aeiou</q>,
+<q>pushers</q> : [ <q>aeiou</q> ],
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscription</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) Subscription to create on a device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscription></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06deleteB0ySS8deviceId_ys5Error_pSgc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteDevice(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06deleteB0ySS8deviceId_ys5Error_pSgc10completiontFZ">deleteDevice(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete an existing device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteDevice</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06deleteB18WithRequestBuilderAA0fG0CyytGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteDeviceWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06deleteB18WithRequestBuilderAA0fG0CyytGSS8deviceId_tFZ">deleteDeviceWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete an existing device</p>
+
+<ul>
+<li><p>DELETE /devices/{deviceId}</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteDeviceWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Void></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC17deletePublicationySS8deviceId_SS011publicationG0ys5Error_pSgc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/deletePublication(deviceId:publicationId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC17deletePublicationySS8deviceId_SS011publicationG0ys5Error_pSgc10completiontFZ">deletePublication(deviceId:publicationId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Publication</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deletePublication</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC35deletePublicationWithRequestBuilderAA0gH0CyytGSS8deviceId_SS011publicationJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/deletePublicationWithRequestBuilder(deviceId:publicationId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC35deletePublicationWithRequestBuilderAA0gH0CyytGSS8deviceId_SS011publicationJ0tFZ">deletePublicationWithRequestBuilder(deviceId:publicationId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Publication</p>
+<h2 id='delete-devices-deviceid-publications-publicationid' class='heading'>- DELETE /devices/{deviceId}/publications/{publicationId}</h2>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deletePublicationWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Void></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC18deleteSubscriptionySS8deviceId_SS012subscriptionG0ys5Error_pSgc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteSubscription(deviceId:subscriptionId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC18deleteSubscriptionySS8deviceId_SS012subscriptionG0ys5Error_pSgc10completiontFZ">deleteSubscription(deviceId:subscriptionId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Subscription</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC36deleteSubscriptionWithRequestBuilderAA0gH0CyytGSS8deviceId_SS012subscriptionJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/deleteSubscriptionWithRequestBuilder(deviceId:subscriptionId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC36deleteSubscriptionWithRequestBuilderAA0gH0CyytGSS8deviceId_SS012subscriptionJ0tFZ">deleteSubscriptionWithRequestBuilder(deviceId:subscriptionId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Subscription</p>
+<h2 id='delete-devices-deviceid-subscriptions-subscriptionid' class='heading'>- DELETE /devices/{deviceId}/subscriptions/{subscriptionId}</h2>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">deleteSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Void></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC03getB0ySS8deviceId_yAA0B0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getDevice(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC03getB0ySS8deviceId_yAA0B0CSg_s5Error_pSgtc10completiontFZ">getDevice(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getDevice</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC03getB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getDeviceWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC03getB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_tFZ">getDeviceWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>deviceType</q> : { },
+<q>createdAt</q> : 0,
+<q>name</q> : <q>aeiou</q>,
+<q>id</q> : <q>aeiou</q>,
+<q>updatedAt</q> : 6,
+<q>group</q> : [ <q>first_group</q>, <q>SecondGroup</q>, <q>thirdGroup</q> ]
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getDeviceWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Device></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC17getIBeaconTriplesyySayAA0E6TripleCGSg_s5Error_pSgtc10completion_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getIBeaconTriples(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC17getIBeaconTriplesyySayAA0E6TripleCGSg_s5Error_pSgtc10completion_tFZ">getIBeaconTriples(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get IBeacons triples for all registered devices</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getIBeaconTriples</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC35getIBeaconTriplesWithRequestBuilderAA0hI0CySayAA0E6TripleCGGyFZ"></a>
+                    <a name="//apple_ref/swift/Method/getIBeaconTriplesWithRequestBuilder()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC35getIBeaconTriplesWithRequestBuilderAA0hI0CySayAA0E6TripleCGGyFZ">getIBeaconTriplesWithRequestBuilder()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get IBeacons triples for all registered devices</p>
+
+<ul>
+<li>GET /devices/IBeaconTriples</li>
+<li>Keys in map are device UUIDs and values are IBeacon triples. In model you can see example values \<q>property1\</q> \<q>property2\</q> \<q>property3\</q> instead of random UUIDs this is generated by OpenApi document browser</li>
+<li><p>examples: [{contentType=application/json, example=&ldquo;&rdquo;}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getIBeaconTriplesWithRequestBuilder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:9Matchmore14IBeaconTriplesa">IBeaconTriples</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<IBeaconTriples></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC8getMatchySS8deviceId_SS05matchG0yAA0E0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getMatch(deviceId:matchId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC8getMatchySS8deviceId_SS05matchG0yAA0E0CSg_s5Error_pSgtc10completiontFZ">getMatch(deviceId:matchId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get match for the device by its id</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getMatch</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">matchId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Match.html">Match</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the user device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matchId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the match.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC26getMatchWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS05matchJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getMatchWithRequestBuilder(deviceId:matchId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC26getMatchWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS05matchJ0tFZ">getMatchWithRequestBuilder(deviceId:matchId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get match for the device by its id</p>
+
+<ul>
+<li>GET /devices/{deviceId}/matches/{matchId}</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>createdAt</q> : 0,
+<q>publication</q> : {
+<q>duration</q> : 2.027123023002322,
+<q>createdAt</q> : 6,
+<q>worldId</q> : <q>aeiou</q>,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 3.616076749251911,
+<q>location</q> : {
+<q>createdAt</q> : 1,
+<q>altitude</q> : 2.3021358869347655,
+<q>verticalAccuracy</q> : 9.301444243932576,
+<q>latitude</q> : 5.962133916683182,
+<q>horizontalAccuracy</q> : 7.061401241503109,
+<q>longitude</q> : 5.637376656633329
+},
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>,
+<q>properties</q> : <q>
+},
+&ldquo;id&rdquo; : &ldquo;aeiou&rdquo;,
+&ldquo;subscription&rdquo; : {
+&ldquo;duration&rdquo; : 1.2315135367772556,
+&ldquo;createdAt&rdquo; : 4,
+&ldquo;worldId&rdquo; : &ldquo;aeiou&rdquo;,
+&ldquo;matchTTL&rdquo; : 1.0246457001441578,
+&ldquo;topic&rdquo; : &ldquo;aeiou&rdquo;,
+&ldquo;range&rdquo; : 7.386281948385884,
+&ldquo;location&rdquo; :</q>,
+<q>selector</q> : <q>aeiou</q>,
+<q>pushers</q> : [ <q>aeiou</q> ],
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getMatchWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">matchId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Match.html">Match</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the user device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matchId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the match.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Match></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC10getMatchesySS8deviceId_ySayAA5MatchCGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getMatches(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC10getMatchesySS8deviceId_ySayAA5MatchCGSg_s5Error_pSgtc10completiontFZ">getMatches(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get matches for the device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getMatches</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC28getMatchesWithRequestBuilderAA0gH0CySayAA5MatchCGGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getMatchesWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC28getMatchesWithRequestBuilderAA0gH0CySayAA5MatchCGGSS8deviceId_tFZ">getMatchesWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get matches for the device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/matches</li>
+<li><p>examples: [{contentType=application/json, example=&ldquo;&rdquo;}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getMatchesWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:9Matchmore7Matchesa">Matches</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Matches></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC14getPublicationySS8deviceId_SS011publicationG0yAA0E0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getPublication(deviceId:publicationId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC14getPublicationySS8deviceId_SS011publicationG0yAA0E0CSg_s5Error_pSgtc10completiontFZ">getPublication(deviceId:publicationId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a publication on a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getPublication</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the publication.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC32getPublicationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS011publicationJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getPublicationWithRequestBuilder(deviceId:publicationId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC32getPublicationWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS011publicationJ0tFZ">getPublicationWithRequestBuilder(deviceId:publicationId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a publication on a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/publications/{publicationId}</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>,
+<q>properties</q> : &ldquo;&rdquo;
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getPublicationWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Publication.html">Publication</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the publication.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Publication></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC15getPublicationsySS8deviceId_ySayAA11PublicationCGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getPublications(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC15getPublicationsySS8deviceId_ySayAA11PublicationCGSg_s5Error_pSgtc10completiontFZ">getPublications(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all publications for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getPublications</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC33getPublicationsWithRequestBuilderAA0gH0CySayAA11PublicationCGGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getPublicationsWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC33getPublicationsWithRequestBuilderAA0gH0CySayAA11PublicationCGGSS8deviceId_tFZ">getPublicationsWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all publications for a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/publications</li>
+<li><p>examples: [{contentType=application/json, example=&ldquo;&rdquo;}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getPublicationsWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:9Matchmore12Publicationsa">Publications</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Publications></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC15getSubscriptionySS8deviceId_SS012subscriptionG0yAA0E0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscription(deviceId:subscriptionId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC15getSubscriptionySS8deviceId_SS012subscriptionG0yAA0E0CSg_s5Error_pSgtc10completiontFZ">getSubscription(deviceId:subscriptionId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a subscription on a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscription</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC33getSubscriptionWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS012subscriptionJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptionWithRequestBuilder(deviceId:subscriptionId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC33getSubscriptionWithRequestBuilderAA0gH0CyAA0E0CGSS8deviceId_SS012subscriptionJ0tFZ">getSubscriptionWithRequestBuilder(deviceId:subscriptionId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Info about a subscription on a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/subscriptions/{subscriptionId}</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>duration</q> : 3.616076749251911,
+<q>createdAt</q> : 0,
+<q>worldId</q> : <q>aeiou</q>,
+<q>matchTTL</q> : 2.027123023002322,
+<q>topic</q> : <q>aeiou</q>,
+<q>range</q> : 9.301444243932576,
+<q>location</q> : {
+<q>createdAt</q> : 6,
+<q>altitude</q> : 5.637376656633329,
+<q>verticalAccuracy</q> : 7.061401241503109,
+<q>latitude</q> : 1.4658129805029452,
+<q>horizontalAccuracy</q> : 2.3021358869347655,
+<q>longitude</q> : 5.962133916683182
+},
+<q>selector</q> : <q>aeiou</q>,
+<q>pushers</q> : [ <q>aeiou</q> ],
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptionWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">subscriptionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Subscription.html">Subscription</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subscriptionId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the subscription.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscription></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC16getSubscriptionsySS8deviceId_ySayAA12SubscriptionCGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptions(deviceId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC16getSubscriptionsySS8deviceId_ySayAA12SubscriptionCGSg_s5Error_pSgtc10completiontFZ">getSubscriptions(deviceId:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all subscriptions for a device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptions</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC34getSubscriptionsWithRequestBuilderAA0gH0CySayAA12SubscriptionCGGSS8deviceId_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/getSubscriptionsWithRequestBuilder(deviceId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC34getSubscriptionsWithRequestBuilderAA0gH0CySayAA12SubscriptionCGGSS8deviceId_tFZ">getSubscriptionsWithRequestBuilder(deviceId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all subscriptions for a device</p>
+
+<ul>
+<li>GET /devices/{deviceId}/subscriptions</li>
+<li><p>examples: [{contentType=application/json, example=&ldquo;&rdquo;}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getSubscriptionsWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:9Matchmore13Subscriptionsa">Subscriptions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Subscriptions></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC22triggerProximityEventsySS8deviceId_AA0E5EventC09proximityI0yAGSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/triggerProximityEvents(deviceId:proximityEvent:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC22triggerProximityEventsySS8deviceId_AA0E5EventC09proximityI0yAGSg_s5Error_pSgtc10completiontFZ">triggerProximityEvents(deviceId:proximityEvent:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Trigger the proximity event between a device and a ranged BLE iBeacon</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">triggerProximityEvents</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">proximityEvent</span><span class="p">:</span> <span class="kt"><a href="../Classes/ProximityEvent.html">ProximityEvent</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/ProximityEvent.html">ProximityEvent</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>proximityEvent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The proximity event to be created for the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC40triggerProximityEventsWithRequestBuilderAA0hI0CyAA0E5EventCGSS8deviceId_AH09proximityJ0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/triggerProximityEventsWithRequestBuilder(deviceId:proximityEvent:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC40triggerProximityEventsWithRequestBuilderAA0hI0CyAA0E5EventCGSS8deviceId_AH09proximityJ0tFZ">triggerProximityEventsWithRequestBuilder(deviceId:proximityEvent:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Trigger the proximity event between a device and a ranged BLE iBeacon</p>
+
+<ul>
+<li>POST /devices/{deviceId}/proximityEvents</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>createdAt</q> : 0,
+<q>distance</q> : 6.027456183070403,
+<q>id</q> : <q>aeiou</q>,
+<q>deviceId</q> : <q>aeiou</q>
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">triggerProximityEventsWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">proximityEvent</span><span class="p">:</span> <span class="kt"><a href="../Classes/ProximityEvent.html">ProximityEvent</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ProximityEvent.html">ProximityEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>proximityEvent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The proximity event to be created for the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<ProximityEvent></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06updateB0ySS8deviceId_AA0B6UpdateC0E0yAA0B0CSg_s5Error_pSgtc10completiontFZ"></a>
+                    <a name="//apple_ref/swift/Method/updateDevice(deviceId:device:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06updateB0ySS8deviceId_AA0B6UpdateC0E0yAA0B0CSg_s5Error_pSgtc10completiontFZ">updateDevice(deviceId:device:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates name or/and device token for existing device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">updateDevice</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">device</span><span class="p">:</span> <span class="kt"><a href="../Classes/DeviceUpdate.html">DeviceUpdate</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>device</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The device update description.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>completion handler to receive the data and the error objects</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Matchmore9DeviceAPIC06updateB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_AA0B6UpdateC0H0tFZ"></a>
+                    <a name="//apple_ref/swift/Method/updateDeviceWithRequestBuilder(deviceId:device:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Matchmore9DeviceAPIC06updateB18WithRequestBuilderAA0fG0CyAA0B0CGSS8deviceId_AA0B6UpdateC0H0tFZ">updateDeviceWithRequestBuilder(deviceId:device:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates name or/and device token for existing device</p>
+
+<ul>
+<li>PATCH /devices/{deviceId}</li>
+<li>Token can be only updated for mobile devices.</li>
+<li><p>examples: [{contentType=application/json, example={
+<q>deviceType</q> : { },
+<q>createdAt</q> : 0,
+<q>name</q> : <q>aeiou</q>,
+<q>id</q> : <q>aeiou</q>,
+<q>updatedAt</q> : 6,
+<q>group</q> : [ <q>first_group</q>, <q>SecondGroup</q>, <q>thirdGroup</q> ]
+}}]</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">updateDeviceWithRequestBuilder</span><span class="p">(</span><span class="nv">deviceId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">device</span><span class="p">:</span> <span class="kt"><a href="../Classes/DeviceUpdate.html">DeviceUpdate</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/RequestBuilder.html">RequestBuilder</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Device.html">Device</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deviceId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(path) The id (UUID) of the device.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>device</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>(body) The device update description.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>RequestBuilder<Device></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://matchmore.io" target="_blank" rel="external">Matchmore SDK Team</a>. All rights reserved. (Last updated: 2018-04-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

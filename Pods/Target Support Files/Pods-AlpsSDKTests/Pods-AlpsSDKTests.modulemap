@@ -1,6 +1,0 @@
-framework module Pods_AlpsSDKTests {
-  umbrella header "Pods-AlpsSDKTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

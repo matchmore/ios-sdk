@@ -2,21 +2,26 @@
 platform :ios, '9.0'
 use_frameworks!
 
-target 'AlpsSDK' do
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+target 'Matchmore' do
+    # Socket
+    pod 'Starscream', '~> 3.0'
+    # Network
+    pod 'Alamofire', '~> 4.6'
+    # Autoformatting
+    pod 'SwiftFormat/CLI'
+end
+
+target 'MatchmoreExample' do
     # Socket
     pod 'Starscream', '~> 3.0'
     # Network
     pod 'Alamofire', '~> 4.6'
 end
 
-target 'AlpsExample' do
-    # Socket
-    pod 'Starscream', '~> 3.0'
-    # Network
-    pod 'Alamofire', '~> 4.6'
-end
-
-target 'AlpsSDKTests' do
+target 'MatchmoreTests' do
     # Testing description and matching
     pod 'Nimble', '~> 7.0'
     pod 'Quick', '~> 1.2'
