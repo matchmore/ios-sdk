@@ -109,19 +109,11 @@ open class DeviceAPI: APIBase {
      Create a publication for a device
      - POST /devices/{deviceId}/publications
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "id" : "aeiou",
      "deviceId" : "aeiou",
      "properties" : ""
@@ -162,20 +154,13 @@ open class DeviceAPI: APIBase {
      Create a subscription for a device
      - POST /devices/{deviceId}/subscriptions
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
-     "matchTTL" : 2.027123023002322,
+     "matchTTL" : 5.962133916683182,
+     "matchDTL" : 5.637376656633329,
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "selector" : "aeiou",
      "pushers" : [ "aeiou" ],
      "id" : "aeiou",
@@ -398,32 +383,24 @@ open class DeviceAPI: APIBase {
      - examples: [{contentType=application/json, example={
      "createdAt" : 0,
      "publication" : {
-     "duration" : 2.027123023002322,
+     "duration" : 5.962133916683182,
      "createdAt" : 6,
      "worldId" : "aeiou",
      "topic" : "aeiou",
-     "range" : 3.616076749251911,
-     "location" : {
-     "createdAt" : 1,
-     "altitude" : 2.3021358869347655,
-     "verticalAccuracy" : 9.301444243932576,
-     "latitude" : 5.962133916683182,
-     "horizontalAccuracy" : 7.061401241503109,
-     "longitude" : 5.637376656633329
-     },
+     "range" : 1.4658129805029452,
      "id" : "aeiou",
      "deviceId" : "aeiou",
      "properties" : ""
      },
      "id" : "aeiou",
      "subscription" : {
-     "duration" : 1.2315135367772556,
-     "createdAt" : 4,
+     "duration" : 7.061401241503109,
+     "createdAt" : 5,
      "worldId" : "aeiou",
-     "matchTTL" : 1.0246457001441578,
+     "matchTTL" : 9.301444243932576,
+     "matchDTL" : 3.616076749251911,
      "topic" : "aeiou",
-     "range" : 7.386281948385884,
-     "location" : "",
+     "range" : 2.3021358869347655,
      "selector" : "aeiou",
      "pushers" : [ "aeiou" ],
      "id" : "aeiou",
@@ -501,19 +478,11 @@ open class DeviceAPI: APIBase {
      Info about a publication on a device
      - GET /devices/{deviceId}/publications/{publicationId}
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "id" : "aeiou",
      "deviceId" : "aeiou",
      "properties" : ""
@@ -589,20 +558,13 @@ open class DeviceAPI: APIBase {
      Info about a subscription on a device
      - GET /devices/{deviceId}/subscriptions/{subscriptionId}
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
-     "matchTTL" : 2.027123023002322,
+     "matchTTL" : 5.962133916683182,
+     "matchDTL" : 5.637376656633329,
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "selector" : "aeiou",
      "pushers" : [ "aeiou" ],
      "id" : "aeiou",

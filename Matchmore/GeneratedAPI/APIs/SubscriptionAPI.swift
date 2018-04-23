@@ -26,20 +26,13 @@ open class SubscriptionAPI: APIBase {
      Create a subscription for a device
      - POST /devices/{deviceId}/subscriptions
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
-     "matchTTL" : 2.027123023002322,
+     "matchTTL" : 5.962133916683182,
+     "matchDTL" : 5.637376656633329,
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "selector" : "aeiou",
      "pushers" : [ "aeiou" ],
      "id" : "aeiou",
@@ -118,20 +111,13 @@ open class SubscriptionAPI: APIBase {
      Info about a subscription on a device
      - GET /devices/{deviceId}/subscriptions/{subscriptionId}
      - examples: [{contentType=application/json, example={
-     "duration" : 3.616076749251911,
+     "duration" : 1.4658129805029452,
      "createdAt" : 0,
      "worldId" : "aeiou",
-     "matchTTL" : 2.027123023002322,
+     "matchTTL" : 5.962133916683182,
+     "matchDTL" : 5.637376656633329,
      "topic" : "aeiou",
-     "range" : 9.301444243932576,
-     "location" : {
-     "createdAt" : 6,
-     "altitude" : 5.637376656633329,
-     "verticalAccuracy" : 7.061401241503109,
-     "latitude" : 1.4658129805029452,
-     "horizontalAccuracy" : 2.3021358869347655,
-     "longitude" : 5.962133916683182
-     },
+     "range" : 6.027456183070403,
      "selector" : "aeiou",
      "pushers" : [ "aeiou" ],
      "id" : "aeiou",

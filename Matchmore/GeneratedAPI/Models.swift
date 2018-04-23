@@ -58,7 +58,7 @@ class Decoders {
         return array.map { Decoders.decode(clazz: T.self, source: $0, instance: nil) }
     }
 
-    static func decode<T, Key>(clazz _: [Key: T].Type, source: AnyObject) -> [Key: T] {
+    static func decode<T, Key: Hashable>(clazz _: [Key: T].Type, source: AnyObject) -> [Key: T] {
         let sourceDictionary = source as! [Key: AnyObject]
         var dictionary = [Key: T]()
         for (key, value) in sourceDictionary {
@@ -111,7 +111,7 @@ class Decoders {
         }
     }
 
-    static func decodeOptional<T, Key>(clazz: [Key: T].Type, source: AnyObject?) -> [Key: T]? {
+    static func decodeOptional<T, Key: Hashable>(clazz: [Key: T].Type, source: AnyObject?) -> [Key: T]? {
         if source is NSNull {
             return nil
         }
@@ -324,7 +324,6 @@ class Decoders {
             result.worldId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worldId"] as AnyObject?)
             result.deviceId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["deviceId"] as AnyObject?)
             result.topic = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["topic"] as AnyObject?)
-            result.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"] as AnyObject?)
             result.range = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["range"] as AnyObject?)
             result.duration = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["duration"] as AnyObject?)
             result.properties = Decoders.decodeOptional(clazz: [String: Any].self, source: sourceDictionary["properties"] as AnyObject?)
@@ -355,11 +354,11 @@ class Decoders {
             result.worldId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worldId"] as AnyObject?)
             result.deviceId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["deviceId"] as AnyObject?)
             result.topic = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["topic"] as AnyObject?)
-            result.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"] as AnyObject?)
             result.selector = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["selector"] as AnyObject?)
             result.range = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["range"] as AnyObject?)
             result.duration = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["duration"] as AnyObject?)
             result.matchTTL = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["matchTTL"] as AnyObject?)
+            result.matchDTL = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["matchDTL"] as AnyObject?)
             result.pushers = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["pushers"] as AnyObject?)
             return result
         }

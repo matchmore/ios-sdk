@@ -15,7 +15,7 @@ open class Device: JSONEncodable {
     public var createdAt: Int64?
     /** The timestamp of the device&#39;s creation in seconds since Jan 01 1970 (UTC).  */
     public var updatedAt: Int64?
-    /** Optional device groups, one device can belong to multiple groups, grops are string that can be max 25 characters long and contains letters numbers or underscores */
+    /** Optional device groups, one device can belong to multiple groups, groups are string that can be max 25 characters long and contains letters numbers or underscores */
     public var group: [String]?
     /** The name of the device. */
     public var name: String?

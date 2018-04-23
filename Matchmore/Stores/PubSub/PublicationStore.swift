@@ -33,7 +33,8 @@ public final class PublicationStore: CRD {
     let id: String
     internal init(id: String) {
         self.id = id
-        items = PersistenceManager.read(type: [EncodablePublication].self, from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
+        items = PersistenceManager.read(type: [EncodablePublication].self,
+                                        from: kPublicationFile)?.map { $0.object }.withoutExpired ?? []
     }
 
     public func create(item: Publication, completion: @escaping (Result<Publication>) -> Void) {

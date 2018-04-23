@@ -256,8 +256,6 @@ open class EncodablePublication: NSObject, NSCoding {
         object?.worldId = decoder.decodeObject(forKey: "worldId") as? String
         object?.deviceId = decoder.decodeObject(forKey: "deviceId") as? String
         object?.topic = decoder.decodeObject(forKey: "topic") as? String
-        let encodable_location = decoder.decodeObject(forKey: "location") as? EncodableLocation
-        object?.location = encodable_location?.object
         object?.range = decoder.decodeObject(forKey: "range") as? Double
         object?.duration = decoder.decodeObject(forKey: "duration") as? Double
         object?.properties = decoder.decodeObject(forKey: "properties") as? [String: Any]
@@ -269,7 +267,6 @@ open class EncodablePublication: NSObject, NSCoding {
         encoder.encode(object?.worldId, forKey: "worldId")
         encoder.encode(object?.deviceId, forKey: "deviceId")
         encoder.encode(object?.topic, forKey: "topic")
-        encoder.encode(EncodableLocation(object: object?.location), forKey: "location")
         encoder.encode(object?.range, forKey: "range")
         encoder.encode(object?.duration, forKey: "duration")
         encoder.encode(object?.properties, forKey: "properties")
@@ -295,12 +292,11 @@ open class EncodableSubscription: NSObject, NSCoding {
         object?.worldId = decoder.decodeObject(forKey: "worldId") as? String
         object?.deviceId = decoder.decodeObject(forKey: "deviceId") as? String
         object?.topic = decoder.decodeObject(forKey: "topic") as? String
-        let encodable_location = decoder.decodeObject(forKey: "location") as? EncodableLocation
-        object?.location = encodable_location?.object
         object?.selector = decoder.decodeObject(forKey: "selector") as? String
         object?.range = decoder.decodeObject(forKey: "range") as? Double
         object?.duration = decoder.decodeObject(forKey: "duration") as? Double
         object?.matchTTL = decoder.decodeObject(forKey: "matchTTL") as? Double
+        object?.matchDTL = decoder.decodeObject(forKey: "matchDTL") as? Double
         object?.pushers = decoder.decodeObject(forKey: "pushers") as? [String]
     }
 
@@ -310,11 +306,11 @@ open class EncodableSubscription: NSObject, NSCoding {
         encoder.encode(object?.worldId, forKey: "worldId")
         encoder.encode(object?.deviceId, forKey: "deviceId")
         encoder.encode(object?.topic, forKey: "topic")
-        encoder.encode(EncodableLocation(object: object?.location), forKey: "location")
         encoder.encode(object?.selector, forKey: "selector")
         encoder.encode(object?.range, forKey: "range")
         encoder.encode(object?.duration, forKey: "duration")
         encoder.encode(object?.matchTTL, forKey: "matchTTL")
+        encoder.encode(object?.matchDTL, forKey: "matchDTL")
         encoder.encode(object?.pushers, forKey: "pushers")
     }
 }
