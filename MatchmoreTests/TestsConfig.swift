@@ -20,7 +20,7 @@ class TestsConfig {
 
     static let kWaitTimeInterval = 60.0
 
-    static let shouldTestStaging = false
+    static let shouldTestStaging = true
     static func configure() {
         let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl

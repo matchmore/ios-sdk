@@ -24,8 +24,9 @@ public extension Matchmore {
         instance.contextManager.locationManager?.stopUpdatingLocation()
     }
 
-    /// Forces refreshing known iBecaon devices from Matchmore cloud.
-    public class func refreshKnownBeacons() {
+    /// Starts ranging iBeacons that were set on Matchmore's cloud. Cloud is being notified about proxmity event every `updateTimeInterval` seconds.
+    public class func startRangingBeacons(updateTimeInterval: TimeInterval) {
+        instance.contextManager.proximityHandler.refreshTimer = Int(updateTimeInterval * 1000)
         instance.contextManager.beaconTriples.updateBeaconTriplets {
             instance.contextManager.startRanging()
         }

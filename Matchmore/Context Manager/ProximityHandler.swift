@@ -9,7 +9,8 @@
 import CoreLocation
 
 final class ProximityHandler {
-    var refreshTimer: Int = 5 * 1000 // timer is in milliseconds
+    
+    var refreshTimer: Int = 60 * 1000 // timer is in milliseconds, default is 1 minute
     lazy var beaconsDetected: [CLProximity: [IBeaconTriple]] = [:]
     lazy var beaconsTriggered: [CLProximity: [String: ProximityEvent]] = {
         var beaconsTriggered = [CLProximity: [String: ProximityEvent]]()
