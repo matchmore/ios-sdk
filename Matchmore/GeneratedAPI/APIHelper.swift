@@ -7,7 +7,7 @@
 import Foundation
 
 class APIHelper {
-    static var verboseLogging = false
+    static var verboseLogging = true
 
     static func rejectNil(_ source: [String: Any?]) -> [String: Any]? {
         var destination = [String: Any]()

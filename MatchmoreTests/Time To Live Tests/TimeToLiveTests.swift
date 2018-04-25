@@ -88,20 +88,19 @@ final class TimeToLiveTests: QuickSpec {
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 5)
 
-                var timesCalled = 0
-                var lastMatchesCount = 0
+                var lastMatchId = ""
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
                         deliveredMatches = matches
-                        lastMatchesCount = matches.count
-                        timesCalled += 1
-                        if timesCalled >= 1, matches.count - lastMatchesCount == 1 {
+                        if matches.last?.id != lastMatchId {
                             done()
                         }
+                        lastMatchId = matches.last?.id ?? ""
                     }
                 }
                 alpsManager.delegates -= matchDelegate
                 alpsManager.matchMonitor.stopPollingMatches()
+                expect(lastMatchId).toEventuallyNot(be(""))
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
         }

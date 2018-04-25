@@ -91,7 +91,7 @@ public class MatchMonitor {
     private func getMatchesForDevice(device: Device) {
         guard let deviceId = device.id else { return }
         MatchesAPI.getMatches(deviceId: deviceId) { matches, error in
-            print("Number of matches: \(matches?.count ?? 0)")
+            print("last match ID: \(matches?.last?.id ?? "NO ID")")
             guard let matches = matches, matches.count > 0, error == nil else { return }
             let union = self.deliveredMatches.union(Set(matches))
             if union != self.deliveredMatches {
