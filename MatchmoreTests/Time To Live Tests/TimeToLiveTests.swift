@@ -59,8 +59,8 @@ final class TimeToLiveTests: QuickSpec {
             }
 
             fit("create a subscription with match TTL") {
-                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
-                subscription.matchTTL = 1
+                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 120, selector: selector)
+                subscription.matchTTL = 0.5
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         if case let .failure(error) = result {
@@ -88,19 +88,22 @@ final class TimeToLiveTests: QuickSpec {
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 5)
 
-                var lastMatchId = ""
+                var count = 0
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
+                        if let mainDeviceId = alpsManager.mobileDevices.main?.id {
+                            alpsManager.locationUpdateManager.tryToSend(location: location, for: mainDeviceId)
+                        }
                         deliveredMatches = matches
-                        if matches.last?.id != lastMatchId {
+                        if count >= 2 {
                             done()
                         }
-                        lastMatchId = matches.last?.id ?? ""
+                        count += 1
                     }
                 }
                 alpsManager.delegates -= matchDelegate
                 alpsManager.matchMonitor.stopPollingMatches()
-                expect(lastMatchId).toEventuallyNot(be(""))
+                expect(count).toEventuallyNot(beGreaterThan(2))
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
         }
