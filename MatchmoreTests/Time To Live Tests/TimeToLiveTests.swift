@@ -1,9 +1,9 @@
 //
-//  AlpsManagerTests.swift
+//  TimeToLiveTests.swift
 //  MatchmoreTests
 //
-//  Created by Maciej Burda on 27/10/2017.
-//  Copyright © 2017 Matchmore. All rights reserved.
+//  Created by Maciej Burda on 24/04/2018.
+//  Copyright © 2018 Alps. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Foundation
 import Nimble
 import Quick
 
-final class AlpsManagerTests: QuickSpec {
+final class TimeToLiveTests: QuickSpec {
     override func spec() {
         let properties: [String: Any] = [
             "string": "test",
@@ -30,41 +30,6 @@ final class AlpsManagerTests: QuickSpec {
             beforeEach {
                 errorResponse = nil
             }
-
-            fit("clear publications") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.publications.deleteAll { error in
-                        errorResponse = error
-                        done()
-                    }
-                }
-                expect(alpsManager.publications.items).to(beEmpty())
-                expect(errorResponse?.message).toEventually(beNil())
-            }
-
-            fit("clear subscriptions") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.subscriptions.deleteAll { error in
-                        errorResponse = error
-                        done()
-                    }
-                }
-                expect(alpsManager.subscriptions.items).to(beEmpty())
-                expect(errorResponse?.message).toEventually(beNil())
-            }
-
-            fit("clear mobile devices") {
-                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-                    alpsManager.mobileDevices.deleteAll { error in
-                        errorResponse = error
-                        done()
-                    }
-                }
-                expect(alpsManager.mobileDevices.main).to(beNil())
-                expect(alpsManager.mobileDevices.items).to(beEmpty())
-                expect(errorResponse?.message).toEventually(beNil())
-            }
-
             fit("create main device") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     Matchmore.startUsingMainDevice { result in
@@ -93,8 +58,9 @@ final class AlpsManagerTests: QuickSpec {
                 expect(errorResponse?.message).toEventually(beNil())
             }
 
-            fit("create a subscription") {
-                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
+            fit("create a subscription with match TTL") {
+                let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 120, selector: selector)
+                subscription.matchTTL = 0.5
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         if case let .failure(error) = result {
@@ -115,56 +81,31 @@ final class AlpsManagerTests: QuickSpec {
                 expect(alpsManager.locationUpdateManager.lastLocation?.latitude).toEventuallyNot(beNil())
             }
 
-            fit("get polling match") {
+            fit("get two matches matchTTL") {
                 var deliveredMatches: [Match]?
                 let matchDelegate = TestMatchDelegate()
 
                 alpsManager.delegates += matchDelegate
-                alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 1)
+                alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 5)
 
+                var count = 0
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
+                        if let mainDeviceId = alpsManager.mobileDevices.main?.id {
+                            alpsManager.locationUpdateManager.tryToSend(location: location, for: mainDeviceId)
+                        }
                         deliveredMatches = matches
-                        done()
+                        if count >= 2 {
+                            done()
+                        }
+                        count += 1
                     }
                 }
                 alpsManager.delegates -= matchDelegate
                 alpsManager.matchMonitor.stopPollingMatches()
+                expect(count).toEventuallyNot(beGreaterThan(2))
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
-
-//            fit("get socket match") {
-//                var deliveredMatches: [Match]?
-//                let matchDelegate = TestMatchDelegate()
-//
-//                alpsManager.delegates += matchDelegate
-//                alpsManager.matchMonitor.openSocketForMatches()
-//
-//                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-//                    matchDelegate.onMatch = { matches, _ in
-//                        deliveredMatches = matches
-//                        done()
-//                    }
-//                    let topic = UUID().uuidString
-//                    let publication = Publication(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
-//                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
-//                        if case let .failure(error) = result {
-//                            errorResponse = error
-//                        }
-//                    })
-//                    let subscription = Subscription(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
-//                    subscription.pushers = ["ws"]
-//                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
-//                        if case let .failure(error) = result {
-//                            errorResponse = error
-//                        }
-//                    })
-//                }
-//                alpsManager.delegates -= matchDelegate
-//                alpsManager.matchMonitor.closeSocketForMatches()
-//                expect(deliveredMatches).toEventuallyNot(beEmpty())
-//                expect(errorResponse?.message).toEventually(beNil())
-//            }
         }
     }
 

@@ -19,16 +19,16 @@ open class Subscription: JSONEncodable {
     public var deviceId: String?
     /** The topic of the subscription. This will act as a first match filter. For a subscription to be able to match a publication they must have the exact same topic.  */
     public var topic: String?
-    /** In some cases a develop might want to show the location.  */
-    public var location: Location?
     /** This is an expression to filter the publications. For instance &#39;job&#x3D;&#39;developer&#39;&#39; will allow matching only with publications containing a &#39;job&#39; key with a value of &#39;developer&#39;.  */
     public var selector: String?
     /** The range of the subscription in meters. This is the range around the device holding the subscription in which matches with publications can be triggered.  */
     public var range: Double?
     /** The duration of the subscription in seconds. If set to &#39;0&#39; it will be instant at the time of subscription. Negative values are not allowed.  */
     public var duration: Double?
-    /** The duration of the match in seconds, this describes how often you will get matches when publication and subscription are moving in each other range. If set to &#39;0&#39; you will get matches every time publication or subscription in range will move. Negative values are not allowed.  */
+    /** Duration in seconds. Defaults to subscription duration (only one match will be delivered for pub/sub pair), this parameter tells when to deliver consecutive matches with the same publication. For example, there is a match between publication and subscription and after matchTTL time publication and subscription are still in the range of each other next match will be sent to subscription. This parameter is useful when you have long-lasting publications/subscriptions, and you want to be notified when a match occurs after some time.  */
     public var matchTTL: Double?
+    /** Distance in meters. Defaults to two times the subscription range. This parameter says if the subscription will get a match again when the position of publication or subscription changes by matchDTL (publication and subscription still have to be in range after the change). This parameter is useful if you have large subscription/publication and subscription should get a match every time publication or subscription moves by matchDTL meters.  */
+    public var matchDTL: Double?
     /** When match will occurs, they will be notified on these provided URI(s) address(es) in the pushers array.  */
     public var pushers: [String]?
 
@@ -43,11 +43,11 @@ open class Subscription: JSONEncodable {
         nillableDictionary["worldId"] = worldId
         nillableDictionary["deviceId"] = deviceId
         nillableDictionary["topic"] = topic
-        nillableDictionary["location"] = location?.encodeToJSON()
         nillableDictionary["selector"] = selector
         nillableDictionary["range"] = range
         nillableDictionary["duration"] = duration
         nillableDictionary["matchTTL"] = matchTTL
+        nillableDictionary["matchDTL"] = matchDTL
         nillableDictionary["pushers"] = pushers?.encodeToJSON()
 
         let dictionary: [String: Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
