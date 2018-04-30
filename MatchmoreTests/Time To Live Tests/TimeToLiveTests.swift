@@ -60,7 +60,7 @@ final class TimeToLiveTests: QuickSpec {
 
             fit("create a subscription with match TTL") {
                 let subscription = Subscription(topic: "Test Topic", range: 4000, duration: 120, selector: selector)
-                subscription.matchTTL = 0.5
+                subscription.matchTTL = 2
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
                         if case let .failure(error) = result {
@@ -86,19 +86,19 @@ final class TimeToLiveTests: QuickSpec {
                 let matchDelegate = TestMatchDelegate()
 
                 alpsManager.delegates += matchDelegate
-                alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 5)
+                alpsManager.matchMonitor.startPollingMatches(pollingTimeInterval: 2)
 
                 var count = 0
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     matchDelegate.onMatch = { matches, _ in
+                        if count >= 1, deliveredMatches?.first?.id != matches.first?.id {
+                            done()
+                        }
+                        deliveredMatches = matches
+                        count += 1
                         if let mainDeviceId = alpsManager.mobileDevices.main?.id {
                             alpsManager.locationUpdateManager.tryToSend(location: location, for: mainDeviceId)
                         }
-                        deliveredMatches = matches
-                        if count >= 2 {
-                            done()
-                        }
-                        count += 1
                     }
                 }
                 alpsManager.delegates -= matchDelegate
