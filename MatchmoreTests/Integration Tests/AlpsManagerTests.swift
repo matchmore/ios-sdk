@@ -133,38 +133,38 @@ final class AlpsManagerTests: QuickSpec {
                 expect(deliveredMatches).toEventuallyNot(beEmpty())
             }
 
-//            fit("get socket match") {
-//                var deliveredMatches: [Match]?
-//                let matchDelegate = TestMatchDelegate()
-//
-//                alpsManager.delegates += matchDelegate
-//                alpsManager.matchMonitor.openSocketForMatches()
-//
-//                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
-//                    matchDelegate.onMatch = { matches, _ in
-//                        deliveredMatches = matches
-//                        done()
-//                    }
-//                    let topic = UUID().uuidString
-//                    let publication = Publication(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
-//                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
-//                        if case let .failure(error) = result {
-//                            errorResponse = error
-//                        }
-//                    })
-//                    let subscription = Subscription(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
-//                    subscription.pushers = ["ws"]
-//                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
-//                        if case let .failure(error) = result {
-//                            errorResponse = error
-//                        }
-//                    })
-//                }
-//                alpsManager.delegates -= matchDelegate
-//                alpsManager.matchMonitor.closeSocketForMatches()
-//                expect(deliveredMatches).toEventuallyNot(beEmpty())
-//                expect(errorResponse?.message).toEventually(beNil())
-//            }
+            fit("get socket match") {
+                var deliveredMatches: [Match]?
+                let matchDelegate = TestMatchDelegate()
+
+                alpsManager.delegates += matchDelegate
+                alpsManager.matchMonitor.openSocketForMatches()
+
+                waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
+                    matchDelegate.onMatch = { matches, _ in
+                        deliveredMatches = matches
+                        done()
+                    }
+                    let topic = UUID().uuidString
+                    let publication = Publication(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, properties: properties)
+                    Matchmore.createPublicationForMainDevice(publication: publication, completion: { result in
+                        if case let .failure(error) = result {
+                            errorResponse = error
+                        }
+                    })
+                    let subscription = Subscription(topic: topic, range: 4000, duration: TestsConfig.kWaitTimeInterval, selector: selector)
+                    subscription.pushers = ["ws"]
+                    Matchmore.createSubscriptionForMainDevice(subscription: subscription, completion: { result in
+                        if case let .failure(error) = result {
+                            errorResponse = error
+                        }
+                    })
+                }
+                alpsManager.delegates -= matchDelegate
+                alpsManager.matchMonitor.closeSocketForMatches()
+                expect(deliveredMatches).toEventuallyNot(beEmpty())
+                expect(errorResponse?.message).toEventually(beNil())
+            }
         }
     }
 
