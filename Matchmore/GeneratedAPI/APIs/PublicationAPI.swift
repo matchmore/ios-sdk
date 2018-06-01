@@ -26,11 +26,19 @@ open class PublicationAPI: APIBase {
      Create a publication for a device
      - POST /devices/{deviceId}/publications
      - examples: [{contentType=application/json, example={
-     "duration" : 1.4658129805029452,
-     "createdAt" : 0,
+     "duration" : 3.616076749251911,
+     "createdAt" : 7,
      "worldId" : "aeiou",
      "topic" : "aeiou",
-     "range" : 6.027456183070403,
+     "range" : 9.301444243932576,
+     "location" : {
+     "createdAt" : 0,
+     "altitude" : 5.962133916683182,
+     "verticalAccuracy" : 2.3021358869347655,
+     "latitude" : 6.027456183070403,
+     "horizontalAccuracy" : 5.637376656633329,
+     "longitude" : 1.4658129805029452
+     },
      "id" : "aeiou",
      "deviceId" : "aeiou",
      "properties" : ""
@@ -108,11 +116,19 @@ open class PublicationAPI: APIBase {
      Info about a publication on a device
      - GET /devices/{deviceId}/publications/{publicationId}
      - examples: [{contentType=application/json, example={
-     "duration" : 1.4658129805029452,
-     "createdAt" : 0,
+     "duration" : 3.616076749251911,
+     "createdAt" : 7,
      "worldId" : "aeiou",
      "topic" : "aeiou",
-     "range" : 6.027456183070403,
+     "range" : 9.301444243932576,
+     "location" : {
+     "createdAt" : 0,
+     "altitude" : 5.962133916683182,
+     "verticalAccuracy" : 2.3021358869347655,
+     "latitude" : 6.027456183070403,
+     "horizontalAccuracy" : 5.637376656633329,
+     "longitude" : 1.4658129805029452
+     },
      "id" : "aeiou",
      "deviceId" : "aeiou",
      "properties" : ""
