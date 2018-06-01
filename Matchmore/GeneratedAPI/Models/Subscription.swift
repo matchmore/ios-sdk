@@ -11,6 +11,7 @@ import Foundation
 open class Subscription: JSONEncodable {
     /** The id (UUID) of the subscription. */
     public var id: String?
+    public var location: Location?
     /** The timestamp of the subscription creation in seconds since Jan 01 1970 (UTC).  */
     public var createdAt: Int64?
     /** The id (UUID) of the world that contains device to attach a subscription to. */
@@ -39,6 +40,7 @@ open class Subscription: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String: Any?]()
         nillableDictionary["id"] = id
+        nillableDictionary["location"] = location?.encodeToJSON()
         nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
         nillableDictionary["worldId"] = worldId
         nillableDictionary["deviceId"] = deviceId
