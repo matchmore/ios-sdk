@@ -77,8 +77,8 @@ final class ProximityHandler {
     private func synchronizeBeacons(beacons: [CLBeacon], knownBeacons: [IBeaconTriple]) -> [IBeaconTriple] {
         var result = [IBeaconTriple]()
         beacons.forEach { beacon in
-            let b = knownBeacons.filter { beacon == $0 }
-            if !b.isEmpty { result.append(b[0]) }
+            let filteredBeacons = knownBeacons.filter { beacon == $0 }
+            result = result + filteredBeacons
         }
         return result
     }
