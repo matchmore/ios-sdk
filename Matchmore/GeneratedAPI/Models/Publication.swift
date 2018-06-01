@@ -11,6 +11,7 @@ import Foundation
 open class Publication: JSONEncodable {
     /** The id (UUID) of the publication. */
     public var id: String?
+    public var location: Location?
     /** The timestamp of the publication creation in seconds since Jan 01 1970 (UTC).  */
     public var createdAt: Int64?
     /** The id (UUID) of the world that contains device to attach a publication to. */
@@ -33,6 +34,7 @@ open class Publication: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String: Any?]()
         nillableDictionary["id"] = id
+        nillableDictionary["location"] = location?.encodeToJSON()
         nillableDictionary["createdAt"] = createdAt?.encodeToJSON()
         nillableDictionary["worldId"] = worldId
         nillableDictionary["deviceId"] = deviceId

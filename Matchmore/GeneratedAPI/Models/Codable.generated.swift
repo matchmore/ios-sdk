@@ -252,6 +252,8 @@ open class EncodablePublication: NSObject, NSCoding {
     public required init?(coder decoder: NSCoder) {
         object = Publication()
         object?.id = decoder.decodeObject(forKey: "id") as? String
+        let encodable_location = decoder.decodeObject(forKey: "location") as? EncodableLocation
+        object?.location = encodable_location?.object
         object?.createdAt = decoder.decodeObject(forKey: "createdAt") as? Int64
         object?.worldId = decoder.decodeObject(forKey: "worldId") as? String
         object?.deviceId = decoder.decodeObject(forKey: "deviceId") as? String
@@ -263,6 +265,7 @@ open class EncodablePublication: NSObject, NSCoding {
 
     public func encode(with encoder: NSCoder) {
         encoder.encode(object?.id, forKey: "id")
+        encoder.encode(EncodableLocation(object: object?.location), forKey: "location")
         encoder.encode(object?.createdAt, forKey: "createdAt")
         encoder.encode(object?.worldId, forKey: "worldId")
         encoder.encode(object?.deviceId, forKey: "deviceId")
@@ -288,6 +291,8 @@ open class EncodableSubscription: NSObject, NSCoding {
     public required init?(coder decoder: NSCoder) {
         object = Subscription()
         object?.id = decoder.decodeObject(forKey: "id") as? String
+        let encodable_location = decoder.decodeObject(forKey: "location") as? EncodableLocation
+        object?.location = encodable_location?.object
         object?.createdAt = decoder.decodeObject(forKey: "createdAt") as? Int64
         object?.worldId = decoder.decodeObject(forKey: "worldId") as? String
         object?.deviceId = decoder.decodeObject(forKey: "deviceId") as? String
@@ -302,6 +307,7 @@ open class EncodableSubscription: NSObject, NSCoding {
 
     public func encode(with encoder: NSCoder) {
         encoder.encode(object?.id, forKey: "id")
+        encoder.encode(EncodableLocation(object: object?.location), forKey: "location")
         encoder.encode(object?.createdAt, forKey: "createdAt")
         encoder.encode(object?.worldId, forKey: "worldId")
         encoder.encode(object?.deviceId, forKey: "deviceId")

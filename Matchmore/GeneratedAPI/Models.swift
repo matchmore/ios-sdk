@@ -320,6 +320,7 @@ class Decoders {
             let result = instance == nil ? Publication() : instance as! Publication
 
             result.id = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["id"] as AnyObject?)
+            result.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"] as AnyObject?)
             result.createdAt = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["createdAt"] as AnyObject?)
             result.worldId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worldId"] as AnyObject?)
             result.deviceId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["deviceId"] as AnyObject?)
@@ -350,6 +351,7 @@ class Decoders {
             let result = instance == nil ? Subscription() : instance as! Subscription
 
             result.id = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["id"] as AnyObject?)
+            result.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"] as AnyObject?)
             result.createdAt = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["createdAt"] as AnyObject?)
             result.worldId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worldId"] as AnyObject?)
             result.deviceId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["deviceId"] as AnyObject?)
