@@ -78,7 +78,7 @@ final class ProximityHandler {
         var result = [IBeaconTriple]()
         beacons.forEach { beacon in
             let filteredBeacons = knownBeacons.filter { beacon == $0 }
-            result = result + filteredBeacons
+            result += filteredBeacons
         }
         return result
     }

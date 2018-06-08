@@ -31,4 +31,11 @@ public extension Matchmore {
             instance.contextManager.startRanging()
         }
     }
+
+    public class func triggerProxmityEventForDeviceId(deviceId: String, distance: Double, completion: ((Error?) -> Void)?) {
+        let proximityEvent = ProximityEvent(deviceId: deviceId, distance: distance)
+        DeviceAPI.triggerProximityEvents(deviceId: instance.mobileDevices.main!.id!, proximityEvent: proximityEvent) { (_, error) -> Void in
+            completion?(error)
+        }
+    }
 }
