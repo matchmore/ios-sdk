@@ -26,7 +26,7 @@ Please refer to documentation "tutorial" to get a full explanation on this examp
 Setup application API key and world, get it for free from [http://matchmore.io/](http://matchmore.io/).
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    let config = MatchMoreConfig(apiKey: "YOUR_API_KEY")
+    let config = MatchmoreConfig(apiKey: "YOUR_API_KEY")
     Matchmore.configure(config)
     return true
 }

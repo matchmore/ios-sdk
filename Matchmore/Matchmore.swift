@@ -9,7 +9,7 @@
 /// `Matchmore` is a static facade for all public methods and properties available in the SDK.
 public final class Matchmore {
     /// Configuration method.
-    public class func configure(_ config: MatchMoreConfig) {
+    public class func configure(_ config: MatchmoreConfig) {
         Matchmore.config = config
     }
 
@@ -50,7 +50,7 @@ public final class Matchmore {
 
     // MARK: - Private
 
-    static var config: MatchMoreConfig!
+    static var config: MatchmoreConfig!
 
     static var instance: AlpsManager = {
         assert(config != nil, "Please configure first.")

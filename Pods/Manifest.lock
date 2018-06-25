@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (4.7.1)
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
-  - Starscream (3.0.4)
-  - SwiftFormat/CLI (0.33.5)
+  - Alamofire (4.7.2)
+  - Nimble (7.1.2)
+  - Quick (1.3.0)
+  - Starscream (3.0.5)
+  - SwiftFormat/CLI (0.33.8)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
@@ -12,13 +12,21 @@ DEPENDENCIES:
   - Starscream (~> 3.0)
   - SwiftFormat/CLI
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Nimble
+    - Quick
+    - Starscream
+    - SwiftFormat
+
 SPEC CHECKSUMS:
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
-  SwiftFormat: 13fd81206cf4453c19f1a5c51768c8c0d9165c30
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Nimble: 3835ba9f459daa6b347f8a8e110aaae8ca1920a8
+  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  SwiftFormat: 377142419e7e8774996f662d4110fb508f02ba65
 
 PODFILE CHECKSUM: 49192827cc3b262a92908620b3e8a7e4da556e24
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

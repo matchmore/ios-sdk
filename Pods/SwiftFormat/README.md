@@ -1,7 +1,7 @@
 [![Travis](https://img.shields.io/travis/nicklockwood/SwiftFormat.svg)](https://travis-ci.org/nicklockwood/SwiftFormat)
 [![Coveralls](https://coveralls.io/repos/github/nicklockwood/SwiftFormat/badge.svg)](https://coveralls.io/github/nicklockwood/SwiftFormat)
-[![Swift 3.2](https://img.shields.io/badge/swift-3.2-orange.svg?style=flat)](https://developer.apple.com/swift)
-[![Swift 4.0](https://img.shields.io/badge/swift-4.0-red.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 3.4](https://img.shields.io/badge/swift-3.4-orange.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 4.2](https://img.shields.io/badge/swift-4.2-red.svg?style=flat)](https://developer.apple.com/swift)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 [![Twitter](https://img.shields.io/badge/twitter-@nicklockwood-blue.svg)](http://twitter.com/nicklockwood)
 
@@ -60,14 +60,22 @@ Command-line tool
 
 **Installation:**
 
-The simplest way to install the `swiftformat` command-line tool is via [Homebrew](http://brew.sh/). If you already have Homebrew installed, just type
+You can install the `swiftformat` command-line tool using [Homebrew](http://brew.sh/). Assuming you already have Homebrew installed, just type:
 
     > brew update
     > brew install swiftformat
 
-Then you're done. If you are installing SwiftFormat into your project directory, you can also use [CocoaPods](https://cocoapods.org/) - see the Xcode build phase instructions below for details.
+Alternatively, you can install the tool using [Mint](https://github.com/yonaskolb/Mint) as follows:
 
-Alternatively, to build the command-line app yourself:
+    > mint install nicklockwood/SwiftFormat swiftformat
+    
+And then run it using:
+
+    > mint run swiftformat
+
+If you are installing SwiftFormat into your project directory, you can use [CocoaPods](https://cocoapods.org/) to automatically install the swiftformat binary along with your other pods - see the Xcode build phase instructions below for details.
+
+If you would prefer not to use a package manager, you can build the command-line app manually:
 
 1. open `SwiftFormat.xcodeproj` and build the `SwiftFormat (Application)` scheme.
 
@@ -164,9 +172,9 @@ Git pre-commit hook
 3. Add the following line in the pre-commit file (unlike the Xcode build phase approach, this uses your locally installed version of SwiftFormat, not a separate copy in your project repository)
 
         #!/bin/bash
-        git diff --staged --name-only | grep -e '\(.*\).swift$' | while read line; do
-          swiftformat ${line};
-          git add $line;
+        git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$' | while read line; do
+          swiftformat "${line}";
+          git add "$line";
         done
 
 4. enable the hook by typing `chmod +x .git/hooks/pre-commit` in the terminal
@@ -1166,6 +1174,7 @@ Credits
 * @bourvill - Git pre-commit hook script
 * @palleas - Homebrew formula
 * @aliak00 - Several path-related CLI enhancements
+* @yonaskolb - Swift Package Manager integration
 * @nicklockwood - Everything else
 
 ([Full list of contributors](https://github.com/nicklockwood/SwiftFormat/graphs/contributors))

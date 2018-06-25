@@ -15,17 +15,17 @@ class TestsConfig {
     static let kBaseUrl = "https://api.matchmore.io/v5"
 
     // swiftlint:disable:next line_length
-    static let kStagingApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiM2I1NTcxODEtMmVjMC00MWRhLTk5NTItMzFkNTVkZDBlYzNjIiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1MTg2MjE1MjcsImlhdCI6MTUxODYyMTUyNywianRpIjoiMSJ9.xgPMU0mm0_7jKWdC7di-rCOU6PA7pld4pU0o5TrGwFPEO04DYttHy5MF_zw9Zw1AANbDgKMYbRQT4Lj9v011Cg"
+    static let kStagingApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJhbHBzIiwic3ViIjoiOGNhZWYwNWYtY2NkYi00YzA2LTg5MjEtMzc3ODkxNTQ3OWM0IiwiYXVkIjpbIlB1YmxpYyJdLCJuYmYiOjE1Mjk5MjQ3NjMsImlhdCI6MTUyOTkyNDc2MywianRpIjoiMSJ9.ag4w6Qx3RKm--opKzWdVeZ64mbUKaYTtbVcGQnxZ5M3OpD3g3DOapHVVULTXVlfOtm7tHrcfHNR1K0KbCEVnOw"
     static let kStagingBaseUrl = "http://35.201.116.232/v5"
 
     static let kWaitTimeInterval = 60.0
 
-    static let shouldTestStaging = true
+    static let shouldTestStaging = false
     static func configure() {
         let apiKey = shouldTestStaging ? kStagingApiKey : kApiKey
         let baseUrl = shouldTestStaging ? kStagingBaseUrl : kBaseUrl
 
-        let config = MatchMoreConfig(apiKey: apiKey, serverUrl: baseUrl)
+        let config = MatchmoreConfig(apiKey: apiKey, serverUrl: baseUrl)
         Matchmore.configure(config)
     }
 }

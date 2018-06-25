@@ -1,5 +1,5 @@
 //
-//  MatchMoreConfig.swift
+//  MatchmoreConfig.swift
 //  Matchmore
 //
 //  Created by Maciej Burda on 21/02/2018.
@@ -9,8 +9,8 @@
 import CoreLocation
 import Foundation
 
-/// `MatchMoreConfig` is a structure that defines all variables needed to configure Matchmore SDK.
-public struct MatchMoreConfig {
+/// `MatchmoreConfig` is a structure that defines all variables needed to configure Matchmore SDK.
+public struct MatchmoreConfig {
     let apiKey: String
     let serverUrl: String
     let customLocationManager: CLLocationManager?
