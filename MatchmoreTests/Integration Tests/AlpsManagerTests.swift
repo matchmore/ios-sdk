@@ -27,10 +27,7 @@ final class AlpsManagerTests: QuickSpec {
         var errorResponse: ErrorResponse?
 
         context("Matchmore Manager") {
-            beforeEach {
-                errorResponse = nil
-            }
-
+            beforeEach { errorResponse = nil }
             fit("clear publications") {
                 waitUntil(timeout: TestsConfig.kWaitTimeInterval) { done in
                     alpsManager.publications.deleteAll { error in
@@ -136,7 +133,6 @@ final class AlpsManagerTests: QuickSpec {
             fit("get socket match") {
                 var deliveredMatches: [Match]?
                 let matchDelegate = TestMatchDelegate()
-
                 alpsManager.delegates += matchDelegate
                 alpsManager.matchMonitor.openSocketForMatches()
 

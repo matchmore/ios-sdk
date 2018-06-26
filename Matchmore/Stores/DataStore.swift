@@ -14,31 +14,31 @@ typealias CRUD = AsyncCreateable & AsyncReadable & AsyncUpdateable & AsyncDelete
 typealias CRD = AsyncCreateable & AsyncReadable & AsyncDeleteable & AsyncClearable
 
 protocol AssociatedDataType {
+    associatedtype DataType
     var id: String { get }
-    associatedtype T
-    var items: [T] { get }
+    var items: [DataType] { get }
 }
 
-typealias ResultClosure<T> = (Result<T>) -> Void
+typealias ResultClosure<DataType> = (Result<DataType>) -> Void
 typealias ErrorClosure = (ErrorResponse?) -> Void
-typealias ObjectClosure<T> = (T?) -> Void
-typealias ArrayClosure<T> = ([T]) -> Void
+typealias ObjectClosure<DataType> = (DataType?) -> Void
+typealias ArrayClosure<DataType> = ([DataType]) -> Void
 
 protocol AsyncCreateable: AssociatedDataType {
-    func create(item: T, completion: @escaping ResultClosure<T>)
+    func create(item: DataType, completion: @escaping ResultClosure<DataType>)
 }
 
 protocol AsyncReadable: AssociatedDataType {
-    func find(byId: String, completion: @escaping ObjectClosure<T>)
-    func findAll(completion: @escaping ArrayClosure<T>)
+    func find(byId: String, completion: @escaping ObjectClosure<DataType>)
+    func findAll(completion: @escaping ArrayClosure<DataType>)
 }
 
 protocol AsyncUpdateable: AssociatedDataType {
-    func update(item: T, completion: @escaping ResultClosure<T>)
+    func update(item: DataType, completion: @escaping ResultClosure<DataType>)
 }
 
 protocol AsyncDeleteable: AssociatedDataType {
-    func delete(item: T, completion: @escaping ErrorClosure)
+    func delete(item: DataType, completion: @escaping ErrorClosure)
 }
 
 protocol AsyncClearable: AssociatedDataType {

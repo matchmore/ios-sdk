@@ -19,7 +19,7 @@ final class TimeToLiveTests: QuickSpec {
             "boolean": true
         ]
         let selector: String = "string = 'test' and number >= 1 and boolean = true"
-        let location = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
+        _ = Location(latitude: 10, longitude: 10, altitude: 10, horizontalAccuracy: 10, verticalAccuracy: 10)
 
         TestsConfig.configure()
         let alpsManager = Matchmore.instance
@@ -75,7 +75,7 @@ final class TimeToLiveTests: QuickSpec {
                 expect(errorResponse?.message).toEventually(beNil())
             }
 
-            // TODO: NOT STABLE NOW - TBD
+            // NOT STABLE NOW - TBD
 //            fit("get two matches matchTTL") {
 //                var deliveredMatches: [Match]?
 //                let matchDelegate = TestMatchDelegate()

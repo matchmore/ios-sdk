@@ -49,7 +49,7 @@ public class MatchMonitor {
 
     // MARK: - Socket
 
-    // TODO: start new socket after adding new device ?
+    // Start new socket after adding new device?
     func openSocketForMatches() {
         if socket != nil { return }
         guard let deviceId = monitoredDevices.first?.id else { return }
